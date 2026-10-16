@@ -3,6 +3,9 @@ title: "From Obsidian to GitHub Pages, Part 1: Build a Publishable Vault"
 date: 2026-10-14T09:00:00+07:00
 draft: false
 tags: ["obsidian", "markdown", "hugo", "publishing-workflow"]
+cover:
+  image: "/images/posts/obsidian-vault.svg"
+  alt: "An illustrated notebook representing a carefully organized Obsidian vault"
 ---
 
 This is the first post in a three-part series about writing in Obsidian and publishing to a Hugo blog on GitHub Pages. The goal is a small, transparent workflow: write plain Markdown, publish only the notes you choose, and let the existing site and profile automation do the rest.

@@ -14,8 +14,13 @@ title: "Your post title"
 date: 2026-10-16T21:00:00+07:00
 draft: false
 tags: ["your-topic", "another-topic"]
+cover:
+  image: "/images/posts/your-cover.svg"
+  alt: "A short description of the cover image"
 ---
 ```
+
+Post covers are stored locally in `static/images/posts/`, so they do not add third-party requests. The home-page list loads them lazily; lightweight SVG covers keep transfer sizes small. Keep the `cover` block to show a thumbnail beside the post.
 
 Save the note and push the repository to `main` with GitHub Desktop or Git. GitHub Actions builds the blog and deploys it to Pages automatically. Hugo Extended is only needed for a local preview:
 

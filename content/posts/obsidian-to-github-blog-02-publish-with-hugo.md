@@ -3,6 +3,9 @@ title: "From Obsidian to GitHub Pages, Part 2: Publish Markdown with Hugo"
 date: 2026-10-15T09:00:00+07:00
 draft: false
 tags: ["obsidian", "markdown", "hugo", "github-pages", "publishing-workflow"]
+cover:
+  image: "/images/posts/hugo-publishing.svg"
+  alt: "A Markdown document moving through Hugo toward a published website"
 ---
 
 In [Part 1](/posts/obsidian-to-github-blog-01-publishable-vault/), we set up Obsidian to edit the blog's Markdown source. Now we'll publish a post and see how it reaches the live site.
