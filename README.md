@@ -7,6 +7,16 @@ filename with a `.vi.md` suffix, such as `my-post.md` and `my-post.vi.md`.
 Update the GitHub, Ko-fi, and X links in `[params.socialIcons]` in `hugo.toml`
 when the public profiles are ready.
 
+## Reader features
+
+PaperMod provides a compact language switcher, light/dark theme toggle, open
+table of contents, and share links on posts. Code blocks include a copy button.
+The production build also generates canonical URLs, language alternates, social
+preview metadata, and structured data for search engines.
+
+Comments are not enabled yet. Choose a provider and configure its required
+repository or account settings before adding its embed to the site.
+
 ## Writing a post
 
 Open this repository as an Obsidian vault, then create a Markdown note under `content/posts/`. Keep private notes outside that folder; anything in `content/posts/` is intended for publication. Obsidian's local settings are ignored by Git.

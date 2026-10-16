@@ -22,11 +22,19 @@ enableRobotsTXT = true
   author = "Dyn"
   description = "Notes on software, automation, and things I learn."
   defaultTheme = "auto"
-  displayFullLangName = true
+  displayFullLangName = false
   ShowReadingTime = true
   ShowPostNavLinks = true
   ShowBreadCrumbs = true
+  ShowToc = true
+  TocOpen = true
+  ShowShareButtons = true
+  ShareButtons = ["x", "linkedin", "telegram", "whatsapp"]
   ShowCodeCopyButtons = true
+
+  [params.schema]
+    publisherType = "Person"
+    sameAs = ["https://github.com/cmduyeen"]
 
   [[params.socialIcons]]
     name = "github"
