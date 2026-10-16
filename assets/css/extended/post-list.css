@@ -118,6 +118,15 @@
     display: none;
 }
 
+.menu {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.menu::-webkit-scrollbar {
+    display: none;
+}
+
 .lang-menu {
     align-items: center;
     gap: 0.15rem;
@@ -229,5 +238,25 @@
     .lang-menu a,
     .lang-menu .current-language {
         line-height: 1.4rem;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .header-nav {
+        flex-wrap: wrap;
+        height: auto;
+        min-height: 44px;
+        row-gap: 0;
+        padding-block: 0.25rem;
+    }
+
+    .logo,
+    .menu {
+        flex: 0 0 100%;
+        justify-content: center;
+    }
+
+    .menu {
+        overflow: visible;
     }
 }
