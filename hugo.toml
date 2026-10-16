@@ -1,0 +1,41 @@
+baseURL = "https://cmduyeen.github.io/"
+title = "Dyn | Notes"
+theme = "PaperMod"
+languageCode = "en-us"
+defaultContentLanguage = "en"
+enableRobotsTXT = true
+
+[params]
+  env = "production"
+  author = "Dyn"
+  description = "Notes on software, automation, and things I learn."
+  defaultTheme = "auto"
+  ShowReadingTime = true
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+
+[params.homeInfoParams]
+  Title = "Hi, I'm Dyn 👋"
+  Content = "A personal space for notes on software, automation, and things I learn."
+
+[[menu.main]]
+  identifier = "archives"
+  name = "Archives"
+  url = "/archives/"
+  weight = 10
+
+[[menu.main]]
+  identifier = "search"
+  name = "Search"
+  url = "/search/"
+  weight = 20
+
+[[menu.main]]
+  identifier = "tags"
+  name = "Tags"
+  url = "/tags/"
+  weight = 30
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
