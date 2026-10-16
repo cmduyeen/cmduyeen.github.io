@@ -1,0 +1,16 @@
+<div class="social-icons" {{ with .align}}align="{{.}}" {{- end }}>
+    {{- range site.Params.socialIcons }}
+    <a href="{{ trim .url " " | safeURL }}" target="_blank" rel="noopener noreferrer me"
+        title="{{ .title | default .name }}" aria-label="{{ .title | default .name }}">
+        {{- if eq (lower .name) "x" }}
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"
+            aria-hidden="true">
+            <path
+                d="M18.901 1.153h3.68l-8.04 9.19 9.46 12.5h-7.405l-5.8-7.584-6.638 7.584h-3.68l8.6-9.83L.01 1.153h7.593l5.243 6.932 6.055-6.932zM17.61 20.644h2.039L6.486 3.237H4.298L17.61 20.644z" />
+        </svg>
+        {{- else }}
+        {{- partial "svg.html" . }}
+        {{- end }}
+    </a>
+    {{- end }}
+</div>

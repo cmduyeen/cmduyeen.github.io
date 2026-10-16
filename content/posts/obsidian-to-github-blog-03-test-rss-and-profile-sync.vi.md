@@ -23,13 +23,13 @@ Nguồn RSS là [`https://cmduyeen.github.io/index.xml`](https://cmduyeen.github
 
 ## Khi nào hồ sơ GitHub được cập nhật?
 
-Kho hồ sơ đọc nguồn RSS Hugo và cập nhật danh sách bài viết trong mục **Dyn | Notes** của README. Workflow chạy mỗi ngày lúc **00:17 giờ Việt Nam**; bạn cũng có thể chạy **Update profile README** thủ công trong tab Actions của kho hồ sơ để kiểm tra bài mới ngay.
+Kho hồ sơ đọc RSS Hugo và cập nhật mục **Dyn** trong README bằng ảnh bìa và tiêu đề của các bài mới. Workflow chạy mỗi ngày lúc **00:17 giờ Việt Nam**; bạn cũng có thể chạy **Update profile README** thủ công trong tab Actions của kho hồ sơ để kiểm tra bài mới ngay.
 
 Cách này giữ quy trình thường ngày gọn nhẹ: xuất bản bài chỉ kích hoạt một lần build Pages, còn hồ sơ được làm mới theo lịch hằng ngày vốn có. Chỉ cần chạy workflow hồ sơ thủ công khi bạn muốn kiểm tra đồng bộ ngay thay vì chờ đến lịch; không cần plugin mới, dịch vụ trả phí hay lịch chạy bổ sung.
 
 ## Kiểm tra README hồ sơ
 
-Sau khi workflow hồ sơ chạy thành công, mở `README.md` của kho hồ sơ và xem mục **Dyn | Notes**. Bài mới sẽ xuất hiện dưới dạng liên kết kèm ngày đăng. Workflow chỉ giữ lại năm bài mới nhất trong danh sách ngắn này; các bài cũ hơn vẫn còn trên blog.
+Sau khi workflow hồ sơ chạy thành công, mở `README.md` của kho hồ sơ và xem mục **Dyn**. Bài mới sẽ xuất hiện cùng ảnh bìa, tiêu đề và ngày đăng. Workflow chỉ giữ lại năm bài mới nhất trong danh sách ngắn này; các bài cũ hơn vẫn còn trên blog.
 
 Nếu workflow blog thành công nhưng workflow hồ sơ thất bại, hãy xem bước **Update blog posts**. Lỗi lấy nguồn thường có nghĩa RSS tạm thời không truy cập được hoặc Pages chưa triển khai xong. Khi nguồn đã hoạt động, hãy chạy lại workflow hồ sơ.
 

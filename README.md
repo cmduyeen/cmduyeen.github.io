@@ -1,8 +1,11 @@
-# Dyn | Notes
+# Dyn
 
-Personal blog built with Hugo and the PaperMod theme, deployed to GitHub Pages.
+Personal blog by Dyn, built with Hugo and the PaperMod theme and deployed to GitHub Pages.
 The site is available in English and Vietnamese. Translated posts share the same
 filename with a `.vi.md` suffix, such as `my-post.md` and `my-post.vi.md`.
+
+Update the GitHub, Ko-fi, and X links in `[params.socialIcons]` in `hugo.toml`
+when the public profiles are ready.
 
 ## Writing a post
 

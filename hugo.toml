@@ -1,5 +1,5 @@
 baseURL = "https://cmduyeen.github.io/"
-title = "Dyn | Notes"
+title = "Dyn"
 theme = "PaperMod"
 defaultContentLanguage = "en"
 defaultContentLanguageInSubdir = false
@@ -9,13 +9,13 @@ enableRobotsTXT = true
   languageCode = "en-us"
   languageName = "English"
   weight = 1
-  title = "Dyn | Notes"
+  title = "Dyn"
 
 [languages.vi]
   languageCode = "vi-vn"
   languageName = "Tiếng Việt"
   weight = 2
-  title = "Dyn | Ghi chú"
+  title = "Dyn"
 
 [params]
   env = "production"
@@ -28,15 +28,32 @@ enableRobotsTXT = true
   ShowBreadCrumbs = true
   ShowCodeCopyButtons = true
 
+  [[params.socialIcons]]
+    name = "github"
+    title = "GitHub"
+    url = "https://github.com/cmduyeen"
+
+  [[params.socialIcons]]
+    name = "kofi"
+    title = "Ko-fi"
+    url = "https://ko-fi.com/"
+
+  [[params.socialIcons]]
+    name = "x"
+    title = "X"
+    url = "https://x.com/"
+
 [languages.en.params]
-  description = "Notes on software, automation, and things I learn."
+  description = "Dyn writes about software, automation, Obsidian, Hugo, GitHub Pages, and practical tools."
+  keywords = ["software", "automation", "Obsidian", "Hugo", "GitHub Pages", "developer tools"]
 
 [languages.en.params.homeInfoParams]
   Title = "Hi, I'm Dyn 👋"
   Content = "A personal space for notes on software, automation, and things I learn."
 
 [languages.vi.params]
-  description = "Ghi chú về phần mềm, tự động hóa và những điều mình học được."
+  description = "Dyn chia sẻ về phần mềm, tự động hóa, Obsidian, Hugo, GitHub Pages và các công cụ hữu ích."
+  keywords = ["phần mềm", "tự động hóa", "Obsidian", "Hugo", "GitHub Pages", "công cụ lập trình"]
 
 [languages.vi.params.homeInfoParams]
   Title = "Xin chào, mình là Dyn 👋"
