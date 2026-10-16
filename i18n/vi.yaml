@@ -37,3 +37,12 @@
 
 - id: search_results
   translation: "Kết quả tìm kiếm"
+
+- id: breadcrumb
+  translation: "Điều hướng đường dẫn"
+
+- id: posts
+  translation: "Bài viết"
+
+- id: tags
+  translation: "Thẻ"

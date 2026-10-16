@@ -1,0 +1,32 @@
+{{- define "main" }}
+
+{{- if .Title }}
+{{- $title := .Title }}
+{{- if eq .Title "Tags" }}
+{{- $title = i18n "tags" | default .Title }}
+{{- end }}
+<header class="page-header">
+    {{- partial "breadcrumbs.html" . }}
+    <h1>{{ $title }}</h1>
+    {{- if .Description }}
+    <div class="post-description">
+        {{ .Description }}
+    </div>
+    {{- end }}
+</header>
+{{- end }}
+
+<ul class="terms-tags">
+    {{- $type := .Type }}
+    {{- range $key, $value := .Data.Terms.Alphabetical }}
+    {{- $name := .Name }}
+    {{- $count := .Count }}
+    {{- with site.GetPage (printf "/%s/%s" $type $name) }}
+    <li>
+        <a href="{{ .Permalink }}">{{ .LinkTitle }} <sup><strong><sup>{{ $count }}</sup></strong></sup> </a>
+    </li>
+    {{- end }}
+    {{- end }}
+</ul>
+
+{{- end }}{{/* end main */ -}}

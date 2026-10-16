@@ -193,7 +193,62 @@
     margin-top: 1.25rem;
 }
 
+.breadcrumbs {
+    margin-bottom: 0.75rem;
+}
+
+.breadcrumbs ol {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.35rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.breadcrumbs li {
+    display: inline-flex;
+    min-width: 0;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.breadcrumbs .breadcrumb-separator {
+    color: var(--tertiary);
+}
+
+.breadcrumbs li[aria-current="page"] {
+    color: var(--primary);
+}
+
+.breadcrumbs .breadcrumb-current {
+    display: block;
+    max-width: clamp(8rem, 55vw, 28rem);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.breadcrumbs a:focus-visible {
+    border-radius: 2px;
+    outline: 2px solid var(--primary);
+    outline-offset: 3px;
+}
+
 @media screen and (max-width: 480px) {
+    .breadcrumbs {
+        font-size: 0.8rem;
+    }
+
+    .breadcrumbs a {
+        font-size: inherit;
+    }
+
+    .breadcrumbs .breadcrumb-current {
+        max-width: 45vw;
+    }
+
     .header-nav {
         flex-wrap: nowrap;
         height: 44px;

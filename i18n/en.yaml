@@ -3,3 +3,12 @@
 
 - id: search_results
   translation: "Search results"
+
+- id: breadcrumb
+  translation: "Breadcrumb"
+
+- id: posts
+  translation: "Posts"
+
+- id: tags
+  translation: "Tags"

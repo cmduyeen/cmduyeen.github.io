@@ -1,0 +1,32 @@
+{{- if and (.Param "ShowBreadCrumbs") (not .IsHome) -}}
+{{- $homeLabel := i18n "home" | default "Home" -}}
+<nav class="breadcrumbs" aria-label="{{ i18n "breadcrumb" | default "Breadcrumb" }}">
+  <ol>
+    <li>
+      <a href="{{ site.Home.RelPermalink }}">{{ $homeLabel }}</a>
+    </li>
+    {{- range .Ancestors.Reverse }}
+      {{- if not .IsHome }}
+        {{- $ancestorLabel := .LinkTitle -}}
+        {{- if eq .Section "posts" -}}
+          {{- $ancestorLabel = i18n "posts" | default "Posts" -}}
+        {{- else if eq .Type "tags" -}}
+          {{- $ancestorLabel = i18n "tags" | default "Tags" -}}
+        {{- end }}
+    <li>
+      <span class="breadcrumb-separator" aria-hidden="true">/</span>
+      <a href="{{ .RelPermalink }}">{{ $ancestorLabel }}</a>
+    </li>
+      {{- end }}
+    {{- end }}
+      {{- $currentLabel := .LinkTitle -}}
+      {{- if and (eq .Type "tags") (eq .Title "Tags") -}}
+        {{- $currentLabel = i18n "tags" | default .LinkTitle -}}
+      {{- end }}
+      <li aria-current="page">
+        <span class="breadcrumb-separator" aria-hidden="true">/</span>
+        <span class="breadcrumb-current" title="{{ $currentLabel }}">{{ $currentLabel }}</span>
+    </li>
+  </ol>
+</nav>
+{{- end -}}
