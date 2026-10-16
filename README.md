@@ -4,13 +4,32 @@ Personal blog built with Hugo and the PaperMod theme, deployed to GitHub Pages.
 
 ## Writing a post
 
-Create a Markdown post with:
+Open this repository as an Obsidian vault, then create a Markdown note under `content/posts/`. Keep private notes outside that folder; anything in `content/posts/` is intended for publication. Obsidian's local settings are ignored by Git.
+
+Use this front matter at the top of each post:
+
+```yaml
+---
+title: "Your post title"
+date: 2026-10-16T21:00:00+07:00
+draft: false
+tags: ["your-topic", "another-topic"]
+---
+```
+
+Save the note and push the repository to `main` with GitHub Desktop or Git. GitHub Actions builds the blog and deploys it to Pages automatically. Hugo Extended is only needed for a local preview:
 
 ```powershell
 hugo new content posts/my-post-title.md
 ```
 
-Edit the generated file, set `draft: false` when it is ready, then push to `main`. GitHub Actions builds and deploys the site automatically.
+For a local preview, set `draft: true` on unpublished posts and run `hugo server -D`.
+
+## Obsidian publishing series
+
+- [Part 1: Build an Obsidian vault for public writing](https://cmduyeen.github.io/posts/obsidian-to-github-blog-01-publishable-vault/)
+- [Part 2: Publish Markdown with Hugo and GitHub Pages](https://cmduyeen.github.io/posts/obsidian-to-github-blog-02-publish-with-hugo/)
+- [Part 3: Verify RSS and GitHub profile sync](https://cmduyeen.github.io/posts/obsidian-to-github-blog-03-test-rss-and-profile-sync/)
 
 ## Local preview
 
