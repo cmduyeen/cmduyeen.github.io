@@ -1,6 +1,8 @@
 # Dyn | Notes
 
 Personal blog built with Hugo and the PaperMod theme, deployed to GitHub Pages.
+The site is available in English and Vietnamese. Translated posts share the same
+filename with a `.vi.md` suffix, such as `my-post.md` and `my-post.vi.md`.
 
 ## Writing a post
 
@@ -35,6 +37,12 @@ For a local preview, set `draft: true` on unpublished posts and run `hugo server
 - [Part 1: Build an Obsidian vault for public writing](https://cmduyeen.github.io/posts/obsidian-to-github-blog-01-publishable-vault/)
 - [Part 2: Publish Markdown with Hugo and GitHub Pages](https://cmduyeen.github.io/posts/obsidian-to-github-blog-02-publish-with-hugo/)
 - [Part 3: Verify RSS and GitHub profile sync](https://cmduyeen.github.io/posts/obsidian-to-github-blog-03-test-rss-and-profile-sync/)
+
+Vietnamese:
+
+- [Phần 1: Tạo vault sẵn sàng xuất bản](https://cmduyeen.github.io/vi/posts/obsidian-to-github-blog-01-publishable-vault/)
+- [Phần 2: Xuất bản Markdown bằng Hugo](https://cmduyeen.github.io/vi/posts/obsidian-to-github-blog-02-publish-with-hugo/)
+- [Phần 3: Kiểm tra RSS và đồng bộ hồ sơ](https://cmduyeen.github.io/vi/posts/obsidian-to-github-blog-03-test-rss-and-profile-sync/)
 
 ## Local preview
 

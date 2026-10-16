@@ -1,39 +1,80 @@
 baseURL = "https://cmduyeen.github.io/"
 title = "Dyn | Notes"
 theme = "PaperMod"
-languageCode = "en-us"
 defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = false
 enableRobotsTXT = true
+
+[languages.en]
+  languageCode = "en-us"
+  languageName = "English"
+  weight = 1
+  title = "Dyn | Notes"
+
+[languages.vi]
+  languageCode = "vi-vn"
+  languageName = "Tiếng Việt"
+  weight = 2
+  title = "Dyn | Ghi chú"
 
 [params]
   env = "production"
   author = "Dyn"
   description = "Notes on software, automation, and things I learn."
   defaultTheme = "auto"
+  displayFullLangName = true
   ShowReadingTime = true
   ShowPostNavLinks = true
   ShowBreadCrumbs = true
   ShowCodeCopyButtons = true
 
-[params.homeInfoParams]
+[languages.en.params]
+  description = "Notes on software, automation, and things I learn."
+
+[languages.en.params.homeInfoParams]
   Title = "Hi, I'm Dyn 👋"
   Content = "A personal space for notes on software, automation, and things I learn."
 
-[[menu.main]]
+[languages.vi.params]
+  description = "Ghi chú về phần mềm, tự động hóa và những điều mình học được."
+
+[languages.vi.params.homeInfoParams]
+  Title = "Xin chào, mình là Dyn 👋"
+  Content = "Góc nhỏ ghi lại những điều mình học được về phần mềm và tự động hóa."
+
+[[languages.en.menus.main]]
   identifier = "archives"
   name = "Archives"
   url = "/archives/"
   weight = 10
 
-[[menu.main]]
+[[languages.en.menus.main]]
   identifier = "search"
   name = "Search"
   url = "/search/"
   weight = 20
 
-[[menu.main]]
+[[languages.en.menus.main]]
   identifier = "tags"
   name = "Tags"
+  url = "/tags/"
+  weight = 30
+
+[[languages.vi.menus.main]]
+  identifier = "archives"
+  name = "Lưu trữ"
+  url = "/archives/"
+  weight = 10
+
+[[languages.vi.menus.main]]
+  identifier = "search"
+  name = "Tìm kiếm"
+  url = "/search/"
+  weight = 20
+
+[[languages.vi.menus.main]]
+  identifier = "tags"
+  name = "Thẻ"
   url = "/tags/"
   weight = 30
 

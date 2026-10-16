@@ -61,3 +61,95 @@
         column-gap: 12px;
     }
 }
+
+.logo-switches {
+    gap: 0.5rem;
+}
+
+#theme-toggle {
+    display: inline-flex;
+    width: auto;
+    gap: 0.4rem;
+    padding: 0 0.5rem;
+    white-space: nowrap;
+}
+
+#theme-toggle::after {
+    content: "Dark mode";
+    font-size: 0.8rem;
+}
+
+html[data-theme="dark"] #theme-toggle::after {
+    content: "Light mode";
+}
+
+html[lang^="vi"][data-theme="light"] #theme-toggle::after {
+    content: "Chế độ tối";
+}
+
+html[lang^="vi"][data-theme="dark"] #theme-toggle::after {
+    content: "Chế độ sáng";
+}
+
+.lang-menu a {
+    white-space: nowrap;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    line-height: 2rem;
+    padding: 0 0.7rem;
+}
+
+.lang-menu .current-language {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid var(--tertiary);
+    border-radius: 999px;
+    color: var(--secondary);
+    font-size: 0.8rem;
+    font-weight: 600;
+    line-height: 2rem;
+    padding: 0 0.65rem;
+}
+
+@media screen and (max-width: 480px) {
+    .header-nav {
+        row-gap: 0.25rem;
+    }
+
+    .logo-switches,
+    .logo-switches > *,
+    .lang-menu li {
+        min-height: 0;
+    }
+
+    .logo-switches {
+        align-items: center;
+        line-height: 1.5;
+    }
+
+    .lang-menu {
+        margin: 0;
+        padding: 0;
+    }
+
+    .lang-menu a,
+    .lang-menu .current-language {
+        line-height: 1.8rem;
+    }
+
+    #theme-toggle::after {
+        content: "Dark";
+    }
+
+    html[data-theme="dark"] #theme-toggle::after {
+        content: "Light";
+    }
+
+    html[lang^="vi"][data-theme="light"] #theme-toggle::after {
+        content: "Tối";
+    }
+
+    html[lang^="vi"][data-theme="dark"] #theme-toggle::after {
+        content: "Sáng";
+    }
+}

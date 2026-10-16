@@ -1,0 +1,48 @@
+<script>
+    (() => {
+        const languages = new Map([
+            {{- range site.Languages }}
+            [{{ .LanguageName | jsonify | safeJS }}, {{ .Lang | jsonify | safeJS }}],
+            {{- end }}
+        ]);
+        const currentLang = document.documentElement.lang.toLowerCase().split("-")[0];
+        const currentLanguageName = [...languages.entries()]
+            .find(([, lang]) => lang.toLowerCase() === currentLang)?.[0];
+        const languageMenu = document.querySelector(".lang-menu");
+
+        if (languageMenu && currentLanguageName) {
+            const currentItem = document.createElement("li");
+            const currentLabel = document.createElement("span");
+            currentLabel.className = "current-language";
+            currentLabel.textContent = currentLang.toUpperCase();
+            currentLabel.setAttribute("aria-current", "true");
+            currentLabel.setAttribute("aria-label", currentLanguageName);
+            currentItem.appendChild(currentLabel);
+            languageMenu.prepend(currentItem);
+
+            languageMenu.querySelectorAll("a").forEach((link) => {
+                const targetLang = languages.get(link.getAttribute("aria-label"));
+                const translationLink = targetLang && document.querySelector(
+                    `link[rel="alternate"][hreflang="${targetLang}"]`
+                );
+                if (translationLink) link.href = translationLink.href;
+            });
+        }
+
+        const button = document.getElementById("theme-toggle");
+        if (!button) return;
+
+        const updateLabel = () => {
+            const isVietnamese = document.documentElement.lang.toLowerCase().startsWith("vi");
+            const nextMode = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+            const label = isVietnamese
+                ? (nextMode === "dark" ? "Chuyển sang giao diện tối" : "Chuyển sang giao diện sáng")
+                : (nextMode === "dark" ? "Switch to dark mode" : "Switch to light mode");
+            button.setAttribute("aria-label", label);
+            button.setAttribute("title", label);
+        };
+
+        updateLabel();
+        button.addEventListener("click", () => window.setTimeout(updateLabel, 0));
+    })();
+</script>
