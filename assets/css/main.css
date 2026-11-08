@@ -1,23 +1,23 @@
 :root {
   color-scheme: light;
   --background: #ffffff;
-  --surface: #f6f8fa;
-  --text: #1f2328;
-  --muted: #59636e;
-  --line: #d1d9e0;
-  --link: #0969da;
+  --surface: #f3f3f3;
+  --text: #333333;
+  --muted: #616161;
+  --line: #e5e5e5;
+  --link: #005fb8;
   --content-width: 40rem;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     color-scheme: dark;
-    --background: #0d1117;
-    --surface: #161b22;
-    --text: #e6edf3;
-    --muted: #9198a1;
-    --line: #30363d;
-    --link: #4493f8;
+    --background: #1f1f1f;
+    --surface: #181818;
+    --text: #cccccc;
+    --muted: #9d9d9d;
+    --line: #3c3c3c;
+    --link: #4daafc;
   }
 }
 
@@ -358,8 +358,15 @@ h1 {
   padding: 1rem;
   border: 1px solid var(--line);
   border-radius: 0.25rem;
-  background: var(--surface);
+  background: var(--surface) !important;
+  color: var(--text) !important;
   font-size: 0.9rem;
+}
+
+.article-content pre code,
+.article-content pre code span {
+  background: transparent !important;
+  color: var(--text) !important;
 }
 
 .article-content :not(pre) > code {
