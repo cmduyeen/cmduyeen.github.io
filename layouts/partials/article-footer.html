@@ -1,0 +1,50 @@
+{{ $page := . }}
+{{ $posts := where site.RegularPages "Section" "posts" }}
+{{ $mentions := slice }}
+{{ range $posts }}
+  {{ if and (ne .RelPermalink $page.RelPermalink) (strings.Contains .RawContent $page.RelPermalink) }}
+    {{ $mentions = $mentions | append . }}
+  {{ end }}
+{{ end }}
+
+{{ with $mentions }}
+<section class="article-references" aria-labelledby="mentions-heading">
+  <h2 class="section-label" id="mentions-heading">Được liên kết từ</h2>
+  <ul class="mention-grid">
+    {{ range . }}
+    <li>
+      <a class="mention-card" href="{{ .RelPermalink }}">
+        <span class="mention-title">{{ .LinkTitle }}</span>
+        <span class="mention-summary">{{ .Summary | plainify | htmlUnescape | truncate 150 }}</span>
+      </a>
+    </li>
+    {{ end }}
+  </ul>
+</section>
+{{ end }}
+
+{{ $related := slice }}
+{{ $pageTags := $page.Params.tags | default slice }}
+{{ range $posts }}
+  {{ if ne .RelPermalink $page.RelPermalink }}
+    {{ $sharedTags := intersect (.Params.tags | default slice) $pageTags }}
+    {{ if gt (len $sharedTags) 0 }}
+      {{ $related = $related | append (dict "page" . "score" (len $sharedTags)) }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+{{ $related = sort $related "score" "desc" }}
+{{ with first 5 $related }}
+<section class="article-recommendations" aria-labelledby="recommendations-heading">
+  <h2 class="section-label" id="recommendations-heading">Có thể bạn cũng thích</h2>
+  <ul class="recommendation-list">
+    {{ range . }}
+    {{ $relatedPage := index . "page" }}
+    <li><a href="{{ $relatedPage.RelPermalink }}">{{ $relatedPage.LinkTitle }}</a></li>
+    {{ end }}
+  </ul>
+</section>
+{{ end }}
+
+<hr class="section-divider">
+{{ partial "updates.html" $page }}

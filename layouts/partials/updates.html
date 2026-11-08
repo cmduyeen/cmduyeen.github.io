@@ -1,0 +1,22 @@
+<section class="updates" aria-labelledby="updates-heading">
+  <h2 class="section-label" id="updates-heading">Nhận cập nhật</h2>
+  <p>Theo dõi bài viết mới qua RSS hoặc các kênh liên hệ đã cấu hình.</p>
+  <ul class="update-links">
+    <li><a href="{{ "index.xml" | relURL }}">RSS</a></li>
+    {{ with site.Params.contact.email }}
+    <li><a href="{{ printf "mailto:%s" . | safeURL }}">Email</a></li>
+    {{ end }}
+    {{ with site.Params.contact.x }}
+    <li><a href="{{ . | safeURL }}" target="_blank" rel="noopener noreferrer">X</a></li>
+    {{ end }}
+    {{ with site.Params.contact.mastodon }}
+    <li><a href="{{ . | safeURL }}" target="_blank" rel="me noopener noreferrer">Mastodon</a></li>
+    {{ end }}
+    {{ with site.Params.contact.bluesky }}
+    <li><a href="{{ . | safeURL }}" target="_blank" rel="noopener noreferrer">Bluesky</a></li>
+    {{ end }}
+    {{ with site.Params.contact.other }}
+    <li><a href="{{ . | safeURL }}" target="_blank" rel="noopener noreferrer">Kênh khác</a></li>
+    {{ end }}
+  </ul>
+</section>

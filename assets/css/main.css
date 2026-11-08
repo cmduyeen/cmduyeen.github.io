@@ -1,21 +1,23 @@
 :root {
   color-scheme: light;
-  --background: #faf9f6;
-  --text: #292824;
-  --muted: #77746c;
-  --line: #e8e5de;
-  --link: #315d50;
+  --background: #ffffff;
+  --surface: #f6f8fa;
+  --text: #1f2328;
+  --muted: #59636e;
+  --line: #d1d9e0;
+  --link: #0969da;
   --content-width: 40rem;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     color-scheme: dark;
-    --background: #171815;
-    --text: #e8e6df;
-    --muted: #aaa79e;
-    --line: #34352f;
-    --link: #a4cdb8;
+    --background: #0d1117;
+    --surface: #161b22;
+    --text: #e6edf3;
+    --muted: #9198a1;
+    --line: #30363d;
+    --link: #4493f8;
   }
 }
 
@@ -50,7 +52,7 @@ a:hover {
 
 a:focus-visible,
 summary:focus-visible {
-  outline: 2px solid currentColor;
+  outline: 2px solid var(--link);
   outline-offset: 3px;
 }
 
@@ -225,6 +227,57 @@ main {
   color: var(--muted);
 }
 
+.article-references,
+.article-recommendations {
+  margin-top: 3rem;
+}
+
+.mention-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.mention-card {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: 0.35rem;
+  background: var(--surface);
+  color: var(--text);
+  text-decoration: none;
+}
+
+.mention-card:hover {
+  border-color: var(--link);
+}
+
+.mention-title {
+  color: var(--link);
+  font-weight: 500;
+}
+
+.mention-summary {
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.recommendation-list {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.recommendation-list li + li {
+  margin-top: 0.3rem;
+}
+
 .update-links {
   display: flex;
   flex-wrap: wrap;
@@ -305,14 +358,14 @@ h1 {
   padding: 1rem;
   border: 1px solid var(--line);
   border-radius: 0.25rem;
-  background: color-mix(in srgb, var(--text) 5%, var(--background));
+  background: var(--surface);
   font-size: 0.9rem;
 }
 
 .article-content :not(pre) > code {
   padding: 0.1em 0.3em;
   border-radius: 0.2em;
-  background: color-mix(in srgb, var(--text) 7%, var(--background));
+  background: var(--surface);
   font-size: 0.9em;
 }
 
@@ -383,6 +436,10 @@ h1 {
 }
 
 @media (max-width: 30rem) {
+  .mention-grid {
+    grid-template-columns: 1fr;
+  }
+
   .site-header {
     gap: 0.75rem;
     padding-block: 1rem;
