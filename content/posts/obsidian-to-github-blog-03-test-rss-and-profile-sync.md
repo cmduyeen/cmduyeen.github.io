@@ -1,46 +1,47 @@
 ---
-title: "From Obsidian to GitHub Pages, Part 3: Test RSS and Profile Sync"
+title: "Từ Obsidian đến GitHub Pages, Phần 3: Kiểm tra RSS và đồng bộ hồ sơ"
 date: 2026-10-16T20:30:00+07:00
 draft: false
 tags: ["obsidian", "hugo", "rss", "github-pages", "github-profile", "publishing-workflow"]
 cover:
   image: "/images/posts/rss-profile-sync.svg"
-  alt: "An RSS feed connecting a blog article to a GitHub profile"
+  alt: "Nguồn RSS kết nối bài viết blog với hồ sơ GitHub"
+aliases: ["/vi/posts/obsidian-to-github-blog-03-test-rss-and-profile-sync/"]
 ---
 
-We've written a post in Obsidian and pushed it through Hugo to GitHub Pages. This final part verifies the two public outputs that make the workflow useful: the blog's RSS feed and the blog-post list in the GitHub profile README.
+Chúng ta đã viết một bài trong Obsidian và đẩy bài qua Hugo lên GitHub Pages. Phần cuối này kiểm tra hai đầu ra công khai giúp quy trình trở nên hữu ích: RSS của blog và danh sách bài viết trên README hồ sơ GitHub.
 
-## Check the deployed article and feed
+## Kiểm tra bài viết và nguồn RSS đã triển khai
 
-After pushing to `main`, open the **Build and deploy blog** workflow in the blog repository. Wait for both the build and deploy jobs to finish successfully, then visit the site's home page and open the article.
+Sau khi đẩy lên nhánh `main`, mở workflow **Build and deploy blog** trong kho blog. Chờ cả bước build và deploy hoàn tất thành công, sau đó vào trang chủ và mở bài viết.
 
-The RSS feed is [`https://cmduyeen.github.io/index.xml`](https://cmduyeen.github.io/index.xml). It should return XML with a `<channel>` and an `<item>` for each published post. If the new article is missing, check that:
+Nguồn RSS là [`https://cmduyeen.github.io/index.xml`](https://cmduyeen.github.io/index.xml). Trang này cần trả về XML có phần tử `<channel>` và một `<item>` cho mỗi bài đã xuất bản. Nếu chưa thấy bài mới, hãy kiểm tra:
 
-- The post is under `content/posts/`.
-- Its front matter is valid and `draft` is `false`.
-- The Pages deployment for the latest commit succeeded.
-- You are checking after the deployment has completed; a cached response can briefly show an older version.
+- Bài nằm trong `content/posts/`.
+- Front matter hợp lệ và `draft` được đặt thành `false`.
+- Trang Pages của commit mới nhất đã triển khai thành công.
+- Bạn đang kiểm tra sau khi deploy hoàn tất; bộ nhớ đệm có thể tạm thời hiển thị phiên bản cũ.
 
-## Understand when the profile updates
+## Khi nào hồ sơ GitHub được cập nhật?
 
-The profile repository reads the Hugo RSS feed and updates the **Dyn** section in its README with each recent post's cover and title. Its workflow runs once daily at **00:17 Vietnam time**, or you can start **Update profile README** manually from the profile repository's Actions tab to test a new post right away.
+Kho hồ sơ đọc RSS Hugo và cập nhật mục **Dyn** trong README bằng ảnh bìa và tiêu đề của các bài mới. Workflow chạy mỗi ngày lúc **00:17 giờ Việt Nam**; bạn cũng có thể chạy **Update profile README** thủ công trong tab Actions của kho hồ sơ để kiểm tra bài mới ngay.
 
-This keeps the routine automation small: publishing a post triggers one Pages build, while the profile refresh happens on its existing daily schedule. Manually dispatch the profile workflow only when you want to verify the sync immediately; no new plugin, paid service, or extra scheduled job is needed.
+Cách này giữ quy trình thường ngày gọn nhẹ: xuất bản bài chỉ kích hoạt một lần build Pages, còn hồ sơ được làm mới theo lịch hằng ngày vốn có. Chỉ cần chạy workflow hồ sơ thủ công khi bạn muốn kiểm tra đồng bộ ngay thay vì chờ đến lịch; không cần plugin mới, dịch vụ trả phí hay lịch chạy bổ sung.
 
-## Verify the profile README
+## Kiểm tra README hồ sơ
 
-After the profile workflow succeeds, open the profile repository's `README.md` and check the **Dyn** section. The new article should appear with its cover image, title, and date. The workflow keeps only the five most recent feed entries, so older posts eventually roll off that short list while remaining available on the blog.
+Sau khi workflow hồ sơ chạy thành công, mở `README.md` của kho hồ sơ và xem mục **Dyn**. Bài mới sẽ xuất hiện cùng ảnh bìa, tiêu đề và ngày đăng. Workflow chỉ giữ lại năm bài mới nhất trong danh sách ngắn này; các bài cũ hơn vẫn còn trên blog.
 
-If the blog workflow succeeded but the profile workflow failed, inspect its **Update blog posts** step. A feed-fetch error usually means the RSS URL was unavailable at that moment or the Pages deployment had not finished yet. Once the feed is live, rerun the profile workflow.
+Nếu workflow blog thành công nhưng workflow hồ sơ thất bại, hãy xem bước **Update blog posts**. Lỗi lấy nguồn thường có nghĩa RSS tạm thời không truy cập được hoặc Pages chưa triển khai xong. Khi nguồn đã hoạt động, hãy chạy lại workflow hồ sơ.
 
-## The whole path
+## Toàn bộ quy trình
 
 ```text
-Obsidian Markdown
-    -> commit and push to main
-    -> Hugo build and GitHub Pages deployment
-    -> public article and RSS feed
-    -> daily or manually dispatched profile README update
+Markdown trong Obsidian
+    -> commit và đẩy lên main
+    -> Hugo dựng trang và GitHub Pages triển khai
+    -> bài viết công khai và nguồn RSS
+    -> README hồ sơ được cập nhật hằng ngày hoặc chạy thủ công
 ```
 
-That is the complete test: make a small edit in Obsidian, push it, wait for the blog deployment, then run the profile workflow if you don't want to wait for the daily refresh. The earlier parts are [Part 1: Build a publishable vault](/posts/obsidian-to-github-blog-01-publishable-vault/) and [Part 2: Publish Markdown with Hugo](/posts/obsidian-to-github-blog-02-publish-with-hugo/).
+Đó là toàn bộ bài kiểm tra: chỉnh sửa nhỏ trong Obsidian, đẩy thay đổi, chờ blog triển khai, rồi chạy workflow hồ sơ nếu không muốn chờ lịch hằng ngày. Bạn có thể đọc lại [Phần 1: Tạo vault sẵn sàng xuất bản](/posts/obsidian-to-github-blog-01-publishable-vault/) và [Phần 2: Xuất bản Markdown bằng Hugo](/posts/obsidian-to-github-blog-02-publish-with-hugo/).

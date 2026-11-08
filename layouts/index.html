@@ -1,0 +1,65 @@
+{{ define "main" }}
+  {{ $posts := (where site.RegularPages "Section" "posts").ByDate.Reverse }}
+  {{ with index $posts 0 }}
+  <section class="latest" aria-labelledby="latest-heading">
+    <p class="eyebrow"><a href="{{ .RelPermalink }}">Mới nhất</a></p>
+    <a class="latest-link" href="{{ .RelPermalink }}">
+      <h1 id="latest-heading">{{ .LinkTitle }}</h1>
+      <p class="metadata">
+        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02/01/2006" }}</time>
+        <span aria-hidden="true">·</span>
+        <span>{{ .ReadingTime }} phút đọc</span>
+      </p>
+      <p class="latest-summary">{{ .Summary | plainify | htmlUnescape | truncate 110 }}</p>
+    </a>
+  </section>
+  {{ end }}
+
+  <hr class="section-divider">
+
+  <section class="topics" aria-labelledby="topics-heading">
+    <h2 class="section-label" id="topics-heading"><a href="{{ "/tags/" | relURL }}">Chủ đề</a></h2>
+    <p class="topic-list">
+      {{- range $index, $topic := site.Taxonomies.tags.Alphabetical -}}
+        {{- if $index }}<span class="muted" aria-hidden="true">, </span>{{ end -}}
+        <a href="{{ $topic.Page.RelPermalink }}">{{ $topic.Page.LinkTitle }}</a>
+      {{- end -}}
+    </p>
+  </section>
+
+  <hr class="section-divider">
+
+  <section aria-labelledby="writing-heading">
+    <h2 class="section-label" id="writing-heading"><a href="{{ "/archives/" | relURL }}">Bài viết</a></h2>
+    <ul class="writing-list">
+      {{ range $posts }}
+      {{ partial "post-list-item.html" . }}
+      {{ end }}
+    </ul>
+  </section>
+
+  <hr class="section-divider">
+
+  <section class="updates" aria-labelledby="updates-heading">
+    <h2 class="section-label" id="updates-heading">Nhận cập nhật</h2>
+    <p>Theo dõi bài viết mới qua RSS hoặc các kênh liên hệ đã cấu hình.</p>
+    <ul class="update-links">
+      <li><a href="{{ "index.xml" | relURL }}">RSS</a></li>
+      {{ with site.Params.contact.email }}
+      <li><a href="{{ printf "mailto:%s" . | safeURL }}">Email</a></li>
+      {{ end }}
+      {{ with site.Params.contact.x }}
+      <li><a href="{{ . | safeURL }}" target="_blank" rel="noopener noreferrer">X</a></li>
+      {{ end }}
+      {{ with site.Params.contact.mastodon }}
+      <li><a href="{{ . | safeURL }}" target="_blank" rel="me noopener noreferrer">Mastodon</a></li>
+      {{ end }}
+      {{ with site.Params.contact.bluesky }}
+      <li><a href="{{ . | safeURL }}" target="_blank" rel="noopener noreferrer">Bluesky</a></li>
+      {{ end }}
+      {{ with site.Params.contact.other }}
+      <li><a href="{{ . | safeURL }}" target="_blank" rel="noopener noreferrer">Kênh khác</a></li>
+      {{ end }}
+    </ul>
+  </section>
+{{ end }}

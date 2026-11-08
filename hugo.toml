@@ -1,116 +1,40 @@
 baseURL = "https://cmduyeen.github.io/"
 title = "Dyn"
-theme = "PaperMod"
-defaultContentLanguage = "en"
+defaultContentLanguage = "vi"
 defaultContentLanguageInSubdir = false
 enableRobotsTXT = true
-
-[languages.en]
-  languageCode = "en-us"
-  languageName = "English"
-  weight = 1
-  title = "Dyn"
 
 [languages.vi]
   languageCode = "vi-vn"
   languageName = "Tiếng Việt"
-  weight = 2
   title = "Dyn"
 
 [params]
-  env = "production"
   author = "Dyn"
-  description = "Notes on software, automation, and things I learn."
-  defaultTheme = "auto"
-  displayFullLangName = false
-  ShowReadingTime = true
-  ShowPostNavLinks = true
-  ShowBreadCrumbs = true
-  ShowToc = true
-  TocOpen = true
-  ShowShareButtons = true
-  ShareButtons = ["x", "linkedin", "telegram", "whatsapp"]
-  ShowCodeCopyButtons = true
-
-  [params.assets]
-    favicon = "favicon.svg"
-    favicon16x16 = "favicon-16x16.png"
-    favicon32x32 = "favicon-32x32.png"
-    apple_touch_icon = "apple-touch-icon.png"
-    safari_pinned_tab = "favicon.svg"
-    theme_color = "#111111"
-    msapplication_TileColor = "#111111"
-
-  [params.schema]
-    publisherType = "Person"
-    sameAs = ["https://github.com/cmduyeen"]
-
-  [[params.socialIcons]]
-    name = "github"
-    title = "GitHub"
-    url = "https://github.com/cmduyeen"
-
-  [[params.socialIcons]]
-    name = "kofi"
-    title = "Ko-fi"
-    url = "https://ko-fi.com/"
-
-  [[params.socialIcons]]
-    name = "x"
-    title = "X"
-    url = "https://x.com/"
-
-[languages.en.params]
-  description = "Dyn writes about software, automation, Obsidian, Hugo, GitHub Pages, and practical tools."
-  keywords = ["software", "automation", "Obsidian", "Hugo", "GitHub Pages", "developer tools"]
-
-[languages.en.params.homeInfoParams]
-  Title = "Hi, I'm Dyn 👋"
-  Content = "A personal space for notes on software, automation, and things I learn."
-
-[languages.vi.params]
   description = "Dyn chia sẻ về phần mềm, tự động hóa, Obsidian, Hugo, GitHub Pages và các công cụ hữu ích."
-  keywords = ["phần mềm", "tự động hóa", "Obsidian", "Hugo", "GitHub Pages", "công cụ lập trình"]
 
-[languages.vi.params.homeInfoParams]
+[params.homeInfoParams]
   Title = "Xin chào, mình là Dyn 👋"
   Content = "Góc nhỏ ghi lại những điều mình học được về phần mềm và tự động hóa."
 
-[[languages.en.menus.main]]
-  identifier = "archives"
-  name = "Archives"
-  url = "/archives/"
-  weight = 10
-
-[[languages.en.menus.main]]
-  identifier = "search"
-  name = "Search"
-  url = "/search/"
-  weight = 20
-
-[[languages.en.menus.main]]
-  identifier = "tags"
-  name = "Tags"
-  url = "/tags/"
-  weight = 30
+[params.contact]
+  email = ""
+  x = ""
+  mastodon = ""
+  bluesky = ""
+  other = ""
 
 [[languages.vi.menus.main]]
-  identifier = "archives"
-  name = "Lưu trữ"
-  url = "/archives/"
+  identifier = "about"
+  name = "About"
+  url = "/about/"
   weight = 10
 
 [[languages.vi.menus.main]]
-  identifier = "search"
-  name = "Tìm kiếm"
-  url = "/search/"
+  identifier = "archives"
+  name = "Archive"
+  url = "/archives/"
   weight = 20
-
-[[languages.vi.menus.main]]
-  identifier = "tags"
-  name = "Thẻ"
-  url = "/tags/"
-  weight = 30
 
 [outputs]
-  home = ["HTML", "RSS", "JSON"]
+  home = ["HTML", "RSS"]

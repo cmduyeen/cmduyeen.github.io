@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="{{ site.Language.LanguageCode | default site.Language.Lang }}">
+  <head>
+    {{ partial "head.html" . }}
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Bỏ qua nội dung</a>
+    <div class="site-shell">
+      <header class="site-header">
+        <a class="site-title" href="{{ site.Home.RelPermalink }}">{{ site.Title }}</a>
+        <nav aria-label="Điều hướng chính">
+          <ul>
+            {{ range site.Menus.main }}
+            <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+            {{ end }}
+          </ul>
+        </nav>
+      </header>
+      <main id="main">
+        {{ block "main" . }}{{ end }}
+      </main>
+      <footer class="site-footer">
+        <span>© {{ now.Year }} {{ site.Params.author }}</span>
+        <a href="{{ "index.xml" | relURL }}">RSS</a>
+      </footer>
+    </div>
+  </body>
+</html>

@@ -1,64 +1,65 @@
 ---
-title: "From Obsidian to GitHub Pages, Part 1: Build a Publishable Vault"
+title: "Từ Obsidian đến GitHub Pages, Phần 1: Tạo vault sẵn sàng xuất bản"
 date: 2026-10-14T09:00:00+07:00
 draft: false
 tags: ["obsidian", "markdown", "hugo", "publishing-workflow"]
 cover:
   image: "/images/posts/obsidian-vault.svg"
-  alt: "An illustrated notebook representing a carefully organized Obsidian vault"
+  alt: "Hình minh họa cuốn sổ đại diện cho một vault Obsidian được sắp xếp gọn gàng"
+aliases: ["/vi/posts/obsidian-to-github-blog-01-publishable-vault/"]
 ---
 
-This is the first post in a three-part series about writing in Obsidian and publishing to a Hugo blog on GitHub Pages. The goal is a small, transparent workflow: write plain Markdown, publish only the notes you choose, and let the existing site and profile automation do the rest.
+Đây là phần đầu trong loạt ba bài hướng dẫn viết bằng Obsidian và xuất bản lên blog Hugo trên GitHub Pages. Mục tiêu là một quy trình nhỏ gọn, dễ hiểu: viết Markdown thuần, chỉ xuất bản những ghi chú bạn chọn, rồi để website và quy trình tự động hóa hồ sơ GitHub lo phần còn lại.
 
-1. **Part 1:** Set up an Obsidian vault for public writing.
-2. [Part 2: Publish Markdown with Hugo and GitHub Pages](/posts/obsidian-to-github-blog-02-publish-with-hugo/)
-3. [Part 3: Verify RSS and GitHub profile sync](/posts/obsidian-to-github-blog-03-test-rss-and-profile-sync/)
+1. **Phần 1:** Thiết lập vault Obsidian để viết nội dung công khai.
+2. [Phần 2: Xuất bản Markdown bằng Hugo và GitHub Pages](/posts/obsidian-to-github-blog-02-publish-with-hugo/)
+3. [Phần 3: Kiểm tra RSS và đồng bộ hồ sơ GitHub](/posts/obsidian-to-github-blog-03-test-rss-and-profile-sync/)
 
-## Why use Obsidian for blog drafts?
+## Vì sao nên dùng Obsidian để soạn bài blog?
 
-Obsidian stores notes as ordinary Markdown files on your computer. That makes it a comfortable editor without locking the writing into a special export format. Hugo can turn those files into web pages, and GitHub Pages can host the generated site.
+Obsidian lưu ghi chú dưới dạng tệp Markdown thông thường trên máy tính. Bạn có thể viết trong một trình soạn thảo quen thuộc mà không bị khóa vào một định dạng xuất đặc biệt. Hugo chuyển các tệp này thành trang web, còn GitHub Pages lưu trữ trang web miễn phí.
 
-For this blog, the source files live in the `content/posts/` directory of the `cmduyeen.github.io` repository. Opening the repository folder as an Obsidian vault lets you write directly where Hugo expects published posts.
+Trong blog này, các tệp nguồn nằm trong thư mục `content/posts/` của kho `cmduyeen.github.io`. Mở thư mục kho lưu trữ bằng Obsidian sẽ biến nó thành một vault, cho phép bạn viết trực tiếp tại nơi Hugo mong đợi các bài đăng.
 
-## Keep the publishing boundary clear
+## Phân định rõ nội dung công khai
 
-Treat `content/posts/` as public. A note placed there and pushed to the `main` branch is eligible to appear on the website and in the RSS feed.
+Hãy xem `content/posts/` là thư mục công khai. Ghi chú được đặt ở đây và đẩy lên nhánh `main` có thể xuất hiện trên website và trong RSS.
 
-Keep personal journals, rough ideas, credentials, and unpublished research in a separate vault or a folder outside the blog repository. The `.obsidian/` application settings are ignored by Git, but that is not a privacy boundary for your writing: check which files you stage before every push.
+Hãy lưu nhật ký cá nhân, ý tưởng còn dang dở, thông tin đăng nhập và nội dung chưa xuất bản ở một vault riêng hoặc ngoài thư mục blog. Cấu hình ứng dụng trong `.obsidian/` được Git bỏ qua, nhưng điều đó không bảo vệ nội dung bạn viết: hãy kiểm tra các tệp được đưa vào commit trước mỗi lần đẩy lên.
 
-A simple structure is enough:
+Cấu trúc đơn giản là đủ:
 
 ```text
 cmduyeen.github.io/
 ├── content/
-│   ├── posts/       # public articles
+│   ├── posts/       # bài viết công khai
 │   ├── archives.md
-│   └── search.md
+│   └── archives.md
 ├── themes/
-└── .obsidian/       # local settings; ignored by Git
+└── .obsidian/       # cấu hình cục bộ; được Git bỏ qua
 ```
 
-You do not need an Obsidian publishing plugin for this workflow. Obsidian edits the Markdown; GitHub Actions handles the site build after you push.
+Bạn không cần plugin xuất bản Obsidian cho quy trình này. Obsidian dùng để sửa Markdown; GitHub Actions sẽ dựng website sau khi bạn đẩy thay đổi lên.
 
-## Start a post with Hugo front matter
+## Tạo bài viết với front matter của Hugo
 
-Hugo uses front matter at the top of each Markdown file for its title, publication date, draft status, and tags:
+Hugo dùng front matter ở đầu tệp để lưu tiêu đề, ngày đăng, trạng thái bản nháp và thẻ:
 
 ```yaml
 ---
-title: "A useful note"
+title: "Một ghi chú hữu ích"
 date: 2026-10-16T21:00:00+07:00
 draft: false
 tags: ["obsidian", "workflow"]
 ---
 ```
 
-Create a file such as `content/posts/my-useful-note.md` and write the article below the closing `---`. Keep `draft: true` while a post is not ready; switch it to `false` only when you intend to publish it. Use simple tags to make related posts discoverable on the blog.
+Tạo tệp như `content/posts/ghi-chu-huu-ich.md`, rồi viết bài bên dưới dấu `---` kết thúc. Giữ `draft: true` khi bài chưa sẵn sàng; chỉ chuyển thành `false` khi bạn muốn công khai. Dùng các thẻ ngắn gọn để người đọc tìm được những bài liên quan.
 
-Prefer regular Markdown links such as `[Part 2](/posts/obsidian-to-github-blog-02-publish-with-hugo/)` for links between published posts. Obsidian's `[[wikilinks]]` syntax is useful inside a vault, but Hugo does not automatically turn every wikilink into a website link.
+Để liên kết các bài đã xuất bản, hãy dùng Markdown thông thường, chẳng hạn `[Phần 2](/posts/obsidian-to-github-blog-02-publish-with-hugo/)`. Cú pháp `[[wikilinks]]` của Obsidian hữu ích trong vault, nhưng Hugo không tự động biến mọi wikilink thành liên kết trên website.
 
-## Your first check
+## Kiểm tra lần đầu
 
-In Obsidian, create a new note under `content/posts/`, add the front matter, and save it. Then inspect the repository's Git changes. The note should be the only writing file you intend to publish.
+Trong Obsidian, tạo ghi chú mới dưới `content/posts/`, thêm front matter rồi lưu. Sau đó xem các thay đổi Git của kho lưu trữ. Ghi chú đó nên là tệp nội dung duy nhất bạn định công khai.
 
-In [Part 2](/posts/obsidian-to-github-blog-02-publish-with-hugo/), we'll push that Markdown file and follow it through the automatic Hugo deployment.
+Trong [Phần 2](/posts/obsidian-to-github-blog-02-publish-with-hugo/), chúng ta sẽ đẩy tệp Markdown lên GitHub và theo dõi quá trình Hugo tự động triển khai.

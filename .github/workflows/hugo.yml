@@ -21,9 +21,6 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
-        with:
-          submodules: recursive
-          fetch-depth: 0
 
       - name: Set up Pages
         id: pages
@@ -33,7 +30,7 @@ jobs:
         uses: peaceiris/actions-hugo@v3
         with:
           hugo-version: '0.146.0'
-          extended: true
+          extended: false
 
       - name: Build site
         run: hugo --gc --minify --baseURL "${{ steps.pages.outputs.base_url }}/"

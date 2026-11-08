@@ -1,50 +1,51 @@
 ---
-title: "From Obsidian to GitHub Pages, Part 2: Publish Markdown with Hugo"
+title: "Từ Obsidian đến GitHub Pages, Phần 2: Xuất bản Markdown bằng Hugo"
 date: 2026-10-15T09:00:00+07:00
 draft: false
 tags: ["obsidian", "markdown", "hugo", "github-pages", "publishing-workflow"]
 cover:
   image: "/images/posts/hugo-publishing.svg"
-  alt: "A Markdown document moving through Hugo toward a published website"
+  alt: "Tài liệu Markdown đi qua Hugo để trở thành website đã xuất bản"
+aliases: ["/vi/posts/obsidian-to-github-blog-02-publish-with-hugo/"]
 ---
 
-In [Part 1](/posts/obsidian-to-github-blog-01-publishable-vault/), we set up Obsidian to edit the blog's Markdown source. Now we'll publish a post and see how it reaches the live site.
+Trong [Phần 1](/posts/obsidian-to-github-blog-01-publishable-vault/), chúng ta đã thiết lập Obsidian để chỉnh sửa mã nguồn Markdown của blog. Bây giờ hãy xuất bản một bài viết và xem nó được đưa lên website như thế nào.
 
-## Save the note in Hugo's content folder
+## Lưu ghi chú trong thư mục nội dung của Hugo
 
-Create or edit a `.md` file in `content/posts/`. A published article needs front matter with a title, date, `draft: false`, and any useful tags:
+Tạo hoặc chỉnh sửa tệp `.md` trong `content/posts/`. Một bài viết được xuất bản cần front matter gồm tiêu đề, ngày đăng, `draft: false` và các thẻ phù hợp:
 
 ```yaml
 ---
-title: "My first Obsidian post"
+title: "Bài viết Obsidian đầu tiên của tôi"
 date: 2026-10-16T21:00:00+07:00
 draft: false
 tags: ["obsidian", "first-post"]
 ---
 ```
 
-Write the article below the front matter using standard Markdown headings, paragraphs, lists, code fences, and links. A preview in Obsidian checks the Markdown formatting, but it does not fully reproduce the PaperMod theme; check the deployed page after publishing too.
+Viết nội dung bên dưới front matter bằng Markdown thông thường: tiêu đề, đoạn văn, danh sách, khối mã và liên kết. Xem trước trong Obsidian giúp kiểm tra định dạng Markdown; hãy kiểm tra trang sau khi triển khai nữa.
 
-## Push with GitHub Desktop
+## Đẩy bài viết bằng GitHub Desktop
 
-When the note is ready:
+Khi bài viết đã sẵn sàng:
 
-1. Review the changed files and confirm only intended public content is included.
-2. Enter a short commit message, such as `Add first Obsidian blog post`.
-3. Commit the changes on `main` and push them to GitHub.
+1. Xem lại các tệp thay đổi và xác nhận chỉ có nội dung công khai dự định xuất bản.
+2. Nhập thông điệp commit ngắn, chẳng hạn `Thêm bài viết Obsidian đầu tiên`.
+3. Tạo commit trên nhánh `main` rồi đẩy lên GitHub.
 
-This push triggers the existing **Build and deploy blog** workflow. GitHub Actions checks out the PaperMod theme, builds the site with Hugo Extended, and deploys the generated files to GitHub Pages. You do not need to run Hugo locally just to publish.
+Lần đẩy này kích hoạt quy trình **Build and deploy blog** hiện có. GitHub Actions dựng website tĩnh bằng Hugo rồi triển khai lên GitHub Pages. Bạn không cần chạy Hugo cục bộ chỉ để xuất bản bài.
 
-The blog's source repository is [cmduyeen.github.io on GitHub](https://github.com/cmduyeen/cmduyeen.github.io), and the live site is [cmduyeen.github.io](https://cmduyeen.github.io/). Check the workflow run if a change does not appear; a successful Git push does not by itself prove that the build and deployment succeeded.
+Kho mã nguồn của blog là [cmduyeen.github.io trên GitHub](https://github.com/cmduyeen/cmduyeen.github.io), còn website đang hoạt động tại [cmduyeen.github.io](https://cmduyeen.github.io/). Nếu thay đổi chưa xuất hiện, hãy kiểm tra lần chạy workflow; đẩy Git thành công chưa đồng nghĩa với việc build và deploy cũng thành công.
 
-## Avoid common publishing surprises
+## Tránh những sự cố xuất bản thường gặp
 
-- A post with `draft: true` is omitted from the normal production build.
-- A file outside `content/posts/` is not automatically an article.
-- A change saved in Obsidian but not committed and pushed stays only on your computer.
-- Obsidian plugins and wikilinks are not required; use ordinary Markdown for portable content.
-- Keep secrets and private notes out of the public blog repository.
+- Bài có `draft: true` sẽ bị bỏ qua trong bản dựng production thông thường.
+- Tệp nằm ngoài `content/posts/` không tự động trở thành bài viết.
+- Ghi chú đã lưu trong Obsidian nhưng chưa commit và đẩy lên sẽ chỉ nằm trên máy của bạn.
+- Không cần plugin Obsidian hoặc wikilink; hãy dùng Markdown thông thường để nội dung dễ di chuyển.
+- Không đưa bí mật hoặc ghi chú riêng tư vào kho blog công khai.
 
-## Next: test the complete chain
+## Tiếp theo: kiểm tra toàn bộ quy trình
 
-After deployment, the new post should appear on the home page, its tag page, and the RSS feed at [`/index.xml`](https://cmduyeen.github.io/index.xml). In [Part 3](/posts/obsidian-to-github-blog-03-test-rss-and-profile-sync/), we'll use those outputs to test the profile README sync.
+Sau khi triển khai, bài viết sẽ xuất hiện trên trang chủ, trang thẻ và RSS tại [`/index.xml`](https://cmduyeen.github.io/index.xml). Trong [Phần 3](/posts/obsidian-to-github-blog-03-test-rss-and-profile-sync/), chúng ta sẽ dùng các đầu ra đó để kiểm tra việc đồng bộ README hồ sơ.

@@ -1,69 +1,53 @@
 # Dyn
 
-Personal blog by Dyn, built with Hugo and the PaperMod theme and deployed to GitHub Pages.
-The site is available in English and Vietnamese. Translated posts share the same
-filename with a `.vi.md` suffix, such as `my-post.md` and `my-post.vi.md`.
+Blog cá nhân tiếng Việt của Dyn, xây dựng bằng Hugo và triển khai trên GitHub Pages.
 
-Update the GitHub, Ko-fi, and X links in `[params.socialIcons]` in `hugo.toml`
-when the public profiles are ready.
+## Tính năng
 
-## Reader features
+Giao diện tự viết, không dùng theme, JavaScript phía trình duyệt, phông chữ bên ngoài hay dịch vụ bên thứ ba. Trang chủ sắp xếp bài mới nhất, chủ đề và danh sách bài theo tháng; website cung cấp HTML tĩnh, RSS, trang giới thiệu, lưu trữ, trang chủ đề và liên kết nhận cập nhật.
 
-PaperMod provides a compact language switcher, light/dark theme toggle, open
-table of contents, and share links on posts. Code blocks include a copy button.
-The production build also generates canonical URLs, language alternates, social
-preview metadata, and structured data for search engines.
+Các kênh liên hệ được cấu hình trong `[params.contact]` của `hugo.toml`. RSS luôn hiển thị; Email, X, Mastodon, Bluesky và kênh khác chỉ hiện sau khi điền thông tin. Form đăng ký email chưa bật vì cần cấu hình dịch vụ newsletter trước.
 
-Comments are not enabled yet. Choose a provider and configure its required
-repository or account settings before adding its embed to the site.
+## Viết bài
 
-## Writing a post
+Mở kho này dưới dạng vault Obsidian, sau đó tạo ghi chú Markdown trong `content/posts/`. Hãy để ghi chú riêng tư bên ngoài thư mục này: mọi nội dung trong `content/posts/` đều được xem là công khai. Cấu hình Obsidian cục bộ được Git bỏ qua.
 
-Open this repository as an Obsidian vault, then create a Markdown note under `content/posts/`. Keep private notes outside that folder; anything in `content/posts/` is intended for publication. Obsidian's local settings are ignored by Git.
-
-Use this front matter at the top of each post:
+Dùng front matter sau ở đầu mỗi bài:
 
 ```yaml
 ---
-title: "Your post title"
+title: "Tiêu đề bài viết"
 date: 2026-10-16T21:00:00+07:00
 draft: false
-tags: ["your-topic", "another-topic"]
+tags: ["chủ-đề", "chủ-đề-khác"]
 cover:
-  image: "/images/posts/your-cover.svg"
-  alt: "A short description of the cover image"
+  image: "/images/posts/anh-bia.svg"
+  alt: "Mô tả ngắn về ảnh bìa"
 ---
 ```
 
-Post covers are stored locally in `static/images/posts/`, so they do not add third-party requests. The home-page list loads them lazily; lightweight SVG covers keep transfer sizes small. Keep the `cover` block to show a thumbnail beside the post.
+Ảnh bìa SVG được lưu cùng repository để RSS và hồ sơ GitHub có thể sử dụng; giao diện blog không tải ảnh bìa trong danh sách bài viết.
 
-Save the note and push the repository to `main` with GitHub Desktop or Git. GitHub Actions builds the blog and deploys it to Pages automatically. Hugo Extended is only needed for a local preview:
+Lưu ghi chú rồi đẩy thay đổi lên nhánh `main` bằng GitHub Desktop hoặc Git. GitHub Actions sẽ tự động dựng blog và triển khai lên Pages. Có thể cài Hugo để xem trước cục bộ:
 
 ```powershell
-hugo new content posts/my-post-title.md
+hugo new content posts/tieu-de-bai-viet.md
 ```
 
-For a local preview, set `draft: true` on unpublished posts and run `hugo server -D`.
+Với bản xem trước cục bộ, đặt `draft: true` cho bài chưa xuất bản rồi chạy `hugo server -D`.
 
-## Obsidian publishing series
+## Loạt bài hướng dẫn Obsidian
 
-- [Part 1: Build an Obsidian vault for public writing](https://cmduyeen.github.io/posts/obsidian-to-github-blog-01-publishable-vault/)
-- [Part 2: Publish Markdown with Hugo and GitHub Pages](https://cmduyeen.github.io/posts/obsidian-to-github-blog-02-publish-with-hugo/)
-- [Part 3: Verify RSS and GitHub profile sync](https://cmduyeen.github.io/posts/obsidian-to-github-blog-03-test-rss-and-profile-sync/)
+- [Phần 1: Tạo vault sẵn sàng xuất bản](https://cmduyeen.github.io/posts/obsidian-to-github-blog-01-publishable-vault/)
+- [Phần 2: Xuất bản Markdown bằng Hugo](https://cmduyeen.github.io/posts/obsidian-to-github-blog-02-publish-with-hugo/)
+- [Phần 3: Kiểm tra RSS và đồng bộ hồ sơ](https://cmduyeen.github.io/posts/obsidian-to-github-blog-03-test-rss-and-profile-sync/)
 
-Vietnamese:
+## Xem trước cục bộ
 
-- [Phần 1: Tạo vault sẵn sàng xuất bản](https://cmduyeen.github.io/vi/posts/obsidian-to-github-blog-01-publishable-vault/)
-- [Phần 2: Xuất bản Markdown bằng Hugo](https://cmduyeen.github.io/vi/posts/obsidian-to-github-blog-02-publish-with-hugo/)
-- [Phần 3: Kiểm tra RSS và đồng bộ hồ sơ](https://cmduyeen.github.io/vi/posts/obsidian-to-github-blog-03-test-rss-and-profile-sync/)
-
-## Local preview
-
-Install Hugo Extended, then run:
+Cài Hugo, sau đó chạy:
 
 ```powershell
-git submodule update --init --recursive
 hugo server -D
 ```
 
-The production site is available at <https://cmduyeen.github.io/> and its RSS feed at <https://cmduyeen.github.io/index.xml>.
+Website chính thức tại <https://cmduyeen.github.io/> và nguồn RSS tại <https://cmduyeen.github.io/index.xml>.

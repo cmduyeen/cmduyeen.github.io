@@ -26,6 +26,7 @@
 {{- else }}
 {{- $pages = $pctx.Pages }}
 {{- end }}
+{{- $pages = where $pages "Section" "posts" }}
 {{- $pages = where $pages "Params.hiddenInRss" "!=" true -}}
 {{- $limit := site.Config.Services.RSS.Limit }}
 {{- if ge $limit 1 }}
@@ -36,7 +37,7 @@
   <channel>
     <title>{{ if eq .Title site.Title }}{{ site.Title }}{{ else }}{{ with .Title }}{{ . }} on {{ end }}{{ site.Title }}{{ end }}</title>
     <link>{{ .Permalink }}</link>
-    <description>Recent content {{ if ne .Title site.Title }}{{ with .Title }}in {{ . }} {{ end }}{{ end }}on {{ site.Title }}</description>
+    <description>Nội dung mới nhất từ {{ site.Title }}</description>
     {{- with site.Params.images }}
     <image>
       <title>{{ site.Title }}</title>
@@ -54,7 +55,6 @@
     {{ printf "<atom:link href=%q rel=\"self\" type=%q />" .Permalink .MediaType | safeHTML }}
     {{- end }}
     {{- range $pages }}
-    {{- if and (ne .Layout `search`) (ne .Layout `archives`) }}
     <item>
       <title>{{ .Title }}</title>
       <link>{{ .Permalink }}</link>
@@ -69,7 +69,6 @@
       <content:encoded>{{ (printf "<![CDATA[%s]]>" .Content) | safeHTML }}</content:encoded>
       {{- end }}
     </item>
-    {{- end }}
     {{- end }}
   </channel>
 </rss>

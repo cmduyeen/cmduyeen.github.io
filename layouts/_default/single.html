@@ -1,0 +1,22 @@
+{{ define "main" }}
+  <article>
+    <header class="article-header">
+      <p class="article-date"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02/01/2006" }}</time></p>
+      <h1>{{ .Title }}</h1>
+    </header>
+    {{ with .TableOfContents }}
+    <details class="toc">
+      <summary>Mục lục</summary>
+      {{ . }}
+    </details>
+    {{ end }}
+    <div class="article-content">
+      {{ .Content }}
+    </div>
+    {{ with .GetTerms "tags" }}
+    <footer class="article-tags" aria-label="Thẻ bài viết">
+      {{ range . }}<a href="{{ .RelPermalink }}">#{{ .LinkTitle }}</a>{{ end }}
+    </footer>
+    {{ end }}
+  </article>
+{{ end }}
