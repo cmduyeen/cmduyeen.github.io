@@ -55,13 +55,16 @@
   function cancelHoverPrefetch(event) {
     const anchor = getAnchor(event.target);
     if (
-      anchor === pendingAnchor &&
-      !(event.relatedTarget instanceof Element && anchor.contains(event.relatedTarget))
+      !anchor ||
+      anchor !== pendingAnchor ||
+      (event.relatedTarget instanceof Element && anchor.contains(event.relatedTarget))
     ) {
-      clearTimeout(pendingTimer);
-      pendingAnchor = null;
-      pendingTimer = null;
+      return;
     }
+
+    clearTimeout(pendingTimer);
+    pendingAnchor = null;
+    pendingTimer = null;
   }
 
   function prefetchOnFocus(event) {
