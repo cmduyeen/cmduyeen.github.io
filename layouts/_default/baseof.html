@@ -24,5 +24,7 @@
         <a href="{{ "index.xml" | relURL }}">RSS</a>
       </footer>
     </div>
+    {{- $script := resources.Get "js/main.js" | minify -}}
+    <script>{{ $script.Content | safeJS }}</script>
   </body>
 </html>
