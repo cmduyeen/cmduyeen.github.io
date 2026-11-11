@@ -1,5 +1,5 @@
-# Dyn
+# Dyn Blog
 
-My personal blog, built with Hugo.
+My [blog](https://cmduyeen.github.io/), built with [Hugo](https://gohugo.io/).
 
-Viết: VS Code → `.blog-local\Posts\<slug>\index.md` · Đăng: Terminal → `blog publish`
+Write in [VS Code](https://code.visualstudio.com/) → `.blog-local/Posts/<slug>/index.md` → publish with `blog publish` in [Terminal](https://learn.microsoft.com/powershell/).

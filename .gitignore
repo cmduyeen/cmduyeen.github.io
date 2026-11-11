@@ -4,6 +4,5 @@
 .obsidian/
 
 # Local blog tools and private drafts
-/.venv-blog/
 /.blog-local/
 __pycache__/

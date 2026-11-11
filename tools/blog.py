@@ -21,17 +21,11 @@ for stream in (sys.stdout, sys.stderr):
     if hasattr(stream, 'reconfigure'):
         stream.reconfigure(encoding='utf-8')
 
-from rich.console import Console
-from rich.markdown import Markdown
-from rich.prompt import Confirm, Prompt
-from rich.table import Table
-
 ROOT = Path(__file__).resolve().parent.parent
 LOCAL = ROOT / '.blog-local'
 BLOG_DIR = Path(os.environ.get(
     'DYN_BLOG_DIR', str(ROOT / '.blog-local'))).expanduser().resolve()
 BLOG_POSTS = BLOG_DIR / 'Posts'
-console = Console(markup=False)
 
 
 @dataclass(frozen=True)
@@ -41,6 +35,28 @@ class ManagedPost:
     status: str
 
 
+def ask_choice(prompt, choices):
+    options = ', '.join(choices)
+    while True:
+        answer = input(f'{prompt} [{options}]: ').strip()
+        if answer in choices:
+            return answer
+        print(f'Chọn một giá trị: {options}.')
+
+
+def confirm(prompt, default=False):
+    suffix = 'Y/n' if default else 'y/N'
+    while True:
+        answer = input(f'{prompt} [{suffix}]: ').strip().casefold()
+        if not answer:
+            return default
+        if answer in {'y', 'yes', 'c', 'co'}:
+            return True
+        if answer in {'n', 'no', 'k', 'khong', 'không'}:
+            return False
+        print('Nhập y hoặc n.')
+
+
 def run(*args, capture=False, timeout=None):
     return subprocess.run(list(map(str, args)), cwd=ROOT, check=True,
                           text=True, encoding='utf-8', capture_output=capture,
@@ -48,12 +64,12 @@ def run(*args, capture=False, timeout=None):
 
 
 def run_step(label, *args, timeout=None):
-    console.print(label)
+    print(label)
     started = time.perf_counter()
     try:
         return run(*args, timeout=timeout)
     finally:
-        console.print(f'  Thời gian bước: {time.perf_counter() - started:.1f} giây.')
+        print(f'  Thời gian bước: {time.perf_counter() - started:.1f} giây.')
 
 
 def git(*args):
@@ -107,9 +123,6 @@ def listing(writing_only=False):
     repo_posts = [] if writing_only else sorted(
         path for path in (ROOT / 'content' / 'posts').rglob('*.md')
         if path.is_file() and not path.is_symlink())
-    table = Table(title='BLOG · Bài trong thư mục viết' if writing_only else 'BLOG · Tất cả bài viết')
-    for col in ('#', 'Bài viết', 'Trạng thái', 'Nguồn', 'File'):
-        table.add_column(col)
     rows = []
     for path in repo_posts:
         content = path.read_text(encoding='utf-8-sig')
@@ -124,15 +137,16 @@ def listing(writing_only=False):
         state = 'Đã đăng · Thư mục viết' if published else 'Chưa đăng · Thư mục viết'
         rows.append((title(path), state, 'Markdown',
                      path.parent.relative_to(BLOG_DIR).as_posix()))
+    heading = 'Bài trong thư mục viết' if writing_only else 'Tất cả bài viết'
+    print(heading)
     for i, row in enumerate(rows, 1):
-        table.add_row(str(i), *row)
-    console.print(table)
+        print(f'{i}. {row[0]} · {row[1]} · {row[2]} · {row[3]}')
     if not rows:
-        console.print(f'Chưa có bài. Tạo bằng: blog post "Tiêu đề" · Thư mục: {BLOG_POSTS}')
+        print(f'Chưa có bài. Tạo bằng: blog post "Tiêu đề" · Thư mục: {BLOG_POSTS}')
     elif not items and repo_posts and not writing_only:
-        console.print('Để viết bài mới hoặc sửa bài, dùng blog post "Tiêu đề".')
+        print('Để viết bài mới hoặc sửa bài, dùng blog post "Tiêu đề".')
     if writing_only and not items:
-        console.print('Danh sách đăng chỉ gồm bài trong thư mục viết.')
+        print('Danh sách đăng chỉ gồm bài trong thư mục viết.')
     return items
 
 
@@ -149,7 +163,8 @@ def choose(query=None):
         if not matches:
             raise ValueError(f'Không tìm thấy bài "{query}" trong thư mục viết.')
         raise ValueError(f'Tên "{query}" khớp nhiều bài; hãy chọn bằng số trong blog publish.')
-    return items[int(Prompt.ask('Chọn số', choices=[str(i) for i in range(1, len(items)+1)]))-1]
+    choice = ask_choice('Chọn số', [str(i) for i in range(1, len(items) + 1)])
+    return items[int(choice) - 1]
 
 
 def delete_draft(path):
@@ -162,15 +177,15 @@ def delete_draft(path):
     bundle = path.parent
     files = sorted(entry for entry in bundle.rglob('*') if entry.is_file())
     size = sum(entry.stat().st_size for entry in files)
-    console.print('Sẽ xóa nháp: ' + title(path))
+    print('Sẽ xóa nháp: ' + title(path))
     for entry in files:
-        console.print('  ' + entry.relative_to(BLOG_DIR).as_posix())
-    console.print(f'Tổng {len(files)} file, {size / 1024 / 1024:.2f} MiB.')
-    if not Confirm.ask('Xóa nháp và toàn bộ file trong thư mục này?', default=False):
-        console.print('Đã hủy; không thay đổi file.')
+        print('  ' + entry.relative_to(BLOG_DIR).as_posix())
+    print(f'Tổng {len(files)} file, {size / 1024 / 1024:.2f} MiB.')
+    if not confirm('Xóa nháp và toàn bộ file trong thư mục này?'):
+        print('Đã hủy; không thay đổi file.')
         return
     shutil.rmtree(bundle)
-    console.print('Đã xóa nháp.')
+    print('Đã xóa nháp.')
 
 
 def unpublish_post(path):
@@ -212,17 +227,17 @@ def unpublish_post(path):
     files = (sorted(entry for entry in bundle.rglob('*') if entry.is_file())
              if bundle else [target])
     size = sum(entry.stat().st_size for entry in files)
-    console.print(('Sẽ xóa nháp khỏi repo: ' if draft else 'Sẽ gỡ khỏi website: ')
+    print(('Sẽ xóa nháp khỏi repo: ' if draft else 'Sẽ gỡ khỏi website: ')
                   + title(target))
     for entry in files:
-        console.print('  ' + entry.relative_to(ROOT).as_posix())
-    console.print(f'Tổng {len(files)} file, {size / 1024 / 1024:.2f} MiB.')
+        print('  ' + entry.relative_to(ROOT).as_posix())
+    print(f'Tổng {len(files)} file, {size / 1024 / 1024:.2f} MiB.')
     if source:
-        console.print('Bài nguồn trong thư mục viết sẽ được giữ nguyên.')
+        print('Bài nguồn trong thư mục viết sẽ được giữ nguyên.')
     prompt = 'Xóa nháp khỏi repo và push thay đổi?' if draft else (
         'Gỡ bài khỏi website và push thay đổi?')
-    if not Confirm.ask(prompt, default=False):
-        console.print('Đã hủy; không thay đổi file.')
+    if not confirm(prompt):
+        print('Đã hủy; không thay đổi file.')
         return
 
     parent = bundle.parent if bundle else target.parent
@@ -238,12 +253,12 @@ def unpublish_post(path):
                 shutil.rmtree(bundle)
             else:
                 target.unlink()
-            console.print('Đang build Hugo sau khi gỡ bài...')
+            print('Đang build Hugo sau khi gỡ bài...')
             started = time.perf_counter()
             with site_snapshot() as (source, destination):
                 run('hugo', '--source', source, '--gc', '--minify',
                     '--destination', destination)
-            console.print(f'  Build hoàn tất sau {time.perf_counter() - started:.1f} giây.')
+            print(f'  Build hoàn tất sau {time.perf_counter() - started:.1f} giây.')
             git('add', '--all', '--', relative)
             staged = git('diff', '--cached', '--name-only', '--', relative)
             if not staged:
@@ -251,9 +266,9 @@ def unpublish_post(path):
                     shutil.copytree(backup, bundle)
                 else:
                     shutil.copy2(backup, target)
-                console.print('Không có thay đổi cần gỡ.')
+                print('Không có thay đổi cần gỡ.')
                 return
-            console.print(staged)
+            print(staged)
             run_step('Đang tạo commit...', 'git', 'commit', '-m',
                      ('Delete draft: ' if draft else 'Unpublish: ') + title(target))
             committed = True
@@ -269,15 +284,15 @@ def unpublish_post(path):
                 else:
                     shutil.copy2(backup, target)
             else:
-                console.print('Commit đã lưu trên máy; push chưa thành công. Chạy blog status rồi git push origin main.')
+                print('Commit đã lưu trên máy; push chưa thành công. Chạy blog status rồi git push origin main.')
             raise
     if draft:
-        console.print('Đã xóa nháp khỏi repo.')
+        print('Đã xóa nháp khỏi repo.')
     else:
-        console.print('Đã gỡ bài khỏi website.')
+        print('Đã gỡ bài khỏi website.')
     if source:
-        console.print('Bản nguồn trong thư mục viết vẫn được giữ.')
-    console.print('Theo dõi: https://github.com/cmduyeen/cmduyeen.github.io/actions')
+        print('Bản nguồn trong thư mục viết vẫn được giữ.')
+    print('Theo dõi: https://github.com/cmduyeen/cmduyeen.github.io/actions')
 
 
 def editor(path):
@@ -303,7 +318,7 @@ def editor(path):
             command = None
     if not command:
         raise ValueError('Không tìm thấy VS Code. Cài VS Code và bật lệnh `code` trong PATH.')
-    console.print('Đang mở bài trong VS Code. Lưu và đóng file để quay lại blog.')
+    print('Đang mở bài trong VS Code. Lưu và đóng file để quay lại blog.')
     run(command, '--wait', path)
 
 
@@ -320,9 +335,9 @@ def create(kind, name):
             + 'date: ' + dt.datetime.now().astimezone().isoformat(timespec='seconds')
             + '\ntags: []\ndraft: true\n---\n\n')
     path.write_text(text, encoding='utf-8')
-    console.print('Đang mở bài trong VS Code...')
+    print('Đang mở bài trong VS Code...')
     editor(path)
-    console.print('Đã lưu bài: ' + str(path))
+    print('Đã lưu bài: ' + str(path))
     return path
 
 
@@ -367,14 +382,14 @@ def publish_post(path):
     if git('status', '--porcelain', '--', target.parent.relative_to(ROOT).as_posix()):
         raise ValueError('Thư mục bài trên blog có thay đổi chưa commit; hãy xử lý trước.')
     is_update = target.parent.exists()
-    console.print(('Sẽ cập nhật: ' if is_update else 'Sẽ đăng: ') + title(path))
+    print(('Sẽ cập nhật: ' if is_update else 'Sẽ đăng: ') + title(path))
     for entry in sorted(bundle.rglob('*')):
         if entry.is_file():
             destination = target.parent / entry.relative_to(bundle)
-            console.print('  ' + destination.relative_to(ROOT).as_posix())
-    console.print(f'Tổng {len(bundle_files)} file, {bundle_size / 1024 / 1024:.2f} MiB.')
-    console.print('Bài Markdown gốc sẽ được giữ nguyên.')
-    if not Confirm.ask('Tiếp tục xuất bản?', default=False):
+            print('  ' + destination.relative_to(ROOT).as_posix())
+    print(f'Tổng {len(bundle_files)} file, {bundle_size / 1024 / 1024:.2f} MiB.')
+    print('Bài Markdown gốc sẽ được giữ nguyên.')
+    if not confirm('Tiếp tục xuất bản?'):
         return
 
     target.parent.parent.mkdir(parents=True, exist_ok=True)
@@ -386,7 +401,7 @@ def publish_post(path):
         had_target = target.parent.exists()
         try:
             copy_started = time.perf_counter()
-            console.print('Đang sao chép bài và ảnh...')
+            print('Đang sao chép bài và ảnh...')
             if had_target:
                 shutil.copytree(target.parent, backup)
             shutil.copytree(bundle, staged)
@@ -394,19 +409,19 @@ def publish_post(path):
             if had_target:
                 shutil.rmtree(target.parent)
             os.replace(staged, target.parent)
-            console.print(f'  Sao chép hoàn tất sau {time.perf_counter() - copy_started:.1f} giây.')
-            console.print('Đang tạo bản sao tạm và build Hugo...')
+            print(f'  Sao chép hoàn tất sau {time.perf_counter() - copy_started:.1f} giây.')
+            print('Đang tạo bản sao tạm và build Hugo...')
             started = time.perf_counter()
             with site_snapshot() as (source, destination):
                 run('hugo', '--source', source, '--gc', '--minify',
                     '--destination', destination)
-            console.print(f'  Build hoàn tất sau {time.perf_counter() - started:.1f} giây.')
+            print(f'  Build hoàn tất sau {time.perf_counter() - started:.1f} giây.')
             relative = target.parent.relative_to(ROOT).as_posix()
             git('add', '--', relative)
             if not git('diff', '--cached', '--name-only'):
-                console.print('Không có thay đổi cần đăng.')
+                print('Không có thay đổi cần đăng.')
                 return
-            console.print(git('diff', '--cached', '--stat'))
+            print(git('diff', '--cached', '--stat'))
             message = ('Update: ' if is_update else 'Publish: ') + title(path)
             run_step('Đang tạo commit...', 'git', 'commit', '-m', message)
             committed = True
@@ -420,21 +435,21 @@ def publish_post(path):
                 if had_target:
                     shutil.copytree(backup, target.parent)
             else:
-                console.print('Commit đã lưu trên máy; push chưa thành công. Chạy blog status rồi git push origin main.')
+                print('Commit đã lưu trên máy; push chưa thành công. Chạy blog status rồi git push origin main.')
             raise
-    console.print('Đã push. GitHub Actions đang triển khai; đây chưa phải xác nhận blog đã cập nhật.')
+    print('Đã push. GitHub Actions đang triển khai; đây chưa phải xác nhận blog đã cập nhật.')
     if shutil.which('gh'):
         try:
             run_step('Đang kiểm tra GitHub Actions (tối đa 15 giây)...',
                      'gh', 'run', 'list', '--commit', git('rev-parse', 'HEAD'),
                      '--limit', '3', timeout=15)
         except subprocess.TimeoutExpired:
-            console.print('GitHub Actions chưa phản hồi kịp. Bài đã push; xem trạng thái tại liên kết bên dưới.')
-    console.print('Theo dõi: https://github.com/cmduyeen/cmduyeen.github.io/actions')
+            print('GitHub Actions chưa phản hồi kịp. Bài đã push; xem trạng thái tại liên kết bên dưới.')
+    print('Theo dõi: https://github.com/cmduyeen/cmduyeen.github.io/actions')
 
 
 def add_image(path):
-    source = Path(Prompt.ask('Đường dẫn ảnh').strip('"')).expanduser().resolve()
+    source = Path(input('Đường dẫn ảnh: ').strip().strip('"')).expanduser().resolve()
     if not source.is_file() or source.suffix.lower() not in {'.png','.jpg','.jpeg','.webp','.gif','.svg','.avif'}:
         raise ValueError('Hãy chọn một file ảnh hợp lệ.')
     bundled = path.name in {'index.md', '_index.md'}
@@ -446,10 +461,11 @@ def add_image(path):
         raise ValueError('Ảnh trùng tên; đổi tên ảnh nguồn trước khi thêm.')
     shutil.copy2(source, dest)
     url = name if bundled else '/images/' + path.stem + '/' + name
-    alt = Prompt.ask('Mô tả ảnh', default=source.stem).replace(']', r'\]')
+    alt = input(f'Mô tả ảnh [{source.stem}]: ').strip() or source.stem
+    alt = alt.replace(']', r'\]')
     with path.open('a', encoding='utf-8') as handle:
         handle.write('\n![' + alt + '](' + url + ')\n')
-    console.print('Đã thêm ảnh và chèn Markdown vào cuối bài.')
+    print('Đã thêm ảnh và chèn Markdown vào cuối bài.')
 
 
 @contextmanager
@@ -459,7 +475,7 @@ def site_snapshot(drafts=False):
     with tempfile.TemporaryDirectory(prefix='blog-preview-') as tmp:
         source = Path(tmp) / 'source'
         shutil.copytree(ROOT, source, ignore=shutil.ignore_patterns(
-            '.git', '.venv-blog', '.blog-local', 'public', 'resources',
+            '.git', '.blog-local', 'public', 'resources',
             '.hugo_build.lock', '__pycache__', 'node_modules',
             '.blog-publish-*', '.blog-unpublish-*'))
         if drafts and (LOCAL / 'content').exists():
@@ -476,7 +492,7 @@ def site_snapshot(drafts=False):
 
 def preview():
     with site_snapshot(drafts=True) as (source, destination):
-        console.print('Xem trước: http://127.0.0.1:1313 · Ctrl+C để dừng')
+        print('Xem trước: http://127.0.0.1:1313 · Ctrl+C để dừng')
         webbrowser.open('http://127.0.0.1:1313')
         try:
             run('hugo', 'server', '--bind', '127.0.0.1', '--buildDrafts',
@@ -523,16 +539,16 @@ def publish(path):
     relative = [item.relative_to(ROOT).as_posix() for item in scope]
     if git('status', '--porcelain', '--', *relative):
         raise ValueError('Nội dung bài trên blog có thay đổi chưa commit; hãy xử lý trước.')
-    console.print('Sẽ đăng: ' + title(path))
+    print('Sẽ đăng: ' + title(path))
     for item in scope:
         for entry in sorted(item.rglob('*')) if item.is_dir() else [item]:
             if entry.is_file() or entry == target:
-                console.print('  ' + entry.relative_to(ROOT).as_posix())
+                print('  ' + entry.relative_to(ROOT).as_posix())
     if private:
-        console.print('Bài và toàn bộ file trong thư mục bản nháp sẽ được đưa lên repo công khai.')
+        print('Bài và toàn bộ file trong thư mục bản nháp sẽ được đưa lên repo công khai.')
         for entry in sorted(path.parent.iterdir()):
-            console.print('  ' + entry.name)
-    if not Confirm.ask('Đăng nội dung này?', default=False):
+            print('  ' + entry.name)
+    if not confirm('Đăng nội dung này?'):
         return
     committed = False
     try:
@@ -543,10 +559,10 @@ def publish(path):
             run('hugo', '--source', source, '--gc', '--minify', '--destination', destination)
         git('add', '--', *relative)
         if not git('diff', '--cached', '--name-only'):
-            console.print('Không có thay đổi cần đăng.')
+            print('Không có thay đổi cần đăng.')
             return
         # Final file list is Git's actual staged set; no unrelated files are added.
-        console.print(git('diff', '--cached', '--stat'))
+        print(git('diff', '--cached', '--stat'))
         git('commit', '-m', 'Publish: ' + title(target))
         committed = True
         if private:
@@ -560,12 +576,12 @@ def publish(path):
             elif not private:
                 path.write_bytes(original)
         else:
-            console.print('Commit đã lưu trên máy; push chưa thành công. Kiểm tra blog status, rồi git push origin main.')
+            print('Commit đã lưu trên máy; push chưa thành công. Kiểm tra blog status, rồi git push origin main.')
         raise
-    console.print('Đã push. GitHub Actions đang triển khai; đây chưa phải xác nhận blog đã cập nhật.')
+    print('Đã push. GitHub Actions đang triển khai; đây chưa phải xác nhận blog đã cập nhật.')
     if shutil.which('gh'):
         run('gh', 'run', 'list', '--commit', git('rev-parse', 'HEAD'), '--limit', '3')
-    console.print('Theo dõi: https://github.com/cmduyeen/cmduyeen.github.io/actions')
+    print('Theo dõi: https://github.com/cmduyeen/cmduyeen.github.io/actions')
 
 
 def sync():
@@ -580,11 +596,11 @@ def sync():
         raise ValueError('Nhánh main đã lệch với GitHub. Hãy xử lý Git riêng; blog sync không tự merge.')
     if behind:
         git('merge', '--ff-only', 'origin/main')
-        console.print(f'Đã đồng bộ {behind} commit từ GitHub. Không có nội dung nào được đăng.')
+        print(f'Đã đồng bộ {behind} commit từ GitHub. Không có nội dung nào được đăng.')
     elif ahead:
-        console.print(f'Máy đang có {ahead} commit chưa có trên GitHub. Không tự push.')
+        print(f'Máy đang có {ahead} commit chưa có trên GitHub. Không tự push.')
     else:
-        console.print('Blog đã đồng bộ với GitHub.')
+        print('Blog đã đồng bộ với GitHub.')
 
 
 def act(action, args):
@@ -593,7 +609,7 @@ def act(action, args):
     elif action in {'manage', 'posts'}:
         manage_menu()
     elif action in {'new', 'post'}:
-        create('post', args.title or Prompt.ask('Tiêu đề'))
+        create('post', args.title or input('Tiêu đề: ').strip())
     elif action == 'sync':
         sync()
     elif action == 'preview':
@@ -601,13 +617,13 @@ def act(action, args):
     elif action in {'open', 'edit', 'image', 'read', 'publish', 'delete', 'unpublish'}:
         run_post_action(action, choose(args.title))
     elif action == 'pages':
-        console.print('Sửa menu, tên blog và thông tin liên hệ trong hugo.toml. Không tự đăng cấu hình.')
+        print('Sửa menu, tên blog và thông tin liên hệ trong hugo.toml. Không tự đăng cấu hình.')
         editor(ROOT / 'hugo.toml')
     elif action == 'publish-settings':
         publish(ROOT / 'hugo.toml')
     elif action == 'status':
-        console.print(git('status', '--short') or 'Không có thay đổi trong repo.')
-        console.print(f'Thư mục viết: {BLOG_POSTS} · {len(posts())} bài')
+        print(git('status', '--short') or 'Không có thay đổi trong repo.')
+        print(f'Thư mục viết: {BLOG_POSTS} · {len(posts())} bài')
 
 
 def run_post_action(action, path):
@@ -618,7 +634,7 @@ def run_post_action(action, path):
     elif action == 'read':
         text = path.read_text(encoding='utf-8-sig')
         text = re.sub(r'\A---\r?\n.*?\r?\n---\r?\n', '', text, count=1, flags=re.S)
-        console.print(Markdown(text))
+        print(text)
     elif action == 'publish':
         publish_post(path)
     elif action == 'delete':
@@ -632,9 +648,9 @@ def manage_menu():
         items = managed_posts()
         if not items:
             return
-        selection = Prompt.ask(
+        selection = ask_choice(
             'Chọn bài · 0 thoát',
-            choices=['0', *(str(i) for i in range(1, len(items) + 1))],
+            ['0', *(str(i) for i in range(1, len(items) + 1))],
         )
         if selection == '0':
             return
@@ -652,11 +668,11 @@ def manage_menu():
         else:
             action_labels = '1 Đăng   2 Sửa   3 Xóa nháp   0 Quay'
             action_choices = ['0', '1', '2', '3']
-        console.rule(f'{selected.source} · {title(selected.path)} · {selected.status}')
-        console.print(action_labels)
+        print(f'{selected.source} · {title(selected.path)} · {selected.status}')
+        print(action_labels)
         if note:
-            console.print(note)
-        choice = Prompt.ask('Chọn', choices=action_choices)
+            print(note)
+        choice = ask_choice('Chọn', action_choices)
         if choice == '0':
             return
         try:
@@ -673,7 +689,7 @@ def manage_menu():
                 else:
                     unpublish_post(selected.path)
         except (ValueError, OSError, subprocess.CalledProcessError) as error:
-            console.print('Lỗi: ' + str(error))
+            print('Lỗi: ' + str(error))
 
 
 def managed_posts():
@@ -692,17 +708,14 @@ def managed_posts():
         items.append(ManagedPost(
             path, 'BLOG', 'Nháp' if is_draft(content) else 'Đã đăng'))
 
-    table = Table(title='BLOG · Quản lý bài')
-    for column in ('#', 'Nguồn', 'Bài viết', 'Trạng thái', 'File'):
-        table.add_column(column)
+    print('BLOG · Quản lý bài')
     for index, item in enumerate(items, 1):
         location = (item.path.parent.relative_to(BLOG_DIR).as_posix()
                     if item.source == 'MÁY'
                     else item.path.relative_to(ROOT).as_posix())
-        table.add_row(str(index), item.source, title(item.path), item.status, location)
-    console.print(table)
+        print(f'{index}. {item.source} · {title(item.path)} · {item.status} · {location}')
     if not items:
-        console.print('Chưa có bài nào.')
+        print('Chưa có bài nào.')
     return items
 
 
@@ -734,9 +747,9 @@ def main():
         '3': 'open-blog',
     }
     while True:
-        console.rule('DYN')
-        console.print('1 Đăng   2 Quản   3 Xem   0 Thoát')
-        choice = Prompt.ask('Chọn', choices=['0', *choices])
+        print('DYN')
+        print('1 Đăng   2 Quản   3 Xem   0 Thoát')
+        choice = ask_choice('Chọn', ['0', *choices])
         if choice == '0':
             return
         try:
@@ -746,14 +759,14 @@ def main():
             else:
                 act(action, args)
         except (ValueError, OSError, subprocess.CalledProcessError) as error:
-            console.print('Lỗi: ' + str(error))
+            print('Lỗi: ' + str(error))
 
 
 if __name__ == '__main__':
     try:
         main()
     except (ValueError, OSError, subprocess.CalledProcessError) as error:
-        console.print('Lỗi: ' + str(error))
+        print('Lỗi: ' + str(error))
         sys.exit(1)
     except (KeyboardInterrupt, EOFError):
-        console.print('\nĐã dừng.')
+        print('\nĐã dừng.')
