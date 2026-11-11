@@ -2,3 +2,8 @@
 /resources/_gen/
 .hugo_build.lock
 .obsidian/
+
+# Local blog tools and private drafts
+/.venv-blog/
+/.blog-local/
+__pycache__/
