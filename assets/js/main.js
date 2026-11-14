@@ -37,6 +37,16 @@
     return target instanceof Element ? target.closest("a[href]") : null;
   }
 
+  function rememberLanguage(event) {
+    const language = getAnchor(event.target)?.dataset.languageSwitch;
+    if (language !== "vi" && language !== "en") {
+      return;
+    }
+
+    const secure = location.protocol === "https:" ? "; Secure" : "";
+    document.cookie = `dyn-language=${language}; Max-Age=31536000; Path=/; SameSite=Lax${secure}`;
+  }
+
   function prefetchOnHover(event) {
     const anchor = getAnchor(event.target);
     if (!anchor || anchor === pendingAnchor) {
@@ -81,4 +91,5 @@
   document.addEventListener("pointerout", cancelHoverPrefetch, { passive: true });
   document.addEventListener("pointerdown", prefetchOnPointerDown, { passive: true });
   document.addEventListener("focusin", prefetchOnFocus);
+  document.addEventListener("click", rememberLanguage);
 })();

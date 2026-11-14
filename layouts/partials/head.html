@@ -1,5 +1,13 @@
 {{- $description := .Description | default site.Params.description -}}
 {{- $style := resources.Get "css/main.css" | minify -}}
+{{- $englishHome := "" -}}
+{{- if and .IsHome (eq .Lang "vi") -}}
+  {{- range site.Home.AllTranslations -}}
+    {{- if eq .Lang "en" -}}
+      {{- $englishHome = .RelPermalink -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="{{ $description | plainify }}">
@@ -8,6 +16,42 @@
 <link rel="canonical" href="{{ .Permalink }}">
 <link rel="icon" href="{{ "favicon.svg" | relURL }}" type="image/svg+xml">
 {{ with site.Home.OutputFormats.Get "RSS" }}<link rel="alternate" type="application/rss+xml" title="{{ site.Title }} RSS" href="{{ .Permalink }}">{{ end }}
+{{ with $englishHome }}
+<script>
+(() => {
+  const savedLanguage = document.cookie
+    .split(";")
+    .map((cookie) => cookie.trim())
+    .find((cookie) => cookie.startsWith("dyn-language="))
+    ?.slice("dyn-language=".length);
+
+  if (savedLanguage === "vi") {
+    return;
+  }
+
+  if (savedLanguage === "en") {
+    window.location.replace({{ . | jsonify | safeJS }} + window.location.search + window.location.hash);
+    return;
+  }
+
+  const language = (navigator.languages?.length
+    ? navigator.languages
+    : [navigator.language]
+  )
+    .map((value) => value?.toLowerCase().split("-")[0])
+    .find((value) => value === "vi" || value === "en");
+
+  if (language === "vi") {
+    return;
+  }
+
+  const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  if (language === "en" || !["Asia/Ho_Chi_Minh", "Asia/Saigon"].includes(timeZone)) {
+    window.location.replace({{ . | jsonify | safeJS }} + window.location.search + window.location.hash);
+  }
+})();
+</script>
+{{ end }}
 <style>{{ $style.Content | safeCSS }}</style>
 <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
 <meta property="og:title" content="{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} · {{ site.Title }}{{ end }}">
