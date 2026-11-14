@@ -7,7 +7,7 @@
 <meta name="theme-color" content="#191817" media="(prefers-color-scheme: dark)">
 <link rel="canonical" href="{{ .Permalink }}">
 <link rel="icon" href="{{ "favicon.svg" | relURL }}" type="image/svg+xml">
-<link rel="alternate" type="application/rss+xml" title="{{ site.Title }} RSS" href="{{ "index.xml" | absURL }}">
+{{ with site.Home.OutputFormats.Get "RSS" }}<link rel="alternate" type="application/rss+xml" title="{{ site.Title }} RSS" href="{{ .Permalink }}">{{ end }}
 <style>{{ $style.Content | safeCSS }}</style>
 <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
 <meta property="og:title" content="{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} · {{ site.Title }}{{ end }}">

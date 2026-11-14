@@ -1,0 +1,50 @@
+[skip_to_content]
+other = "Bỏ qua nội dung"
+
+[main_navigation]
+other = "Điều hướng chính"
+
+[language_navigation]
+other = "Ngôn ngữ"
+
+[latest]
+other = "Mới nhất"
+
+[minutes_read]
+other = "phút đọc"
+
+[topics]
+other = "Chủ đề"
+
+[posts]
+other = "Bài viết"
+
+[table_of_contents]
+other = "Mục lục"
+
+[post_tags]
+other = "Thẻ bài viết"
+
+[linked_from]
+other = "Được liên kết từ"
+
+[you_may_also_like]
+other = "Có thể bạn cũng thích"
+
+[get_updates]
+other = "Nhận cập nhật"
+
+[follow_updates]
+other = "Theo dõi bài viết mới qua RSS hoặc các kênh liên hệ đã cấu hình."
+
+[other_channel]
+other = "Kênh khác"
+
+[tag]
+other = "Thẻ"
+
+[rss_description]
+other = "Nội dung mới nhất từ"
+
+[rss_on]
+other = "trên"

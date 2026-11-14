@@ -6,7 +6,7 @@
     </header>
     {{ with .TableOfContents }}
     <details class="toc">
-      <summary>Mục lục</summary>
+      <summary>{{ T "table_of_contents" }}</summary>
       {{ . }}
     </details>
     {{ end }}
@@ -14,7 +14,7 @@
       {{ .Content }}
     </div>
     {{ with .GetTerms "tags" }}
-    <footer class="article-tags" aria-label="Thẻ bài viết">
+    <footer class="article-tags" aria-label="{{ T "post_tags" }}">
       {{ range . }}<a href="{{ .RelPermalink }}">#{{ .LinkTitle }}</a>{{ end }}
     </footer>
     {{ end }}

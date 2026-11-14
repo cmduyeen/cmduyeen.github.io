@@ -4,14 +4,24 @@
     {{ partial "head.html" . }}
   </head>
   <body>
-    <a class="skip-link" href="#main">Bỏ qua nội dung</a>
+    <a class="skip-link" href="#main">{{ T "skip_to_content" }}</a>
     <div class="site-shell">
       <header class="site-header">
         <a class="site-title" href="{{ site.Home.RelPermalink }}">{{ site.Title }}</a>
-        <nav aria-label="Điều hướng chính">
+        <nav aria-label="{{ T "main_navigation" }}">
           <ul>
             {{ range site.Menus.main }}
             <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+            {{ end }}
+            <li aria-hidden="true">·</li>
+            {{ $page := . }}
+            {{ range site.Home.AllTranslations }}
+              {{ $home := . }}
+              {{ $href := .RelPermalink }}
+              {{ range $page.AllTranslations }}
+                {{ if eq .Lang $home.Lang }}{{ $href = .RelPermalink }}{{ end }}
+              {{ end }}
+            <li><a href="{{ $href }}" lang="{{ $home.Language.Lang }}" hreflang="{{ $home.Language.Lang }}"{{ if eq $home.Lang $page.Lang }} aria-current="page"{{ end }}>{{ $home.Language.LanguageName }}</a></li>
             {{ end }}
           </ul>
         </nav>
@@ -21,7 +31,7 @@
       </main>
       <footer class="site-footer">
         <span>© {{ now.Year }} {{ site.Params.author }}</span>
-        <a href="{{ "index.xml" | relURL }}">RSS</a>
+        {{ with site.Home.OutputFormats.Get "RSS" }}<a href="{{ .RelPermalink }}">RSS</a>{{ end }}
       </footer>
     </div>
     {{- $script := resources.Get "js/main.js" | minify -}}

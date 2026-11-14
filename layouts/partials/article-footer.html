@@ -9,7 +9,7 @@
 
 {{ with $mentions }}
 <section class="article-references" aria-labelledby="mentions-heading">
-  <h2 class="section-label" id="mentions-heading">Được liên kết từ</h2>
+  <h2 class="section-label" id="mentions-heading">{{ T "linked_from" }}</h2>
   <ul class="mention-grid">
     {{ range . }}
     <li>
@@ -36,7 +36,7 @@
 {{ $related = sort $related "score" "desc" }}
 {{ with first 5 $related }}
 <section class="article-recommendations" aria-labelledby="recommendations-heading">
-  <h2 class="section-label" id="recommendations-heading">Có thể bạn cũng thích</h2>
+  <h2 class="section-label" id="recommendations-heading">{{ T "you_may_also_like" }}</h2>
   <ul class="recommendation-list">
     {{ range . }}
     {{ $relatedPage := index . "page" }}

@@ -1,0 +1,50 @@
+[skip_to_content]
+other = "Skip to content"
+
+[main_navigation]
+other = "Main navigation"
+
+[language_navigation]
+other = "Language"
+
+[latest]
+other = "Latest"
+
+[minutes_read]
+other = "min read"
+
+[topics]
+other = "Topics"
+
+[posts]
+other = "Posts"
+
+[table_of_contents]
+other = "Table of contents"
+
+[post_tags]
+other = "Post tags"
+
+[linked_from]
+other = "Linked from"
+
+[you_may_also_like]
+other = "You may also like"
+
+[get_updates]
+other = "Get updates"
+
+[follow_updates]
+other = "Follow new posts via RSS or configured contact channels."
+
+[other_channel]
+other = "Other channel"
+
+[tag]
+other = "Tag"
+
+[rss_description]
+other = "The latest from"
+
+[rss_on]
+other = "on"

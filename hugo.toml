@@ -8,14 +8,31 @@ enableRobotsTXT = true
   languageCode = "vi-vn"
   languageName = "Tiếng Việt"
   title = "Dyn"
+  weight = 1
 
 [params]
   author = "Dyn"
   description = "Dyn chia sẻ về phần mềm, tự động hóa, Obsidian, Hugo, GitHub Pages và các công cụ hữu ích."
 
+[languages.vi.params]
+  description = "Dyn chia sẻ về phần mềm, tự động hóa, Obsidian, Hugo, GitHub Pages và các công cụ hữu ích."
+
 [params.homeInfoParams]
   Title = "Xin chào, mình là Dyn 👋"
   Content = "Góc nhỏ ghi lại những điều mình học được về phần mềm và tự động hóa."
+
+[languages.en]
+  languageCode = "en-us"
+  languageName = "English"
+  title = "Dyn"
+  weight = 2
+
+[languages.en.params]
+  description = "Dyn writes about software, automation, Obsidian, Hugo, GitHub Pages, and useful tools."
+
+[languages.en.params.homeInfoParams]
+  Title = "Hi, I'm Dyn 👋"
+  Content = "A small corner for things I learn about software and automation."
 
 [params.contact]
   email = ""
@@ -27,13 +44,25 @@ enableRobotsTXT = true
 [[languages.vi.menus.main]]
   identifier = "about"
   name = "About"
-  url = "/about/"
+  pageRef = "/about"
   weight = 10
 
 [[languages.vi.menus.main]]
   identifier = "archives"
   name = "Archive"
-  url = "/archives/"
+  pageRef = "/archives"
+  weight = 20
+
+[[languages.en.menus.main]]
+  identifier = "about"
+  name = "About"
+  pageRef = "/about"
+  weight = 10
+
+[[languages.en.menus.main]]
+  identifier = "archives"
+  name = "Archive"
+  pageRef = "/archives"
   weight = 20
 
 [outputs]
