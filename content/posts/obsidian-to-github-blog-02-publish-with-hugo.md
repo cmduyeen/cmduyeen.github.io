@@ -2,6 +2,8 @@
 title: "Từ Obsidian đến GitHub Pages, Phần 2: Xuất bản Markdown bằng Hugo"
 date: 2026-10-15T09:00:00+07:00
 draft: false
+category: "Obsidian & Hugo"
+description: "Hướng dẫn lưu ghi chú Markdown vào content/posts/, cấu hình front matter Hugo và đẩy bài viết lên GitHub Pages hoàn toàn tự động."
 tags: ["obsidian", "markdown", "hugo", "github-pages", "publishing-workflow"]
 cover:
   image: "/images/posts/hugo-publishing.svg"

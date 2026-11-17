@@ -10,7 +10,6 @@ translationKey: "serein-obsidian-guide"
 draft: false
 ---
 
-# Biến Obsidian Thành Không Gian Ghi Chép Second Brain Tĩnh Lặng Với Serein Theme
 
 Công cụ quản lý tri thức cá nhân (PKM - Personal Knowledge Management) sinh ra để làm nơi trú ẩn cho tâm trí: nơi chúng ta đào sâu suy nghĩ, tổ chức ghi chú nghiên cứu, đọc sách và viết lách những bài viết dài. Tuy nhiên, rất nhiều theme hiện nay lại thêm vào quá nhiều chi tiết trang trí rườm rà: icon dày đặc, badge màu mè và các đường viền tương phản mạnh mẽ làm phân tán sự tập trung vào con chữ.
 

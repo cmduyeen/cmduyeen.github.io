@@ -10,7 +10,6 @@ translationKey: "serein-theme-suite"
 draft: false
 ---
 
-# Serein Theme: Triết Lý Tối Giản Và Hệ Sinh Thái Không Gian Làm Việc Đồng Bộ
 
 Là lập trình viên, người viết lách hay người làm việc tri thức, mỗi ngày chúng ta dành từ 8 đến 12 tiếng liên tục trước màn hình máy tính. Phần lớn các theme giao diện phổ biến hiện nay chia làm hai thái cực: hoặc là nền đen tuyền `#000000` với hàng chục màu sắc neon chói lọi (xanh chuối, hồng dạ quang, vàng chanh) gây mỏi mắt khi làm việc ban đêm; hoặc là nền trắng toát `#FFFFFF` gây chói lóa vào ban ngày.
 

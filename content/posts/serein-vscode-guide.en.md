@@ -10,7 +10,6 @@ translationKey: "serein-vscode-guide"
 draft: false
 ---
 
-# How to Build a Warm Minimalist Dev Setup with VS Code & Windows Terminal
 
 When transitioning between your code editor and terminal hundreds of times each day, a mismatch in color temperatures can cause noticeable eye strain. If your editor is bathed in a dark purple theme while your terminal defaults to stark pitch-black with neon-cyan text, your eyes are forced to re-adjust with every `Alt + Tab`.
 

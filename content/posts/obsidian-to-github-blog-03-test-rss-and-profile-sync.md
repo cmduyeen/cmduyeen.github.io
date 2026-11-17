@@ -2,6 +2,8 @@
 title: "Từ Obsidian đến GitHub Pages, Phần 3: Kiểm tra RSS và đồng bộ hồ sơ"
 date: 2026-10-16T20:30:00+07:00
 draft: false
+category: "Obsidian & Hugo"
+description: "Cách kiểm tra nguồn cấp RSS của blog Hugo sau khi deploy lên GitHub Pages và tự động đồng bộ danh sách bài mới vào GitHub Profile README."
 tags: ["obsidian", "hugo", "rss", "github-pages", "github-profile", "publishing-workflow"]
 cover:
   image: "/images/posts/rss-profile-sync.svg"

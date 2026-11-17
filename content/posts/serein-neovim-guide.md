@@ -10,7 +10,6 @@ translationKey: "serein-neovim-guide"
 draft: false
 ---
 
-# Cấu Hình Serein Colorscheme Cho Neovim Bằng Lazy.nvim, TreeSitter & Lualine
 
 Với những lập trình viên đam mê modal editing và làm việc hoàn toàn trên terminal, việc tìm kiếm một bộ màu (colorscheme) vừa mắt thường gặp phải hai vấn đề: hoặc là màu sắc quá nhạt nhòa khó đọc, hoặc là quá chói chang với những khối màu tương phản mạnh làm rối cấu trúc cú pháp.
 

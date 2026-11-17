@@ -10,7 +10,6 @@ translationKey: "serein-obsidian-guide"
 draft: false
 ---
 
-# Transforming Obsidian into a Serene Second Brain with Serein Theme
 
 Personal Knowledge Management (PKM) tools are meant to be cognitive sanctuaries—spaces where we think, organize insights, read research papers, and write long-form drafts. Yet many note-taking themes introduce flashy interface clutter: heavy icons, loud neon badges, and stark contrasting borders that pull focus away from our words.
 

@@ -10,7 +10,6 @@ translationKey: "serein-neovim-guide"
 draft: false
 ---
 
-# Configuring Serein Colorscheme for Neovim with Lazy.nvim, TreeSitter & Lualine
 
 For modal editing enthusiasts and terminal maximalists, terminal colorschemes often suffer from two extremes: either washed-out low-contrast gray-on-black or harsh fluorescent highlights that overwhelm syntax hierarchy.
 

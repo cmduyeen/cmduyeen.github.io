@@ -10,7 +10,6 @@ translationKey: "serein-vscode-guide"
 draft: false
 ---
 
-# Hướng Dẫn Cài Đặt Không Gian Lập Trình Ấm Áp Với VS Code & Windows Terminal
 
 Trong một ngày làm việc điển hình, lập trình viên chuyển đổi (Alt + Tab) hàng trăm lần giữa trình soạn thảo mã nguồn và cửa sổ dòng lệnh (terminal). Nếu editor của bạn đang dùng theme tím đậm hoặc xanh đậm, còn terminal lại mang màu đen kịt cùng chữ xanh dạ quang chói lóa, đôi mắt sẽ phải liên tục co giãn đồng tử để thích nghi, dẫn đến tình trạng mỏi mắt nhanh chóng.
 

@@ -10,7 +10,6 @@ translationKey: "serein-theme-suite"
 draft: false
 ---
 
-# Serein Theme Suite: Extreme Minimalism & The Unified Warm Workspace
 
 As developers, writers, and knowledge workers, we spend 8 to 14 hours a day staring at glowing digital displays. Most code editors ship with either aggressive neon high-contrast themes (like pure `#000000` with saturated fluorescent greens, magentas, and yellows) or bleached `#FFFFFF` light themes that induce glare and ocular fatigue after mere hours of focus.
 

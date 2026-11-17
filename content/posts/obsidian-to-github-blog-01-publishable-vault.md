@@ -2,6 +2,8 @@
 title: "Từ Obsidian đến GitHub Pages, Phần 1: Tạo vault sẵn sàng xuất bản"
 date: 2026-10-14T09:00:00+07:00
 draft: false
+category: "Obsidian & Hugo"
+description: "Cách thiết lập vault Obsidian để soạn bài Markdown thuần, phân tách nội dung công khai và riêng tư trước khi xuất bản lên blog Hugo."
 tags: ["obsidian", "markdown", "hugo", "publishing-workflow"]
 cover:
   image: "/images/posts/obsidian-vault.svg"
