@@ -1,4 +1,5 @@
 {{ define "main" }}
+  {{- $hasToc := in .TableOfContents "<li>" -}}
   <article>
     <header class="article-header">
       {{ if eq .Section "posts" }}
@@ -10,14 +11,18 @@
       {{ end }}
       <h1>{{ .Title }}</h1>
     </header>
-    {{ with .TableOfContents }}
-    <details class="toc">
-      <summary>{{ T "table_of_contents" }}</summary>
-      {{ . }}
-    </details>
-    {{ end }}
-    <div class="article-content">
-      {{ .Content }}
+    <div class="article-body-wrap{{ if $hasToc }} has-toc{{ end }}">
+      {{ if $hasToc }}
+      <aside class="article-toc" aria-label="{{ T "table_of_contents" }}">
+        <details class="toc">
+          <summary>{{ T "table_of_contents" }}</summary>
+          {{ .TableOfContents }}
+        </details>
+      </aside>
+      {{ end }}
+      <div class="article-content">
+        {{ .Content }}
+      </div>
     </div>
     {{ with .GetTerms "tags" }}
     <footer class="article-tags topic-pills" aria-label="{{ T "post_tags" }}">

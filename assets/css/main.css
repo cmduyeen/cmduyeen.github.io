@@ -676,7 +676,7 @@ h1 {
   border-radius: 0.5rem;
   background: var(--surface);
   color: var(--muted);
-  font-size: 0.92rem;
+  font-size: 0.9rem;
 }
 
 .toc summary {
@@ -688,11 +688,71 @@ h1 {
 
 .toc ul {
   margin: 0.5rem 0 0;
-  padding-left: 1.25rem;
+  padding-left: 1.1rem;
 }
 
 .toc li + li {
-  margin-top: 0.25rem;
+  margin-top: 0.3rem;
+}
+
+.toc a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.toc a:hover,
+.toc a.is-active {
+  color: var(--link);
+}
+
+.toc a.is-active {
+  font-weight: 600;
+}
+
+@media (min-width: 74rem) {
+  .article-body-wrap.has-toc .article-toc {
+    position: sticky;
+    top: 1.5rem;
+    float: right;
+    width: 15rem;
+    margin-right: -17.5rem;
+  }
+
+  .article-body-wrap.has-toc .toc {
+    margin-block: 0;
+    padding: 0 0 0 1rem;
+    border: 0;
+    border-left: 1px solid var(--line);
+    border-radius: 0;
+    background: transparent;
+    font-size: 0.82rem;
+    max-height: calc(100vh - 3rem);
+    overflow-y: auto;
+  }
+
+  .article-body-wrap.has-toc .toc summary {
+    list-style: none;
+    pointer-events: none;
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.6rem;
+  }
+
+  .article-body-wrap.has-toc .toc summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .article-body-wrap.has-toc .toc:not([open]) > :not(summary) {
+    display: block;
+  }
+
+  .article-body-wrap.has-toc .toc ul {
+    margin-top: 0;
+    padding-left: 0.75rem;
+    list-style: none;
+  }
 }
 
 .article-tags {

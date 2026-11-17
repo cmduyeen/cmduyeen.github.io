@@ -164,4 +164,25 @@
       openSearch();
     }
   });
+
+  const tocLinks = Array.from(document.querySelectorAll("#TableOfContents a[href^='#']"));
+  if (tocLinks.length > 0 && "IntersectionObserver" in window) {
+    const headings = tocLinks
+      .map((a) => document.getElementById(decodeURIComponent(a.getAttribute("href").slice(1))))
+      .filter(Boolean);
+    const linkById = new Map(tocLinks.map((a) => [decodeURIComponent(a.getAttribute("href").slice(1)), a]));
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            tocLinks.forEach((l) => l.classList.remove("is-active"));
+            linkById.get(entry.target.id)?.classList.add("is-active");
+          }
+        }
+      },
+      { rootMargin: "-15% 0px -70% 0px" }
+    );
+    headings.forEach((h) => observer.observe(h));
+  }
 })();
