@@ -40,7 +40,7 @@ jobs:
         run: python3 tools/sync_repos.py
 
       - name: Build site
-        run: hugo --gc --minify --baseURL "${{ steps.pages.outputs.base_url }}/"
+        run: hugo --gc --minify --buildFuture --baseURL "${{ steps.pages.outputs.base_url }}/"
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
