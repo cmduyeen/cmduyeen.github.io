@@ -46,5 +46,15 @@
 </section>
 {{ end }}
 
+{{ if eq $page.Section "posts" }}
+<aside class="post-cta" aria-label="Tools">
+  {{ if eq site.Language.Lang "vi" }}
+  <p><strong>Thích các công cụ tối giản?</strong> Thử ngay <a href="{{ "tools/" | relLangURL }}">Web Tools miễn phí</a> của mình (tạo GitHub Profile, Blog, Lịch Âm .ics) hoặc xem thêm <a href="{{ "about/" | relLangURL }}">các dự án khác</a>.</p>
+  {{ else }}
+  <p><strong>Enjoy minimalist tools?</strong> Try my free <a href="{{ "tools/" | relLangURL }}">Web Tools</a> (GitHub Profile Builder, Blog Configurator, Lunar Calendar) or explore <a href="{{ "about/" | relLangURL }}">all projects</a>.</p>
+  {{ end }}
+</aside>
+{{ end }}
+
 <hr class="section-divider">
 {{ partial "updates.html" $page }}

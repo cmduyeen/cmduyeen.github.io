@@ -59,4 +59,11 @@
 <meta property="og:title" content="{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} · {{ site.Title }}{{ end }}">
 <meta property="og:description" content="{{ $description | plainify }}">
 <meta property="og:url" content="{{ .Permalink }}">
+{{- $ogImage := "images/og-default.png" | absURL -}}
+{{- with .Params.image }}{{ $ogImage = . | absURL }}{{ end -}}
+<meta property="og:image" content="{{ $ogImage }}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} · {{ site.Title }}{{ end }}">
+<meta name="twitter:description" content="{{ $description | plainify }}">
+<meta name="twitter:image" content="{{ $ogImage }}">
 <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} · {{ site.Title }}{{ end }}</title>
