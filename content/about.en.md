@@ -9,21 +9,6 @@ This blog is where I document what I learn about automation, personal knowledge 
 
 ## Projects
 
-### Tools & Utilities
-- **[Vietnamese Lunar Calendar (.ics)](https://github.com/cmduyeen/lich-am-viet-nam)** — Accurate GMT+7 lunar calendar feeds for Google Calendar, Apple Calendar, and Outlook—subscribe via URL with no extra apps.
-- **[Focus Assistant](https://github.com/cmduyeen/Focus-Assistant-Extension)** — Privacy-friendly Chrome extension for site blocking and scheduled focus sessions.
-- **[Pomodoro Timer PowerShell](https://github.com/cmduyeen/Pomodoro-Timer-PowerShell)** — Minimalist, zero-install Pomodoro timer right inside your terminal.
-
-### GitHub Starter Kits
-- **[Pro GitHub Starter Kit](https://github.com/cmduyeen/pro-github-starter-kit)** — Modular themes, plugins, and a live Web Builder to craft a GitHub Profile README in 60 seconds.
-- **[Pro Blog Starter Kit](https://github.com/cmduyeen/pro-blog-starter-kit)** — Launch a free, SEO-ready personal blog on GitHub Pages with Hugo or Jekyll.
-
-### Themes & Learning
-- **[Serein Theme](https://github.com/cmduyeen/serein-theme)** — Warm, low-distraction color suite for VS Code, Neovim, Obsidian, and Terminal.
-- **[Pinkie Theme](https://github.com/cmduyeen/pinkie-theme)** — Soft pastel-pink design tokens and themes across developer tools.
-- **[Self-Study](https://github.com/cmduyeen/self-study)** — Open programming notes, snippets, and learning roadmap.
-
-### All Repositories by Date
 {{< github-repos >}}
 
 ## Elsewhere

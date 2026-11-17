@@ -10,21 +10,6 @@ Blog này là nơi mình ghi lại những điều học được về tự đ�
 
 ## Dự án
 
-### Công cụ & Tiện ích
-- **[Lịch Âm Việt Nam (.ics)](https://github.com/cmduyeen/lich-am-viet-nam)** — Lịch âm chuẩn GMT+7 cho Google Calendar, Apple Calendar và Outlook, chỉ cần gắn link dùng luôn.
-- **[Focus Assistant](https://github.com/cmduyeen/Focus-Assistant-Extension)** — Tiện ích Chrome chặn trang gây xao nhãng và quản lý Pomodoro, không theo dõi người dùng.
-- **[Pomodoro Timer PowerShell](https://github.com/cmduyeen/Pomodoro-Timer-PowerShell)** — Bộ đếm Pomodoro chạy ngay trong terminal, không cần cài đặt.
-
-### Starter Kits cho GitHub
-- **[Pro GitHub Starter Kit](https://github.com/cmduyeen/pro-github-starter-kit)** — Bộ công cụ + Web Builder tạo GitHub Profile README chuyên nghiệp trong 60 giây.
-- **[Pro Blog Starter Kit](https://github.com/cmduyeen/pro-blog-starter-kit)** — Bộ khởi tạo blog cá nhân Hugo/Jekyll miễn phí trên GitHub Pages, không cần mua tên miền.
-
-### Giao diện & Tự học
-- **[Serein Theme](https://github.com/cmduyeen/serein-theme)** — Hệ thống bảng màu ấm tối giản, dịu mắt cho VS Code, Neovim, Obsidian và Terminal.
-- **[Pinkie Theme](https://github.com/cmduyeen/pinkie-theme)** — Hệ sinh thái bảng màu hồng pastel nhẹ nhàng.
-- **[Self-Study](https://github.com/cmduyeen/self-study)** — Kho ghi chú tự học lập trình và lộ trình thực hành.
-
-### Tất cả kho mã nguồn theo thời gian
 {{< github-repos >}}
 
 ## Kết nối
