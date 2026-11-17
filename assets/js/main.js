@@ -92,4 +92,76 @@
   document.addEventListener("pointerdown", prefetchOnPointerDown, { passive: true });
   document.addEventListener("focusin", prefetchOnFocus);
   document.addEventListener("click", rememberLanguage);
+
+  const searchTrigger = document.getElementById("search-trigger");
+  const searchDialog = document.getElementById("search-dialog");
+  const searchInput = document.getElementById("search-input");
+  const searchClose = document.getElementById("search-close");
+  const searchResults = document.getElementById("search-results");
+  let cachedPosts = null;
+
+  function renderResults(items, query) {
+    if (!searchResults) return;
+    searchResults.replaceChildren();
+    const q = query.trim().toLowerCase();
+    const matched = q
+      ? items.filter((item) => {
+          const haystack = `${item.title} ${(item.tags || []).join(" ")} ${item.summary}`.toLowerCase();
+          return haystack.includes(q);
+        })
+      : items.slice(0, 6);
+
+    if (matched.length === 0) {
+      const empty = document.createElement("li");
+      empty.className = "search-empty";
+      empty.textContent = searchDialog.dataset.emptyMsg || "No matching posts found.";
+      searchResults.append(empty);
+      return;
+    }
+
+    for (const item of matched) {
+      const li = document.createElement("li");
+      const a = document.createElement("a");
+      a.className = "writing-item";
+      a.href = item.url;
+      const time = document.createElement("time");
+      time.textContent = item.date;
+      const span = document.createElement("span");
+      span.textContent = item.title;
+      a.append(time, span);
+      li.append(a);
+      searchResults.append(li);
+    }
+  }
+
+  async function openSearch() {
+    if (!searchDialog || typeof searchDialog.showModal !== "function") return;
+    searchDialog.showModal();
+    searchInput?.focus();
+    if (!cachedPosts) {
+      try {
+        const res = await fetch(searchDialog.dataset.indexUrl || "/index.json");
+        cachedPosts = await res.json();
+      } catch (_) {
+        cachedPosts = [];
+      }
+    }
+    renderResults(cachedPosts, searchInput?.value || "");
+  }
+
+  searchTrigger?.addEventListener("click", openSearch);
+  searchClose?.addEventListener("click", () => searchDialog?.close());
+  searchDialog?.addEventListener("click", (e) => {
+    if (e.target === searchDialog) searchDialog.close();
+  });
+  searchInput?.addEventListener("input", () => {
+    if (cachedPosts) renderResults(cachedPosts, searchInput.value);
+  });
+  document.addEventListener("keydown", (e) => {
+    if ((e.key === "/" || ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k")) &&
+        !(document.activeElement instanceof HTMLInputElement || document.activeElement instanceof HTMLTextAreaElement)) {
+      e.preventDefault();
+      openSearch();
+    }
+  });
 })();

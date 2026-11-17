@@ -12,8 +12,13 @@
           <ul>
             {{ $page := . }}
             {{ range site.Menus.main }}
-            <li><a href="{{ .URL }}"{{ if $page.IsMenuCurrent "main" . }} aria-current="page"{{ end }}>{{ .Name }}</a></li>
+            <li class="nav-item"><a href="{{ .URL }}"{{ if $page.IsMenuCurrent "main" . }} aria-current="page"{{ end }}>{{ .Name }}</a></li>
             {{ end }}
+            <li>
+              <button type="button" class="search-btn" id="search-trigger" aria-label="{{ if eq site.Language.Lang "vi" }}Tìm kiếm{{ else }}Search{{ end }}" title="{{ if eq site.Language.Lang "vi" }}Tìm kiếm (/) {{ else }}Search (/){{ end }}">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+              </button>
+            </li>
             {{ range site.Home.AllTranslations }}
               {{ $home := . }}
               {{ if ne $home.Lang $page.Lang }}
@@ -35,6 +40,16 @@
         {{ with site.Home.OutputFormats.Get "RSS" }}<a href="{{ .RelPermalink }}">RSS</a>{{ end }}
       </footer>
     </div>
+    <dialog id="search-dialog" class="search-dialog" data-index-url="{{ "index.json" | relLangURL }}" data-empty-msg="{{ if eq site.Language.Lang "vi" }}Không tìm thấy bài viết phù hợp.{{ else }}No matching posts found.{{ end }}">
+      <div class="search-box">
+        <div class="search-input-row">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <input id="search-input" type="search" placeholder="{{ if eq site.Language.Lang "vi" }}Tìm bài viết, chủ đề...{{ else }}Search posts, topics...{{ end }}" autocomplete="off" />
+          <button type="button" id="search-close" class="search-close" aria-label="Close">Esc</button>
+        </div>
+        <ul id="search-results" class="writing-list search-results"></ul>
+      </div>
+    </dialog>
     {{- $script := resources.Get "js/main.js" | minify -}}
     <script>{{ $script.Content | safeJS }}</script>
   </body>

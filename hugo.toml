@@ -78,4 +78,4 @@ enableRobotsTXT = true
   weight = 30
 
 [outputs]
-  home = ["HTML", "RSS"]
+  home = ["HTML", "RSS", "JSON"]
