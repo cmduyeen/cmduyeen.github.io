@@ -1,21 +1,19 @@
 {{ if eq .Section "posts" }}
 <section class="article-comments" aria-label="{{ if eq site.Language.Lang "vi" }}Bình luận{{ else }}Comments{{ end }}">
-  <script
-    src="https://giscus.app/client.js"
-    data-repo="cmduyeen/cmduyeen.github.io"
-    data-repo-id="R_kgDOVMWeTw"
-    data-category="Announcements"
-    data-category-id="DIC_kwDOVMWeT84DLUqV"
-    data-mapping="pathname"
-    data-strict="0"
-    data-reactions-enabled="1"
-    data-emit-metadata="0"
-    data-input-position="top"
-    data-theme="https://cmduyeen.github.io/css/giscus.css"
-    data-lang="{{ site.Language.Lang }}"
-    data-loading="lazy"
-    crossorigin="anonymous"
-    async>
-  </script>
+  <div
+    id="giscus-mount"
+    data-giscus-repo="cmduyeen/cmduyeen.github.io"
+    data-giscus-repo-id="R_kgDOVMWeTw"
+    data-giscus-category="Announcements"
+    data-giscus-category-id="DIC_kwDOVMWeT84DLUqV"
+    data-giscus-mapping="pathname"
+    data-giscus-strict="0"
+    data-giscus-reactions-enabled="1"
+    data-giscus-emit-metadata="0"
+    data-giscus-input-position="top"
+    data-giscus-theme="https://cmduyeen.github.io/css/giscus.css"
+    data-giscus-lang="{{ site.Language.Lang }}"
+    data-giscus-loading="lazy">
+  </div>
 </section>
 {{ end }}

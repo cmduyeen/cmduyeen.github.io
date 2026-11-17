@@ -239,4 +239,33 @@
     });
     pre.append(btn);
   }
+
+  const giscusMount = document.getElementById("giscus-mount");
+  if (giscusMount) {
+    const loadGiscus = () => {
+      if (giscusMount.dataset.loaded) return;
+      giscusMount.dataset.loaded = "true";
+      const s = document.createElement("script");
+      s.src = "https://giscus.app/client.js";
+      s.crossOrigin = "anonymous";
+      s.async = true;
+      for (const attr of giscusMount.attributes) {
+        if (attr.name.startsWith("data-giscus-")) {
+          s.setAttribute("data-" + attr.name.slice(12), attr.value);
+        }
+      }
+      giscusMount.append(s);
+    };
+    if ("IntersectionObserver" in window) {
+      const io = new IntersectionObserver((entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          io.disconnect();
+          loadGiscus();
+        }
+      }, { rootMargin: "400px 0px" });
+      io.observe(giscusMount);
+    } else {
+      loadGiscus();
+    }
+  }
 })();

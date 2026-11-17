@@ -1,8 +1,10 @@
 {{- $id := printf "practice-%s-%d" .Page.File.UniqueID .Ordinal -}}
 {{- $isEn := eq .Page.Lang "en" -}}
-{{- $script := resources.Get "js/markdown-practice.js" | minify | fingerprint -}}
-{{- $style := resources.Get "css/markdown-practice.css" | minify | fingerprint -}}
-<link rel="stylesheet" href="{{ $style.RelPermalink }}">
+{{- if not (.Page.Store.Get "hasMarkdownPractice") -}}
+  {{- .Page.Store.Set "hasMarkdownPractice" true -}}
+  {{- $style := resources.Get "css/markdown-practice.css" | minify | fingerprint -}}
+  <link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}" crossorigin="anonymous">
+{{- end -}}
 <section class="md-practice" data-markdown-practice data-lang="{{ .Page.Lang }}" aria-labelledby="{{ $id }}-title">
   <div class="md-practice-head">
     <div class="md-practice-head-row">
@@ -36,4 +38,8 @@
     <p class="md-practice-status" role="status" aria-live="polite" data-practice-status></p>
   </div>
 </section>
-<script src="{{ $script.RelPermalink }}" defer></script>
+{{- if not (.Page.Store.Get "hasMarkdownPracticeScript") -}}
+  {{- .Page.Store.Set "hasMarkdownPracticeScript" true -}}
+  {{- $script := resources.Get "js/markdown-practice.js" | minify | fingerprint -}}
+  <script src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}" crossorigin="anonymous" defer></script>
+{{- end -}}
