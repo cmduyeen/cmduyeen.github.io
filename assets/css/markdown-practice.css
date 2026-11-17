@@ -1,0 +1,49 @@
+.md-practice {
+  margin: 2rem 0;
+  padding: 1.1rem;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+}
+.md-practice h3 { margin-top: 0; }
+.md-practice-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1rem; }
+.md-practice-grid > div {
+  min-width: 0;
+  display: grid;
+  grid-template-rows: auto minmax(19rem, 1fr);
+  gap: .5rem;
+}
+.md-practice .md-practice-label {
+  display: block;
+  font: inherit;
+  font-weight: 600;
+  line-height: 1.5;
+  margin: 0;
+}
+.md-practice textarea, .md-practice-preview {
+  display: block; box-sizing: border-box; margin: 0;
+  width: 100%; height: 100%; min-height: 19rem; padding: .85rem; border: 1px solid var(--line);
+  border-radius: 6px; background: var(--background); color: var(--text); overflow-wrap: anywhere;
+}
+.md-practice textarea { resize: vertical; font: .9rem/1.65 ui-monospace, Consolas, monospace; }
+.md-practice-preview { max-height: 36rem; overflow: auto; }
+.md-practice-preview > :first-child { margin-top: 0; }
+.md-practice-preview .md-preview-h1 { font-size: 1.6rem; }
+.md-practice-preview .md-preview-h2 { font-size: 1.35rem; }
+.md-practice-preview .md-preview-h3 { font-size: 1.15rem; }
+.md-practice-preview pre { white-space: pre-wrap; overflow-wrap: anywhere; }
+.md-practice-preview img { max-width: 100%; height: auto; }
+.md-practice-note, .md-practice-status { font-size: .85rem; color: var(--muted); }
+.md-practice-actions { display: flex; flex-wrap: wrap; gap: .6rem; margin: .8rem 0; }
+.md-practice button {
+  padding: .55rem .8rem; background: var(--background); color: var(--text); border: 1px solid var(--line);
+  border-radius: 6px; cursor: pointer; font: inherit;
+}
+.md-practice button:hover { border-color: var(--link); }
+.md-practice :focus-visible { outline: 2px solid var(--link); outline-offset: 3px; }
+.md-practice summary { cursor: pointer; }
+@media (max-width: 620px) {
+  .md-practice-grid { grid-template-columns: minmax(0, 1fr); }
+  .md-practice-grid > div { grid-template-rows: auto minmax(13rem, 1fr); }
+  .md-practice textarea, .md-practice-preview { min-height: 13rem; }
+}

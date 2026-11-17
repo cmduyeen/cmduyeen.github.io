@@ -1,0 +1,31 @@
+{{- $id := printf "practice-%s-%d" .Page.File.UniqueID .Ordinal -}}
+{{- $script := resources.Get "js/markdown-practice.js" | minify | fingerprint -}}
+{{- $style := resources.Get "css/markdown-practice.css" | minify | fingerprint -}}
+<link rel="stylesheet" href="{{ $style.RelPermalink }}">
+<section class="md-practice" data-markdown-practice aria-labelledby="{{ $id }}-title">
+  <h3 id="{{ $id }}-title">Thực hành ngay</h3>
+  <p>{{ .Get "task" }}</p>
+  <p class="md-practice-note">Sửa nội dung bên dưới để xem kết quả. Nội dung chỉ ở trong trang này, không được gửi đi hoặc tự lưu; tải lại trang sẽ mất phần bạn sửa.</p>
+  <div class="md-practice-grid">
+    <div>
+      <label class="md-practice-label" for="{{ $id }}-input">Markdown của bạn</label>
+      <textarea id="{{ $id }}-input" rows="12" maxlength="12000" spellcheck="false" data-practice-input>{{ .Inner | strings.TrimSpace }}</textarea>
+    </div>
+    <div>
+      <div id="{{ $id }}-preview-label" class="md-practice-label">Bản xem trước</div>
+      <div class="md-practice-preview" role="region" aria-labelledby="{{ $id }}-preview-label" tabindex="0" data-practice-preview></div>
+    </div>
+  </div>
+  <div class="md-practice-actions">
+    <button type="button" data-practice-reset hidden>Làm lại</button>
+    <button type="button" data-practice-download hidden>Tải tệp .md</button>
+  </div>
+  <details>
+    <summary>Xem gợi ý</summary>
+    <p>{{ .Get "hint" }}</p>
+  </details>
+  <p class="md-practice-note">Bản xem trước hỗ trợ tiêu đề, đoạn văn, danh sách một cấp, trích dẫn, in đậm/nghiêng, mã và liên kết. Ảnh chỉ hiển thị từ cùng website. HTML, YAML và cú pháp mở rộng không được xử lý như Hugo.</p>
+  <noscript><p>Bật JavaScript để sửa và xem trước tại đây. Bạn vẫn có thể sao chép ví dụ để làm trong trình soạn thảo.</p></noscript>
+  <p class="md-practice-status" role="status" aria-live="polite" data-practice-status></p>
+</section>
+<script src="{{ $script.RelPermalink }}" defer></script>
