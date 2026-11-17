@@ -413,8 +413,30 @@ main {
 }
 
 .updates > p {
-  margin: 0 0 1rem;
+  margin: 0 0 0.85rem;
   color: var(--muted);
+  font-size: 0.94rem;
+}
+
+.update-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.85rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.update-links a {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.86rem;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.update-links a:hover {
+  color: var(--link);
+  text-decoration: underline;
 }
 
 .article-references,

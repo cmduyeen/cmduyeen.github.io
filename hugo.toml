@@ -35,8 +35,9 @@ enableRobotsTXT = true
   Content = "A small corner for things I learn about software and automation."
 
 [params.contact]
+  github = "https://github.com/cmduyeen"
+  x = "https://x.com/cmduyeen"
   email = ""
-  x = ""
   mastodon = ""
   bluesky = ""
   other = ""
