@@ -433,6 +433,12 @@ main {
   text-decoration: underline;
 }
 
+.article-comments {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+}
+
 .article-references,
 .article-recommendations {
   margin-top: 3rem;
