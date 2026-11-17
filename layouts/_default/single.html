@@ -1,4 +1,7 @@
 {{ define "main" }}
+  {{ if eq .Section "posts" }}
+  <div id="reading-progress" class="reading-progress" aria-hidden="true"></div>
+  {{ end }}
   {{- $hasToc := and (eq .Section "posts") (in .TableOfContents "<li>") -}}
   <article>
     <header class="article-header">

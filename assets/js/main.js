@@ -216,4 +216,18 @@
     });
     pre.append(btn);
   }
+
+  const progressBar = document.getElementById("reading-progress");
+  const articleEl = document.querySelector("article");
+  if (progressBar && articleEl) {
+    const updateProgress = () => {
+      const start = articleEl.offsetTop;
+      const total = Math.max(1, articleEl.offsetHeight - window.innerHeight * 0.6);
+      const ratio = Math.min(1, Math.max(0, (window.scrollY - start) / total));
+      progressBar.style.transform = `scaleX(${ratio})`;
+    };
+    window.addEventListener("scroll", updateProgress, { passive: true });
+    window.addEventListener("resize", updateProgress, { passive: true });
+    updateProgress();
+  }
 })();
