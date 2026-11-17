@@ -1,5 +1,5 @@
 ---
-title: "Viết bằng Markdown, Phần 06 - Xem trước và đăng bài lên Hugo"
+title: "Cách xem trước và xuất bản bài Markdown lên Hugo GitHub Pages (Markdown 101 - Phần 06)"
 date: "2026-11-17"
 author: "Dyn"
 slug: "viet-bang-markdown-06-xuat-ban-hugo"

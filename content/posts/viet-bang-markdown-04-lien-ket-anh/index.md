@@ -1,5 +1,5 @@
 ---
-title: "Viết bằng Markdown, Phần 04 - Cách chèn liên kết và ảnh"
+title: "Cách chèn liên kết và ảnh chuẩn SEO trong Markdown (Markdown 101 - Phần 04)"
 date: "2026-11-17"
 author: "Dyn"
 slug: "viet-bang-markdown-04-lien-ket-anh"

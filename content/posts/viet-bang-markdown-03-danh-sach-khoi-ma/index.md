@@ -1,5 +1,5 @@
 ---
-title: "Viết bằng Markdown, Phần 03 - Danh sách, trích dẫn và khối mã"
+title: "Cách viết danh sách, trích dẫn và khối mã trong Markdown (Markdown 101 - Phần 03)"
 date: "2026-11-17"
 author: "Dyn"
 slug: "viet-bang-markdown-03-danh-sach-khoi-ma"

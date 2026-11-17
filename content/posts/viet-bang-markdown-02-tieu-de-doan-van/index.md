@@ -1,5 +1,5 @@
 ---
-title: "Viết bằng Markdown, Phần 02 - Cách viết tiêu đề và đoạn văn"
+title: "Cách viết tiêu đề, tách đoạn văn và nhấn mạnh trong Markdown (Markdown 101 - Phần 02)"
 date: "2026-11-17"
 author: "Dyn"
 slug: "viet-bang-markdown-02-tieu-de-doan-van"

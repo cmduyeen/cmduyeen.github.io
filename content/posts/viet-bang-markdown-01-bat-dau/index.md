@@ -1,5 +1,5 @@
 ---
-title: "Viết bằng Markdown, Phần 01 - Markdown là gì và cách tạo tệp đầu tiên"
+title: "Markdown là gì và cách tạo tệp .md đầu tiên (Markdown 101 - Phần 01)"
 date: "2026-11-17"
 author: "Dyn"
 slug: "viet-bang-markdown-01-bat-dau"

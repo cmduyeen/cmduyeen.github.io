@@ -1,5 +1,5 @@
 ---
-title: "Viết bằng Markdown, Phần 05 - Mẫu bài viết và YAML cho blog"
+title: "Mẫu bài viết Markdown và cách viết YAML front matter cho blog (Markdown 101 - Phần 05)"
 date: "2026-11-17"
 author: "Dyn"
 slug: "viet-bang-markdown-05-mau-bai-viet"
