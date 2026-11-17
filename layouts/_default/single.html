@@ -1,5 +1,5 @@
 {{ define "main" }}
-  {{- $hasToc := in .TableOfContents "<li>" -}}
+  {{- $hasToc := and (eq .Section "posts") (in .TableOfContents "<li>") -}}
   <article>
     <header class="article-header">
       {{ if eq .Section "posts" }}
