@@ -744,7 +744,9 @@ def convert_obsidian_to_hugo(note_path: Path, dest_bundle: Path, draft_override:
     hugo_fm_lines.append(f'draft: {"true" if is_draft_val else "false"}')
     hugo_fm_lines.append('---')
 
-    out_path = dest_bundle / 'index.md'
+    lang = extract_yaml_scalar(header, ['Ngôn ngữ', 'lang']).lower()
+    out_name = 'index.en.md' if lang == 'en' else 'index.md'
+    out_path = dest_bundle / out_name
     out_path.write_text('\n'.join(hugo_fm_lines) + '\n\n' + body.lstrip(), encoding='utf-8')
     return out_path
 

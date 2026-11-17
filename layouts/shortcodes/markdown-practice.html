@@ -1,31 +1,39 @@
 {{- $id := printf "practice-%s-%d" .Page.File.UniqueID .Ordinal -}}
+{{- $isEn := eq .Page.Lang "en" -}}
 {{- $script := resources.Get "js/markdown-practice.js" | minify | fingerprint -}}
 {{- $style := resources.Get "css/markdown-practice.css" | minify | fingerprint -}}
 <link rel="stylesheet" href="{{ $style.RelPermalink }}">
-<section class="md-practice" data-markdown-practice aria-labelledby="{{ $id }}-title">
-  <h3 id="{{ $id }}-title">Thực hành ngay</h3>
-  <p>{{ .Get "task" }}</p>
-  <p class="md-practice-note">Sửa nội dung bên dưới để xem kết quả. Nội dung chỉ ở trong trang này, không được gửi đi hoặc tự lưu; tải lại trang sẽ mất phần bạn sửa.</p>
+<section class="md-practice" data-markdown-practice data-lang="{{ .Page.Lang }}" aria-labelledby="{{ $id }}-title">
+  <div class="md-practice-head">
+    <div class="md-practice-head-row">
+      <h3 id="{{ $id }}-title">{{ if $isEn }}Practice Now{{ else }}Thực hành ngay{{ end }}</h3>
+      <div class="md-practice-actions">
+        <button type="button" class="md-practice-btn" data-practice-reset hidden>{{ if $isEn }}Reset{{ else }}Làm lại{{ end }}</button>
+        <button type="button" class="md-practice-btn md-practice-btn-primary" data-practice-download hidden>{{ if $isEn }}Download .md{{ else }}Tải tệp .md{{ end }}</button>
+      </div>
+    </div>
+    <p class="md-practice-task">{{ .Get "task" }}</p>
+  </div>
+
   <div class="md-practice-grid">
-    <div>
-      <label class="md-practice-label" for="{{ $id }}-input">Markdown của bạn</label>
+    <div class="md-practice-pane">
+      <label class="md-practice-label" for="{{ $id }}-input">{{ if $isEn }}Markdown Input{{ else }}Markdown của bạn{{ end }}</label>
       <textarea id="{{ $id }}-input" rows="12" maxlength="12000" spellcheck="false" data-practice-input>{{ .Inner | strings.TrimSpace }}</textarea>
     </div>
-    <div>
-      <div id="{{ $id }}-preview-label" class="md-practice-label">Bản xem trước</div>
+    <div class="md-practice-pane">
+      <div id="{{ $id }}-preview-label" class="md-practice-label">{{ if $isEn }}Live Preview{{ else }}Bản xem trước{{ end }}</div>
       <div class="md-practice-preview" role="region" aria-labelledby="{{ $id }}-preview-label" tabindex="0" data-practice-preview></div>
     </div>
   </div>
-  <div class="md-practice-actions">
-    <button type="button" data-practice-reset hidden>Làm lại</button>
-    <button type="button" data-practice-download hidden>Tải tệp .md</button>
+
+  <div class="md-practice-foot">
+    <details class="md-practice-hint">
+      <summary>{{ if $isEn }}Show hint{{ else }}Xem gợi ý{{ end }}</summary>
+      <p>{{ .Get "hint" }}</p>
+    </details>
+    <p class="md-practice-note">{{ if $isEn }}Runs locally in your browser (nothing is uploaded or auto-saved). Supports headings, paragraphs, lists, checklists, tables, blockquotes, code, emphasis, links, and local site images.{{ else }}Chạy trực tiếp trên trình duyệt (không gửi lên máy chủ hoặc tự lưu). Hỗ trợ tiêu đề, đoạn văn, danh sách, checklist, bảng, trích dẫn, mã, nhấn mạnh, liên kết và ảnh cùng website.{{ end }}</p>
+    <noscript><p class="md-practice-note">{{ if $isEn }}Enable JavaScript to edit and preview here.{{ else }}Bật JavaScript để sửa và xem trước tại đây.{{ end }}</p></noscript>
+    <p class="md-practice-status" role="status" aria-live="polite" data-practice-status></p>
   </div>
-  <details>
-    <summary>Xem gợi ý</summary>
-    <p>{{ .Get "hint" }}</p>
-  </details>
-  <p class="md-practice-note">Bản xem trước hỗ trợ tiêu đề, đoạn văn, danh sách một cấp, trích dẫn, in đậm/nghiêng, mã và liên kết. Ảnh chỉ hiển thị từ cùng website. HTML, YAML và cú pháp mở rộng không được xử lý như Hugo.</p>
-  <noscript><p>Bật JavaScript để sửa và xem trước tại đây. Bạn vẫn có thể sao chép ví dụ để làm trong trình soạn thảo.</p></noscript>
-  <p class="md-practice-status" role="status" aria-live="polite" data-practice-status></p>
 </section>
 <script src="{{ $script.RelPermalink }}" defer></script>
