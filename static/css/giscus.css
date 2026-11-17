@@ -1,0 +1,60 @@
+/* Custom Giscus theme matching Dyn's Serein/Alabaster blog palette (Light & Dark) */
+main {
+  --color-prettylights-syntax-comment: #5c5852;
+  --color-prettylights-syntax-constant: #914854;
+  --color-btn-text: #3d3a36;
+  --color-btn-bg: #edeae4;
+  --color-btn-border: #e3dfd7;
+  --color-btn-hover-bg: #e3dfd7;
+  --color-btn-hover-border: #914854;
+  --color-btn-primary-text: #ffffff;
+  --color-btn-primary-bg: #914854;
+  --color-btn-primary-border: #914854;
+  --color-btn-primary-hover-bg: #7a3b45;
+  --color-btn-primary-hover-border: #7a3b45;
+  --color-fg-default: #3d3a36;
+  --color-fg-muted: #5c5852;
+  --color-fg-subtle: #5c5852;
+  --color-canvas-default: #f6f4f0;
+  --color-canvas-overlay: #f6f4f0;
+  --color-canvas-inset: #edeae4;
+  --color-canvas-subtle: #edeae4;
+  --color-border-default: #e3dfd7;
+  --color-border-muted: #e3dfd7;
+  --color-neutral-muted: rgba(145, 72, 84, 0.12);
+  --color-accent-fg: #914854;
+  --color-accent-emphasis: #914854;
+  --color-accent-muted: rgba(145, 72, 84, 0.25);
+  --color-accent-subtle: rgba(145, 72, 84, 0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+  main {
+    --color-prettylights-syntax-comment: #a39e95;
+    --color-prettylights-syntax-constant: #c9848f;
+    --color-btn-text: #c7c3ba;
+    --color-btn-bg: #21201e;
+    --color-btn-border: #2b2926;
+    --color-btn-hover-bg: #2b2926;
+    --color-btn-hover-border: #c9848f;
+    --color-btn-primary-text: #191817;
+    --color-btn-primary-bg: #c9848f;
+    --color-btn-primary-border: #c9848f;
+    --color-btn-primary-hover-bg: #d69ba5;
+    --color-btn-primary-hover-border: #d69ba5;
+    --color-fg-default: #c7c3ba;
+    --color-fg-muted: #a39e95;
+    --color-fg-subtle: #a39e95;
+    --color-canvas-default: #191817;
+    --color-canvas-overlay: #191817;
+    --color-canvas-inset: #21201e;
+    --color-canvas-subtle: #21201e;
+    --color-border-default: #2b2926;
+    --color-border-muted: #2b2926;
+    --color-neutral-muted: rgba(201, 132, 143, 0.15);
+    --color-accent-fg: #c9848f;
+    --color-accent-emphasis: #c9848f;
+    --color-accent-muted: rgba(201, 132, 143, 0.3);
+    --color-accent-subtle: rgba(201, 132, 143, 0.12);
+  }
+}
