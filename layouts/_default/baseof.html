@@ -26,7 +26,15 @@
                 {{ range $page.AllTranslations }}
                   {{ if eq .Lang $home.Lang }}{{ $href = .RelPermalink }}{{ end }}
                 {{ end }}
-            <li><a class="lang-btn" href="{{ $href }}" lang="{{ $home.Language.Lang }}" hreflang="{{ $home.Language.Lang }}" data-language-switch="{{ $home.Lang }}" title="{{ $home.Language.LanguageName }}" aria-label="{{ $home.Language.LanguageName }}"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg></a></li>
+            <li>
+              <a class="lang-btn" href="{{ $href }}" lang="{{ $home.Language.Lang }}" hreflang="{{ $home.Language.Lang }}" data-language-switch="{{ $home.Lang }}" title="{{ $home.Language.LanguageName }}" aria-label="{{ $home.Language.LanguageName }}">
+                {{- if eq $home.Lang "vi" -}}
+                <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#DA251D"/><polygon points="12,6.2 13.4,10.3 17.7,10.3 14.2,12.8 15.5,16.9 12,14.4 8.5,16.9 9.8,12.8 6.3,10.3 10.6,10.3" fill="#FFCD00"/></svg>
+                {{- else -}}
+                <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><clipPath id="gb-c"><circle cx="12" cy="12" r="10"/></clipPath><g clip-path="url(#gb-c)"><rect width="24" height="24" fill="#012169"/><path d="M2 2l20 20M22 2L2 22" stroke="#FFF" stroke-width="3.6"/><path d="M2 2l20 20M22 2L2 22" stroke="#C8102E" stroke-width="1.8"/><path d="M12 2v20M2 12h20" stroke="#FFF" stroke-width="5.2"/><path d="M12 2v20M2 12h20" stroke="#C8102E" stroke-width="3"/></g></svg>
+                {{- end -}}
+              </a>
+            </li>
               {{ end }}
             {{ end }}
           </ul>
