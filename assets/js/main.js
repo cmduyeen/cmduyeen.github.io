@@ -185,4 +185,16 @@
     );
     headings.forEach((h) => observer.observe(h));
   }
+
+  const backToTopBtn = document.getElementById("back-to-top");
+  if (backToTopBtn) {
+    const toggleBackToTop = () => {
+      backToTopBtn.classList.toggle("is-visible", window.scrollY > 320);
+    };
+    window.addEventListener("scroll", toggleBackToTop, { passive: true });
+    toggleBackToTop();
+    backToTopBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
 })();
