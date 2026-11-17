@@ -4,18 +4,24 @@ date: "2026-11-17"
 author: "Dyn"
 slug: "viet-bang-markdown-01-bat-dau"
 category: "Viết bằng Markdown"
-description: "Markdown là gì? Tạo tệp .md đầu tiên, viết tiếng Việt bằng UTF-8 và thử tiêu đề, đoạn văn, danh sách qua một ví dụ ngắn."
-tags: ["markdown", "viet-bang-markdown"]
+description: "Markdown là gì? Hướng dẫn tạo tệp .md đầu tiên bằng UTF-8, viết tiếng Việt có dấu và nắm nhanh bảng cú pháp cơ bản để ghi chú hoặc viết blog."
+tags: ["markdown", "viet-bang-markdown", "huong-dan-markdown"]
 draft: false
 ---
 
 *Viết bằng Markdown · Phần 1/6*
 
-Markdown là cách định dạng văn bản bằng các ký hiệu đơn giản như `#` cho tiêu đề hoặc `-` cho danh sách. Bạn có thể bắt đầu bằng một tệp `.md`, chưa cần cài plugin hay chọn theme.
+Markdown là ngôn ngữ đánh dấu nhẹ dùng các ký hiệu văn bản thuần như `#` cho tiêu đề hoặc `-` cho danh sách để định dạng tài liệu. Bạn chỉ cần một tệp `.md` và trình soạn thảo bất kỳ (Notepad, VS Code, Obsidian) để bắt đầu, không phụ thuộc phần mềm trả phí hay định dạng đóng.
+
+## Vì sao nên viết bằng Markdown?
+
+Tệp Markdown lưu dưới dạng văn bản thuần nên mở được trên mọi hệ điều hành, kể cả sau nhiều năm. Khi không cần định dạng phức tạp như Word, bạn tập trung vào cấu trúc ý thay vì chỉnh phông chữ hay căn lề thủ công.
+
+Nhiều công cụ như Obsidian, GitHub, Notion và các trình tạo trang tĩnh như Hugo đều đọc trực tiếp tệp `.md`.
 
 ## Tạo tệp Markdown đầu tiên
 
-Mở trình soạn thảo văn bản, tạo tệp `bai-dau-tien.md` và lưu bằng UTF-8. Gõ tiếng Việt bình thường:
+Mở trình soạn thảo văn bản, tạo tệp `bai-dau-tien.md` và chọn bảng mã **UTF-8**. Gõ tiếng Việt có dấu bình thường:
 
 ```markdown
 # Một buổi sáng ít phân tâm
@@ -29,23 +35,28 @@ Hôm nay tôi dành 25 phút để viết trước khi mở mạng xã hội.
 - Viết một ý cho rõ.
 ```
 
-Đây là nội dung minh họa. Dấu `#` đánh dấu tiêu đề cấp một; `##` đánh dấu mục bên trong. Dòng trống tách đoạn văn. Dấu `-` mở một mục danh sách.
+Trong ví dụ trên, `#` tạo tiêu đề chính, `##` tạo mục con, dòng trống tách đoạn văn và `-` mở từng mục danh sách.
 
-## Xem kết quả
+## Bảng tóm tắt cú pháp hay dùng
 
-Nếu trình soạn thảo có chế độ xem trước Markdown, mở chế độ đó để đối chiếu cú pháp với phần hiển thị. Tiêu đề sẽ có hình thức khác đoạn văn và các dòng bắt đầu bằng `-` trở thành danh sách.
+| Mục đích | Cú pháp Markdown | Kết quả |
+| --- | --- | --- |
+| Tiêu đề mục | `## Tiêu đề` | Tiêu đề cấp 2 |
+| In đậm | `**chữ đậm**` | **chữ đậm** |
+| In nghiêng | `*chữ nghiêng*` | *chữ nghiêng* |
+| Danh sách | `- Mục một` | Gạch đầu dòng |
+| Mã ngắn | `` `lenh` `` | `lenh` |
+| Liên kết | `[nhãn](https://...)` | Liên kết bấm được |
 
-Trong trình soạn thảo văn bản thuần, bạn vẫn thấy các ký hiệu. Nội dung không mất đi. Markdown giữ phần chữ dễ đọc ngay trong tệp nguồn.
+## Lỗi thường gặp khi mới bắt đầu
 
-## Viết tiếng Việt có cần bỏ dấu không?
-
-Không. Giữ dấu trong nội dung và tiêu đề; lưu tệp bằng UTF-8. Tên không dấu như `bai-dau-tien.md` chỉ là lựa chọn giúp thao tác với đường dẫn thuận tiện hơn.
-
-Nếu lưu bằng trình soạn thảo tự thêm phần mở rộng `.txt`, kiểm tra để tên không thành `bai-dau-tien.md.txt`.
+- **Lưu nhầm thành `.md.txt`**: Trên Windows, Notepad đôi khi tự thêm `.txt` phía sau. Khi lưu, chọn *Save as type: All Files* để giữ đúng đuôi `.md`.
+- **Lỗi dấu tiếng Việt**: Nếu mở lại thấy ký tự lạ, kiểm tra lại trình soạn thảo đã chọn mã hóa **UTF-8** (không phải ANSI).
+- **Quên khoảng trắng sau `#` hoặc `-`**: `#Tiêu đề` không tạo thành tiêu đề; cần viết `# Tiêu đề`.
 
 ## Thử ngay
 
-Viết một tiêu đề, hai đoạn ngắn và ba việc cần làm. Đóng rồi mở lại tệp để kiểm tra dấu tiếng Việt. Bạn đã có bản Markdown đầu tiên.
+Tạo một tệp `.md`, viết một tiêu đề, hai đoạn ngắn và ba việc cần làm. Đóng rồi mở lại tệp để kiểm tra dấu tiếng Việt.
 
 {{< markdown-practice task="Đổi tiêu đề thành việc bạn muốn viết hôm nay. Thêm một đoạn văn và danh sách ba việc." hint="Dùng # rồi một khoảng trắng cho tiêu đề. Tách đoạn bằng dòng trống; mỗi việc bắt đầu bằng - rồi một khoảng trắng." >}}
 # Ghi chú đầu tiên
@@ -60,11 +71,11 @@ Nguồn: [Bảng cú pháp CommonMark](https://commonmark.org/help/).
 
 ---
 
-**Trong series:**
+**Trong series Viết bằng Markdown:**
 
-- Phần 01: Markdown là gì và cách tạo tệp đầu tiên — bạn đang đọc.
-- Phần 02: Cách viết tiêu đề và đoạn văn — sắp đăng.
-- Phần 03: Danh sách, trích dẫn và khối mã — sắp đăng.
-- Phần 04: Cách chèn liên kết và ảnh — sắp đăng.
-- Phần 05: Mẫu bài viết và YAML cho blog — sắp đăng.
-- Phần 06: Xem trước và đăng bài lên Hugo — sắp đăng.
+- **Phần 01: Markdown là gì và cách tạo tệp đầu tiên** *(đang đọc)*
+- [Phần 02: Cách viết tiêu đề và đoạn văn](/posts/viet-bang-markdown-02-tieu-de-doan-van/)
+- [Phần 03: Danh sách, trích dẫn và khối mã](/posts/viet-bang-markdown-03-danh-sach-khoi-ma/)
+- [Phần 04: Cách chèn liên kết và ảnh](/posts/viet-bang-markdown-04-lien-ket-anh/)
+- [Phần 05: Mẫu bài viết và YAML cho blog](/posts/viet-bang-markdown-05-mau-bai-viet/)
+- [Phần 06: Xem trước và đăng bài lên Hugo](/posts/viet-bang-markdown-06-xuat-ban-hugo/)

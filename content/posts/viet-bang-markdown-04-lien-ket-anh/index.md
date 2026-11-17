@@ -4,50 +4,49 @@ date: "2026-11-17"
 author: "Dyn"
 slug: "viet-bang-markdown-04-lien-ket-anh"
 category: "Viết bằng Markdown"
-description: "Cách chèn link và ảnh trong Markdown: đặt nhãn rõ nghĩa, viết mô tả ảnh và kiểm tra đường dẫn để tránh lỗi khi đưa bài lên blog."
+description: "Cách chèn liên kết, anchor link và ảnh trong Markdown: đặt nhãn rõ nghĩa, viết alt text chuẩn SEO/accessibility và tránh lỗi đường dẫn trên blog."
 tags: ["markdown", "viet-bang-markdown"]
 draft: false
 ---
 
 *Viết bằng Markdown · Phần 4/6*
 
-Chèn liên kết bằng `[nhãn](địa-chỉ)` và ảnh bằng `![mô tả](đường-dẫn-ảnh)`. Nhãn liên kết nên nói đích đến; mô tả ảnh nên nói ảnh thể hiện điều gì.
+Chèn liên kết bằng `[nhãn](địa-chỉ)` và chèn ảnh bằng `![mô tả ảnh](đường-dẫn-ảnh)`. Nhãn liên kết cần nói rõ đích đến; mô tả ảnh (alt text) cần diễn tả nội dung ảnh để hỗ trợ trình đọc màn hình và công cụ tìm kiếm.
 
-## Đặt tên cho liên kết
+## Đặt tên liên kết và dùng đường dẫn nội bộ
 
 ```markdown
 Đọc [bảng cú pháp Markdown](https://commonmark.org/help/).
 ```
 
-Nhãn “bảng cú pháp Markdown” rõ nghĩa hơn “bấm vào đây”. Người đọc lướt vẫn hiểu họ sẽ mở tài liệu nào.
+Nhãn “bảng cú pháp Markdown” giúp người đọc lướt biết ngay trang sắp mở, tốt hơn hẳn các nhãn chung chung như “bấm vào đây” hay “xem thêm”.
 
-Với bài đã đăng trên cùng website, có thể dùng đường dẫn từ gốc:
+Các kiểu liên kết thường dùng trên blog:
+
+- **Liên kết ngoài**: dùng địa chỉ đầy đủ `https://...`.
+- **Liên kết nội bộ giữa các bài**: dùng đường dẫn từ gốc website, ví dụ `[Phần 1: Markdown là gì?](/posts/viet-bang-markdown-01-bat-dau/)`.
+- **Liên kết tới mục trong cùng bài (anchor link)**: dùng `[Tên mục](#ten-muc)` với chữ thường, không dấu và gạch nối.
+- **Liên kết có chú thích khi rê chuột**: thêm tiêu đề trong ngoặc kép `[nhãn](https://... "Ghi chú ngắn")`.
+
+## Chèn ảnh và viết mô tả ảnh (alt text)
 
 ```markdown
-[Tên bài](/posts/slug-cua-bai/)
+![Giao diện xem trước Markdown trên blog Hugo](xem-truoc-markdown.png)
 ```
 
-Đây là mẫu đường dẫn, cần thay bằng URL có thật. Đường dẫn website không nhất thiết mở được tệp tương ứng trong Obsidian.
+Chỉ thêm ảnh khi ảnh giúp minh họa thao tác hoặc sơ đồ khó diễn đạt bằng chữ. Mô tả trong `[]` (alt text) sẽ hiển thị khi ảnh tải lỗi và được công cụ tìm kiếm dùng để hiểu ngữ cảnh ảnh, nên tránh đặt tên chung chung như `ảnh 1` hay `screenshot.png`.
 
-## Thêm ảnh khi ảnh giúp giải thích
+Trong quy trình blog Dyn, bạn có thể chèn ảnh tương đối nằm cùng thư mục hoặc trong `Tệp đính kèm/` của Obsidian; công cụ xuất bản sẽ tự sao chép ảnh vào gói bài Hugo.
 
-```markdown
-![Bản xem trước của ghi chú đầu tiên](ghi-chu-dau-tien.png)
-```
+## Tránh đường dẫn chỉ chạy trên máy cá nhân
 
-Đây là ví dụ cú pháp; bạn cần có tệp ảnh thật trước khi dùng. Tránh mô tả chung chung như “ảnh 1”. Không bắt buộc thêm ảnh nếu câu chữ đã giải thích đủ.
+Không chèn đường dẫn ổ đĩa cục bộ như `D:\Brain2nd\...` vào bài viết công khai vì trình duyệt của người đọc không thể truy cập tệp trên máy bạn.
 
-Trong quy trình blog Dyn, công cụ xuất bản có thể tìm ảnh tương đối trong thư mục bài hoặc `Tệp đính kèm/`, rồi sao chép vào gói bài Hugo. Đây là hành vi của công cụ riêng, không phải mọi hệ thống Markdown.
-
-## Tránh đường dẫn chỉ chạy trên máy mình
-
-Không dùng đường dẫn ổ đĩa như `D:\Brain2nd\...` cho nội dung công khai. Người đọc website không truy cập được tệp trên máy bạn.
-
-Tên ảnh nên ngắn, không dấu, dùng gạch nối và tránh trùng tên. Xem trước để kiểm tra ảnh và mở từng liên kết trước khi đăng.
+Đặt tên tệp ảnh ngắn, chữ thường không dấu, nối bằng dấu gạch nối (ví dụ `bang-cu-phap-markdown.png`) và luôn mở bản xem trước Hugo để kiểm tra ảnh hiển thị trước khi xuất bản.
 
 ## Thử ngay
 
-Thêm một liên kết nguồn vào ghi chú. Nếu cần ảnh, chuẩn bị ảnh thật và mô tả rõ nội dung. Kiểm tra lại ở bản xem trước Hugo.
+Đổi nhãn liên kết và mô tả ảnh trong khung bên dưới cho rõ nghĩa, đúng nội dung hiển thị.
 
 {{< markdown-practice task="Đổi nhãn liên kết thành tên tài liệu rõ nghĩa. Thay mô tả ảnh bằng nội dung ảnh thể hiện." hint="Giữ URL trong ngoặc tròn. Thay chữ trong ngoặc vuông; ảnh có dấu ! phía trước. Ví dụ dùng favicon có sẵn để không cần tải ảnh lên." >}}
 [Bấm vào đây](https://commonmark.org/help/)
@@ -59,11 +58,11 @@ Nguồn cú pháp: [CommonMark: liên kết và ảnh](https://commonmark.org/he
 
 ---
 
-**Trong series:**
+**Trong series Viết bằng Markdown:**
 
-- Phần 01: Markdown là gì và cách tạo tệp đầu tiên.
-- Phần 02: Cách viết tiêu đề và đoạn văn.
-- Phần 03: Danh sách, trích dẫn và khối mã.
-- Phần 04: Cách chèn liên kết và ảnh — bạn đang đọc.
-- Phần 05: Mẫu bài viết và YAML cho blog — sắp đăng.
-- Phần 06: Xem trước và đăng bài lên Hugo — sắp đăng.
+- [Phần 01: Markdown là gì và cách tạo tệp đầu tiên](/posts/viet-bang-markdown-01-bat-dau/)
+- [Phần 02: Cách viết tiêu đề và đoạn văn](/posts/viet-bang-markdown-02-tieu-de-doan-van/)
+- [Phần 03: Danh sách, trích dẫn và khối mã](/posts/viet-bang-markdown-03-danh-sach-khoi-ma/)
+- **Phần 04: Cách chèn liên kết và ảnh** *(đang đọc)*
+- [Phần 05: Mẫu bài viết và YAML cho blog](/posts/viet-bang-markdown-05-mau-bai-viet/)
+- [Phần 06: Xem trước và đăng bài lên Hugo](/posts/viet-bang-markdown-06-xuat-ban-hugo/)

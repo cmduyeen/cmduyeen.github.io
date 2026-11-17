@@ -4,48 +4,49 @@ date: "2026-11-17"
 author: "Dyn"
 slug: "viet-bang-markdown-03-danh-sach-khoi-ma"
 category: "Viết bằng Markdown"
-description: "Viết danh sách, trích dẫn và khối mã Markdown bằng ví dụ sao chép được. Phân biệt các ý ngang hàng với các bước phải làm theo thứ tự."
+description: "Hướng dẫn viết danh sách dấu đầu dòng, danh sách bước, checklist, trích dẫn và khối mã có tô màu cú pháp trong Markdown."
 tags: ["markdown", "viet-bang-markdown"]
 draft: false
 ---
 
 *Viết bằng Markdown · Phần 3/6*
 
-Dùng `-` để liệt kê, số thứ tự để hướng dẫn từng bước, `>` để trích dẫn và backtick để đánh dấu mã. Chọn theo việc người đọc cần làm.
+Dùng `-` cho các ý ngang hàng, số thứ tự `1.` cho hướng dẫn từng bước, `>` cho trích dẫn và dấu backtick (`` ` ``) để đánh dấu mã hoặc lệnh Terminal.
 
-## Danh sách ý và danh sách bước
+## Danh sách ý, danh sách bước và checklist
 
-Các mục ngang hàng dùng dấu `-`:
+Các mục ngang hàng dùng dấu `-` (hoặc `*`), các bước theo thứ tự dùng số `1.`, `2.`, `3.`:
 
 ```markdown
 Đồ cần chuẩn bị:
 
 - Một trình soạn thảo.
 - Một tệp Markdown.
-- Một ý muốn viết.
-```
 
-Các bước cần làm theo thứ tự dùng số:
+Các bước thực hiện:
 
-```markdown
 1. Tạo tệp `bai-viet.md`.
 2. Viết nội dung.
+   - Kiểm tra dấu tiếng Việt.
 3. Xem trước và sửa lỗi.
 ```
 
-Để dòng trống trước danh sách. Với hướng dẫn ngắn, danh sách một cấp thường đủ; quá nhiều cấp khiến người đọc khó theo dõi.
+Để tạo mục con lồng bên trong, thụt đầu dòng **2 hoặc 4 dấu cách** trước `-`. Luôn chừa một dòng trống trước khi bắt đầu danh sách để bộ phân tích Markdown nhận diện đúng.
 
-## Trích dẫn vẫn cần nguồn
+Nếu cần danh sách kiểm tra (task list) trong Obsidian, GitHub hoặc Hugo, dùng `- [ ]` cho việc chưa làm và `- [x]` cho việc đã xong.
+
+## Trích dẫn đúng ngữ cảnh
 
 ```markdown
 > Viết một ý cho rõ rồi mới chuyển sang ý khác.
 ```
 
-Dấu `>` tạo khối trích dẫn. Câu trên là ví dụ minh họa. Khi dẫn lời người khác, ghi tác giả và liên kết đến nguồn; định dạng trích dẫn không thay thế việc dẫn nguồn.
+Dấu `>` tạo khối trích dẫn; nhiều đoạn liên tiếp có thể đặt dấu `>` ở đầu mỗi dòng, kể cả dòng trống ở giữa. Khi dẫn lời hoặc số liệu từ người khác, luôn ghi rõ tên tác giả và đường dẫn nguồn bên dưới.
 
-## Khi nào dùng khối mã?
+## Mã ngắn và khối mã nhiều dòng
 
-Dùng backtick đơn cho tên tệp hoặc mã ngắn như `bai-viet.md`. Với nhiều dòng, mở và đóng bằng ba backtick. Thêm tên ngôn ngữ sau hàng mở:
+- **Mã ngắn (inline code)**: bọc tên tệp, lệnh hoặc phím tắt giữa một cặp backtick đơn, ví dụ `` `bai-viet.md` ``.
+- **Khối mã (code block)**: mở và đóng bằng ba dấu backtick (```` ``` ````). Ghi thêm tên ngôn ngữ ngay sau dòng mở (`markdown`, `powershell`, `python`, `yaml`) để website tô màu cú pháp chính xác:
 
 ````text
 ```markdown
@@ -56,11 +57,11 @@ Dùng backtick đơn cho tên tệp hoặc mã ngắn như `bai-viet.md`. Với 
 ```
 ````
 
-Trong khối mã, các ký hiệu được hiển thị để sao chép, thay vì trở thành tiêu đề hoặc danh sách. Quên hàng backtick đóng có thể khiến phần còn lại của bài bị hiển thị như mã.
+Nếu bên trong khối mã có sẵn ba dấu backtick (như ví dụ hướng dẫn Markdown ở trên), hãy dùng **bốn dấu backtick** (````` ```` `````) để bao ngoài. Quên dòng backtick đóng sẽ khiến toàn bộ phần sau của bài biến thành khối mã.
 
 ## Thử ngay
 
-Viết một danh sách ba bước. Sau đó đặt chính danh sách ấy vào khối mã. Xem trước để phân biệt cú pháp với kết quả.
+Viết một danh sách ba bước kiểm tra bài viết, lồng một ý phụ và đặt ví dụ đó vào khối mã có khai báo ngôn ngữ `markdown`.
 
 {{< markdown-practice task="Chuyển ba dòng đầu thành danh sách có số. Thêm một trích dẫn và đặt một ví dụ Markdown trong khối mã." hint="Dùng 1. 2. 3. cho các bước, > cho trích dẫn. Khối mã mở và đóng bằng ba dấu backtick; thêm markdown ở hàng mở." >}}
 Tạo tệp.
@@ -78,11 +79,11 @@ Nguồn: [Cú pháp danh sách, trích dẫn và mã của CommonMark](https://c
 
 ---
 
-**Trong series:**
+**Trong series Viết bằng Markdown:**
 
-- Phần 01: Markdown là gì và cách tạo tệp đầu tiên.
-- Phần 02: Cách viết tiêu đề và đoạn văn.
-- Phần 03: Danh sách, trích dẫn và khối mã — bạn đang đọc.
-- Phần 04: Cách chèn liên kết và ảnh — sắp đăng.
-- Phần 05: Mẫu bài viết và YAML cho blog — sắp đăng.
-- Phần 06: Xem trước và đăng bài lên Hugo — sắp đăng.
+- [Phần 01: Markdown là gì và cách tạo tệp đầu tiên](/posts/viet-bang-markdown-01-bat-dau/)
+- [Phần 02: Cách viết tiêu đề và đoạn văn](/posts/viet-bang-markdown-02-tieu-de-doan-van/)
+- **Phần 03: Danh sách, trích dẫn và khối mã** *(đang đọc)*
+- [Phần 04: Cách chèn liên kết và ảnh](/posts/viet-bang-markdown-04-lien-ket-anh/)
+- [Phần 05: Mẫu bài viết và YAML cho blog](/posts/viet-bang-markdown-05-mau-bai-viet/)
+- [Phần 06: Xem trước và đăng bài lên Hugo](/posts/viet-bang-markdown-06-xuat-ban-hugo/)
