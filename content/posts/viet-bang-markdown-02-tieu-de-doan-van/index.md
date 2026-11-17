@@ -3,13 +3,14 @@ title: "Viết bằng Markdown, Phần 02 - Cách viết tiêu đề và đoạn
 date: "2026-11-17"
 author: "Dyn"
 slug: "viet-bang-markdown-02-tieu-de-doan-van"
-category: "Viết bằng Markdown"
+category: "Markdown 101"
+series: "Markdown 101"
 description: "Cách viết tiêu đề H1–H6, tách đoạn văn, ngắt dòng đúng chuẩn và nhấn mạnh chữ trong Markdown để bài viết rõ ràng, dễ đọc trên blog."
 tags: ["markdown", "viet-bang-markdown"]
 draft: false
 ---
 
-*Viết bằng Markdown · Phần 2/6*
+*Markdown 101 · Phần 2/6*
 
 Dùng `#`, `##`, `###` để chia cấp tiêu đề và một dòng trống để tách đoạn văn trong Markdown. Bố cục rõ giúp cả người đọc lẫn công cụ tìm kiếm nắm nhanh mạch nội dung ngay khi lướt qua.
 
@@ -73,7 +74,7 @@ Nguồn: [Cú pháp tiêu đề và nhấn mạnh của CommonMark](https://comm
 
 ---
 
-**Trong series Viết bằng Markdown:**
+**Trong series Markdown 101:**
 
 - [Phần 01: Markdown là gì và cách tạo tệp đầu tiên](/posts/viet-bang-markdown-01-bat-dau/)
 - **Phần 02: Cách viết tiêu đề và đoạn văn** *(đang đọc)*

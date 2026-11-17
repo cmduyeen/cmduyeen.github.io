@@ -3,13 +3,14 @@ title: "Viết bằng Markdown, Phần 04 - Cách chèn liên kết và ảnh"
 date: "2026-11-17"
 author: "Dyn"
 slug: "viet-bang-markdown-04-lien-ket-anh"
-category: "Viết bằng Markdown"
+category: "Markdown 101"
+series: "Markdown 101"
 description: "Cách chèn liên kết, anchor link và ảnh trong Markdown: đặt nhãn rõ nghĩa, viết alt text chuẩn SEO/accessibility và tránh lỗi đường dẫn trên blog."
 tags: ["markdown", "viet-bang-markdown"]
 draft: false
 ---
 
-*Viết bằng Markdown · Phần 4/6*
+*Markdown 101 · Phần 4/6*
 
 Chèn liên kết bằng `[nhãn](địa-chỉ)` và chèn ảnh bằng `![mô tả ảnh](đường-dẫn-ảnh)`. Nhãn liên kết cần nói rõ đích đến; mô tả ảnh (alt text) cần diễn tả nội dung ảnh để hỗ trợ trình đọc màn hình và công cụ tìm kiếm.
 
@@ -58,7 +59,7 @@ Nguồn cú pháp: [CommonMark: liên kết và ảnh](https://commonmark.org/he
 
 ---
 
-**Trong series Viết bằng Markdown:**
+**Trong series Markdown 101:**
 
 - [Phần 01: Markdown là gì và cách tạo tệp đầu tiên](/posts/viet-bang-markdown-01-bat-dau/)
 - [Phần 02: Cách viết tiêu đề và đoạn văn](/posts/viet-bang-markdown-02-tieu-de-doan-van/)

@@ -3,13 +3,14 @@ title: "Viết bằng Markdown, Phần 06 - Xem trước và đăng bài lên Hu
 date: "2026-11-17"
 author: "Dyn"
 slug: "viet-bang-markdown-06-xuat-ban-hugo"
-category: "Viết bằng Markdown"
+category: "Markdown 101"
+series: "Markdown 101"
 description: "Quy trình rà lỗi bản nháp Markdown, xem trước trên Hugo, xuất bản lên GitHub Pages và kiểm tra hiển thị, liên kết sau khi deploy."
 tags: ["markdown", "viet-bang-markdown", "hugo"]
 draft: false
 ---
 
-*Viết bằng Markdown · Phần 6/6*
+*Markdown 101 · Phần 6/6*
 
 Để đưa bản nháp Markdown từ Obsidian lên blog Hugo an toàn, hãy rà nội dung theo danh sách kiểm tra, xem trước cục bộ bằng `hugo server` rồi mới xuất bản và đối chiếu trên URL công khai. Các lệnh `blog` bên dưới thuộc bộ công cụ riêng của Dyn.
 
@@ -66,7 +67,7 @@ Nguồn nền tảng: [Hugo: xử lý nội dung Markdown](https://gohugo.io/con
 
 ---
 
-**Trong series Viết bằng Markdown:**
+**Trong series Markdown 101:**
 
 - [Phần 01: Markdown là gì và cách tạo tệp đầu tiên](/posts/viet-bang-markdown-01-bat-dau/)
 - [Phần 02: Cách viết tiêu đề và đoạn văn](/posts/viet-bang-markdown-02-tieu-de-doan-van/)

@@ -3,13 +3,14 @@ title: "Viết bằng Markdown, Phần 01 - Markdown là gì và cách tạo t�
 date: "2026-11-17"
 author: "Dyn"
 slug: "viet-bang-markdown-01-bat-dau"
-category: "Viết bằng Markdown"
+category: "Markdown 101"
+series: "Markdown 101"
 description: "Markdown là gì? Hướng dẫn tạo tệp .md đầu tiên bằng UTF-8, viết tiếng Việt có dấu và nắm nhanh bảng cú pháp cơ bản để ghi chú hoặc viết blog."
 tags: ["markdown", "viet-bang-markdown", "huong-dan-markdown"]
 draft: false
 ---
 
-*Viết bằng Markdown · Phần 1/6*
+*Markdown 101 · Phần 1/6*
 
 Markdown là ngôn ngữ đánh dấu nhẹ dùng các ký hiệu văn bản thuần như `#` cho tiêu đề hoặc `-` cho danh sách để định dạng tài liệu. Bạn chỉ cần một tệp `.md` và trình soạn thảo bất kỳ (Notepad, VS Code, Obsidian) để bắt đầu, không phụ thuộc phần mềm trả phí hay định dạng đóng.
 
@@ -71,7 +72,7 @@ Nguồn: [Bảng cú pháp CommonMark](https://commonmark.org/help/).
 
 ---
 
-**Trong series Viết bằng Markdown:**
+**Trong series Markdown 101:**
 
 - **Phần 01: Markdown là gì và cách tạo tệp đầu tiên** *(đang đọc)*
 - [Phần 02: Cách viết tiêu đề và đoạn văn](/posts/viet-bang-markdown-02-tieu-de-doan-van/)

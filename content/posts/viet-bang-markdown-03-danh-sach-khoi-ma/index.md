@@ -3,13 +3,14 @@ title: "Viết bằng Markdown, Phần 03 - Danh sách, trích dẫn và khối 
 date: "2026-11-17"
 author: "Dyn"
 slug: "viet-bang-markdown-03-danh-sach-khoi-ma"
-category: "Viết bằng Markdown"
+category: "Markdown 101"
+series: "Markdown 101"
 description: "Hướng dẫn viết danh sách dấu đầu dòng, danh sách bước, checklist, trích dẫn và khối mã có tô màu cú pháp trong Markdown."
 tags: ["markdown", "viet-bang-markdown"]
 draft: false
 ---
 
-*Viết bằng Markdown · Phần 3/6*
+*Markdown 101 · Phần 3/6*
 
 Dùng `-` cho các ý ngang hàng, số thứ tự `1.` cho hướng dẫn từng bước, `>` cho trích dẫn và dấu backtick (`` ` ``) để đánh dấu mã hoặc lệnh Terminal.
 
@@ -79,7 +80,7 @@ Nguồn: [Cú pháp danh sách, trích dẫn và mã của CommonMark](https://c
 
 ---
 
-**Trong series Viết bằng Markdown:**
+**Trong series Markdown 101:**
 
 - [Phần 01: Markdown là gì và cách tạo tệp đầu tiên](/posts/viet-bang-markdown-01-bat-dau/)
 - [Phần 02: Cách viết tiêu đề và đoạn văn](/posts/viet-bang-markdown-02-tieu-de-doan-van/)

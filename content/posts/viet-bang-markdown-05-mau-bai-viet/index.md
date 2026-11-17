@@ -3,13 +3,14 @@ title: "Viết bằng Markdown, Phần 05 - Mẫu bài viết và YAML cho blog"
 date: "2026-11-17"
 author: "Dyn"
 slug: "viet-bang-markdown-05-mau-bai-viet"
-category: "Viết bằng Markdown"
+category: "Markdown 101"
+series: "Markdown 101"
 description: "Cách dùng mẫu bài viết Markdown, viết khối YAML front matter cho Hugo, tối ưu mô tả (description) và đặt slug chuẩn URL không dấu."
 tags: ["markdown", "viet-bang-markdown"]
 draft: false
 ---
 
-*Viết bằng Markdown · Phần 5/6*
+*Markdown 101 · Phần 5/6*
 
 Một mẫu bài viết Markdown hiệu quả chỉ cần mở đầu trả lời thẳng vấn đề, các mục `##` hướng dẫn từng bước, ví dụ thực hành và khối YAML front matter ở đầu tệp để Hugo dựng trang đúng chuẩn.
 
@@ -83,7 +84,7 @@ Nguồn: [Hugo: định dạng nội dung và front matter](https://gohugo.io/co
 
 ---
 
-**Trong series Viết bằng Markdown:**
+**Trong series Markdown 101:**
 
 - [Phần 01: Markdown là gì và cách tạo tệp đầu tiên](/posts/viet-bang-markdown-01-bat-dau/)
 - [Phần 02: Cách viết tiêu đề và đoạn văn](/posts/viet-bang-markdown-02-tieu-de-doan-van/)
