@@ -1,15 +1,40 @@
 {{- $repos := site.Data.repos -}}
 {{- if $repos -}}
+  {{- $featuredNames := slice "lich-am-viet-nam" "pro-github-starter-kit" "pro-blog-starter-kit" "serein-theme" -}}
+  {{- $featured := slice -}}
+  {{- range $featuredNames -}}
+    {{- $target := . -}}
+    {{- range $repos -}}
+      {{- if eq .name $target -}}
+        {{- $featured = $featured | append . -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+
+  {{- with $featured -}}
+  <ul class="mention-grid about-featured">
+    {{- range . -}}
+    <li>
+      <a class="mention-card" href="{{ .url }}" target="_blank" rel="noopener noreferrer">
+        <span class="mention-title">{{ .name }}</span>
+        <span class="mention-summary">{{ .description | truncate 105 }}</span>
+      </a>
+    </li>
+    {{- end -}}
+  </ul>
+  {{- end -}}
+
   {{- $years := slice -}}
   {{- range $repos -}}
     {{- if not (in $years .year) -}}
       {{- $years = $years | append .year -}}
     {{- end -}}
   {{- end -}}
-  {{- range $idx, $y := $years -}}
+  <div class="about-archive">
+  {{- range $y := $years -}}
     {{- $group := where $repos "year" $y -}}
-    <details class="toc" {{ if eq $idx 0 }}open{{ end }}>
-      <summary>{{ $y }} ({{ len $group }})</summary>
+    <details class="toc">
+      <summary>{{ $y }} — {{ len $group }} repositories</summary>
       <ul class="writing-list">
         {{- range $group -}}
         <li>
@@ -22,4 +47,5 @@
       </ul>
     </details>
   {{- end -}}
+  </div>
 {{- end -}}

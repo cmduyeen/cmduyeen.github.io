@@ -467,6 +467,14 @@ main {
   list-style: none;
 }
 
+.about-featured {
+  margin-bottom: 1.25rem;
+}
+
+.about-archive .toc {
+  margin-block: 0.65rem;
+}
+
 .mention-card {
   display: flex;
   height: 100%;
