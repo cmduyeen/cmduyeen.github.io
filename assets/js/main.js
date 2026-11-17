@@ -197,4 +197,23 @@
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
   }
+
+  for (const pre of document.querySelectorAll(".article-content pre")) {
+    const code = pre.querySelector("code");
+    if (!code) continue;
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "code-copy-btn";
+    btn.textContent = "Copy";
+    btn.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(code.innerText);
+        btn.textContent = "Copied!";
+        setTimeout(() => {
+          btn.textContent = "Copy";
+        }, 1600);
+      } catch (_) {}
+    });
+    pre.append(btn);
+  }
 })();
