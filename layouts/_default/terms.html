@@ -2,9 +2,14 @@
   <header class="page-header">
     <h1>{{ .Title }}</h1>
   </header>
-  <ul class="term-list">
+  <ul class="writing-list">
     {{ range .Data.Terms.Alphabetical }}
-    <li><a href="{{ .Page.RelPermalink }}">{{ .Page.LinkTitle }}</a><span>{{ .Count }}</span></li>
+    <li>
+      <a class="writing-item" href="{{ .Page.RelPermalink }}">
+        <time>{{ .Count }}</time>
+        <span>#{{ .Page.LinkTitle }}</span>
+      </a>
+    </li>
     {{ end }}
   </ul>
 {{ end }}

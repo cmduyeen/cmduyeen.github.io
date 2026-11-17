@@ -3,7 +3,7 @@
     <p class="eyebrow">{{ T "tag" }}</p>
     <h1>{{ .Title }}</h1>
   </header>
-  <ul class="post-list">
+  <ul class="writing-list">
     {{ range .Pages.ByDate.Reverse }}
     {{ partial "post-list-item.html" . }}
     {{ end }}

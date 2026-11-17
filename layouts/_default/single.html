@@ -1,7 +1,13 @@
 {{ define "main" }}
   <article>
     <header class="article-header">
-      <p class="article-date"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02/01/2006" }}</time></p>
+      {{ if eq .Section "posts" }}
+      <p class="article-date">
+        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02/01/2006" }}</time>
+        <span aria-hidden="true">·</span>
+        <span>{{ .ReadingTime }} {{ T "minutes_read" }}</span>
+      </p>
+      {{ end }}
       <h1>{{ .Title }}</h1>
     </header>
     {{ with .TableOfContents }}
@@ -14,8 +20,8 @@
       {{ .Content }}
     </div>
     {{ with .GetTerms "tags" }}
-    <footer class="article-tags" aria-label="{{ T "post_tags" }}">
-      {{ range . }}<a href="{{ .RelPermalink }}">#{{ .LinkTitle }}</a>{{ end }}
+    <footer class="article-tags topic-pills" aria-label="{{ T "post_tags" }}">
+      {{ range . }}<a class="topic-pill" href="{{ .RelPermalink }}">#{{ .LinkTitle }}</a>{{ end }}
     </footer>
     {{ end }}
   </article>
