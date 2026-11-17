@@ -4,13 +4,12 @@ date: "2026-11-17"
 author: "Dyn"
 slug: "viet-bang-markdown-06-xuat-ban-hugo"
 category: "Markdown 101"
-series: "Markdown 101"
 description: "Quy trình rà lỗi bản nháp Markdown, xem trước trên Hugo, xuất bản lên GitHub Pages và kiểm tra hiển thị, liên kết sau khi deploy."
 tags: ["markdown", "viet-bang-markdown", "hugo"]
 draft: false
 ---
 
-*Markdown 101 · Phần 6/6*
+*Markdown 101 · Phần 6/10*
 
 Để đưa bản nháp Markdown từ Obsidian lên blog Hugo an toàn, hãy rà nội dung theo danh sách kiểm tra, xem trước cục bộ bằng `hugo server` rồi mới xuất bản và đối chiếu trên URL công khai. Các lệnh `blog` bên dưới thuộc bộ công cụ riêng của Dyn.
 
@@ -75,3 +74,7 @@ Nguồn nền tảng: [Hugo: xử lý nội dung Markdown](https://gohugo.io/con
 - [Phần 04: Cách chèn liên kết và ảnh](/posts/viet-bang-markdown-04-lien-ket-anh/)
 - [Phần 05: Mẫu bài viết và YAML cho blog](/posts/viet-bang-markdown-05-mau-bai-viet/)
 - **Phần 06: Xem trước và đăng bài lên Hugo** *(đang đọc)*
+- Phần 07: Tạo bảng và đường kẻ ngang — sắp đăng.
+- Phần 08: Checklist, chú thích chân trang và escape ký tự — sắp đăng.
+- Phần 09: Callout và Wikilink trong Obsidian — sắp đăng.
+- Phần 10: Bài tập tổng hợp viết bài hoàn chỉnh — sắp đăng.

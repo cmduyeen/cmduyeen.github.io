@@ -4,13 +4,12 @@ date: "2026-11-17"
 author: "Dyn"
 slug: "viet-bang-markdown-01-bat-dau"
 category: "Markdown 101"
-series: "Markdown 101"
 description: "Markdown là gì? Hướng dẫn tạo tệp .md đầu tiên bằng UTF-8, viết tiếng Việt có dấu và nắm nhanh bảng cú pháp cơ bản để ghi chú hoặc viết blog."
 tags: ["markdown", "viet-bang-markdown", "huong-dan-markdown"]
 draft: false
 ---
 
-*Markdown 101 · Phần 1/6*
+*Markdown 101 · Phần 1/10*
 
 Markdown là ngôn ngữ đánh dấu nhẹ dùng các ký hiệu văn bản thuần như `#` cho tiêu đề hoặc `-` cho danh sách để định dạng tài liệu. Bạn chỉ cần một tệp `.md` và trình soạn thảo bất kỳ (Notepad, VS Code, Obsidian) để bắt đầu, không phụ thuộc phần mềm trả phí hay định dạng đóng.
 
@@ -80,3 +79,7 @@ Nguồn: [Bảng cú pháp CommonMark](https://commonmark.org/help/).
 - [Phần 04: Cách chèn liên kết và ảnh](/posts/viet-bang-markdown-04-lien-ket-anh/)
 - [Phần 05: Mẫu bài viết và YAML cho blog](/posts/viet-bang-markdown-05-mau-bai-viet/)
 - [Phần 06: Xem trước và đăng bài lên Hugo](/posts/viet-bang-markdown-06-xuat-ban-hugo/)
+- Phần 07: Tạo bảng và đường kẻ ngang — sắp đăng.
+- Phần 08: Checklist, chú thích chân trang và escape ký tự — sắp đăng.
+- Phần 09: Callout và Wikilink trong Obsidian — sắp đăng.
+- Phần 10: Bài tập tổng hợp viết bài hoàn chỉnh — sắp đăng.

@@ -4,13 +4,12 @@ date: "2026-11-17"
 author: "Dyn"
 slug: "viet-bang-markdown-04-lien-ket-anh"
 category: "Markdown 101"
-series: "Markdown 101"
 description: "Cách chèn liên kết, anchor link và ảnh trong Markdown: đặt nhãn rõ nghĩa, viết alt text chuẩn SEO/accessibility và tránh lỗi đường dẫn trên blog."
 tags: ["markdown", "viet-bang-markdown"]
 draft: false
 ---
 
-*Markdown 101 · Phần 4/6*
+*Markdown 101 · Phần 4/10*
 
 Chèn liên kết bằng `[nhãn](địa-chỉ)` và chèn ảnh bằng `![mô tả ảnh](đường-dẫn-ảnh)`. Nhãn liên kết cần nói rõ đích đến; mô tả ảnh (alt text) cần diễn tả nội dung ảnh để hỗ trợ trình đọc màn hình và công cụ tìm kiếm.
 
@@ -67,3 +66,7 @@ Nguồn cú pháp: [CommonMark: liên kết và ảnh](https://commonmark.org/he
 - **Phần 04: Cách chèn liên kết và ảnh** *(đang đọc)*
 - [Phần 05: Mẫu bài viết và YAML cho blog](/posts/viet-bang-markdown-05-mau-bai-viet/)
 - [Phần 06: Xem trước và đăng bài lên Hugo](/posts/viet-bang-markdown-06-xuat-ban-hugo/)
+- Phần 07: Tạo bảng và đường kẻ ngang — sắp đăng.
+- Phần 08: Checklist, chú thích chân trang và escape ký tự — sắp đăng.
+- Phần 09: Callout và Wikilink trong Obsidian — sắp đăng.
+- Phần 10: Bài tập tổng hợp viết bài hoàn chỉnh — sắp đăng.

@@ -4,13 +4,12 @@ date: "2026-11-17"
 author: "Dyn"
 slug: "viet-bang-markdown-05-mau-bai-viet"
 category: "Markdown 101"
-series: "Markdown 101"
 description: "Cách dùng mẫu bài viết Markdown, viết khối YAML front matter cho Hugo, tối ưu mô tả (description) và đặt slug chuẩn URL không dấu."
 tags: ["markdown", "viet-bang-markdown"]
 draft: false
 ---
 
-*Markdown 101 · Phần 5/6*
+*Markdown 101 · Phần 5/10*
 
 Một mẫu bài viết Markdown hiệu quả chỉ cần mở đầu trả lời thẳng vấn đề, các mục `##` hướng dẫn từng bước, ví dụ thực hành và khối YAML front matter ở đầu tệp để Hugo dựng trang đúng chuẩn.
 
@@ -92,3 +91,7 @@ Nguồn: [Hugo: định dạng nội dung và front matter](https://gohugo.io/co
 - [Phần 04: Cách chèn liên kết và ảnh](/posts/viet-bang-markdown-04-lien-ket-anh/)
 - **Phần 05: Mẫu bài viết và YAML cho blog** *(đang đọc)*
 - [Phần 06: Xem trước và đăng bài lên Hugo](/posts/viet-bang-markdown-06-xuat-ban-hugo/)
+- Phần 07: Tạo bảng và đường kẻ ngang — sắp đăng.
+- Phần 08: Checklist, chú thích chân trang và escape ký tự — sắp đăng.
+- Phần 09: Callout và Wikilink trong Obsidian — sắp đăng.
+- Phần 10: Bài tập tổng hợp viết bài hoàn chỉnh — sắp đăng.
