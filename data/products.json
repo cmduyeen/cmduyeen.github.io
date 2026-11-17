@@ -1,0 +1,114 @@
+{
+  "vi": {
+    "sections": [
+      {
+        "heading": "Web Tools & Starter Kits",
+        "items": [
+          {
+            "name": "Pro GitHub Starter Kit",
+            "badge": "Web App · Miễn phí",
+            "description": "Tạo GitHub Profile README chuyên nghiệp trong 60 giây với 9 themes, 12 plugins và Live Preview Dark/Light.",
+            "url": "https://cmduyeen.github.io/pro-github-starter-kit/",
+            "cta": "Mở Web App →"
+          },
+          {
+            "name": "Pro Blog Starter Kit",
+            "badge": "Web App · Miễn phí",
+            "description": "Khởi tạo blog cá nhân Hugo hoặc Jekyll miễn phí trên GitHub Pages, xuất file cấu hình và workflow tự động.",
+            "url": "https://cmduyeen.github.io/pro-blog-starter-kit/",
+            "cta": "Mở Web App →"
+          },
+          {
+            "name": "Lịch Âm Việt Nam (.ics)",
+            "badge": "Calendar Feed · Miễn phí",
+            "description": "Lịch âm chuẩn Việt Nam (GMT+7) cho Google Calendar, Apple Calendar và Outlook — chỉ cần gắn link dùng luôn.",
+            "url": "https://github.com/cmduyeen/lich-am-viet-nam",
+            "cta": "Lấy Link Lịch →"
+          },
+          {
+            "name": "Serein & Pinkie Themes",
+            "badge": "Design Tokens · Miễn phí",
+            "description": "Hệ sinh thái bảng màu tối giản (Serein ấm dịu mắt & Pinkie pastel) cho VS Code, Neovim, Obsidian và Terminal.",
+            "url": "https://github.com/cmduyeen/serein-theme",
+            "cta": "Xem Themes →"
+          }
+        ]
+      },
+      {
+        "heading": "Ebook & Sản phẩm số hóa",
+        "items": [
+          {
+            "name": "Từ Obsidian đến GitHub Pages",
+            "badge": "Ebook Series · Đọc miễn phí",
+            "description": "Cẩm nang 3 phần hướng dẫn biến kho ghi chú Markdown trong Obsidian thành blog Hugo xuất bản tự động.",
+            "url": "/posts/obsidian-to-github-blog-01-publishable-vault/",
+            "cta": "Đọc ngay →"
+          },
+          {
+            "name": "Obsidian Kepano Vault VI",
+            "badge": "Digital Template · Sắp ra mắt",
+            "description": "Bộ khung vault Obsidian tiếng Việt chuẩn Kepano (Nhật ký, Ghi chú, Cơ sở dữ liệu .base và quy trình AI CLI).",
+            "url": "/about/",
+            "cta": "Tìm hiểu thêm →"
+          }
+        ]
+      }
+    ]
+  },
+  "en": {
+    "sections": [
+      {
+        "heading": "Web Tools & Starter Kits",
+        "items": [
+          {
+            "name": "Pro GitHub Starter Kit",
+            "badge": "Web App · Free",
+            "description": "Build a standout GitHub Profile README in 60 seconds with 9 themes, 12 plugins, and Dark/Light live preview.",
+            "url": "https://cmduyeen.github.io/pro-github-starter-kit/",
+            "cta": "Open App →"
+          },
+          {
+            "name": "Pro Blog Starter Kit",
+            "badge": "Web App · Free",
+            "description": "Scaffold a free Hugo or Jekyll personal blog on GitHub Pages with instant configs and deploy workflows.",
+            "url": "https://cmduyeen.github.io/pro-blog-starter-kit/",
+            "cta": "Open App →"
+          },
+          {
+            "name": "Vietnamese Lunar Calendar (.ics)",
+            "badge": "Calendar Feed · Free",
+            "description": "Accurate GMT+7 lunar dates for Google Calendar, Apple Calendar, and Outlook—just subscribe via URL.",
+            "url": "https://github.com/cmduyeen/lich-am-viet-nam",
+            "cta": "Get Feed →"
+          },
+          {
+            "name": "Serein & Pinkie Themes",
+            "badge": "Design Tokens · Free",
+            "description": "Minimalist color suites (warm Serein & pastel Pinkie) for VS Code, Neovim, Obsidian, and Terminal.",
+            "url": "https://github.com/cmduyeen/serein-theme",
+            "cta": "Explore Themes →"
+          }
+        ]
+      },
+      {
+        "heading": "Ebooks & Digital Products",
+        "items": [
+          {
+            "name": "From Obsidian to GitHub Pages",
+            "badge": "Ebook Series · Free",
+            "description": "A 3-part guide to turning your plain-text Obsidian vault into an automated Hugo blog on GitHub Pages.",
+            "url": "/en/posts/obsidian-to-github-blog-01-publishable-vault/",
+            "cta": "Read Now →"
+          },
+          {
+            "name": "Obsidian Kepano Vault VI",
+            "badge": "Digital Template · Coming Soon",
+            "description": "Vietnamese Obsidian starter vault following Kepano conventions with .base databases and AI CLI workflows.",
+            "url": "/en/about/",
+            "cta": "Learn More →"
+          }
+        ]
+      }
+    ]
+  }
+}

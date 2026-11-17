@@ -1,0 +1,18 @@
+{{- $lang := site.Language.Lang -}}
+{{- $catalog := index site.Data.products $lang -}}
+{{- range $catalog.sections -}}
+<h2>{{ .heading }}</h2>
+<ul class="mention-grid product-grid">
+  {{- range .items -}}
+  {{- $isExternal := hasPrefix .url "http" -}}
+  <li>
+    <a class="mention-card product-card" href="{{ .url }}"{{ if $isExternal }} target="_blank" rel="noopener noreferrer"{{ end }}>
+      <span class="product-badge">{{ .badge }}</span>
+      <span class="mention-title">{{ .name }}</span>
+      <span class="mention-summary">{{ .description }}</span>
+      <span class="product-cta">{{ .cta }}</span>
+    </a>
+  </li>
+  {{- end -}}
+</ul>
+{{- end -}}
