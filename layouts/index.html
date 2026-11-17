@@ -1,44 +1,46 @@
 {{ define "main" }}
+  {{ with site.Params.homeInfoParams }}
+  <section class="home-intro" aria-label="Introduction">
+    <h1>{{ .Title }}</h1>
+    <p>{{ .Content }}</p>
+  </section>
+  {{ end }}
+
   {{ $posts := (where site.RegularPages "Section" "posts").ByDate.Reverse }}
   {{ with index $posts 0 }}
-  <section class="latest" aria-labelledby="latest-heading">
+  <section class="latest-card" aria-labelledby="latest-heading">
     <p class="eyebrow"><a href="{{ .RelPermalink }}">{{ T "latest" }}</a></p>
     <a class="latest-link" href="{{ .RelPermalink }}">
-      <h1 id="latest-heading">{{ .LinkTitle }}</h1>
+      <h2 id="latest-heading">{{ .LinkTitle }}</h2>
+      <p class="latest-summary">{{ .Summary | plainify | htmlUnescape | truncate 130 }}</p>
       <p class="metadata">
         <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02/01/2006" }}</time>
         <span aria-hidden="true">·</span>
         <span>{{ .ReadingTime }} {{ T "minutes_read" }}</span>
       </p>
-      <p class="latest-summary">{{ .Summary | plainify | htmlUnescape | truncate 110 }}</p>
     </a>
   </section>
   {{ end }}
 
-  {{ with site.Taxonomies.tags.Alphabetical }}
-  <hr class="section-divider">
-
-  <section class="topics" aria-labelledby="topics-heading">
-    <h2 class="section-label" id="topics-heading"><a href="{{ "tags/" | relLangURL }}">{{ T "topics" }}</a></h2>
-    <p class="topic-list">
-      {{- range $index, $topic := . -}}
-        {{- if $index }}<span class="muted" aria-hidden="true">, </span>{{ end -}}
-        <a href="{{ $topic.Page.RelPermalink }}">{{ $topic.Page.LinkTitle }}</a>
-      {{- end -}}
-    </p>
-  </section>
-  {{ end }}
-
   {{ with $posts }}
-  <hr class="section-divider">
-
-  <section aria-labelledby="writing-heading">
+  <section class="home-section" aria-labelledby="writing-heading">
     <h2 class="section-label" id="writing-heading"><a href="{{ "archives/" | relLangURL }}">{{ T "posts" }}</a></h2>
     <ul class="writing-list">
       {{ range . }}
       {{ partial "post-list-item.html" . }}
       {{ end }}
     </ul>
+  </section>
+  {{ end }}
+
+  {{ with site.Taxonomies.tags.Alphabetical }}
+  <section class="home-section" aria-labelledby="topics-heading">
+    <h2 class="section-label" id="topics-heading"><a href="{{ "tags/" | relLangURL }}">{{ T "topics" }}</a></h2>
+    <div class="topic-pills">
+      {{- range . -}}
+      <a class="topic-pill" href="{{ .Page.RelPermalink }}">#{{ .Page.LinkTitle }}</a>
+      {{- end -}}
+    </div>
   </section>
   {{ end }}
 
