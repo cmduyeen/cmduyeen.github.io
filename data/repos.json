@@ -1,0 +1,254 @@
+[
+  {
+    "name": "pro-blog-starter-kit",
+    "url": "https://github.com/cmduyeen/pro-blog-starter-kit",
+    "description": "✍️ Pro Blog Starter Kit: launch a free, SEO-ready personal blog on GitHub Pages in 60s with Hugo/Jekyll themes, plugins, Obsidian workflow & live Web Configurator.",
+    "created_at": "2026-11-17",
+    "year": "2026"
+  },
+  {
+    "name": "pro-github-starter-kit",
+    "url": "https://github.com/cmduyeen/pro-github-starter-kit",
+    "description": "🚀 Pro GitHub Starter Kit: 9 modular README themes, 12 plugins, live Web Builder, online avatar tools, legit achievement badges & SEO/GEO checklist.",
+    "created_at": "2026-11-17",
+    "year": "2026"
+  },
+  {
+    "name": "malaysia-lunar-calendar",
+    "url": "https://github.com/cmduyeen/malaysia-lunar-calendar",
+    "description": "Malaysia lunar calendar: subscribe by ICS URL or customize with Python. English + ms; traditional festivals, rolling two-year feeds.",
+    "created_at": "2026-11-14",
+    "year": "2026"
+  },
+  {
+    "name": "singapore-lunar-calendar",
+    "url": "https://github.com/cmduyeen/singapore-lunar-calendar",
+    "description": "Singapore lunar calendar: subscribe by ICS URL or customize with Python. English + en; traditional festivals, rolling two-year feeds.",
+    "created_at": "2026-11-14",
+    "year": "2026"
+  },
+  {
+    "name": "korean-lunar-calendar",
+    "url": "https://github.com/cmduyeen/korean-lunar-calendar",
+    "description": "South Korea lunar calendar: subscribe by ICS URL or customize with Python. English + ko; traditional festivals, rolling two-year feeds.",
+    "created_at": "2026-11-14",
+    "year": "2026"
+  },
+  {
+    "name": "macao-lunar-calendar",
+    "url": "https://github.com/cmduyeen/macao-lunar-calendar",
+    "description": "Macao lunar calendar: subscribe by ICS URL or customize with Python. English + zh-Hant; traditional festivals, rolling two-year feeds.",
+    "created_at": "2026-11-14",
+    "year": "2026"
+  },
+  {
+    "name": "hong-kong-lunar-calendar",
+    "url": "https://github.com/cmduyeen/hong-kong-lunar-calendar",
+    "description": "Hong Kong lunar calendar: subscribe by ICS URL or customize with Python. English + zh-Hant; traditional festivals, rolling two-year feeds.",
+    "created_at": "2026-11-14",
+    "year": "2026"
+  },
+  {
+    "name": "taiwan-lunar-calendar",
+    "url": "https://github.com/cmduyeen/taiwan-lunar-calendar",
+    "description": "Taiwan lunar calendar: subscribe by ICS URL or customize with Python. English + zh-Hant; traditional festivals, rolling two-year feeds.",
+    "created_at": "2026-11-14",
+    "year": "2026"
+  },
+  {
+    "name": "serein-neovim",
+    "url": "https://github.com/cmduyeen/serein-neovim",
+    "description": "A clean, warm, low-contrast Neovim colorscheme written in Lua. Features Alabaster (light) and Obsidian (dark) palettes with TreeSitter and LSP support.",
+    "created_at": "2026-11-14",
+    "year": "2026"
+  },
+  {
+    "name": "serein-theme",
+    "url": "https://github.com/cmduyeen/serein-theme",
+    "description": "Extreme minimalism & everyday comfort. A warm, unified low-distraction color suite for VS Code, Neovim, Obsidian, Windows Terminal, and 10+ developer tools.",
+    "created_at": "2026-11-12",
+    "year": "2026"
+  },
+  {
+    "name": "serein-vimium",
+    "url": "https://github.com/cmduyeen/serein-vimium",
+    "description": "Minimalist warm link hints and HUD CSS theme for Vimium browser extension.",
+    "created_at": "2026-11-12",
+    "year": "2026"
+  },
+  {
+    "name": "serein-telegram",
+    "url": "https://github.com/cmduyeen/serein-telegram",
+    "description": "Minimalist, eye-comfortable warm desktop theme and wallpapers for Telegram Desktop.",
+    "created_at": "2026-11-12",
+    "year": "2026"
+  },
+  {
+    "name": "serein-sublime-text",
+    "url": "https://github.com/cmduyeen/serein-sublime-text",
+    "description": "Minimalist warm UI theme and color scheme for Sublime Text 4. Soft Alabaster and Obsidian palettes.",
+    "created_at": "2026-11-12",
+    "year": "2026"
+  },
+  {
+    "name": "serein-windows",
+    "url": "https://github.com/cmduyeen/serein-windows",
+    "description": "Minimalist Serein system theme and warm aesthetic 4K wallpapers for Windows 10 & 11.",
+    "created_at": "2026-11-12",
+    "year": "2026"
+  },
+  {
+    "name": "serein-codex",
+    "url": "https://github.com/cmduyeen/serein-codex",
+    "description": "Minimalist warm theme presets for Codex AI workspace canvases.",
+    "created_at": "2026-11-12",
+    "year": "2026"
+  },
+  {
+    "name": "serein-antigravity",
+    "url": "https://github.com/cmduyeen/serein-antigravity",
+    "description": "Warm, low-distraction color tokens and appearance presets for Antigravity App.",
+    "created_at": "2026-11-12",
+    "year": "2026"
+  },
+  {
+    "name": "serein-vscode",
+    "url": "https://github.com/cmduyeen/serein-vscode",
+    "description": "Minimalist, warm, and low-distraction color theme for Visual Studio Code. Soft Alabaster (Light) & Obsidian (Warm Charcoal Dark).",
+    "created_at": "2026-11-12",
+    "year": "2026"
+  },
+  {
+    "name": "serein-obsidian",
+    "url": "https://github.com/cmduyeen/serein-obsidian",
+    "description": "Clean, distraction-free warm theme for Obsidian.md. Balanced contrast, typography focus, and soothing tones for deep writing and note-taking.",
+    "created_at": "2026-11-12",
+    "year": "2026"
+  },
+  {
+    "name": "serein-terminal",
+    "url": "https://github.com/cmduyeen/serein-terminal",
+    "description": "Warm, low-glare color schemes for Windows Terminal. Alabaster (Light) and Obsidian (Warm Charcoal) for PowerShell, WSL, and Command Prompt.",
+    "created_at": "2026-11-12",
+    "year": "2026"
+  },
+  {
+    "name": "chinese-lunar-calendar",
+    "url": "https://github.com/cmduyeen/chinese-lunar-calendar",
+    "description": "China lunar calendar: subscribe by ICS URL or customize with Python. English + zh-Hans; traditional festivals, rolling two-year feeds.",
+    "created_at": "2026-11-08",
+    "year": "2026"
+  },
+  {
+    "name": "pinkie-sumatrapdf",
+    "url": "https://github.com/cmduyeen/pinkie-sumatrapdf",
+    "description": "📖 Gentle pastel reading theme configuration for SumatraPDF",
+    "created_at": "2026-11-08",
+    "year": "2026"
+  },
+  {
+    "name": "pinkie-terminal",
+    "url": "https://github.com/cmduyeen/pinkie-terminal",
+    "description": "💻 Soothing pastel-pink terminal color schemes for Windows Terminal, Alacritty, WezTerm",
+    "created_at": "2026-11-08",
+    "year": "2026"
+  },
+  {
+    "name": "pinkie-obsidian",
+    "url": "https://github.com/cmduyeen/pinkie-obsidian",
+    "description": "📓 Clean, cozy pastel theme for Obsidian note-taking",
+    "created_at": "2026-11-08",
+    "year": "2026"
+  },
+  {
+    "name": "pinkie-vscode-icons",
+    "url": "https://github.com/cmduyeen/pinkie-vscode-icons",
+    "description": "📁 Cute pastel file and folder icons for Visual Studio Code",
+    "created_at": "2026-11-08",
+    "year": "2026"
+  },
+  {
+    "name": "pinkie-vscode",
+    "url": "https://github.com/cmduyeen/pinkie-vscode",
+    "description": "💻 Soft pastel pink syntax and editor theme for Visual Studio Code",
+    "created_at": "2026-11-08",
+    "year": "2026"
+  },
+  {
+    "name": "pinkie-chrome",
+    "url": "https://github.com/cmduyeen/pinkie-chrome",
+    "description": "🌐 Aesthetic pink browser frame, tabs & toolbar theme for Google Chrome",
+    "created_at": "2026-11-08",
+    "year": "2026"
+  },
+  {
+    "name": "pinkie-theme",
+    "url": "https://github.com/cmduyeen/pinkie-theme",
+    "description": "🌸 The core pastel-pink design tokens, color palette, and specifications for the Pinkie ecosystem.",
+    "created_at": "2026-11-08",
+    "year": "2026"
+  },
+  {
+    "name": "self-study",
+    "url": "https://github.com/cmduyeen/self-study",
+    "description": "Personal knowledge base: coding notes, snippets, and learning roadmap.",
+    "created_at": "2026-10-21",
+    "year": "2026"
+  },
+  {
+    "name": "cmduyeen.github.io",
+    "url": "https://github.com/cmduyeen/cmduyeen.github.io",
+    "description": "Personal blog on PKM, Obsidian, Hugo, and minimalist developer workflows.",
+    "created_at": "2026-10-16",
+    "year": "2026"
+  },
+  {
+    "name": "cmduyeen",
+    "url": "https://github.com/cmduyeen/cmduyeen",
+    "description": "🍃 Minimalist GitHub profile: zero-install tools, Serein & Pinkie themes, PKM notes.",
+    "created_at": "2026-09-28",
+    "year": "2026"
+  },
+  {
+    "name": "pinkie-extension-styler",
+    "url": "https://github.com/cmduyeen/pinkie-extension-styler",
+    "description": "Aesthetic pink pastel themes, kawaii customizers & custom CSS for Facebook, YouTube, GitHub. The ultimate cute custom style editor!",
+    "created_at": "2026-07-20",
+    "year": "2026"
+  },
+  {
+    "name": "lich-am-viet-nam",
+    "url": "https://github.com/cmduyeen/lich-am-viet-nam",
+    "description": "🌙 Lịch âm Việt Nam (GMT+7) cho Google Calendar, Apple Calendar, Outlook. Không cần cài app ngoài, chỉ cần gắn link .ics dùng luôn, tự cập nhật & miễn phí.",
+    "created_at": "2026-04-23",
+    "year": "2026"
+  },
+  {
+    "name": "python-file-organizer-robot",
+    "url": "https://github.com/cmduyeen/python-file-organizer-robot",
+    "description": "A Python automation script that keeps your Downloads folder organized. It acts like a robot to sort files into categories (Images, Documents, Videos) automatically.",
+    "created_at": "2026-03-25",
+    "year": "2026"
+  },
+  {
+    "name": "Focus-Assistant-Extension",
+    "url": "https://github.com/cmduyeen/Focus-Assistant-Extension",
+    "description": "💖 Stay focused, stay productive! Focus Assistant is a FREE, privacy-friendly, open-source Chrome extension for powerful website blocking, Pomodoro management, and scheduled focus. Get it now!",
+    "created_at": "2025-06-10",
+    "year": "2025"
+  },
+  {
+    "name": "Pomodoro-Timer-PowerShell",
+    "url": "https://github.com/cmduyeen/Pomodoro-Timer-PowerShell",
+    "description": "The Terminal Pomodoro Timer is a minimalist PowerShell tool, boosting developer focus by eliminating GUI distractions. It's 100% free, no-installation-required, and runs instantly in your terminal for a seamless workflow. Easily customize work/break durations and sounds to tailor your Pomodoro rhythm.",
+    "created_at": "2025-06-04",
+    "year": "2025"
+  },
+  {
+    "name": "CleanWindowsCMD-Free-Safe",
+    "url": "https://github.com/cmduyeen/CleanWindowsCMD-Free-Safe",
+    "description": "Clean your Windows system efficiently and effectively with these CMD scripts. This solution is entirely free to use and designed with safety as a top priority.",
+    "created_at": "2025-04-10",
+    "year": "2025"
+  }
+]

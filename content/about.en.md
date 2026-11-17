@@ -23,6 +23,9 @@ This blog is where I document what I learn about automation, personal knowledge 
 - **[Pinkie Theme](https://github.com/cmduyeen/pinkie-theme)** — Soft pastel-pink design tokens and themes across developer tools.
 - **[Self-Study](https://github.com/cmduyeen/self-study)** — Open programming notes, snippets, and learning roadmap.
 
+### All Repositories by Date
+{{< github-repos >}}
+
 ## Elsewhere
 
 - **GitHub:** [@cmduyeen](https://github.com/cmduyeen)

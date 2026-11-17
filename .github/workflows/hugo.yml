@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+  schedule:
+    - cron: "0 1 * * *"
   workflow_dispatch:
 
 permissions:
@@ -31,6 +33,11 @@ jobs:
         with:
           hugo-version: '0.146.0'
           extended: false
+
+      - name: Sync GitHub repositories list
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 tools/sync_repos.py
 
       - name: Build site
         run: hugo --gc --minify --baseURL "${{ steps.pages.outputs.base_url }}/"

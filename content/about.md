@@ -24,6 +24,9 @@ Blog này là nơi mình ghi lại những điều học được về tự đ�
 - **[Pinkie Theme](https://github.com/cmduyeen/pinkie-theme)** — Hệ sinh thái bảng màu hồng pastel nhẹ nhàng.
 - **[Self-Study](https://github.com/cmduyeen/self-study)** — Kho ghi chú tự học lập trình và lộ trình thực hành.
 
+### Tất cả kho mã nguồn theo thời gian
+{{< github-repos >}}
+
 ## Kết nối
 
 - **GitHub:** [@cmduyeen](https://github.com/cmduyeen)

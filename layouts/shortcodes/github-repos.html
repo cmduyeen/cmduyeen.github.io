@@ -1,0 +1,25 @@
+{{- $repos := site.Data.repos -}}
+{{- if $repos -}}
+  {{- $years := slice -}}
+  {{- range $repos -}}
+    {{- if not (in $years .year) -}}
+      {{- $years = $years | append .year -}}
+    {{- end -}}
+  {{- end -}}
+  {{- range $idx, $y := $years -}}
+    {{- $group := where $repos "year" $y -}}
+    <details class="toc" {{ if eq $idx 0 }}open{{ end }}>
+      <summary>{{ $y }} ({{ len $group }})</summary>
+      <ul class="writing-list">
+        {{- range $group -}}
+        <li>
+          <a class="writing-item" href="{{ .url }}" target="_blank" rel="noopener noreferrer">
+            <time datetime="{{ .created_at }}">{{ .created_at }}</time>
+            <span>{{ .name }}</span>
+          </a>
+        </li>
+        {{- end -}}
+      </ul>
+    </details>
+  {{- end -}}
+{{- end -}}
