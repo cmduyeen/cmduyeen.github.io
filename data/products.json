@@ -19,11 +19,11 @@
             "cta": "Mở Web App →"
           },
           {
-            "name": "Lịch Âm Việt Nam (.ics)",
-            "badge": "Calendar Feed · Miễn phí",
-            "description": "Lịch âm chuẩn Việt Nam (GMT+7) cho Google Calendar, Apple Calendar và Outlook — chỉ cần gắn link dùng luôn.",
-            "url": "https://github.com/cmduyeen/lich-am-viet-nam",
-            "cta": "Lấy Link Lịch →"
+            "name": "Lịch Âm Việt Nam Studio",
+            "badge": "Web App · Miễn phí",
+            "description": "Tùy chỉnh lịch âm GMT+7, thêm ngày giỗ, sinh nhật âm lịch, tra cứu Âm ↔ Dương và xuất file .ics hoặc lấy link tự động.",
+            "url": "https://cmduyeen.github.io/lich-am-viet-nam/",
+            "cta": "Mở Web App →"
           },
           {
             "name": "Serein & Pinkie Themes",
@@ -75,11 +75,11 @@
             "cta": "Open App →"
           },
           {
-            "name": "Vietnamese Lunar Calendar (.ics)",
-            "badge": "Calendar Feed · Free",
-            "description": "Accurate GMT+7 lunar dates for Google Calendar, Apple Calendar, and Outlook—just subscribe via URL.",
-            "url": "https://github.com/cmduyeen/lich-am-viet-nam",
-            "cta": "Get Feed →"
+            "name": "Vietnamese Lunar Calendar Studio",
+            "badge": "Web App · Free",
+            "description": "Customize GMT+7 lunar dates, add personal anniversaries or lunar birthdays, convert dates, and export .ics or subscribe via URL.",
+            "url": "https://cmduyeen.github.io/lich-am-viet-nam/",
+            "cta": "Open App →"
           },
           {
             "name": "Serein & Pinkie Themes",
