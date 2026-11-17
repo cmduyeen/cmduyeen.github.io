@@ -48,3 +48,9 @@ other = "Nội dung mới nhất từ"
 
 [rss_on]
 other = "trên"
+
+[posts_unit]
+other = "bài"
+
+[standalone_posts]
+other = "Bài viết lẻ"

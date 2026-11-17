@@ -48,3 +48,9 @@ other = "The latest from"
 
 [rss_on]
 other = "on"
+
+[posts_unit]
+other = "posts"
+
+[standalone_posts]
+other = "Standalone posts"

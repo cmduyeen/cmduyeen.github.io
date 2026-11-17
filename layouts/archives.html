@@ -3,9 +3,105 @@
     <h1>{{ .Title }}</h1>
   </header>
   {{ $posts := where site.RegularPages "Section" "posts" }}
-  <ul class="writing-list">
-    {{ range $posts.ByDate.Reverse }}
-    {{ partial "post-list-item.html" . }}
+  {{ $groups := newScratch }}
+  {{ $seriesOrder := slice }}
+  {{ $standalone := slice }}
+
+  {{ range $posts.ByDate }}
+    {{ $seriesName := "" }}
+    {{ $rawSeries := .Params.series }}
+    {{ if $rawSeries }}
+      {{ if reflect.IsSlice $rawSeries }}
+        {{ if gt (len $rawSeries) 0 }}
+          {{ $seriesName = printf "%v" (index $rawSeries 0) }}
+        {{ end }}
+      {{ else }}
+        {{ $seriesName = printf "%v" $rawSeries }}
+      {{ end }}
     {{ end }}
-  </ul>
+    {{ $seriesName = strings.TrimSpace $seriesName }}
+
+    {{/* Tự động nhận diện Series từ tiêu đề dạng "Tên Series, Phần 1..." hoặc "Tên Series - Phần 2..." */}}
+    {{ if not $seriesName }}
+      {{ $matches := findRESubmatch `(?i)^(.+?)(?:,\s*|\s+-\s+|\s*:\s*)(?:phần|part|bài|chương|ep|episode)\s*\d+` .Title }}
+      {{ if gt (len $matches) 0 }}
+        {{ $sub := index $matches 0 }}
+        {{ if gt (len $sub) 1 }}
+          {{ $seriesName = strings.TrimSpace (index $sub 1) }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+
+    {{/* Fallback sang category nếu chưa có series */}}
+    {{ if not $seriesName }}
+      {{ $rawCat := .Params.category }}
+      {{ if $rawCat }}
+        {{ if reflect.IsSlice $rawCat }}
+          {{ if gt (len $rawCat) 0 }}
+            {{ $seriesName = printf "%v" (index $rawCat 0) }}
+          {{ end }}
+        {{ else }}
+          {{ $seriesName = printf "%v" $rawCat }}
+        {{ end }}
+      {{ end }}
+      {{ $seriesName = strings.TrimSpace $seriesName }}
+    {{ end }}
+
+    {{ if $seriesName }}
+      {{ if not ($groups.Get $seriesName) }}
+        {{ $seriesOrder = $seriesOrder | append $seriesName }}
+        {{ $groups.Set $seriesName (slice .) }}
+      {{ else }}
+        {{ $groups.Set $seriesName (($groups.Get $seriesName) | append .) }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+
+  {{/* Gom các bài chưa thuộc Series nào */}}
+  {{ range $posts.ByDate.Reverse }}
+    {{ $hasSeries := false }}
+    {{ if or .Params.series .Params.category }}
+      {{ $hasSeries = true }}
+    {{ else }}
+      {{ $m := findRESubmatch `(?i)^(.+?)(?:,\s*|\s+-\s+|\s*:\s*)(?:phần|part|bài|chương|ep|episode)\s*\d+` .Title }}
+      {{ if gt (len $m) 0 }}
+        {{ $hasSeries = true }}
+      {{ end }}
+    {{ end }}
+    {{ if not $hasSeries }}
+      {{ $standalone = $standalone | append . }}
+    {{ end }}
+  {{ end }}
+
+  <div class="archive-series-list">
+    {{ range $seriesOrder }}
+      {{ $name := . }}
+      {{ $items := $groups.Get $name }}
+      <section class="archive-series">
+        <div class="archive-series-head">
+          <h2>{{ $name }}</h2>
+          <span class="archive-series-count">{{ len $items }} {{ i18n "posts_unit" }}</span>
+        </div>
+        <ul class="writing-list">
+          {{ range $items }}
+            {{ partial "post-list-item.html" . }}
+          {{ end }}
+        </ul>
+      </section>
+    {{ end }}
+
+    {{ if gt (len $standalone) 0 }}
+      <section class="archive-series">
+        <div class="archive-series-head">
+          <h2>{{ i18n "standalone_posts" }}</h2>
+          <span class="archive-series-count">{{ len $standalone }} {{ i18n "posts_unit" }}</span>
+        </div>
+        <ul class="writing-list">
+          {{ range $standalone }}
+            {{ partial "post-list-item.html" . }}
+          {{ end }}
+        </ul>
+      </section>
+    {{ end }}
+  </div>
 {{ end }}
