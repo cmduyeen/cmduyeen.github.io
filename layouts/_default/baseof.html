@@ -7,13 +7,13 @@
     <a class="skip-link" href="#main">{{ T "skip_to_content" }}</a>
     <div class="site-shell">
       <header class="site-header">
-        <a class="site-title" href="{{ site.Home.RelPermalink }}">{{ site.Title }}</a>
+        <a class="site-title" href="{{ site.Home.RelPermalink }}">~/{{ lower site.Title }}</a>
         <nav aria-label="{{ T "main_navigation" }}">
           <ul>
-            {{ range site.Menus.main }}
-            <li><a href="{{ .URL }}">{{ .Name }}</a></li>
-            {{ end }}
             {{ $page := . }}
+            {{ range site.Menus.main }}
+            <li><a href="{{ .URL }}"{{ if $page.IsMenuCurrent "main" . }} aria-current="page"{{ end }}>{{ .Name }}</a></li>
+            {{ end }}
             {{ range site.Home.AllTranslations }}
               {{ $home := . }}
               {{ if ne $home.Lang $page.Lang }}

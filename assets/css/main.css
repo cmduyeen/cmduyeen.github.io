@@ -85,48 +85,79 @@ summary:focus-visible {
 
 .site-header {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
   gap: 1rem;
   min-height: 3.75rem;
-  padding-block: 1.25rem;
+  padding-block: 1rem;
+  border-bottom: 1px solid var(--line);
 }
 
 .site-title {
   color: var(--text);
-  font-size: 1.15rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 1.05rem;
   font-weight: 700;
+  letter-spacing: -0.02em;
   text-decoration: none;
+}
+
+.site-title:hover {
+  color: var(--link);
 }
 
 .site-header ul {
   display: flex;
+  align-items: center;
   flex-wrap: nowrap;
-  gap: clamp(0.75rem, 3vw, 1.25rem);
+  gap: clamp(0.75rem, 2.5vw, 1.25rem);
   margin: 0;
   padding: 0;
   list-style: none;
+  counter-reset: nav-index;
+}
+
+.site-header nav li:not(:last-child) {
+  counter-increment: nav-index;
 }
 
 .site-header nav a {
   color: var(--muted);
-  font-size: 0.9rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.85rem;
   text-decoration: none;
   white-space: nowrap;
+}
+
+.site-header nav li:not(:last-child) a::before {
+  content: "[" counter(nav-index) "] ";
+  opacity: 0.55;
+}
+
+.site-header nav a:hover,
+.site-header nav a[aria-current="page"] {
+  color: var(--text);
+}
+
+.site-header nav a[aria-current="page"] {
+  text-decoration: underline;
+  text-decoration-color: var(--link);
+  text-underline-offset: 0.35em;
 }
 
 .site-header nav a.lang-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.18rem 0.5rem;
+  padding: 0.2rem 0.55rem;
   border: 1px solid var(--line);
   border-radius: 0.375rem;
   background: var(--surface);
   color: var(--text);
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
   line-height: 1.2;
 }
 
