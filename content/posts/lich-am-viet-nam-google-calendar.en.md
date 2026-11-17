@@ -18,6 +18,10 @@ Many online lunar feeds mirror Chinese lunar tables calculated in **UTC+8**. Whe
 
 The open-source [Vietnamese Lunar Calendar](https://github.com/cmduyeen/lich-am-viet-nam) computes new moons and solar terms directly in **UTC+7**, maintaining rolling two-year feeds with 27 traditional and public observances.
 
+## Customize Online (Web Studio)
+
+Want to pick specific lunar days, add **personal lunar birthdays or family anniversaries**, or convert Solar ↔ Lunar dates? Open **[Vietnamese Lunar Calendar Studio](https://cmduyeen.github.io/lich-am-viet-nam/)** (runs 100% in your browser, no Python needed) to export a personalized `.ics` file.
+
 ## Subscription URLs (.ics)
 
 Choose **one** language feed to avoid duplicate daily events:

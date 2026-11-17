@@ -18,6 +18,10 @@ Phần lớn lịch âm miễn phí trên mạng lấy dữ liệu từ lịch T
 
 Dự án mã nguồn mở [Lịch Âm Việt Nam](https://github.com/cmduyeen/lich-am-viet-nam) tính toán trực tiếp điểm Sóc và Tiết khí theo chuẩn **UTC+7**, phủ cuốn chiếu năm hiện tại và năm kế tiếp, kèm 27 dịp lễ âm – dương phổ biến tại Việt Nam.
 
+## Tùy chỉnh lịch âm trực tuyến (Web Studio)
+
+Nếu bạn muốn tự chọn ngày Mùng 1 / Rằm, thêm **ngày giỗ, sinh nhật âm lịch** của gia đình hoặc tra cứu nhanh Dương ↔ Âm, hãy mở ngay **[Lịch Âm Việt Nam Studio](https://cmduyeen.github.io/lich-am-viet-nam/)** (chạy 100% trên trình duyệt, không cần cài Python) để xuất file `.ics` cá nhân hóa.
+
 ## Link đăng ký lịch (.ics)
 
 Chỉ cần chọn **một** ngôn ngữ bạn muốn hiển thị:
