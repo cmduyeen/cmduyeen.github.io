@@ -13,15 +13,16 @@
             {{ range site.Menus.main }}
             <li><a href="{{ .URL }}">{{ .Name }}</a></li>
             {{ end }}
-            <li aria-hidden="true">·</li>
             {{ $page := . }}
             {{ range site.Home.AllTranslations }}
               {{ $home := . }}
-              {{ $href := .RelPermalink }}
-              {{ range $page.AllTranslations }}
-                {{ if eq .Lang $home.Lang }}{{ $href = .RelPermalink }}{{ end }}
+              {{ if ne $home.Lang $page.Lang }}
+                {{ $href := .RelPermalink }}
+                {{ range $page.AllTranslations }}
+                  {{ if eq .Lang $home.Lang }}{{ $href = .RelPermalink }}{{ end }}
+                {{ end }}
+            <li><a class="lang-btn" href="{{ $href }}" lang="{{ $home.Language.Lang }}" hreflang="{{ $home.Language.Lang }}" data-language-switch="{{ $home.Lang }}" title="{{ $home.Language.LanguageName }}" aria-label="{{ $home.Language.LanguageName }}">{{ upper $home.Lang }}</a></li>
               {{ end }}
-            <li><a href="{{ $href }}" lang="{{ $home.Language.Lang }}" hreflang="{{ $home.Language.Lang }}" data-language-switch="{{ $home.Lang }}"{{ if eq $home.Lang $page.Lang }} aria-current="page"{{ end }}>{{ $home.Language.LanguageName }}</a></li>
             {{ end }}
           </ul>
         </nav>

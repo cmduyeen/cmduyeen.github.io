@@ -48,10 +48,16 @@ enableRobotsTXT = true
   weight = 10
 
 [[languages.vi.menus.main]]
+  identifier = "tools"
+  name = "Tools"
+  pageRef = "/tools"
+  weight = 20
+
+[[languages.vi.menus.main]]
   identifier = "archives"
   name = "Archive"
   pageRef = "/archives"
-  weight = 20
+  weight = 30
 
 [[languages.en.menus.main]]
   identifier = "about"
@@ -60,10 +66,16 @@ enableRobotsTXT = true
   weight = 10
 
 [[languages.en.menus.main]]
+  identifier = "tools"
+  name = "Tools"
+  pageRef = "/tools"
+  weight = 20
+
+[[languages.en.menus.main]]
   identifier = "archives"
   name = "Archive"
   pageRef = "/archives"
-  weight = 20
+  weight = 30
 
 [outputs]
   home = ["HTML", "RSS"]
