@@ -187,15 +187,38 @@
   }
 
   const backToTopBtn = document.getElementById("back-to-top");
+  const progressBar = document.getElementById("reading-progress");
+  const articleEl = document.querySelector("article");
+
   if (backToTopBtn) {
-    const toggleBackToTop = () => {
-      backToTopBtn.classList.toggle("is-visible", window.scrollY > 320);
-    };
-    window.addEventListener("scroll", toggleBackToTop, { passive: true });
-    toggleBackToTop();
     backToTopBtn.addEventListener("click", () => {
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
+  }
+
+  if (backToTopBtn || (progressBar && articleEl)) {
+    let ticking = false;
+    const syncScrollUI = () => {
+      ticking = false;
+      if (backToTopBtn) {
+        backToTopBtn.classList.toggle("is-visible", window.scrollY > 320);
+      }
+      if (progressBar && articleEl) {
+        const start = articleEl.offsetTop;
+        const total = Math.max(1, articleEl.offsetHeight - window.innerHeight * 0.6);
+        const ratio = Math.min(1, Math.max(0, (window.scrollY - start) / total));
+        progressBar.style.transform = `scaleX(${ratio})`;
+      }
+    };
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(syncScrollUI);
+      }
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+    syncScrollUI();
   }
 
   for (const pre of document.querySelectorAll(".article-content pre")) {
@@ -215,19 +238,5 @@
       } catch (_) {}
     });
     pre.append(btn);
-  }
-
-  const progressBar = document.getElementById("reading-progress");
-  const articleEl = document.querySelector("article");
-  if (progressBar && articleEl) {
-    const updateProgress = () => {
-      const start = articleEl.offsetTop;
-      const total = Math.max(1, articleEl.offsetHeight - window.innerHeight * 0.6);
-      const ratio = Math.min(1, Math.max(0, (window.scrollY - start) / total));
-      progressBar.style.transform = `scaleX(${ratio})`;
-    };
-    window.addEventListener("scroll", updateProgress, { passive: true });
-    window.addEventListener("resize", updateProgress, { passive: true });
-    updateProgress();
   }
 })();

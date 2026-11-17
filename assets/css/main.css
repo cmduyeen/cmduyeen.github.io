@@ -402,12 +402,6 @@ main {
   white-space: nowrap;
 }
 
-.writing-item span {
-  text-decoration: underline;
-  text-decoration-color: transparent;
-  text-underline-offset: 0.15em;
-}
-
 .writing-item:hover span {
   text-decoration-color: currentColor;
 }
@@ -488,19 +482,6 @@ main {
 
 .recommendation-list li + li {
   margin-top: 0.3rem;
-}
-
-.update-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem 1rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.site-header nav a:hover {
-  color: var(--text);
 }
 
 h1,
