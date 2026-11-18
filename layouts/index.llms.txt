@@ -12,11 +12,13 @@
 {{ with site.Home.OutputFormats.Get "RSS" }}- RSS: {{ .Permalink }}{{ end }}
 
 ## Core Pages
-- Learn Hub (4 Evergreen Pillars): {{ "learn/" | absLangURL }}
-  - Web Foundations (Markdown, HTML, CSS, JS): {{ "learn/web/" | absLangURL }}
-  - PKM & Second Brain (Obsidian, Notion): {{ "learn/pkm/" | absLangURL }}
+- Learn Hub (6 Industry-Standard Tech Tracks): {{ "learn/" | absLangURL }}
+  - Frontend Engineering (HTML, CSS, JS): {{ "learn/frontend/" | absLangURL }}
+  - Backend & Systems (APIs, SQL, Architecture): {{ "learn/backend/" | absLangURL }}
+  - AI & Automation (Python, Prompts, Agents): {{ "learn/ai-automation/" | absLangURL }}
+  - DevOps & Cloud (Git, Linux, CI/CD, Edge): {{ "learn/devops/" | absLangURL }}
   - Developer Workspace (VS Code, Neovim, Terminal): {{ "learn/workspace/" | absLangURL }}
-  - Automation & Publishing (Hugo, GitHub, Python): {{ "learn/automation/" | absLangURL }}
+  - PKM & Digital Writing (Markdown, Obsidian, Notion): {{ "learn/pkm/" | absLangURL }}
 - Tech News: {{ "news/" | absLangURL }}
 - Tools & Digital Kits: {{ "tools/" | absLangURL }}
 - Library (Books & Courses): {{ "library/" | absLangURL }}

@@ -1,71 +1,161 @@
-- id: web
+- id: frontend
   step: "01"
-  name: "Web Foundations"
-  slug: "/learn/web/"
-  intent: "Evergreen Traffic · Beginner to Builder"
-  summary: "Master the core languages of the web and plain-text publishing: Markdown, HTML5, CSS, and Vanilla JavaScript."
-  topics: ["Markdown", "HTML5", "Modern CSS", "Vanilla JS"]
+  name: "Frontend Engineering"
+  slug: "/learn/frontend/"
+  intent: "Core Web · High Search Volume"
+  summary: "Build modern, accessible, high-performance user interfaces from semantic HTML and CSS to JavaScript and frameworks."
+  topics: ["HTML5", "Modern CSS", "JavaScript", "TypeScript", "Accessibility"]
+  phases:
+    - label: "Phase 1"
+      title: "Semantic HTML5 & Web Accessibility"
+    - label: "Phase 2"
+      title: "Modern CSS (Flexbox, Grid, Design Tokens)"
+    - label: "Phase 3"
+      title: "JavaScript (DOM, Async, Fetch API)"
+    - label: "Phase 4"
+      title: "TypeScript, Frameworks & Web Performance"
   match_prefixes: ["markdown-101-"]
-  match_categories: ["Web & Code", "Markdown"]
-  tool_label: "Pro Blog Starter Kit"
+  match_categories: ["Frontend", "Web & Code", "HTML", "CSS", "JavaScript"]
+  tool_label: "Pro GitHub & Blog Starter Kits"
   tool_url: "/tools/"
-  library_label: "The Pragmatic Programmer & Frontend Masters"
+  library_label: "Frontend Masters & Systems Workshops"
   library_url: "/library/"
   freebie_label: "GitHub Student & Builder Perks"
   freebie_url: "/freebies/"
-  next_label: "Step 02: PKM & Second Brain →"
-  next_url: "/learn/pkm/"
+  next_label: "Next Track: Backend & Systems →"
+  next_url: "/learn/backend/"
 
-- id: pkm
+- id: backend
   step: "02"
-  name: "PKM & Second Brain"
-  slug: "/learn/pkm/"
-  intent: "High-Retention Niche · Notes to Assets"
-  summary: "Build a durable personal knowledge system with Obsidian, Notion, YAML properties, and clean Markdown workflows."
-  topics: ["Obsidian", "Notion", "YAML Properties", "Daily Notes"]
-  match_prefixes: ["serein-obsidian"]
-  match_categories: ["PKM & Notes", "Obsidian", "Notion"]
-  tool_label: "Obsidian Kepano Vault & Serein"
-  tool_url: "/tools/"
-  library_label: "Curated PKM & Systems Books"
-  library_url: "/library/"
-  freebie_label: "Obsidian Personal (100% Free)"
-  freebie_url: "/freebies/"
-  next_label: "Step 03: Developer Workspace →"
-  next_url: "/learn/workspace/"
-
-- id: workspace
-  step: "03"
-  name: "Developer Workspace"
-  slug: "/learn/workspace/"
-  intent: "Deep-Tech Audience · Speed & Focus"
-  summary: "Configure a distraction-free coding and writing environment across VS Code, Neovim, Windows Terminal, and Git."
-  topics: ["VS Code", "Neovim (Lua)", "Windows Terminal", "Git"]
-  match_prefixes: ["serein-"]
-  match_categories: ["Workspace", "Neovim", "VS Code"]
-  tool_label: "Serein Calm Theme Suite"
-  tool_url: "/tools/"
-  library_label: "Systems & Tooling Resources"
-  library_url: "/library/"
-  freebie_label: "Serein Theme Suite (MIT Free)"
-  freebie_url: "/freebies/"
-  next_label: "Step 04: Automation & Publishing →"
-  next_url: "/learn/automation/"
-
-- id: automation
-  step: "04"
-  name: "Automation & Publishing"
-  slug: "/learn/automation/"
-  intent: "High-Intent Builders · Ship & Scale"
-  summary: "Turn local notes and scripts into live web apps, Hugo static sites, GitHub Actions pipelines, and Python CLI tools."
-  topics: ["Hugo", "GitHub Pages", "Python CLI", "AI Workflows"]
-  match_prefixes: ["tao-github-profile", "lich-am-viet-nam"]
-  match_categories: ["Automation", "Hugo", "Python"]
-  tool_label: "Pro GitHub & Lunar Calendar Studio"
+  name: "Backend & Systems"
+  slug: "/learn/backend/"
+  intent: "Core Engineering · APIs & Data"
+  summary: "Design reliable servers, REST/GraphQL APIs, relational databases, caching, and authentication systems."
+  topics: ["Python / Node.js", "REST & GraphQL", "SQL & Postgres", "Auth & Security"]
+  phases:
+    - label: "Phase 1"
+      title: "Language Core (Python, Go, or Node.js)"
+    - label: "Phase 2"
+      title: "Relational Databases (SQL, Indexing, Modeling)"
+    - label: "Phase 3"
+      title: "API Design, Caching & Authentication"
+    - label: "Phase 4"
+      title: "Testing, Observability & System Design"
+  match_prefixes: []
+  match_categories: ["Backend", "Databases", "APIs", "Systems"]
+  tool_label: "CLI & Config Generators"
   tool_url: "/tools/"
   library_label: "Designing Data-Intensive Applications"
   library_url: "/library/"
-  freebie_label: "Cloudflare & Edge Free Tier"
+  freebie_label: "Cloud & Database Free Tiers"
   freebie_url: "/freebies/"
-  next_label: "Explore All Tools & Kits →"
-  next_url: "/tools/"
+  next_label: "Next Track: AI & Automation →"
+  next_url: "/learn/ai-automation/"
+
+- id: ai-automation
+  step: "03"
+  name: "AI & Automation"
+  slug: "/learn/ai-automation/"
+  intent: "High-Growth · Scripts & AI Agents"
+  summary: "Automate repetitive workflows with Python CLI, APIs, prompt engineering, and local-first AI agents."
+  topics: ["Python CLI", "Prompt Engineering", "AI Agents", "Data Pipelines"]
+  phases:
+    - label: "Phase 1"
+      title: "Scripting & File/Web Automation (Python)"
+    - label: "Phase 2"
+      title: "Structured Prompting & Context Engineering"
+    - label: "Phase 3"
+      title: "LLM APIs, RAG & Tool Calling"
+    - label: "Phase 4"
+      title: "Autonomous Pipelines & Scheduled Jobs"
+  match_prefixes: ["lich-am-viet-nam"]
+  match_categories: ["AI", "Automation", "Python"]
+  tool_label: "Calendar & Workflow Studios"
+  tool_url: "/tools/"
+  library_label: "Cursor AI & Engineering Books"
+  library_url: "/library/"
+  freebie_label: "AI & Developer Perks"
+  freebie_url: "/freebies/"
+  next_label: "Next Track: DevOps & Cloud →"
+  next_url: "/learn/devops/"
+
+- id: devops
+  step: "04"
+  name: "DevOps & Cloud"
+  slug: "/learn/devops/"
+  intent: "Infrastructure · Ship & Scale"
+  summary: "Master Git workflows, Linux shell, Docker containers, CI/CD pipelines, and edge deployment."
+  topics: ["Git & GitHub", "Linux & Shell", "CI/CD Actions", "Docker & Edge"]
+  phases:
+    - label: "Phase 1"
+      title: "Git Version Control & Branching"
+    - label: "Phase 2"
+      title: "Linux Terminal, SSH & Shell Scripting"
+    - label: "Phase 3"
+      title: "CI/CD Pipelines (GitHub Actions)"
+    - label: "Phase 4"
+      title: "Containers, DNS, Edge Security & Cloudflare"
+  match_prefixes: ["tao-github-profile"]
+  match_categories: ["DevOps", "Cloud", "Hugo", "Git"]
+  tool_label: "Static Blog & Profile Builders"
+  tool_url: "/tools/"
+  library_label: "Cloudflare Pages & Edge Stack"
+  library_url: "/library/"
+  freebie_label: "Free Hosting & Dev Perks"
+  freebie_url: "/freebies/"
+  next_label: "Next Track: Developer Workspace →"
+  next_url: "/learn/workspace/"
+
+- id: workspace
+  step: "05"
+  name: "Developer Workspace"
+  slug: "/learn/workspace/"
+  intent: "Craft · Speed & Ergonomics"
+  summary: "Optimize your daily tools—VS Code, Neovim, terminal multiplexers, and calm color themes for deep focus."
+  topics: ["VS Code", "Neovim (Lua)", "Windows Terminal", "Dotfiles"]
+  phases:
+    - label: "Phase 1"
+      title: "Minimalist Editor Setup & Keybindings"
+    - label: "Phase 2"
+      title: "Neovim, LSP & TreeSitter Configuration"
+    - label: "Phase 3"
+      title: "Terminal, Shell Prompt & Dotfiles Sync"
+    - label: "Phase 4"
+      title: "Low-Distraction Themes & Ergonomics"
+  match_prefixes: ["serein-vscode", "serein-neovim", "serein-theme"]
+  match_categories: ["Workspace", "Neovim", "VS Code"]
+  tool_label: "Serein Calm Theme Suite"
+  tool_url: "/tools/"
+  library_label: "The Pragmatic Programmer"
+  library_url: "/library/"
+  freebie_label: "Serein Theme Suite (MIT Free)"
+  freebie_url: "/freebies/"
+  next_label: "Next Track: PKM & Digital Writing →"
+  next_url: "/learn/pkm/"
+
+- id: pkm
+  step: "06"
+  name: "PKM & Digital Writing"
+  slug: "/learn/pkm/"
+  intent: "Knowledge Assets · Notes to Web"
+  summary: "Build a durable Second Brain with plain-text Markdown, Obsidian, Notion, and automated static publishing."
+  topics: ["Markdown", "Obsidian", "Notion", "Second Brain"]
+  phases:
+    - label: "Phase 1"
+      title: "Plain-Text Thinking & Markdown Syntax"
+    - label: "Phase 2"
+      title: "Obsidian Vaults, Properties & Linking"
+    - label: "Phase 3"
+      title: "Notion Databases & Hybrid Workflows"
+    - label: "Phase 4"
+      title: "Publishing Notes as Digital Assets"
+  match_prefixes: ["serein-obsidian"]
+  match_categories: ["PKM & Notes", "Obsidian", "Notion", "Obsidian & Hugo"]
+  tool_label: "Obsidian & Blog Starter Kits"
+  tool_url: "/tools/"
+  library_label: "roadmap.sh & Systems Books"
+  library_url: "/library/"
+  freebie_label: "Obsidian Personal (100% Free)"
+  freebie_url: "/freebies/"
+  next_label: "Back to Frontend Engineering →"
+  next_url: "/learn/frontend/"

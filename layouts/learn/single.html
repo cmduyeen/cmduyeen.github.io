@@ -74,11 +74,18 @@
             {{ end }}
           {{ end }}
         </div>
-        <div class="topic-pills">
+        <div class="topic-pills" style="margin-bottom: 1rem;">
           {{- range .topics -}}
           <span class="topic-pill">{{ . }}</span>
           {{- end -}}
         </div>
+        {{ with .phases }}
+        <div class="roadmap-steps">
+          {{- range . -}}
+          <div class="roadmap-step"><span>{{ .label }}</span><strong>{{ .title }}</strong></div>
+          {{- end -}}
+        </div>
+        {{ end }}
       </div>
       {{ end }}
 
