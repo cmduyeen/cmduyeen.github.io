@@ -1,12 +1,13 @@
 {{- $catalog := index site.Data.products "en" -}}
 {{- with $catalog.sections -}}
-  {{- $toolsSec := index . 0 -}}
+  {{- range $idx, $sec := . -}}
   <section class="home-section">
     <div class="section-head">
-      <h2 class="section-label"><span aria-hidden="true">// </span>{{ $toolsSec.heading }}</h2>
+      <h2 class="section-label"><span aria-hidden="true">// </span>{{ $sec.heading }}</h2>
+      {{ if eq $idx 1 }}<span class="archive-series-count">Optional Pro &amp; Digital Editions</span>{{ end }}
     </div>
     <div class="featured-grid">
-      {{- range $toolsSec.items -}}
+      {{- range $sec.items -}}
       {{- $isExternal := hasPrefix .url "http" -}}
       <a class="hud-card" href="{{ .url }}"{{ if $isExternal }} target="_blank" rel="noopener noreferrer"{{ end }}>
         <div class="hud-card-top">
@@ -20,4 +21,5 @@
       {{- end -}}
     </div>
   </section>
+  {{- end -}}
 {{- end -}}

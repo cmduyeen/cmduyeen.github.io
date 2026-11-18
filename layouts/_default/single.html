@@ -1,5 +1,5 @@
 {{ define "main" }}
-  {{- $isArticle := or (eq .Section "posts") (eq .Section "radar") -}}
+  {{- $isArticle := or (eq .Section "posts") (eq .Section "news") -}}
   {{ if $isArticle }}
   <div id="reading-progress" class="reading-progress" aria-hidden="true"></div>
   {{- $hasToc := in .TableOfContents "<li>" -}}
@@ -11,7 +11,7 @@
           <nav class="breadcrumb" aria-label="Breadcrumb">
             <a href="{{ site.Home.RelPermalink }}">~/{{ lower site.Title }}</a>
             <span aria-hidden="true">/</span>
-            <a href="{{ if eq .Section "radar" }}{{ "radar/" | relLangURL }}{{ else }}{{ "archives/" | relLangURL }}{{ end }}">{{ if eq .Section "radar" }}Radar{{ else }}Archive{{ end }}</a>
+            <a href="{{ if eq .Section "news" }}{{ "news/" | relLangURL }}{{ else }}{{ "learn/" | relLangURL }}{{ end }}">{{ if eq .Section "news" }}News{{ else }}Learn{{ end }}</a>
           </nav>
           <h1>{{ .Title }}</h1>
           <p class="article-date">

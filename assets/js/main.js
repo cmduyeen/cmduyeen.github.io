@@ -224,6 +224,20 @@
       } catch (_) {}
     });
   }
+
+  const trackBtns = Array.from(document.querySelectorAll("[data-track-target]"));
+  const trackPanels = Array.from(document.querySelectorAll("[data-track-panel]"));
+  if (trackBtns.length > 0 && trackPanels.length > 0) {
+    trackBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const targetId = btn.dataset.trackTarget;
+        trackBtns.forEach((b) => b.classList.toggle("is-active", b === btn));
+        trackPanels.forEach((p) => {
+          p.hidden = p.id !== targetId;
+        });
+      });
+    });
+  }
   searchDialog?.addEventListener("click", (e) => {
     if (e.target === searchDialog) searchDialog.close();
   });

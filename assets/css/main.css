@@ -882,6 +882,110 @@ main {
 }
 
 /* ==========================================================================
+   W3Schools-Style Learn Layout (2-Column Track Switcher)
+   ========================================================================== */
+.w3-learn-shell {
+  display: grid;
+  grid-template-columns: 16rem minmax(0, 1fr);
+  gap: 2rem;
+  align-items: start;
+}
+
+.w3-sidebar {
+  position: sticky;
+  top: 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding: 1rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  background: var(--bg-surface);
+}
+
+.w3-sidebar-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin-bottom: 0.3rem;
+}
+
+.w3-track-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.w3-track-btn:hover {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+}
+
+.w3-track-btn.is-active {
+  background: rgba(16, 185, 129, 0.12);
+  border-color: rgba(16, 185, 129, 0.35);
+  color: var(--accent-emerald);
+  font-weight: 700;
+}
+
+.w3-count {
+  font-size: 0.72rem;
+  opacity: 0.8;
+}
+
+.w3-lesson-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.w3-lesson-item {
+  display: grid;
+  grid-template-columns: 2.5rem 1fr auto;
+  align-items: baseline;
+  gap: 0.75rem;
+  padding: 0.75rem 0.65rem;
+  border-bottom: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: background-color 0.15s ease, padding-left 0.15s ease;
+}
+
+.w3-lesson-item:hover {
+  background: var(--bg-surface);
+  padding-left: 0.95rem;
+}
+
+.w3-lesson-item:hover .w3-lesson-title {
+  color: var(--accent-cyan);
+}
+
+.w3-lesson-num {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--accent-emerald);
+  font-weight: 600;
+}
+
+.w3-lesson-title {
+  font-weight: 500;
+}
+
+/* ==========================================================================
    Single Page (CSS Grid 2-Column Reading Layout: 65ch + Sticky ToC)
    ========================================================================== */
 .article-layout {
@@ -1575,8 +1679,13 @@ main {
   .mention-grid,
   .post-nav-grid,
   .store-compare,
+  .w3-learn-shell,
   .site-footer-inner {
     grid-template-columns: 1fr;
+  }
+
+  .w3-sidebar {
+    position: static;
   }
 
   .roadmap-head {

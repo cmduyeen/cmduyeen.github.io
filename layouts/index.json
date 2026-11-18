@@ -1,5 +1,5 @@
 {{- $items := slice -}}
-{{- range (where site.RegularPages "Section" "in" (slice "posts" "radar")).ByDate.Reverse -}}
+{{- range (where site.RegularPages "Section" "in" (slice "posts" "news")).ByDate.Reverse -}}
   {{- $items = $items | append (dict
     "title" .LinkTitle
     "url" .RelPermalink

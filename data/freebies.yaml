@@ -1,0 +1,35 @@
+- id: github-student-pack
+  category: Dev Perks
+  status: ACTIVE
+  platform: Cross-Platform
+  name: GitHub Developer & Student Perks
+  summary: Free cloud credits, domains, and pro IDE licenses for verified builders.
+  url: https://education.github.com/pack
+  cta: Claim Pack
+
+- id: epic-weekly-games
+  category: PC Games
+  status: ACTIVE
+  platform: Windows / Epic
+  name: Epic Games Weekly Free Vault
+  summary: Rotate-to-keep full PC games every Thursday — claim once, own forever.
+  url: https://store.epicgames.com/en-US/free-games
+  cta: Claim Free Games
+
+- id: obsidian-personal
+  category: Software
+  status: ACTIVE
+  platform: Win / Mac / Linux
+  name: Obsidian Personal License (100% Free)
+  summary: Local-first Markdown knowledge base with no account or subscription required.
+  url: https://obsidian.md/
+  cta: Download Free
+
+- id: serein-theme-free
+  category: Software
+  status: ACTIVE
+  platform: VS Code / Neovim
+  name: Serein Calm Theme Suite (MIT)
+  summary: Open-source low-distraction color suite for VS Code, Neovim, Obsidian, and Terminal.
+  url: https://github.com/cmduyeen/serein-theme
+  cta: Get Theme

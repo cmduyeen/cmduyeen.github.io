@@ -1,0 +1,47 @@
+- id: pragprog
+  category: Tech Books
+  badge: Classic Book
+  name: The Pragmatic Programmer (20th Anniversary)
+  note: Timeless principles on automation, orthogonal design, and tracer bullets.
+  url: https://pragprog.com/titles/tpp20/
+  cta: Read Details
+
+- id: ddia
+  category: Tech Books
+  badge: Systems Design
+  name: Designing Data-Intensive Applications
+  note: The best deep-dive on distributed systems, storage engines, and reliability.
+  url: https://dataintensive.net/
+  cta: Read Details
+
+- id: roadmap-sh
+  category: Courses & Platforms
+  badge: Interactive Track
+  name: roadmap.sh Developer Roadmaps
+  note: Free, structured visual learning paths for backend, DevOps, and AI engineering.
+  url: https://roadmap.sh/
+  cta: Explore Tracks
+
+- id: frontend-masters
+  category: Courses & Platforms
+  badge: Deep-Dive Courses
+  name: Frontend Masters & Systems Workshops
+  note: In-depth video workshops taught by practicing engineers, zero fluff.
+  url: https://frontendmasters.com/
+  cta: Browse Courses
+
+- id: cursor-ide
+  category: Dev Stack
+  badge: AI Code Editor
+  name: Cursor AI Editor
+  note: Fast full-codebase context and refactoring for solo builders.
+  url: https://cursor.com/
+  cta: Try Cursor
+
+- id: cloudflare-pages
+  category: Dev Stack
+  badge: Edge Hosting
+  name: Cloudflare Pages + Email Routing
+  note: Unlimited static bandwidth with private email aliasing built in.
+  url: https://pages.cloudflare.com/
+  cta: Explore Edge

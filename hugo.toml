@@ -21,15 +21,15 @@ enableRobotsTXT = true
   other = ""
 
 [[menus.main]]
-  identifier = "guides"
-  name = "Guides"
-  pageRef = "/guides"
+  identifier = "learn"
+  name = "Learn"
+  pageRef = "/learn"
   weight = 10
 
 [[menus.main]]
-  identifier = "radar"
-  name = "Radar"
-  pageRef = "/radar"
+  identifier = "news"
+  name = "News"
+  pageRef = "/news"
   weight = 20
 
 [[menus.main]]
@@ -39,15 +39,15 @@ enableRobotsTXT = true
   weight = 30
 
 [[menus.main]]
-  identifier = "store"
-  name = "Store"
-  pageRef = "/store"
+  identifier = "library"
+  name = "Library"
+  pageRef = "/library"
   weight = 40
 
 [[menus.main]]
-  identifier = "deals"
-  name = "Deals"
-  pageRef = "/deals"
+  identifier = "freebies"
+  name = "Freebies"
+  pageRef = "/freebies"
   weight = 50
 
 [outputs]

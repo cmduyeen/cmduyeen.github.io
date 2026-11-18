@@ -1,0 +1,105 @@
+{{ define "main" }}
+  {{- $posts := (where site.RegularPages "Section" "posts").ByDate -}}
+  {{- $mdSeries := slice -}}
+  {{- $sereinSeries := slice -}}
+  {{- $otherGuides := slice -}}
+  {{ range $posts }}
+    {{ if in .RelPermalink "markdown-101-" }}
+      {{ $mdSeries = $mdSeries | append . }}
+    {{ else if in .RelPermalink "serein-" }}
+      {{ $sereinSeries = $sereinSeries | append . }}
+    {{ else }}
+      {{ $otherGuides = $otherGuides | append . }}
+    {{ end }}
+  {{ end }}
+
+  <header class="page-header">
+    <h1 class="hero-h1"><span class="highlight">//</span> {{ .Title }}</h1>
+    <p class="archive-subtitle">{{ .Description }}</p>
+  </header>
+
+  <div class="w3-learn-shell">
+    <aside class="w3-sidebar" aria-label="Learning tracks">
+      <div class="w3-sidebar-label">Select Track</div>
+      <button type="button" class="w3-track-btn is-active" data-track-target="track-markdown">
+        <span>01. Markdown 101</span>
+        <span class="w3-count">{{ len $mdSeries }}</span>
+      </button>
+      <button type="button" class="w3-track-btn" data-track-target="track-serein">
+        <span>02. Serein Workspace</span>
+        <span class="w3-count">{{ len $sereinSeries }}</span>
+      </button>
+      <button type="button" class="w3-track-btn" data-track-target="track-workflows">
+        <span>03. Automation &amp; Kits</span>
+        <span class="w3-count">{{ len $otherGuides }}</span>
+      </button>
+    </aside>
+
+    <div class="w3-main">
+      <section class="w3-panel" id="track-markdown" data-track-panel>
+        <div class="section-head">
+          <h2 class="section-label"><span aria-hidden="true">// </span>Track 01 · Markdown 101</h2>
+          <span class="archive-series-count">{{ len $mdSeries }} lessons</span>
+        </div>
+        <p class="roadmap-desc">Step-by-step plain-text mastery with built-in interactive practice sandboxes.</p>
+        <ol class="w3-lesson-list">
+          {{ range $idx, $p := $mdSeries }}
+          <li>
+            <a class="w3-lesson-item" href="{{ $p.RelPermalink }}">
+              <span class="w3-lesson-num">{{ printf "%02d" (add $idx 1) }}</span>
+              <span class="w3-lesson-title">{{ $p.LinkTitle }}</span>
+              <span class="writing-meta">{{ $p.ReadingTime }}m</span>
+            </a>
+          </li>
+          {{ end }}
+        </ol>
+        <aside class="roadmap-deepdive">
+          <span class="tldr-label">// FURTHER READING</span>
+          <p>Want deeper engineering fundamentals? Browse the <a href="{{ "library/" | relLangURL }}">curated books &amp; courses shelf →</a></p>
+        </aside>
+      </section>
+
+      <section class="w3-panel" id="track-serein" data-track-panel hidden>
+        <div class="section-head">
+          <h2 class="section-label"><span aria-hidden="true">// </span>Track 02 · Serein Workspace</h2>
+          <span class="archive-series-count">{{ len $sereinSeries }} lessons</span>
+        </div>
+        <p class="roadmap-desc">Configure a calm, low-distraction setup across VS Code, Neovim, and Obsidian.</p>
+        <ol class="w3-lesson-list">
+          {{ range $idx, $p := $sereinSeries }}
+          <li>
+            <a class="w3-lesson-item" href="{{ $p.RelPermalink }}">
+              <span class="w3-lesson-num">{{ printf "%02d" (add $idx 1) }}</span>
+              <span class="w3-lesson-title">{{ $p.LinkTitle }}</span>
+              <span class="writing-meta">{{ $p.ReadingTime }}m</span>
+            </a>
+          </li>
+          {{ end }}
+        </ol>
+        <aside class="roadmap-deepdive">
+          <span class="tldr-label">// COMPANION TOOLS</span>
+          <p>Explore the <a href="{{ "tools/" | relLangURL }}">free Serein &amp; starter kits →</a></p>
+        </aside>
+      </section>
+
+      <section class="w3-panel" id="track-workflows" data-track-panel hidden>
+        <div class="section-head">
+          <h2 class="section-label"><span aria-hidden="true">// </span>Track 03 · Automation &amp; Kits</h2>
+          <span class="archive-series-count">{{ len $otherGuides }} lessons</span>
+        </div>
+        <p class="roadmap-desc">Practical standalone guides on GitHub Profiles, Hugo blogs, and Lunar Calendar automation.</p>
+        <ol class="w3-lesson-list">
+          {{ range $idx, $p := $otherGuides }}
+          <li>
+            <a class="w3-lesson-item" href="{{ $p.RelPermalink }}">
+              <span class="w3-lesson-num">{{ printf "%02d" (add $idx 1) }}</span>
+              <span class="w3-lesson-title">{{ $p.LinkTitle }}</span>
+              <span class="writing-meta">{{ $p.ReadingTime }}m</span>
+            </a>
+          </li>
+          {{ end }}
+        </ol>
+      </section>
+    </div>
+  </div>
+{{ end }}

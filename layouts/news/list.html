@@ -8,7 +8,7 @@
     {{ range .Pages.ByDate.Reverse }}
     <a class="hud-card" href="{{ .RelPermalink }}">
       <div class="hud-card-top">
-        <span class="product-badge">ISSUE · {{ .Date.UTC.Format "2006-01-02" }}</span>
+        <span class="product-badge">TECH NEWS · {{ .Date.UTC.Format "2006-01-02" }}</span>
         <span class="hud-card-arrow" aria-hidden="true">↗</span>
       </div>
       <h2 class="hud-card-title">{{ .Title }}</h2>

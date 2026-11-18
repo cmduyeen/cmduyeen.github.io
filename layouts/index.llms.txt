@@ -12,11 +12,11 @@
 {{ with site.Home.OutputFormats.Get "RSS" }}- RSS: {{ .Permalink }}{{ end }}
 
 ## Core Pages
-- Learning Guides & Roadmaps: {{ "guides/" | absLangURL }}
-- Weekly Tech & AI Radar: {{ "radar/" | absLangURL }}
-- Web Tools & Kits: {{ "tools/" | absLangURL }}
-- Digital Store: {{ "store/" | absLangURL }}
-- Curated Deals & Books: {{ "deals/" | absLangURL }}
+- Learn (Series & Tutorials): {{ "learn/" | absLangURL }}
+- Tech News: {{ "news/" | absLangURL }}
+- Tools & Digital Kits: {{ "tools/" | absLangURL }}
+- Library (Books & Courses): {{ "library/" | absLangURL }}
+- Freebies & Giveaways: {{ "freebies/" | absLangURL }}
 - Archive: {{ "archives/" | absLangURL }}
 - About: {{ "about/" | absLangURL }}
 
