@@ -2,137 +2,69 @@
   {{- $allPosts := (where site.RegularPages "Section" "posts").ByDate -}}
   {{- $curriculum := site.Data.curriculum -}}
 
-  {{/* Gom bài viết theo từng track và tìm các bài standalone */}}
-  {{- $trackPosts := newScratch -}}
-  {{- $assigned := slice -}}
-  {{- range $curriculum -}}
-    {{- range .tracks -}}
-      {{- $t := . -}}
-      {{- if not $t.match_standalone -}}
-        {{- $matched := slice -}}
-        {{- range $allPosts -}}
-          {{- $p := . -}}
-          {{- $hit := false -}}
-          {{- if and $t.match_prefix (in $p.RelPermalink $t.match_prefix) -}}
-            {{- $hit = true -}}
-          {{- else if and $t.match_series (eq (printf "%v" ($p.Params.series | default "")) $t.match_series) -}}
-            {{- $hit = true -}}
-          {{- end -}}
-          {{- if $hit -}}
-            {{- $matched = $matched | append $p -}}
-            {{- $assigned = $assigned | append $p.RelPermalink -}}
-          {{- end -}}
-        {{- end -}}
-        {{- $trackPosts.Set $t.id $matched -}}
-      {{- end -}}
-    {{- end -}}
-  {{- end -}}
-
-  {{- $standalone := slice -}}
-  {{- range $allPosts -}}
-    {{- if not (in $assigned .RelPermalink) -}}
-      {{- $standalone = $standalone | append . -}}
-    {{- end -}}
-  {{- end -}}
-  {{- $trackPosts.Set "track-standalone" $standalone -}}
-
   <header class="page-header">
     <h1 class="hero-h1"><span class="highlight">//</span> {{ .Title }}</h1>
-    <p class="archive-subtitle">Pick your goal or browse the full curriculum map on the left.</p>
+    <p class="archive-subtitle">Evergreen learning paths — follow steps 01 to 04 in order, or jump straight into the skill you need.</p>
   </header>
 
-  <!-- Step 1: Goal Picker -->
-  <section class="goal-picker" aria-label="Choose your learning goal">
-    <button type="button" class="goal-card is-active" data-track-target="track-markdown">
-      <span class="goal-tag">[GOAL 01] WEB &amp; CODE</span>
-      <strong class="goal-title">Learn Markdown, HTML, CSS &amp; Code</strong>
-      <span class="goal-desc">Start with Markdown 101 today; HTML, CSS, JS &amp; Python tracks coming next.</span>
-    </button>
-    <button type="button" class="goal-card" data-track-target="track-obsidian">
-      <span class="goal-tag">[GOAL 02] PKM &amp; NOTES</span>
-      <strong class="goal-title">Build an Obsidian or Notion system</strong>
-      <span class="goal-desc">Organize plain-text notes, daily logs, and publish directly to the web.</span>
-    </button>
-    <button type="button" class="goal-card" data-track-target="track-serein">
-      <span class="goal-tag">[GOAL 03] WORKSPACE &amp; SHIP</span>
-      <strong class="goal-title">Tune VS Code, Neovim &amp; Hugo</strong>
-      <span class="goal-desc">Set up a calm coding environment and deploy fast static sites.</span>
-    </button>
-  </section>
+  <!-- Connected 4-Step Skill Ladder -->
+  <nav class="skill-ladder" aria-label="4-step learning path">
+    {{- range $idx, $p := $curriculum -}}
+    <a class="ladder-step" href="{{ $p.slug }}">
+      <span class="ladder-num">STEP {{ $p.step }}</span>
+      <strong class="ladder-name">{{ $p.name }}</strong>
+    </a>
+    {{- if lt $idx (sub (len $curriculum) 1) -}}
+    <span class="ladder-arrow" aria-hidden="true">→</span>
+    {{- end -}}
+    {{- end -}}
+  </nav>
 
-  <!-- Step 2 & 3: W3Schools 2-Tier Sidebar + Curriculum Panels -->
-  <div class="w3-learn-shell" id="learn-workspace">
-    <aside class="w3-sidebar" aria-label="Curriculum sidebar">
-      {{- range $curriculum -}}
-      <div class="w3-sidebar-group">
-        <div class="w3-sidebar-label">{{ .group }}</div>
-        {{- range .tracks -}}
-          {{- $items := $trackPosts.Get .id | default slice -}}
-          {{- $count := len $items -}}
-          <button type="button" class="w3-track-btn{{ if eq .id "track-markdown" }} is-active{{ end }}{{ if eq $count 0 }} is-planned{{ end }}" data-track-target="{{ .id }}">
-            <span>{{ .name }}</span>
-            {{ if gt $count 0 }}
-            <span class="w3-count" data-track-progress="{{ .id }}">0/{{ $count }}</span>
-            {{ else }}
-            <span class="w3-soon">SOON</span>
-            {{ end }}
-          </button>
+  <!-- 4 Evergreen Topic Clusters -->
+  <div class="cluster-grid">
+    {{- range $curriculum -}}
+      {{- $pillar := . -}}
+      {{- $count := 0 -}}
+      {{- range $allPosts -}}
+        {{- $post := . -}}
+        {{- $hit := false -}}
+        {{- range $pillar.match_prefixes -}}
+          {{- if in $post.RelPermalink . -}}{{- $hit = true -}}{{- end -}}
         {{- end -}}
-      </div>
-      {{- end -}}
-    </aside>
-
-    <div class="w3-main">
-      {{- range $curriculum -}}
-        {{- $groupName := .group -}}
-        {{- range .tracks -}}
-          {{- $t := . -}}
-          {{- $items := $trackPosts.Get $t.id | default slice -}}
-          {{- $count := len $items -}}
-          <section class="w3-panel" id="{{ $t.id }}" data-track-panel{{ if ne $t.id "track-markdown" }} hidden{{ end }}>
-            <div class="roadmap-banner">
-              <div class="roadmap-banner-top">
-                <div>
-                  <span class="tldr-label">// {{ upper $groupName }} · {{ if gt $count 0 }}{{ $count }} LESSONS{{ else }}PLANNED TRACK{{ end }}</span>
-                  <h2 class="roadmap-banner-title">{{ $t.title }}</h2>
-                </div>
-                {{ if gt $count 0 }}
-                  {{ with index $items 0 }}
-                  <a class="btn-primary-cyber" href="{{ .RelPermalink }}" data-track-start="{{ $t.id }}">Start Lesson 01 →</a>
-                  {{ end }}
-                {{ else }}
-                  <span class="status-pill">IN PROGRESS</span>
-                {{ end }}
-              </div>
-              <div class="roadmap-steps">
-                {{- range $t.phases -}}
-                <div class="roadmap-step"><span>{{ .label }}</span><strong>{{ .title }}</strong></div>
-                {{- end -}}
-              </div>
-            </div>
-
-            {{ if gt $count 0 }}
-            <ol class="w3-lesson-list">
-              {{ range $idx, $p := $items }}
-              <li>
-                <a class="w3-lesson-item" href="{{ $p.RelPermalink }}" data-lesson-url="{{ $p.RelPermalink }}" data-lesson-track="{{ $t.id }}">
-                  <span class="w3-lesson-num">{{ printf "%02d" (add $idx 1) }}</span>
-                  <span class="w3-lesson-title">{{ $p.LinkTitle }}</span>
-                  <span class="w3-lesson-status" aria-hidden="true"></span>
-                  <span class="writing-meta">{{ $p.ReadingTime }}m</span>
-                </a>
-              </li>
-              {{ end }}
-            </ol>
-            {{ else }}
-            <div class="roadmap-empty">
-              <p>Lessons for <strong>{{ $t.name }}</strong> are being written and will drop into this track automatically.</p>
-              <p>Meanwhile, check <a href="{{ "library/" | relLangURL }}">curated books &amp; courses in Library →</a> or practice with <a href="{{ "tools/" | relLangURL }}">Web Tools →</a></p>
-            </div>
-            {{ end }}
-          </section>
+        {{- if not $hit -}}
+          {{- $cat := printf "%v" ($post.Params.category | default "") -}}
+          {{- if in $pillar.match_categories $cat -}}{{- $hit = true -}}{{- end -}}
         {{- end -}}
+        {{- if $hit -}}{{- $count = add $count 1 -}}{{- end -}}
       {{- end -}}
-    </div>
+
+      <article class="hud-card cluster-card">
+        <div class="hud-card-top">
+          <span class="product-badge">STEP {{ $pillar.step }} · {{ $pillar.intent }}</span>
+          <span class="status-pill{{ if gt $count 0 }} is-active{{ end }}">{{ if gt $count 0 }}{{ $count }} {{ T "posts_unit" }}{{ else }}ROADMAP{{ end }}</span>
+        </div>
+
+        <h2 class="cluster-title">
+          <a href="{{ $pillar.slug }}">{{ $pillar.name }}</a>
+        </h2>
+        <p class="cluster-summary">{{ $pillar.summary }}</p>
+
+        <div class="topic-pills">
+          {{- range $pillar.topics -}}
+          <span class="topic-pill">{{ . }}</span>
+          {{- end -}}
+        </div>
+
+        <div class="cluster-flywheel">
+          <span>Tool: <a href="{{ $pillar.tool_url }}">{{ $pillar.tool_label }}</a></span>
+          <span>Library: <a href="{{ $pillar.library_url }}">{{ $pillar.library_label }}</a></span>
+          <span>Freebie: <a href="{{ $pillar.freebie_url }}">{{ $pillar.freebie_label }}</a></span>
+        </div>
+
+        <div class="cluster-actions">
+          <a class="btn-primary-cyber" href="{{ $pillar.slug }}">Open {{ $pillar.name }} →</a>
+        </div>
+      </article>
+    {{- end -}}
   </div>
 {{ end }}

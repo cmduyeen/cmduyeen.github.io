@@ -900,6 +900,128 @@ main {
 }
 
 /* ==========================================================================
+   Evergreen Hub & Spoke Learn System (Skill Ladder + Topic Clusters)
+   ========================================================================== */
+.skill-ladder {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  overflow-x: auto;
+  padding-bottom: 0.25rem;
+}
+
+.ladder-step {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  flex: 1 1 0;
+  min-width: 10.5rem;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.ladder-step:hover {
+  border-color: var(--accent-cyan);
+  background: var(--bg-elevated);
+}
+
+.ladder-num {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--accent-emerald);
+}
+
+.ladder-name {
+  font-size: 0.88rem;
+}
+
+.ladder-arrow {
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.cluster-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.1rem;
+}
+
+.cluster-card {
+  gap: 0.75rem;
+  padding: 1.3rem;
+}
+
+.cluster-title {
+  margin: 0;
+  font-size: 1.18rem;
+}
+
+.cluster-title a {
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.cluster-title a:hover {
+  color: var(--accent-cyan);
+}
+
+.cluster-summary {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+.cluster-flywheel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding-top: 0.65rem;
+  border-top: 1px solid var(--border-subtle);
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--text-muted);
+}
+
+.cluster-flywheel a {
+  color: var(--text-secondary);
+}
+
+.cluster-flywheel a:hover {
+  color: var(--accent-cyan);
+}
+
+.cluster-actions {
+  margin-top: auto;
+  padding-top: 0.35rem;
+}
+
+.flywheel-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.85rem;
+  margin-top: 2rem;
+}
+
+.pillar-next-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+/* ==========================================================================
    W3Schools-Style Learn Layout (Goal Picker -> Roadmap -> Track Switcher)
    ========================================================================== */
 .goal-picker {
@@ -1927,9 +2049,15 @@ main {
   .store-compare,
   .goal-picker,
   .roadmap-steps,
+  .cluster-grid,
+  .flywheel-grid,
   .w3-learn-shell,
   .site-footer-inner {
     grid-template-columns: 1fr;
+  }
+
+  .ladder-arrow {
+    display: none;
   }
 
   .w3-sidebar {

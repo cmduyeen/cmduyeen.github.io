@@ -1,131 +1,71 @@
-- group: Web & Code
-  goal_id: track-markdown
-  tracks:
-    - id: track-markdown
-      name: Markdown 101
-      title: "Markdown 101 — Plain-Text Mastery"
-      match_prefix: "markdown-101-"
-      phases:
-        - label: "Phase 1 (01–04)"
-          title: "Core Syntax & Media"
-        - label: "Phase 2 (05–08)"
-          title: "YAML, Tables & Hugo"
-        - label: "Phase 3 (09–10)"
-          title: "Obsidian & Capstone"
+- id: web
+  step: "01"
+  name: "Web Foundations"
+  slug: "/learn/web/"
+  intent: "Evergreen Traffic · Beginner to Builder"
+  summary: "Master the core languages of the web and plain-text publishing: Markdown, HTML5, CSS, and Vanilla JavaScript."
+  topics: ["Markdown", "HTML5", "Modern CSS", "Vanilla JS"]
+  match_prefixes: ["markdown-101-"]
+  match_categories: ["Web & Code", "Markdown"]
+  tool_label: "Pro Blog Starter Kit"
+  tool_url: "/tools/"
+  library_label: "The Pragmatic Programmer & Frontend Masters"
+  library_url: "/library/"
+  freebie_label: "GitHub Student & Builder Perks"
+  freebie_url: "/freebies/"
+  next_label: "Step 02: PKM & Second Brain →"
+  next_url: "/learn/pkm/"
 
-    - id: track-html
-      name: HTML
-      title: "HTML5 — Semantic Web Structure"
-      match_series: "HTML"
-      phases:
-        - label: "Phase 1"
-          title: "Tags, Forms & Semantics"
-        - label: "Phase 2"
-          title: "Accessibility & SEO"
-        - label: "Phase 3"
-          title: "Clean Static Templates"
+- id: pkm
+  step: "02"
+  name: "PKM & Second Brain"
+  slug: "/learn/pkm/"
+  intent: "High-Retention Niche · Notes to Assets"
+  summary: "Build a durable personal knowledge system with Obsidian, Notion, YAML properties, and clean Markdown workflows."
+  topics: ["Obsidian", "Notion", "YAML Properties", "Daily Notes"]
+  match_prefixes: ["serein-obsidian"]
+  match_categories: ["PKM & Notes", "Obsidian", "Notion"]
+  tool_label: "Obsidian Kepano Vault & Serein"
+  tool_url: "/tools/"
+  library_label: "Curated PKM & Systems Books"
+  library_url: "/library/"
+  freebie_label: "Obsidian Personal (100% Free)"
+  freebie_url: "/freebies/"
+  next_label: "Step 03: Developer Workspace →"
+  next_url: "/learn/workspace/"
 
-    - id: track-css
-      name: CSS
-      title: "Modern CSS — Grid, Flex & Tokens"
-      match_series: "CSS"
-      phases:
-        - label: "Phase 1"
-          title: "Box Model & Variables"
-        - label: "Phase 2"
-          title: "Flexbox & CSS Grid"
-        - label: "Phase 3"
-          title: "Responsive & Dark Mode"
+- id: workspace
+  step: "03"
+  name: "Developer Workspace"
+  slug: "/learn/workspace/"
+  intent: "Deep-Tech Audience · Speed & Focus"
+  summary: "Configure a distraction-free coding and writing environment across VS Code, Neovim, Windows Terminal, and Git."
+  topics: ["VS Code", "Neovim (Lua)", "Windows Terminal", "Git"]
+  match_prefixes: ["serein-"]
+  match_categories: ["Workspace", "Neovim", "VS Code"]
+  tool_label: "Serein Calm Theme Suite"
+  tool_url: "/tools/"
+  library_label: "Systems & Tooling Resources"
+  library_url: "/library/"
+  freebie_label: "Serein Theme Suite (MIT Free)"
+  freebie_url: "/freebies/"
+  next_label: "Step 04: Automation & Publishing →"
+  next_url: "/learn/automation/"
 
-    - id: track-js
-      name: JavaScript
-      title: "Vanilla JS — Zero-Bloat Interactivity"
-      match_series: "JavaScript"
-      phases:
-        - label: "Phase 1"
-          title: "DOM & Events"
-        - label: "Phase 2"
-          title: "Fetch, JSON & Storage"
-        - label: "Phase 3"
-          title: "Client-Side Tools"
-
-    - id: track-python
-      name: Python
-      title: "Python — CLI & Content Automation"
-      match_series: "Python"
-      phases:
-        - label: "Phase 1"
-          title: "Files, YAML & Regex"
-        - label: "Phase 2"
-          title: "Git & Build Scripts"
-        - label: "Phase 3"
-          title: "RSS & AI Pipelines"
-
-- group: PKM & Notes
-  goal_id: track-obsidian
-  tracks:
-    - id: track-obsidian
-      name: Obsidian
-      title: "Obsidian — Plain-Text Second Brain"
-      match_prefix: "serein-obsidian"
-      phases:
-        - label: "Phase 1"
-          title: "Vault Structure & Daily Notes"
-        - label: "Phase 2"
-          title: "Properties, Tags & Bases"
-        - label: "Phase 3"
-          title: "Publish Vault to Hugo"
-
-    - id: track-notion
-      name: Notion
-      title: "Notion — Databases & Workflows"
-      match_series: "Notion"
-      phases:
-        - label: "Phase 1"
-          title: "Pages & Relations"
-        - label: "Phase 2"
-          title: "Templates & Dashboards"
-        - label: "Phase 3"
-          title: "Export & Automation"
-
-- group: Workspace & Publish
-  goal_id: track-serein
-  tracks:
-    - id: track-serein
-      name: Serein Workspace
-      title: "Serein Calm Workspace"
-      match_prefix: "serein-"
-      phases:
-        - label: "Step 1"
-          title: "Theme Philosophy"
-        - label: "Step 2"
-          title: "VS Code & Neovim"
-        - label: "Step 3"
-          title: "Obsidian Second Brain"
-
-    - id: track-publish
-      name: Hugo & GitHub
-      title: "Hugo & GitHub Pages — Zero-Cost Publishing"
-      match_prefix: "tao-github-profile"
-      phases:
-        - label: "Step 1"
-          title: "Profile & Repo Setup"
-        - label: "Step 2"
-          title: "Hugo Config & Layouts"
-        - label: "Step 3"
-          title: "GitHub Actions Deploy"
-
-- group: Standalone
-  goal_id: track-standalone
-  tracks:
-    - id: track-standalone
-      name: Standalone Guides
-      title: "Standalone Practical Guides"
-      match_standalone: true
-      phases:
-        - label: "Pick Any"
-          title: "No Prerequisites"
-        - label: "Follow Along"
-          title: "Copy-Paste Configs"
-        - label: "Deploy"
-          title: "Live in Minutes"
+- id: automation
+  step: "04"
+  name: "Automation & Publishing"
+  slug: "/learn/automation/"
+  intent: "High-Intent Builders · Ship & Scale"
+  summary: "Turn local notes and scripts into live web apps, Hugo static sites, GitHub Actions pipelines, and Python CLI tools."
+  topics: ["Hugo", "GitHub Pages", "Python CLI", "AI Workflows"]
+  match_prefixes: ["tao-github-profile", "lich-am-viet-nam"]
+  match_categories: ["Automation", "Hugo", "Python"]
+  tool_label: "Pro GitHub & Lunar Calendar Studio"
+  tool_url: "/tools/"
+  library_label: "Designing Data-Intensive Applications"
+  library_url: "/library/"
+  freebie_label: "Cloudflare & Edge Free Tier"
+  freebie_url: "/freebies/"
+  next_label: "Explore All Tools & Kits →"
+  next_url: "/tools/"
