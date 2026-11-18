@@ -900,19 +900,72 @@ main {
 }
 
 /* ==========================================================================
-   Quick Jump (1-Click Tool / Topic Picker)
+   Unified Learn Finder (Quick Topic ⇄ Goal Advisor) + 8-Track Directory
    ========================================================================== */
-.quick-jump {
-  margin-bottom: 1.75rem;
+.learn-finder {
+  margin-bottom: 2.75rem;
+  padding: 1.25rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  background: var(--bg-surface);
 }
 
-.quick-jump-label {
+.learn-finder-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.1rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.learn-mode-tabs {
+  display: inline-flex;
+  gap: 0.35rem;
+  padding: 0.22rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  background: var(--bg-void);
+}
+
+.mode-tab {
+  padding: 0.35rem 0.8rem;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.mode-tab:hover {
+  color: var(--text-primary);
+}
+
+.mode-tab.is-active {
+  background: var(--accent-emerald);
+  color: #04130d;
+  font-weight: 700;
+}
+
+.learn-finder-hint {
   font-family: var(--font-mono);
   font-size: 0.74rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  color: var(--accent-cyan);
-  margin-bottom: 0.65rem;
+  color: var(--text-muted);
+}
+
+.track-directory-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.track-dir-card {
+  padding: 1.05rem 1.15rem;
 }
 
 .quick-jump-grid {
@@ -2201,6 +2254,7 @@ main {
   .cluster-grid,
   .flywheel-grid,
   .advisor-steps,
+  .track-directory-grid,
   .w3-learn-shell,
   .site-footer-inner {
     grid-template-columns: 1fr;

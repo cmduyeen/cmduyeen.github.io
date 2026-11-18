@@ -2,158 +2,129 @@
   {{- $allPosts := (where site.RegularPages "Section" "posts").ByDate -}}
   {{- $curriculum := site.Data.curriculum -}}
 
-  <header class="page-header">
-    <h1 class="hero-h1"><span class="highlight">//</span> {{ .Title }}</h1>
-    <p class="archive-subtitle">Too much to read? Pick a tool/topic for instant articles, or use the Path Advisor below.</p>
-  </header>
-
-  <!-- Quick Jump for Impatient Learners (1-Click by Tool / Language) -->
   {{- $quickTopics := slice
-    (dict "id" "obsidian" "name" "Obsidian" "match" "obsidian" "fallback" "/learn/pkm/" "icon" `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><polygon points="12 2 19 8 16 21 8 21 5 8 12 2"/></svg>`)
-    (dict "id" "markdown" "name" "Markdown" "match" "markdown" "fallback" "/learn/frontend/" "icon" `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 15V9l3 3 3-3v6"/><path d="M17 9v6l-2-2"/></svg>`)
-    (dict "id" "vscode" "name" "VS Code" "match" "vscode" "fallback" "/learn/workspace/" "icon" `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>`)
-    (dict "id" "neovim" "name" "Neovim" "match" "neovim" "fallback" "/learn/workspace/" "icon" `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 20V4l16 16V4"/></svg>`)
-    (dict "id" "hugo" "name" "Hugo & GitHub" "match" "hugo|github" "fallback" "/learn/devops/" "icon" `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>`)
-    (dict "id" "office" "name" "Office & Sheets" "match" "calendar|office|excel" "fallback" "/learn/office/" "icon" `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg>`)
-    (dict "id" "html-css" "name" "HTML & CSS" "match" "html|css" "fallback" "/learn/frontend/" "icon" `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3.6 9h16.8"/><path d="M3.6 15h16.8"/></svg>`)
-    (dict "id" "notion" "name" "Notion" "match" "notion" "fallback" "/learn/pkm/" "icon" `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="M9 16V8l6 8V8"/></svg>`)
-    (dict "id" "ai" "name" "AI & No-Code" "match" "ai-tools|automation|no-code" "fallback" "/learn/no-code-ai/" "icon" `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3v3"/><path d="M12 18v3"/><path d="M3 12h3"/><path d="M18 12h3"/><circle cx="12" cy="12" r="4"/></svg>`)
+    (dict "id" "obsidian" "name" "Obsidian" "match" "obsidian" "fallback" "/learn/pkm/" "icon" `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><polygon points="12 2 19 8 16 21 8 21 5 8 12 2"/></svg>`)
+    (dict "id" "markdown" "name" "Markdown" "match" "markdown" "fallback" "/learn/frontend/" "icon" `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 15V9l3 3 3-3v6"/><path d="M17 9v6l-2-2"/></svg>`)
+    (dict "id" "vscode" "name" "VS Code" "match" "vscode" "fallback" "/learn/workspace/" "icon" `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>`)
+    (dict "id" "neovim" "name" "Neovim" "match" "neovim" "fallback" "/learn/workspace/" "icon" `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 20V4l16 16V4"/></svg>`)
+    (dict "id" "hugo" "name" "Hugo & GitHub" "match" "hugo|github" "fallback" "/learn/devops/" "icon" `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/></svg>`)
+    (dict "id" "office" "name" "Office & Sheets" "match" "calendar|office|excel" "fallback" "/learn/office/" "icon" `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg>`)
+    (dict "id" "html-css" "name" "HTML & CSS" "match" "html|css" "fallback" "/learn/frontend/" "icon" `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3.6 9h16.8"/><path d="M3.6 15h16.8"/></svg>`)
+    (dict "id" "notion" "name" "Notion" "match" "notion" "fallback" "/learn/pkm/" "icon" `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="M9 16V8l6 8V8"/></svg>`)
+    (dict "id" "ai" "name" "AI & No-Code" "match" "ai-tools|automation|no-code" "fallback" "/learn/no-code-ai/" "icon" `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 3v3"/><path d="M12 18v3"/><path d="M3 12h3"/><path d="M18 12h3"/></svg>`)
   -}}
 
-  <section class="quick-jump" aria-label="Quick topic jump">
-    <div class="quick-jump-label">// QUICK JUMP · PICK ONE TOPIC</div>
-    <div class="quick-jump-grid">
-      {{- range $quickTopics -}}
-        {{- $qt := . -}}
+  <header class="page-header">
+    <h1 class="hero-h1"><span class="highlight">//</span> {{ .Title }}</h1>
+    <p class="archive-subtitle">Jump straight into a topic, get a guided recommendation, or browse the 8 long-term tracks.</p>
+  </header>
+
+  <!-- Block 1: Single Unified Interactive Finder (Quick Topic ⇄ Goal Advisor) -->
+  <section class="learn-finder" aria-label="Interactive learning finder">
+    <div class="learn-finder-bar">
+      <div class="learn-mode-tabs" role="tablist">
+        <button type="button" class="mode-tab is-active" data-learn-mode="topics" role="tab" aria-selected="true">Quick Topic</button>
+        <button type="button" class="mode-tab" data-learn-mode="advisor" role="tab" aria-selected="false">Not sure? Guide me</button>
+      </div>
+      <span class="learn-finder-hint">1-click instant filter</span>
+    </div>
+
+    <!-- Mode A: Quick Topic (Default) -->
+    <div data-learn-mode-panel="topics">
+      <div class="quick-jump-grid">
+        {{- range $idx, $qt := $quickTopics -}}
+          {{- $qPosts := slice -}}
+          {{- range $allPosts -}}
+            {{- $haystack := lower (printf "%s %s %s" .RelPermalink .Title (delimit (.Params.tags | default slice) " ")) -}}
+            {{- if findRE $qt.match $haystack -}}{{- $qPosts = $qPosts | append . -}}{{- end -}}
+          {{- end -}}
+          <button type="button" class="quick-topic-btn{{ if eq $idx 0 }} is-active{{ end }}" data-quick-topic="{{ $qt.id }}">
+            <span class="quick-topic-icon">{{ $qt.icon | safeHTML }}</span>
+            <span>{{ $qt.name }}</span>
+            <span class="quick-topic-count">{{ len $qPosts }}</span>
+          </button>
+        {{- end -}}
+      </div>
+
+      {{- range $idx, $qt := $quickTopics -}}
         {{- $qPosts := slice -}}
         {{- range $allPosts -}}
           {{- $haystack := lower (printf "%s %s %s" .RelPermalink .Title (delimit (.Params.tags | default slice) " ")) -}}
-          {{- if findRE $qt.match $haystack -}}
-            {{- $qPosts = $qPosts | append . -}}
-          {{- end -}}
+          {{- if findRE $qt.match $haystack -}}{{- $qPosts = $qPosts | append . -}}{{- end -}}
         {{- end -}}
-        <button type="button" class="quick-topic-btn" data-quick-topic="{{ $qt.id }}">
-          <span class="quick-topic-icon">{{ $qt.icon | safeHTML }}</span>
-          <span>{{ $qt.name }}</span>
-          <span class="quick-topic-count">{{ len $qPosts }}</span>
-        </button>
+        <div class="quick-topic-panel" data-quick-panel="{{ $qt.id }}"{{ if ne $idx 0 }} hidden{{ end }}>
+          <div class="section-head">
+            <h2 class="section-label"><span aria-hidden="true">// </span>{{ $qt.name }} ({{ len $qPosts }})</h2>
+            <a class="section-more" href="{{ $qt.fallback }}">Open full roadmap →</a>
+          </div>
+          {{ if gt (len $qPosts) 0 }}
+          <ul class="writing-list">
+            {{ range $qPosts }}{{ partial "post-list-item.html" . }}{{ end }}
+          </ul>
+          {{ else }}
+          <p class="roadmap-desc" style="margin:0;">Articles for <strong>{{ $qt.name }}</strong> are queued next. <a href="{{ $qt.fallback }}">View planned curriculum →</a></p>
+          {{ end }}
+        </div>
       {{- end -}}
     </div>
 
-    {{- range $quickTopics -}}
-      {{- $qt := . -}}
-      {{- $qPosts := slice -}}
-      {{- range $allPosts -}}
-        {{- $haystack := lower (printf "%s %s %s" .RelPermalink .Title (delimit (.Params.tags | default slice) " ")) -}}
-        {{- if findRE $qt.match $haystack -}}
-          {{- $qPosts = $qPosts | append . -}}
-        {{- end -}}
-      {{- end -}}
-      <div class="quick-topic-panel" data-quick-panel="{{ $qt.id }}" hidden>
-        <div class="section-head">
-          <h2 class="section-label"><span aria-hidden="true">// </span>{{ $qt.name }} ({{ len $qPosts }})</h2>
-          <a class="section-more" href="{{ $qt.fallback }}">Full {{ $qt.name }} roadmap →</a>
-        </div>
-        {{ if gt (len $qPosts) 0 }}
-        <ul class="writing-list">
-          {{ range $qPosts }}
-            {{ partial "post-list-item.html" . }}
-          {{ end }}
-        </ul>
-        {{ else }}
-        <p class="roadmap-desc" style="margin:0;">Articles for <strong>{{ $qt.name }}</strong> are coming soon. <a href="{{ $qt.fallback }}">View the planned roadmap →</a></p>
-        {{ end }}
-      </div>
-    {{- end -}}
-  </section>
-
-  <!-- Interactive Path Advisor (Data-Driven via data/advisor.yaml) -->
-  <section class="advisor-box" aria-label="Learning path advisor">
-    <div class="advisor-head">
-      <span class="tldr-label">// PATH ADVISOR · WHAT DO YOU WANT TO MASTER?</span>
-      <div class="advisor-pills" role="group" aria-label="Select your goal">
+    <!-- Mode B: Goal Advisor -->
+    <div data-learn-mode-panel="advisor" hidden>
+      <div class="advisor-pills" role="group" aria-label="Select your goal" style="margin-bottom: 1rem;">
         {{- range $idx, $item := site.Data.advisor -}}
         <button type="button" class="filter-chip{{ if eq $idx 0 }} is-active{{ end }}" data-advisor-goal="{{ $item.id }}">{{ $item.label }}</button>
         {{- end -}}
       </div>
-    </div>
 
-    {{- range $idx, $item := site.Data.advisor -}}
-    <div class="advisor-result" data-advisor-panel="{{ $item.id }}"{{ if ne $idx 0 }} hidden{{ end }}>
-      <p class="advisor-summary"><strong>Recommended Path:</strong> {{ $item.summary }}</p>
-      <ol class="advisor-steps">
-        {{- range $item.steps -}}
-        <li><a href="{{ .url }}"><span>{{ .tag }}</span><strong>{{ .title }}</strong></a></li>
-        {{- end -}}
-      </ol>
-      <div class="advisor-extras">
-        {{- range $eIdx, $ex := $item.extras -}}
-          {{ if gt $eIdx 0 }}<span>·</span>{{ end }}
-          <span>{{ $ex.prefix }} <a href="{{ $ex.url }}">{{ $ex.label }}</a></span>
-        {{- end -}}
+      {{- range $idx, $item := site.Data.advisor -}}
+      <div class="advisor-result" data-advisor-panel="{{ $item.id }}"{{ if ne $idx 0 }} hidden{{ end }}>
+        <p class="advisor-summary">{{ $item.summary }}</p>
+        <ol class="advisor-steps">
+          {{- range $item.steps -}}
+          <li><a href="{{ .url }}"><span>{{ .tag }}</span><strong>{{ .title }}</strong></a></li>
+          {{- end -}}
+        </ol>
       </div>
+      {{- end -}}
     </div>
-    {{- end -}}
   </section>
 
-  <!-- Connected 4-Step Skill Ladder -->
-  <nav class="skill-ladder" aria-label="4-step learning path">
-    {{- range $idx, $p := $curriculum -}}
-    <a class="ladder-step" href="{{ $p.slug }}">
-      <span class="ladder-num">STEP {{ $p.step }}</span>
-      <strong class="ladder-name">{{ $p.name }}</strong>
-    </a>
-    {{- if lt $idx (sub (len $curriculum) 1) -}}
-    <span class="ladder-arrow" aria-hidden="true">→</span>
-    {{- end -}}
-    {{- end -}}
-  </nav>
+  <!-- Block 2: Clean 8-Track Curriculum Directory -->
+  <section class="home-section" aria-labelledby="tracks-heading">
+    <div class="section-head">
+      <h2 class="section-label" id="tracks-heading"><span aria-hidden="true">// </span>Full Curriculum (8 Tracks)</h2>
+      <a class="section-more" href="{{ "archives/" | relLangURL }}">All posts ({{ len $allPosts }}) →</a>
+    </div>
 
-  <!-- 4 Evergreen Topic Clusters -->
-  <div class="cluster-grid">
-    {{- range $curriculum -}}
-      {{- $pillar := . -}}
-      {{- $count := 0 -}}
-      {{- range $allPosts -}}
-        {{- $post := . -}}
-        {{- $hit := false -}}
-        {{- range $pillar.match_prefixes -}}
-          {{- if in $post.RelPermalink . -}}{{- $hit = true -}}{{- end -}}
-        {{- end -}}
-        {{- if not $hit -}}
-          {{- $cat := printf "%v" ($post.Params.category | default "") -}}
-          {{- if in $pillar.match_categories $cat -}}{{- $hit = true -}}{{- end -}}
-        {{- end -}}
-        {{- if $hit -}}{{- $count = add $count 1 -}}{{- end -}}
-      {{- end -}}
-
-      <article class="hud-card cluster-card">
-        <div class="hud-card-top">
-          <span class="product-badge">STEP {{ $pillar.step }} · {{ $pillar.intent }}</span>
-          <span class="status-pill{{ if gt $count 0 }} is-active{{ end }}">{{ if gt $count 0 }}{{ $count }} {{ T "posts_unit" }}{{ else }}ROADMAP{{ end }}</span>
-        </div>
-
-        <h2 class="cluster-title">
-          <a href="{{ $pillar.slug }}">{{ $pillar.name }}</a>
-        </h2>
-        <p class="cluster-summary">{{ $pillar.summary }}</p>
-
-        <div class="topic-pills">
-          {{- range $pillar.topics -}}
-          <span class="topic-pill">{{ . }}</span>
+    <div class="track-directory-grid">
+      {{- range $curriculum -}}
+        {{- $pillar := . -}}
+        {{- $count := 0 -}}
+        {{- range $allPosts -}}
+          {{- $post := . -}}
+          {{- $hit := false -}}
+          {{- range $pillar.match_prefixes -}}
+            {{- if in $post.RelPermalink . -}}{{- $hit = true -}}{{- end -}}
           {{- end -}}
-        </div>
+          {{- if not $hit -}}
+            {{- $cat := printf "%v" ($post.Params.category | default "") -}}
+            {{- if in $pillar.match_categories $cat -}}{{- $hit = true -}}{{- end -}}
+          {{- end -}}
+          {{- if $hit -}}{{- $count = add $count 1 -}}{{- end -}}
+        {{- end -}}
 
-        <div class="cluster-flywheel">
-          <span>Tool: <a href="{{ $pillar.tool_url }}">{{ $pillar.tool_label }}</a></span>
-          <span>Library: <a href="{{ $pillar.library_url }}">{{ $pillar.library_label }}</a></span>
-          <span>Freebie: <a href="{{ $pillar.freebie_url }}">{{ $pillar.freebie_label }}</a></span>
-        </div>
-
-        <div class="cluster-actions">
-          <a class="btn-primary-cyber" href="{{ $pillar.slug }}">Open {{ $pillar.name }} →</a>
-        </div>
-      </article>
-    {{- end -}}
-  </div>
+        <a class="hud-card track-dir-card" href="{{ $pillar.slug }}">
+          <div class="hud-card-top">
+            <span class="product-badge">TRACK {{ $pillar.step }}</span>
+            <span class="status-pill{{ if gt $count 0 }} is-active{{ end }}">{{ if gt $count 0 }}{{ $count }} {{ T "posts_unit" }}{{ else }}PLANNED{{ end }}</span>
+          </div>
+          <h3 class="hud-card-title">{{ $pillar.name }}</h3>
+          <p class="hud-card-desc">{{ $pillar.summary }}</p>
+          <div class="hud-card-meta">
+            <span>{{ delimit (first 3 $pillar.topics) " · " }}</span>
+          </div>
+        </a>
+      {{- end -}}
+    </div>
+  </section>
 {{ end }}

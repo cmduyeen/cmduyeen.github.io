@@ -335,10 +335,27 @@
     quickBtns.forEach((btn) => {
       btn.addEventListener("click", () => {
         const id = btn.dataset.quickTopic;
-        const alreadyActive = btn.classList.contains("is-active");
-        quickBtns.forEach((b) => b.classList.toggle("is-active", !alreadyActive && b === btn));
+        quickBtns.forEach((b) => b.classList.toggle("is-active", b === btn));
         quickPanels.forEach((p) => {
-          p.hidden = alreadyActive || p.dataset.quickPanel !== id;
+          p.hidden = p.dataset.quickPanel !== id;
+        });
+      });
+    });
+  }
+
+  const modeTabs = Array.from(document.querySelectorAll("[data-learn-mode]"));
+  const modePanels = Array.from(document.querySelectorAll("[data-learn-mode-panel]"));
+  if (modeTabs.length > 0 && modePanels.length > 0) {
+    modeTabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        const mode = tab.dataset.learnMode;
+        modeTabs.forEach((t) => {
+          const active = t === tab;
+          t.classList.toggle("is-active", active);
+          t.setAttribute("aria-selected", String(active));
+        });
+        modePanels.forEach((p) => {
+          p.hidden = p.dataset.learnModePanel !== mode;
         });
       });
     });
