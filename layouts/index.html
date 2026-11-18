@@ -70,23 +70,9 @@
     <p class="hero-desc hero-desc-compact">{{ .Content }}</p>
     {{ end }}
 
-    <div class="hero-bottom-row">
-      <div class="creator-bar" style="margin-bottom: 0;">
-        <img class="hero-avatar-img" src="{{ "images/dyn-avatar.png" | relURL }}" alt="Dyn pixel avatar with two dogs" width="44" height="44" decoding="async" />
-        <div class="creator-meta">
-          <div class="creator-name"><span>{{ site.Params.author }}</span></div>
-          <div class="social-pills">
-            {{ with site.Params.contact.github }}<a href="{{ . | safeURL }}" target="_blank" rel="noopener noreferrer">GitHub</a>{{ end }}
-            {{ with site.Params.contact.x }}<span aria-hidden="true">·</span><a href="{{ . | safeURL }}" target="_blank" rel="noopener noreferrer">X</a>{{ end }}
-            {{ with site.Home.OutputFormats.Get "RSS" }}<span aria-hidden="true">·</span><a href="{{ .RelPermalink }}">RSS</a>{{ end }}
-          </div>
-        </div>
-      </div>
-
-      <div class="hero-actions">
-        <a class="btn-primary-cyber" href="{{ "archives/" | relLangURL }}">Read Articles →</a>
-        <a class="btn-hud" href="{{ "tools/" | relLangURL }}">My Projects</a>
-      </div>
+    <div class="hero-actions">
+      <a class="btn-primary-cyber" href="{{ "archives/" | relLangURL }}">Read Articles →</a>
+      <a class="btn-hud" href="{{ "tools/" | relLangURL }}">My Projects</a>
     </div>
   </section>
 
