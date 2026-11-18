@@ -881,6 +881,24 @@ main {
   gap: 0.55rem;
 }
 
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.14rem 0.48rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.status-pill.is-active {
+  border-color: rgba(16, 185, 129, 0.35);
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--accent-emerald);
+}
+
 /* ==========================================================================
    W3Schools-Style Learn Layout (Goal Picker -> Roadmap -> Track Switcher)
    ========================================================================== */

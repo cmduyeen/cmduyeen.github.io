@@ -204,7 +204,8 @@
         const cat = chip.dataset.dealFilter || "all";
         dealFilters.forEach((c) => c.classList.toggle("is-active", c === chip));
         dealCards.forEach((card) => {
-          card.hidden = !(cat === "all" || card.dataset.dealCategory === cat);
+          const cats = (card.dataset.dealCategory || "").split(",").map((s) => s.trim()).filter(Boolean);
+          card.hidden = !(cat === "all" || cats.includes(cat));
         });
       });
     });

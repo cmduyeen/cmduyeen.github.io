@@ -1,14 +1,25 @@
 {{ define "main" }}
   <header class="page-header">
     <h1 class="hero-h1"><span class="highlight">//</span> {{ .Title }}</h1>
-    <p class="archive-subtitle">{{ .Description }}</p>
+    <p class="archive-subtitle">{{ .Description }} · Follow via {{ with site.Home.OutputFormats.Get "RSS" }}<a href="{{ .RelPermalink }}">RSS</a>{{ end }} or <a href="/llms.txt">llms.txt</a>.</p>
   </header>
 
-  <div class="featured-grid">
+  <div class="archive-filter-bar" role="group" aria-label="Filter news by topic">
+    <button type="button" class="filter-chip is-active" data-deal-filter="all">All</button>
+    <button type="button" class="filter-chip" data-deal-filter="ai-tools">AI Tools</button>
+    <button type="button" class="filter-chip" data-deal-filter="automation">Automation</button>
+    <button type="button" class="filter-chip" data-deal-filter="open-source">Open Source</button>
+  </div>
+
+  <div class="featured-grid" id="deals-grid">
     {{ range .Pages.ByDate.Reverse }}
-    <a class="hud-card" href="{{ .RelPermalink }}">
+    {{- $tags := slice -}}
+    {{- range (.Params.tags | default slice) -}}
+      {{- $tags = $tags | append (lower (printf "%v" .)) -}}
+    {{- end -}}
+    <a class="hud-card deal-card" data-deal-category="{{ delimit $tags "," }}" href="{{ .RelPermalink }}">
       <div class="hud-card-top">
-        <span class="product-badge">TECH NEWS · {{ .Date.UTC.Format "2006-01-02" }}</span>
+        <span class="product-badge">DIGEST · {{ .Date.UTC.Format "2006-01-02" }}</span>
         <span class="hud-card-arrow" aria-hidden="true">↗</span>
       </div>
       <h2 class="hud-card-title">{{ .Title }}</h2>

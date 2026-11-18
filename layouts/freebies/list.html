@@ -15,8 +15,8 @@
     {{ range site.Data.freebies }}
     <a class="hud-card deal-card" data-deal-category="{{ .category }}" href="{{ .url }}" target="_blank" rel="noopener noreferrer">
       <div class="hud-card-top">
-        <span class="product-badge">{{ .status }} · {{ .platform }}</span>
-        <span class="hud-card-arrow" aria-hidden="true">↗</span>
+        <span class="status-pill {{ if eq .status "ACTIVE" }}is-active{{ end }}">{{ .status }}</span>
+        <span class="writing-meta">{{ .platform }}</span>
       </div>
       <h2 class="hud-card-title">{{ .name }}</h2>
       <p class="hud-card-desc">{{ .summary }}</p>
