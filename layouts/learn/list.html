@@ -29,8 +29,8 @@
         <span>02. Serein Workspace</span>
         <span class="w3-count">{{ len $sereinSeries }}</span>
       </button>
-      <button type="button" class="w3-track-btn" data-track-target="track-workflows">
-        <span>03. Automation &amp; Kits</span>
+      <button type="button" class="w3-track-btn" data-track-target="track-standalone">
+        <span>03. Standalone Guides</span>
         <span class="w3-count">{{ len $otherGuides }}</span>
       </button>
     </aside>
@@ -82,12 +82,12 @@
         </aside>
       </section>
 
-      <section class="w3-panel" id="track-workflows" data-track-panel hidden>
+      <section class="w3-panel" id="track-standalone" data-track-panel hidden>
         <div class="section-head">
-          <h2 class="section-label"><span aria-hidden="true">// </span>Track 03 · Automation &amp; Kits</h2>
-          <span class="archive-series-count">{{ len $otherGuides }} lessons</span>
+          <h2 class="section-label"><span aria-hidden="true">// </span>Standalone Guides</h2>
+          <span class="archive-series-count">{{ len $otherGuides }} articles</span>
         </div>
-        <p class="roadmap-desc">Practical standalone guides on GitHub Profiles, Hugo blogs, and Lunar Calendar automation.</p>
+        <p class="roadmap-desc">Single-topic tutorials and practical notes that don't belong to a multi-part series.</p>
         <ol class="w3-lesson-list">
           {{ range $idx, $p := $otherGuides }}
           <li>
