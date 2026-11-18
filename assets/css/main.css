@@ -414,6 +414,141 @@ main {
   height: 3.4rem;
 }
 
+.about-avatar-img {
+  width: 4.75rem;
+  height: 4.75rem;
+  border-radius: 50%;
+  border: 3px solid var(--border-strong);
+  box-shadow: 2px 2px 0 rgba(143, 86, 59, 0.28);
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.about-banner-frame {
+  margin: -0.25rem 0 1.25rem;
+  border: 2px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  box-shadow: 3px 3px 0 rgba(143, 86, 59, 0.22);
+}
+
+.about-banner-img {
+  display: block;
+  width: 100%;
+  height: 13.5rem;
+  object-fit: cover;
+  object-position: center 42%;
+}
+
+/* Farm Harvest Yield Productivity Chart */
+.farm-yield-card {
+  margin-bottom: 2.75rem;
+}
+
+.farm-yield-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.25rem;
+}
+
+.farm-yield-title {
+  margin: 0.2rem 0 0;
+  font-size: 1.12rem;
+}
+
+.farm-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.farm-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  border: 1px solid var(--border-strong);
+  display: inline-block;
+}
+
+.farm-plot-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 0.5rem;
+  align-items: end;
+}
+
+.farm-plot-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.farm-stalk-wrap {
+  width: 100%;
+  height: 4.75rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.farm-stalk {
+  width: 55%;
+  min-width: 10px;
+  border-radius: 2px 2px 0 0;
+  border: 1px solid var(--border-strong);
+  border-bottom: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  transition: transform 0.15s ease;
+}
+
+.farm-plot-col:hover .farm-stalk {
+  transform: translateY(-2px);
+}
+
+.farm-crop-icon {
+  font-size: 0.65rem;
+  line-height: 1;
+  color: #3e2723;
+  margin-top: 2px;
+}
+
+.farm-soil-tile {
+  width: 100%;
+  padding: 0.35rem 0;
+  border: 2px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  box-shadow: 2px 2px 0 rgba(143, 86, 59, 0.2);
+}
+
+.farm-month-label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+
+.is-soil { background: var(--bg-elevated); color: var(--text-muted); }
+.is-sprout { background: #a3e635; color: #1a2e05; }
+.is-grown { background: #4f8f3c; color: #fff8e7; }
+.is-harvest { background: #eab308; color: #3e2723; }
+
 .about-char-name {
   margin: 0 0 0.25rem;
   font-size: 1.2rem;
@@ -3288,6 +3423,11 @@ main {
 @media (max-width: 44rem) {
   .telemetry-badge {
     display: none;
+  }
+
+  .farm-plot-grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 0.65rem 0.45rem;
   }
 
   .pillars-4-grid,
