@@ -141,18 +141,22 @@
     {{ end }}
   {{ end }}
 
-  <!-- Interactive Cozy Mini-Game (Inspired by labs.google) -->
-  <section class="stardew-box mini-garden" id="mini-garden" aria-labelledby="garden-heading">
+  <!-- Interactive Cozy Arcade Mini-Game (Junimo Harvest on Canvas) -->
+  <section class="stardew-box mini-garden" id="mini-arcade" aria-labelledby="arcade-heading">
     <div class="mini-garden-head">
       <div>
-        <span class="w3-sidebar-label">// VALLEY PLAYGROUND · MINI-GAME</span>
-        <h2 class="mini-garden-title" id="garden-heading">Pocket Farm — Click plots to plant &amp; harvest</h2>
+        <span class="w3-sidebar-label">// VALLEY SALOON ARCADE · MINI-GAME</span>
+        <h2 class="mini-garden-title" id="arcade-heading">Junimo Harvest — Catch Starfruits, Dodge Rocks</h2>
       </div>
       <div class="mini-garden-controls">
-        <span class="status-pill is-active">Harvest: <strong id="garden-score">0</strong> ★</span>
-        <button type="button" class="btn-hud" id="garden-water">Water All</button>
+        <span class="status-pill is-active">Score: <strong id="arcade-score">0</strong></span>
+        <span class="status-pill">Best: <strong id="arcade-best">0</strong></span>
+        <button type="button" class="btn-primary-cyber" id="arcade-start">Play</button>
       </div>
     </div>
-    <div class="mini-garden-plots" id="garden-plots" role="group" aria-label="6 farm plots"></div>
+    <div class="arcade-canvas-wrap">
+      <canvas id="junimo-canvas" width="560" height="190" aria-label="Junimo Harvest mini-game"></canvas>
+    </div>
+    <p class="arcade-hint">Move with mouse, touch, or ← / → arrow keys.</p>
   </section>
 {{ end }}
