@@ -10,10 +10,14 @@
 
   <section class="about-rpg-grid" aria-label="Character sheet">
     <!-- Left: RPG Character Card with Resized Pixel Avatar -->
-    {{- $aboutAvatar := (resources.Get "images/dyn-avatar.png").Resize "160x160 png" -}}
+    {{- $aboutAvatarWebp := resources.Get "images/dyn-avatar-160.webp" -}}
+    {{- $aboutAvatarPng := resources.Get "images/dyn-avatar-160.png" -}}
     <aside class="stardew-box about-char-card">
       <div class="about-avatar-wrap">
-        <img class="about-avatar-img" src="{{ $aboutAvatar.RelPermalink }}" alt="Dyn pixel avatar with two dogs" width="76" height="76" decoding="async" />
+        <picture>
+          {{ with $aboutAvatarWebp }}<source srcset="{{ .RelPermalink }}" type="image/webp">{{ end }}
+          <img class="about-avatar-img" src="{{ if $aboutAvatarPng }}{{ $aboutAvatarPng.RelPermalink }}{{ else if $aboutAvatarWebp }}{{ $aboutAvatarWebp.RelPermalink }}{{ else }}/images/dyn-avatar.png{{ end }}" alt="Dyn pixel avatar with two dogs" width="76" height="76" decoding="async" />
+        </picture>
         <div>
           <h2 class="about-char-name">{{ site.Params.author }}</h2>
           <span class="status-pill is-active">Lv.{{ $postsCount }} · Valley Builder</span>
@@ -55,10 +59,19 @@
     </aside>
 
     <!-- Right: Cozy Studio Artwork + Builder's Journal + Achievements -->
-    {{- $aboutBanner := (resources.Get "images/dyn-workspace.png").Resize "1000x png" -}}
+    {{- $bannerWebp1000 := resources.Get "images/dyn-workspace-1000.webp" -}}
+    {{- $bannerWebp500 := resources.Get "images/dyn-workspace-500.webp" -}}
+    {{- $bannerPng := resources.Get "images/dyn-workspace-1000.png" -}}
     <div class="stardew-box about-lore-card">
       <div class="about-banner-frame">
-        <img class="about-banner-img" src="{{ $aboutBanner.RelPermalink }}" alt="Dyn working at a cozy wooden desk with two sleeping dogs" loading="eager" decoding="async" />
+        <picture>
+          {{ if and $bannerWebp1000 $bannerWebp500 }}
+          <source srcset="{{ $bannerWebp500.RelPermalink }} 500w, {{ $bannerWebp1000.RelPermalink }} 1000w" sizes="(max-width: 600px) 100vw, 650px" type="image/webp">
+          {{ else if $bannerWebp1000 }}
+          <source srcset="{{ $bannerWebp1000.RelPermalink }}" type="image/webp">
+          {{ end }}
+          <img class="about-banner-img" src="{{ if $bannerPng }}{{ $bannerPng.RelPermalink }}{{ else if $bannerWebp1000 }}{{ $bannerWebp1000.RelPermalink }}{{ else }}/images/dyn-workspace.png{{ end }}" alt="Dyn working at a cozy wooden desk with two sleeping dogs" width="1000" height="563" loading="lazy" decoding="async" />
+        </picture>
       </div>
 
       <div class="w3-sidebar-label">// BUILDER'S JOURNAL</div>

@@ -65,6 +65,14 @@
   box-sizing: border-box;
 }
 
+img, picture {
+  max-width: 100%;
+}
+
+img[loading="lazy"] {
+  content-visibility: auto;
+}
+
 html {
   background: var(--bg-void);
   scroll-behavior: smooth;
@@ -476,6 +484,9 @@ main {
   display: block;
   width: 100%;
   height: auto;
+  aspect-ratio: 1000 / 563;
+  object-fit: cover;
+  background: var(--bg-surface);
 }
 
 /* Farm Harvest Yield Productivity Chart */

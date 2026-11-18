@@ -23,6 +23,10 @@
 {{ with site.Home.OutputFormats.Get "RSS" }}<link rel="alternate" type="application/rss+xml" title="{{ site.Title }} RSS" href="{{ .Permalink }}">{{ end }}
 <script>{{ $themeInitSrc | safeJS }}</script>
 <link rel="preload" href="{{ $style.RelPermalink }}" as="style">
+{{- $hdrAvatarWebp := resources.Get "images/dyn-avatar-56.webp" -}}
+{{- with $hdrAvatarWebp }}
+<link rel="preload" href="{{ .RelPermalink }}" as="image" type="image/webp" fetchpriority="high">
+{{- end }}
 <link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}" crossorigin="anonymous">
 <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
 <meta property="og:title" content="{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} · {{ site.Title }}{{ end }}">
