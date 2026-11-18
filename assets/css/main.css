@@ -154,6 +154,9 @@ summary:focus-visible {
 }
 
 .site-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
   color: var(--text-primary);
   font-family: var(--font-mono);
   font-size: 1.05rem;
@@ -161,6 +164,11 @@ summary:focus-visible {
   letter-spacing: -0.02em;
   text-decoration: none;
   white-space: nowrap;
+}
+
+.pixel-icon {
+  image-rendering: pixelated;
+  flex-shrink: 0;
 }
 
 .site-title span {
@@ -378,10 +386,40 @@ main {
   padding-block: 2.75rem 4.5rem;
 }
 
+.stardew-box {
+  position: relative;
+  padding: 1.75rem;
+  border: 2px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  background: var(--bg-surface);
+  box-shadow: inset 0 0 0 3px var(--bg-elevated), 4px 4px 0 rgba(143, 86, 59, 0.25);
+  margin-bottom: 2.25rem;
+}
+
+.stardew-crest {
+  width: 3rem;
+  height: 3rem;
+  border: 2px solid var(--border-strong);
+  background: var(--bg-elevated);
+  box-shadow: 2px 2px 0 rgba(143, 86, 59, 0.2);
+}
+
+.pillar-icon-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.btn-primary-cyber:active,
+.btn-hud:active,
+.hud-card:active,
+.pillar-tile:active {
+  transform: translate(2px, 2px);
+  box-shadow: none;
+}
+
 .hero-lab {
   margin-bottom: 2.5rem;
-  padding-bottom: 2rem;
-  border-bottom: 1px solid var(--border-subtle);
 }
 
 .creator-bar {

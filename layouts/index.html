@@ -4,13 +4,24 @@
   {{- $freebies := site.Data.freebies -}}
   {{- $catalog := index site.Data.products "en" -}}
 
-  <section class="hero-lab" aria-label="Introduction">
+  <section class="hero-lab stardew-box" aria-label="Introduction">
     <div class="creator-bar">
-      <div class="monogram-avatar" aria-hidden="true">~/d</div>
+      <div class="monogram-avatar stardew-crest" aria-hidden="true">
+        <svg class="pixel-icon" width="24" height="24" viewBox="0 0 16 16" shape-rendering="crispEdges">
+          <rect x="7" y="1" width="2" height="2" fill="#eab308"/>
+          <rect x="5" y="3" width="6" height="2" fill="#facc15"/>
+          <rect x="2" y="5" width="12" height="3" fill="#eab308"/>
+          <rect x="4" y="8" width="8" height="3" fill="#ca8a04"/>
+          <rect x="3" y="11" width="4" height="3" fill="#eab308"/>
+          <rect x="9" y="11" width="4" height="3" fill="#eab308"/>
+          <rect x="6" y="6" width="1" height="2" fill="#3e2723"/>
+          <rect x="9" y="6" width="1" height="2" fill="#3e2723"/>
+        </svg>
+      </div>
       <div class="creator-meta">
         <div class="creator-name">
           <span>{{ site.Params.author }}</span>
-          <span class="creator-badge">Tech Roadmaps · Automation · Calm Tools</span>
+          <span class="creator-badge">Valley Builder · Guides · Cozy Tools</span>
         </div>
         <div class="social-pills">
           {{ with site.Params.contact.github }}<a href="{{ . | safeURL }}" target="_blank" rel="noopener noreferrer">GitHub</a>{{ end }}
@@ -37,22 +48,46 @@
   <!-- 4 Core Pillars Matching Main Navigation -->
   <section class="pillars-4-grid" aria-label="Core pillars">
     <a class="pillar-tile" href="{{ "learn/" | relLangURL }}">
-      <div class="pillar-tile-top"><span><span aria-hidden="true">[01] </span>LEARN</span><span aria-hidden="true">↗</span></div>
+      <div class="pillar-tile-top">
+        <span class="pillar-icon-label">
+          <svg class="pixel-icon" width="14" height="14" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect x="2" y="2" width="11" height="12" fill="#8f563b"/><rect x="4" y="3" width="8" height="10" fill="#fff8e7"/><rect x="5" y="5" width="6" height="1" fill="#4f8f3c"/><rect x="5" y="7" width="6" height="1" fill="#b45309"/><rect x="5" y="9" width="4" height="1" fill="#8f563b"/></svg>
+          LEARN
+        </span>
+        <span aria-hidden="true">↗</span>
+      </div>
       <div class="pillar-title">8 Tech &amp; AI Tracks</div>
       <div class="pillar-sub">{{ len $posts }} lessons · Roadmaps &amp; Books</div>
     </a>
     <a class="pillar-tile" href="{{ "news/" | relLangURL }}">
-      <div class="pillar-tile-top"><span><span aria-hidden="true">[02] </span>TECH NEWS</span><span aria-hidden="true">↗</span></div>
+      <div class="pillar-tile-top">
+        <span class="pillar-icon-label">
+          <svg class="pixel-icon" width="14" height="14" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect x="3" y="2" width="10" height="12" fill="#e6cfa3"/><rect x="2" y="2" width="12" height="2" fill="#8f563b"/><rect x="2" y="12" width="12" height="2" fill="#8f563b"/><rect x="5" y="6" width="6" height="1" fill="#3e2723"/><rect x="5" y="8" width="6" height="1" fill="#3e2723"/></svg>
+          TECH NEWS
+        </span>
+        <span aria-hidden="true">↗</span>
+      </div>
       <div class="pillar-title">Signal Over Noise</div>
       <div class="pillar-sub">{{ len $news }} dispatches · AI &amp; Dev shifts</div>
     </a>
     <a class="pillar-tile" href="{{ "tools/" | relLangURL }}">
-      <div class="pillar-tile-top"><span><span aria-hidden="true">[03] </span>TOOLS &amp; KITS</span><span aria-hidden="true">↗</span></div>
+      <div class="pillar-tile-top">
+        <span class="pillar-icon-label">
+          <svg class="pixel-icon" width="14" height="14" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect x="7" y="6" width="2" height="8" fill="#8f563b"/><rect x="3" y="2" width="10" height="4" fill="#94a3b8"/><rect x="11" y="3" width="2" height="2" fill="#64748b"/></svg>
+          TOOLS &amp; KITS
+        </span>
+        <span aria-hidden="true">↗</span>
+      </div>
       <div class="pillar-title">Zero-Install Apps</div>
       <div class="pillar-sub">Browser tools &amp; starter kits</div>
     </a>
     <a class="pillar-tile" href="{{ "freebies/" | relLangURL }}">
-      <div class="pillar-tile-top"><span><span aria-hidden="true">[04] </span>FREEBIES</span><span aria-hidden="true">↗</span></div>
+      <div class="pillar-tile-top">
+        <span class="pillar-icon-label">
+          <svg class="pixel-icon" width="14" height="14" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect x="2" y="5" width="12" height="9" fill="#8f563b"/><rect x="2" y="4" width="12" height="3" fill="#b45309"/><rect x="7" y="6" width="2" height="3" fill="#facc15"/><rect x="3" y="8" width="10" height="1" fill="#5c4332"/></svg>
+          FREEBIES
+        </span>
+        <span aria-hidden="true">↗</span>
+      </div>
       <div class="pillar-title">Software &amp; Games</div>
       <div class="pillar-sub">{{ len $freebies }} verified active giveaways</div>
     </a>
