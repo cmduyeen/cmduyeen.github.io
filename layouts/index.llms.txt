@@ -12,9 +12,12 @@
 {{ with site.Home.OutputFormats.Get "RSS" }}- RSS: {{ .Permalink }}{{ end }}
 
 ## Core Pages
-- Archive & Guides: {{ "archives/" | absLangURL }}
+- Learning Guides & Roadmaps: {{ "guides/" | absLangURL }}
+- Weekly Tech & AI Radar: {{ "radar/" | absLangURL }}
 - Web Tools & Kits: {{ "tools/" | absLangURL }}
-- Topics Index: {{ "tags/" | absLangURL }}
+- Digital Store: {{ "store/" | absLangURL }}
+- Curated Deals & Books: {{ "deals/" | absLangURL }}
+- Archive: {{ "archives/" | absLangURL }}
 - About: {{ "about/" | absLangURL }}
 
 ## Web Tools & Projects

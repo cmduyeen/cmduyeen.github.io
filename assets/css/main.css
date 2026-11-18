@@ -771,6 +771,117 @@ main {
 }
 
 /* ==========================================================================
+   Guides Roadmap, Store & Deals
+   ========================================================================== */
+.roadmap-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.roadmap-track {
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  background: var(--bg-surface);
+  overflow: hidden;
+}
+
+.roadmap-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.1rem 1.25rem;
+  cursor: pointer;
+  list-style: none;
+  background: var(--bg-elevated);
+}
+
+.roadmap-head::-webkit-details-marker {
+  display: none;
+}
+
+.roadmap-head h2 {
+  margin: 0.25rem 0 0;
+  font-size: 1.08rem;
+}
+
+.roadmap-tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--accent-emerald);
+}
+
+.roadmap-meta {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.roadmap-body {
+  padding: 1rem 1.25rem 1.25rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.roadmap-desc {
+  margin: 0 0 1rem;
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+}
+
+.roadmap-deepdive {
+  margin-top: 1.25rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--border-subtle);
+  border-left: 3px solid var(--accent-emerald);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  background: var(--bg-void);
+}
+
+.roadmap-deepdive p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.store-compare {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.store-pro {
+  border-color: rgba(16, 185, 129, 0.35);
+}
+
+.store-features {
+  margin: 0.5rem 0 1rem;
+  padding-left: 1.2rem;
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+}
+
+.store-features li + li {
+  margin-top: 0.3rem;
+}
+
+.deal-offer {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--accent-cyan);
+}
+
+.deal-actions {
+  margin-top: auto;
+  padding-top: 0.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+/* ==========================================================================
    Single Page (CSS Grid 2-Column Reading Layout: 65ch + Sticky ToC)
    ========================================================================== */
 .article-layout {
@@ -1395,8 +1506,14 @@ main {
   .featured-grid,
   .mention-grid,
   .post-nav-grid,
+  .store-compare,
   .site-footer-inner {
     grid-template-columns: 1fr;
+  }
+
+  .roadmap-head {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .writing-item {

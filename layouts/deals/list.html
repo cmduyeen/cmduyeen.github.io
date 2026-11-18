@@ -1,0 +1,32 @@
+{{ define "main" }}
+  <header class="page-header">
+    <h1 class="hero-h1"><span class="highlight">//</span> {{ .Title }}</h1>
+    <p class="archive-subtitle">{{ .Description }} · Transparently curated, no sponsor fluff.</p>
+  </header>
+
+  <div class="archive-filter-bar" role="group" aria-label="Filter deals by category">
+    <button type="button" class="filter-chip is-active" data-deal-filter="all">All</button>
+    <button type="button" class="filter-chip" data-deal-filter="AI & Dev Tools">AI &amp; Dev Tools</button>
+    <button type="button" class="filter-chip" data-deal-filter="Learning & Courses">Learning &amp; Courses</button>
+    <button type="button" class="filter-chip" data-deal-filter="Tech Books">Tech Books</button>
+  </div>
+
+  <div class="featured-grid" id="deals-grid">
+    {{ range site.Data.deals }}
+    <article class="hud-card deal-card" data-deal-category="{{ .category }}">
+      <div class="hud-card-top">
+        <span class="product-badge">{{ .badge }} · {{ .category }}</span>
+      </div>
+      <h2 class="hud-card-title">{{ .name }}</h2>
+      <p class="deal-offer">{{ .offer }}</p>
+      <p class="hud-card-desc">{{ .verdict }}</p>
+      <div class="deal-actions">
+        {{ if .code }}
+        <button type="button" class="btn-hud copy-code-btn" data-copy-code="{{ .code }}">Copy: {{ .code }}</button>
+        {{ end }}
+        <a class="btn-primary-cyber" href="{{ .url }}"{{ if strings.HasPrefix .url "http" }} target="_blank" rel="noopener noreferrer"{{ end }}>{{ .cta }} →</a>
+      </div>
+    </article>
+    {{ end }}
+  </div>
+{{ end }}

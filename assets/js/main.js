@@ -195,6 +195,35 @@
       });
     });
   }
+
+  const dealFilters = Array.from(document.querySelectorAll("[data-deal-filter]"));
+  const dealCards = Array.from(document.querySelectorAll("#deals-grid .deal-card"));
+  if (dealFilters.length > 0 && dealCards.length > 0) {
+    dealFilters.forEach((chip) => {
+      chip.addEventListener("click", () => {
+        const cat = chip.dataset.dealFilter || "all";
+        dealFilters.forEach((c) => c.classList.toggle("is-active", c === chip));
+        dealCards.forEach((card) => {
+          card.hidden = !(cat === "all" || card.dataset.dealCategory === cat);
+        });
+      });
+    });
+  }
+
+  for (const btn of document.querySelectorAll("[data-copy-code]")) {
+    btn.addEventListener("click", async () => {
+      const code = btn.dataset.copyCode || "";
+      if (!code) return;
+      const orig = btn.textContent;
+      try {
+        await navigator.clipboard.writeText(code);
+        btn.textContent = "Copied!";
+        setTimeout(() => {
+          btn.textContent = orig;
+        }, 1600);
+      } catch (_) {}
+    });
+  }
   searchDialog?.addEventListener("click", (e) => {
     if (e.target === searchDialog) searchDialog.close();
   });

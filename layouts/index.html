@@ -31,26 +31,26 @@
     </div>
   </section>
 
-  <section class="pillars-4-grid" aria-label="{{ if $isVi }}4 trụ cột chính{{ else }}Core pillars{{ end }}">
-    <a class="pillar-tile" href="{{ "archives/" | relLangURL }}">
-      <div class="pillar-tile-top"><span><span aria-hidden="true">[01] </span>GUIDES &amp; ARCHIVE</span><span aria-hidden="true">↗</span></div>
-      <div class="pillar-title">{{ if $isVi }}Chuỗi bài &amp; Thực hành{{ else }}Step-by-step Series{{ end }}</div>
-      <div class="pillar-sub">{{ len $posts }} {{ T "posts_unit" }} · Markdown, Hugo, PKM</div>
+  <section class="pillars-4-grid" aria-label="Core pillars">
+    <a class="pillar-tile" href="{{ "guides/" | relLangURL }}">
+      <div class="pillar-tile-top"><span><span aria-hidden="true">[01] </span>GUIDES &amp; LABS</span><span aria-hidden="true">↗</span></div>
+      <div class="pillar-title">Step-by-step Tracks</div>
+      <div class="pillar-sub">{{ len $posts }} notes · Markdown, Hugo, PKM</div>
     </a>
-    <a class="pillar-tile" href="{{ "tools/" | relLangURL }}">
-      <div class="pillar-tile-top"><span><span aria-hidden="true">[02] </span>WEB TOOLS</span><span aria-hidden="true">↗</span></div>
-      <div class="pillar-title">{{ if $isVi }}Tiện ích trình duyệt{{ else }}Client-Side Utilities{{ end }}</div>
-      <div class="pillar-sub">{{ if $isVi }}Lịch Âm .ics, GitHub &amp; Blog Kit{{ else }}Lunar .ics, GitHub &amp; Blog Kits{{ end }}</div>
+    <a class="pillar-tile" href="{{ "radar/" | relLangURL }}">
+      <div class="pillar-tile-top"><span><span aria-hidden="true">[02] </span>TECH RADAR</span><span aria-hidden="true">↗</span></div>
+      <div class="pillar-title">Weekly Curation</div>
+      <div class="pillar-sub">AI tooling &amp; static workflows</div>
     </a>
-    <a class="pillar-tile" href="{{ "about/" | relLangURL }}">
-      <div class="pillar-tile-top"><span><span aria-hidden="true">[03] </span>OPEN SOURCE</span><span aria-hidden="true">↗</span></div>
-      <div class="pillar-title">{{ if $isVi }}Dự án &amp; Kho mã nguồn{{ else }}Projects &amp; Stack{{ end }}</div>
-      <div class="pillar-sub">Serein Suite · Lunar Calendars</div>
+    <a class="pillar-tile" href="{{ "store/" | relLangURL }}">
+      <div class="pillar-tile-top"><span><span aria-hidden="true">[03] </span>TOOLS &amp; STORE</span><span aria-hidden="true">↗</span></div>
+      <div class="pillar-title">Kits &amp; Templates</div>
+      <div class="pillar-sub">Free MIT tools &amp; Pro bundles</div>
     </a>
-    <a class="pillar-tile" href="{{ "tags/" | relLangURL }}">
-      <div class="pillar-tile-top"><span><span aria-hidden="true">[04] </span>TOPICS INDEX</span><span aria-hidden="true">↗</span></div>
-      <div class="pillar-title">{{ if $isVi }}Chỉ mục Chủ đề{{ else }}All Topics &amp; Tags{{ end }}</div>
-      <div class="pillar-sub">{{ len site.Taxonomies.tags }} {{ if $isVi }}chủ đề đang hoạt động{{ else }}active tags{{ end }}</div>
+    <a class="pillar-tile" href="{{ "deals/" | relLangURL }}">
+      <div class="pillar-tile-top"><span><span aria-hidden="true">[04] </span>DEALS &amp; BOOKS</span><span aria-hidden="true">↗</span></div>
+      <div class="pillar-title">Curated Resources</div>
+      <div class="pillar-sub">Dev tools, courses &amp; tech books</div>
     </a>
   </section>
 

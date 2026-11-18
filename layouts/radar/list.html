@@ -1,0 +1,22 @@
+{{ define "main" }}
+  <header class="page-header">
+    <h1 class="hero-h1"><span class="highlight">//</span> {{ .Title }}</h1>
+    <p class="archive-subtitle">{{ .Description }}</p>
+  </header>
+
+  <div class="featured-grid">
+    {{ range .Pages.ByDate.Reverse }}
+    <a class="hud-card" href="{{ .RelPermalink }}">
+      <div class="hud-card-top">
+        <span class="product-badge">ISSUE · {{ .Date.UTC.Format "2006-01-02" }}</span>
+        <span class="hud-card-arrow" aria-hidden="true">↗</span>
+      </div>
+      <h2 class="hud-card-title">{{ .Title }}</h2>
+      <p class="hud-card-desc">{{ .Description | default (.Summary | plainify | htmlUnescape | truncate 130) }}</p>
+      <div class="hud-card-meta">
+        <span>{{ .ReadingTime }} min read</span>
+      </div>
+    </a>
+    {{ end }}
+  </div>
+{{ end }}
