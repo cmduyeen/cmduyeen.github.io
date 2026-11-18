@@ -1,7 +1,7 @@
 {
   "en": {
     "spotlight": {
-      "badge": "SPOTLIGHT · FREE WEB APP",
+      "badge": "★ FEATURED CRAFT · FREE WEB APP",
       "name": "Pro Blog Starter Kit",
       "description": "Scaffold a fast, SEO-ready Hugo or Jekyll personal blog on GitHub Pages in 60 seconds with live configs and deploy workflows.",
       "bullets": [
@@ -59,13 +59,15 @@
         "heading": "Open-Source Templates & Handbooks",
         "items": [
           {
-            "name": "Cyber-Minimalism Hugo Theme (Open Source)",
+            "icon": "source",
+            "name": "Stardew Cozy Hugo Theme (Open Source)",
             "badge": "MIT · FREE SOURCE",
-            "description": "The full source code behind ~/dyn: Cmd+K Command Palette, /llms.txt GEO, JSON-LD Schema, and Obsidian-to-Hugo sync script.",
+            "description": "The full source code behind ~/dyn: Stardew Valley Cozy parchment & wood UI, Cmd+K Command Palette, /llms.txt GEO, and Obsidian-to-Hugo sync.",
             "url": "https://github.com/cmduyeen/cmduyeen.github.io",
             "cta": "View Source on GitHub →"
           },
           {
+            "icon": "handbook",
             "name": "Markdown 101 Interactive Handbook",
             "badge": "FREE SERIES · 10 PARTS",
             "description": "Complete plain-text guide with built-in browser sandboxes for YAML, tables, callouts, and Hugo publishing.",

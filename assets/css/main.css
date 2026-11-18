@@ -1878,14 +1878,14 @@ main {
   gap: 0.5rem;
 }
 
-/* Tools Showcase & Mini App Store */
+/* Tools Showcase & Projects */
 .tool-spotlight {
   display: grid;
   grid-template-columns: 1.25fr 1fr;
   gap: 1.75rem;
   align-items: center;
-  margin-bottom: 2.75rem;
-  padding: 1.5rem;
+  margin-bottom: 2.5rem;
+  padding: 1.5rem 1.65rem;
   border: 2px solid var(--border-strong);
   border-radius: var(--radius-md);
   background: var(--bg-surface);
@@ -1893,8 +1893,8 @@ main {
 }
 
 .tool-spotlight-title {
-  margin: 0.6rem 0 0.5rem;
-  font-size: 1.45rem;
+  margin: 0.65rem 0 0.45rem;
+  font-size: 1.48rem;
   line-height: 1.25;
 }
 
@@ -1902,52 +1902,73 @@ main {
   margin: 0 0 0.85rem;
   color: var(--text-secondary);
   font-size: 0.94rem;
+  line-height: 1.6;
 }
 
 .tool-spotlight-bullets {
   margin: 0 0 1.25rem;
-  padding-left: 1.15rem;
+  padding-left: 0;
+  list-style: none;
   color: var(--text-secondary);
   font-size: 0.86rem;
 }
 
+.tool-spotlight-bullets li {
+  position: relative;
+  padding-left: 1.25rem;
+}
+
+.tool-spotlight-bullets li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--accent-emerald);
+  font-weight: 700;
+}
+
 .tool-spotlight-bullets li + li {
-  margin-top: 0.25rem;
+  margin-top: 0.3rem;
 }
 
 .tool-mockup {
-  border: 1px solid var(--border-subtle);
+  border: 2px solid var(--border-strong);
   border-radius: var(--radius-md);
   background: var(--bg-void);
+  box-shadow: var(--shadow-card);
   overflow: hidden;
 }
 
 .tool-mockup-bar {
   display: flex;
   align-items: center;
-  gap: 0.35rem;
-  padding: 0.55rem 0.8rem;
-  border-bottom: 1px solid var(--border-subtle);
+  gap: 0.5rem;
+  padding: 0.55rem 0.85rem;
+  border-bottom: 2px solid var(--border-subtle);
   background: var(--bg-elevated);
 }
 
-.tool-mockup-bar span:not(.tool-mockup-title) {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--border-strong);
+.tool-mockup-title {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-secondary);
 }
 
-.tool-mockup-title {
+.tool-mockup-status {
   margin-left: auto;
   font-family: var(--font-mono);
-  font-size: 0.7rem;
-  color: var(--text-muted);
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--accent-emerald);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 0.1rem 0.4rem;
 }
 
 .tool-mockup-code {
   margin: 0;
-  padding: 0.95rem 1rem;
+  padding: 1rem 1.05rem;
   font-family: var(--font-mono);
   font-size: 0.76rem;
   line-height: 1.55;
@@ -1955,27 +1976,38 @@ main {
   overflow-x: auto;
 }
 
+.tool-card {
+  padding: 1.2rem 1.25rem;
+  gap: 0.6rem;
+}
+
+.tool-card .hud-card-desc {
+  -webkit-line-clamp: 3;
+}
+
 .tool-card-head {
   display: flex;
   align-items: center;
-  gap: 0.55rem;
+  gap: 0.65rem;
 }
 
 .tool-icon-box {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 1.9rem;
-  height: 1.9rem;
-  border: 1px solid var(--border-subtle);
+  width: 2.25rem;
+  height: 2.25rem;
+  flex-shrink: 0;
+  border: 2px solid var(--border-strong);
   border-radius: var(--radius-sm);
-  background: var(--bg-void);
-  color: var(--accent-cyan);
+  background: var(--bg-elevated);
+  box-shadow: inset 0 0 0 2px var(--bg-surface);
 }
 
 .tool-card-actions {
   margin-top: auto;
-  padding-top: 0.5rem;
+  padding-top: 0.7rem;
+  border-top: 1px dashed var(--border-subtle);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1984,8 +2016,20 @@ main {
 
 .tool-card-actions .product-cta {
   margin-top: 0;
-  padding-top: 0;
+  padding: 0.28rem 0.65rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  background: var(--bg-elevated);
+  font-size: 0.78rem;
   text-decoration: none;
+  transition: border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+}
+
+.tool-card:hover .tool-card-actions .product-cta,
+.tool-card-actions .product-cta:hover {
+  border-color: var(--accent-emerald);
+  color: var(--accent-emerald);
+  background: var(--bg-void);
 }
 
 .tool-guide-link {
@@ -1993,10 +2037,11 @@ main {
   font-size: 0.76rem;
   color: var(--text-muted);
   text-decoration: none;
+  transition: color 0.15s ease;
 }
 
 .tool-guide-link:hover {
-  color: var(--accent-emerald);
+  color: var(--accent-cyan);
 }
 
 /* Newsroom 2-Column Layout (Feed + Retention Sidebar) */

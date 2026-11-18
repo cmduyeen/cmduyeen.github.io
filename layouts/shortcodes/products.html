@@ -1,7 +1,7 @@
 {{- $catalog := index site.Data.products "en" -}}
 
 {{- with $catalog.spotlight -}}
-<section class="tool-spotlight" aria-label="Featured tool">
+<section class="tool-spotlight" aria-label="Featured project">
   <div class="tool-spotlight-info">
     <span class="status-pill is-active">{{ .badge }}</span>
     <h2 class="tool-spotlight-title">{{ .name }}</h2>
@@ -18,8 +18,13 @@
   </div>
   <div class="tool-mockup" aria-hidden="true">
     <div class="tool-mockup-bar">
-      <span></span><span></span><span></span>
-      <span class="tool-mockup-title">hugo.toml · preview</span>
+      <svg class="pixel-icon" width="14" height="14" viewBox="0 0 16 16" shape-rendering="crispEdges">
+        <rect x="7" y="9" width="2" height="5" fill="#7ec850"/>
+        <rect x="5" y="4" width="6" height="5" fill="#7ec850"/>
+        <rect x="6" y="2" width="4" height="2" fill="#4f8f3c"/>
+      </svg>
+      <span class="tool-mockup-title">hugo.toml · live config</span>
+      <span class="tool-mockup-status">Ready ✓</span>
     </div>
     <pre class="tool-mockup-code"><code>baseURL = "https://you.github.io/"
 title = "Your Lab"
@@ -43,28 +48,29 @@ defaultContentLanguage = "en"
     <div class="featured-grid">
       {{- range $freeSec.items -}}
       {{- $isExternal := hasPrefix .url "http" -}}
-      <article class="hud-card">
+      <article class="hud-card tool-card">
         <div class="hud-card-top">
           <div class="tool-card-head">
             <span class="tool-icon-box" aria-hidden="true">
               {{ if eq .icon "profile" }}
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+              <svg class="pixel-icon" width="18" height="18" viewBox="0 0 16 16" shape-rendering="crispEdges"><rect x="6" y="2" width="4" height="4" fill="#d97706"/><rect x="5" y="4" width="6" height="4" fill="#fde68a"/><rect x="6" y="5" width="1" height="1" fill="#2d241c"/><rect x="9" y="5" width="1" height="1" fill="#2d241c"/><rect x="4" y="9" width="8" height="5" fill="#4f8f3c"/><rect x="5" y="10" width="6" height="4" fill="#7ec850"/></svg>
               {{ else if eq .icon "blog" }}
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+              <svg class="pixel-icon" width="18" height="18" viewBox="0 0 16 16" shape-rendering="crispEdges"><rect x="3" y="2" width="9" height="12" fill="#8f563b"/><rect x="4" y="3" width="7" height="10" fill="#fff8e7"/><rect x="5" y="5" width="5" height="1" fill="#4f8f3c"/><rect x="5" y="7" width="5" height="1" fill="#b45309"/><rect x="5" y="9" width="4" height="1" fill="#b45309"/><rect x="10" y="9" width="3" height="3" fill="#f59e0b"/></svg>
               {{ else if eq .icon "calendar" }}
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg>
+              <svg class="pixel-icon" width="18" height="18" viewBox="0 0 16 16" shape-rendering="crispEdges"><rect x="2" y="3" width="12" height="11" fill="#8f563b"/><rect x="4" y="2" width="2" height="2" fill="#5b3a29"/><rect x="10" y="2" width="2" height="2" fill="#5b3a29"/><rect x="3" y="4" width="10" height="2" fill="#b45309"/><rect x="3" y="6" width="10" height="7" fill="#fff8e7"/><rect x="5" y="8" width="2" height="2" fill="#7ec850"/><rect x="9" y="8" width="2" height="2" fill="#f59e0b"/></svg>
               {{ else }}
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 3v18"/><path d="M3 12h18"/></svg>
+              <svg class="pixel-icon" width="18" height="18" viewBox="0 0 16 16" shape-rendering="crispEdges"><rect x="3" y="3" width="10" height="10" fill="#8f563b"/><rect x="4" y="4" width="8" height="8" fill="#fff8e7"/><rect x="5" y="5" width="2" height="2" fill="#7ec850"/><rect x="9" y="5" width="2" height="2" fill="#f59e0b"/><rect x="5" y="9" width="2" height="2" fill="#d97706"/><rect x="9" y="9" width="2" height="2" fill="#4f8f3c"/></svg>
               {{ end }}
             </span>
             <span class="product-badge">{{ .badge }}</span>
           </div>
+          {{ if $isExternal }}<span class="hud-card-arrow" aria-hidden="true">↗</span>{{ end }}
         </div>
         <h3 class="hud-card-title">{{ .name }}</h3>
         <p class="hud-card-desc">{{ .description }}</p>
         <div class="tool-card-actions">
           <a class="product-cta" href="{{ .url }}"{{ if $isExternal }} target="_blank" rel="noopener noreferrer"{{ end }}>{{ .cta }}</a>
-          {{ with .guide_url }}<a class="tool-guide-link" href="{{ . }}">Guide</a>{{ end }}
+          {{ with .guide_url }}<a class="tool-guide-link" href="{{ . }}">Guide →</a>{{ end }}
         </div>
       </article>
       {{- end -}}
@@ -76,19 +82,30 @@ defaultContentLanguage = "en"
     <section class="home-section">
       <div class="section-head">
         <h2 class="section-label"><span aria-hidden="true">// </span>{{ $proSec.heading }}</h2>
-        <span class="archive-series-count">Optional shortcuts</span>
+        <span class="archive-series-count">MIT &amp; Free Guides</span>
       </div>
       <div class="featured-grid">
         {{- range $proSec.items -}}
         {{- $isExternal := hasPrefix .url "http" -}}
-        <a class="hud-card store-pro" href="{{ .url }}"{{ if $isExternal }} target="_blank" rel="noopener noreferrer"{{ end }}>
+        <a class="hud-card tool-card store-pro" href="{{ .url }}"{{ if $isExternal }} target="_blank" rel="noopener noreferrer"{{ end }}>
           <div class="hud-card-top">
-            <span class="product-badge">{{ .badge }}</span>
-            <span class="hud-card-arrow" aria-hidden="true">↗</span>
+            <div class="tool-card-head">
+              <span class="tool-icon-box" aria-hidden="true">
+                {{ if eq .icon "source" }}
+                <svg class="pixel-icon" width="18" height="18" viewBox="0 0 16 16" shape-rendering="crispEdges"><rect x="2" y="4" width="12" height="9" fill="#5b3a29"/><rect x="3" y="5" width="10" height="7" fill="#8f563b"/><rect x="2" y="7" width="12" height="1" fill="#2d241c"/><rect x="7" y="6" width="2" height="3" fill="#f59e0b"/></svg>
+                {{ else }}
+                <svg class="pixel-icon" width="18" height="18" viewBox="0 0 16 16" shape-rendering="crispEdges"><rect x="3" y="2" width="10" height="12" fill="#4f8f3c"/><rect x="4" y="3" width="8" height="10" fill="#fff8e7"/><rect x="6" y="5" width="5" height="1" fill="#5b3a29"/><rect x="6" y="7" width="5" height="1" fill="#8f563b"/><rect x="6" y="9" width="4" height="1" fill="#8f563b"/></svg>
+                {{ end }}
+              </span>
+              <span class="product-badge">{{ .badge }}</span>
+            </div>
+            <span class="hud-card-arrow" aria-hidden="true">{{ if $isExternal }}↗{{ else }}→{{ end }}</span>
           </div>
           <h3 class="hud-card-title">{{ .name }}</h3>
           <p class="hud-card-desc">{{ .description }}</p>
-          <div class="product-cta">{{ .cta }}</div>
+          <div class="tool-card-actions">
+            <span class="product-cta">{{ .cta }}</span>
+          </div>
         </a>
         {{- end -}}
       </div>
