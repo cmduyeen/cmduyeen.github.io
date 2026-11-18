@@ -2,37 +2,24 @@
   {{- $posts := (where site.RegularPages "Section" "posts").ByDate.Reverse -}}
   {{- $catalog := index site.Data.products "en" -}}
 
-  <!-- Warm Stardew Valley Cozy Hero (Compact 7.5rem Animated Pixel Scene) -->
+  <!-- Warm Stardew Valley Cozy Hero -->
   <section class="hero-lab stardew-box" aria-label="Introduction">
-    <div class="stardew-scene">
-      <canvas id="valley-hero-canvas" width="320" height="64" aria-label="Pixel art animation of Dyn walking with two dogs in a cozy valley"></canvas>
-      <button type="button" class="stardew-hud-pill" id="valley-season-hud" title="Click to toggle Day / Night">
+    <div class="creator-bar" style="justify-content: space-between; flex-wrap: wrap;">
+      <div style="display: flex; align-items: center; gap: 0.85rem;">
+        <img class="hero-avatar-img" src="{{ "images/dyn-avatar.png" | relURL }}" alt="Dyn pixel avatar with two dogs" width="56" height="56" decoding="async" />
+        <div class="creator-meta">
+          <div class="creator-name"><span>{{ site.Params.author }}</span></div>
+          <div class="social-pills">
+            {{ with site.Params.contact.github }}<a href="{{ . | safeURL }}" target="_blank" rel="noopener noreferrer">GitHub</a>{{ end }}
+            {{ with site.Params.contact.x }}<span aria-hidden="true">·</span><a href="{{ . | safeURL }}" target="_blank" rel="noopener noreferrer">X</a>{{ end }}
+            {{ with site.Home.OutputFormats.Get "RSS" }}<span aria-hidden="true">·</span><a href="{{ .RelPermalink }}">RSS</a>{{ end }}
+          </div>
+        </div>
+      </div>
+      <button type="button" class="stardew-hud-pill is-inline" id="valley-season-hud" title="Click to toggle Day / Night">
         <span class="hud-season-dot" aria-hidden="true"></span>
         <span id="valley-season-text">Fall · Day</span>
       </button>
-    </div>
-
-    <div class="creator-bar">
-      <div class="monogram-avatar stardew-crest" aria-hidden="true">
-        <svg class="pixel-icon" width="22" height="22" viewBox="0 0 16 16" shape-rendering="crispEdges">
-          <rect x="7" y="1" width="2" height="2" fill="#eab308"/>
-          <rect x="5" y="3" width="6" height="2" fill="#facc15"/>
-          <rect x="2" y="5" width="12" height="3" fill="#eab308"/>
-          <rect x="4" y="8" width="8" height="3" fill="#ca8a04"/>
-          <rect x="3" y="11" width="4" height="3" fill="#eab308"/>
-          <rect x="9" y="11" width="4" height="3" fill="#eab308"/>
-          <rect x="6" y="6" width="1" height="2" fill="#3e2723"/>
-          <rect x="9" y="6" width="1" height="2" fill="#3e2723"/>
-        </svg>
-      </div>
-      <div class="creator-meta">
-        <div class="creator-name"><span>{{ site.Params.author }}</span></div>
-        <div class="social-pills">
-          {{ with site.Params.contact.github }}<a href="{{ . | safeURL }}" target="_blank" rel="noopener noreferrer">GitHub</a>{{ end }}
-          {{ with site.Params.contact.x }}<span aria-hidden="true">·</span><a href="{{ . | safeURL }}" target="_blank" rel="noopener noreferrer">X</a>{{ end }}
-          {{ with site.Home.OutputFormats.Get "RSS" }}<span aria-hidden="true">·</span><a href="{{ .RelPermalink }}">RSS</a>{{ end }}
-        </div>
-      </div>
     </div>
 
     <h1 class="hero-h1">
