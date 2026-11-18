@@ -899,6 +899,59 @@ main {
   color: var(--accent-emerald);
 }
 
+/* Newsroom Featured Dispatch */
+.news-featured-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 2.75rem;
+  padding: 1.4rem 1.5rem;
+  border: 1px solid rgba(56, 189, 248, 0.28);
+  border-radius: var(--radius-md);
+  background: var(--bg-surface);
+}
+
+.news-featured-title {
+  margin: 0;
+  font-size: clamp(1.25rem, 3vw, 1.6rem);
+  line-height: 1.25;
+}
+
+.news-featured-title a {
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.news-featured-title a:hover {
+  color: var(--accent-cyan);
+}
+
+.news-featured-desc {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.96rem;
+}
+
+.news-featured-preview {
+  padding: 0.85rem 1rem;
+  border-left: 2px solid var(--accent-emerald);
+  background: var(--bg-void);
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.news-featured-preview h3 {
+  margin: 0 0 0.45rem;
+  font-size: 0.84rem;
+  font-family: var(--font-mono);
+  color: var(--accent-emerald);
+}
+
+.news-featured-preview ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
 /* ==========================================================================
    Unified Learn Finder (Quick Topic ⇄ Goal Advisor) + 8-Track Directory
    ========================================================================== */
