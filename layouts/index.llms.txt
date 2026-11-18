@@ -19,6 +19,8 @@
   - DevOps & Cloud (Git, Linux, CI/CD, Edge): {{ "learn/devops/" | absLangURL }}
   - Developer Workspace (VS Code, Neovim, Terminal): {{ "learn/workspace/" | absLangURL }}
   - PKM & Digital Writing (Markdown, Obsidian, Notion): {{ "learn/pkm/" | absLangURL }}
+  - Office & Productivity (Excel, Sheets, Calendar, Docs): {{ "learn/office/" | absLangURL }}
+  - No-Code & Everyday AI (AI Prompts, Zapier, n8n, Builders): {{ "learn/no-code-ai/" | absLangURL }}
 - Tech News: {{ "news/" | absLangURL }}
 - Tools & Digital Kits: {{ "tools/" | absLangURL }}
 - Library (Books & Courses): {{ "library/" | absLangURL }}

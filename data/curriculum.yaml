@@ -157,5 +157,59 @@
   library_url: "/library/"
   freebie_label: "Obsidian Personal (100% Free)"
   freebie_url: "/freebies/"
+  next_label: "Next Track: Office & Productivity →"
+  next_url: "/learn/office/"
+
+- id: office
+  step: "07"
+  name: "Office & Productivity"
+  slug: "/learn/office/"
+  intent: "Mass Traffic · Work & Daily Life"
+  summary: "Master spreadsheets, Google Workspace, calendar automation, PDF/file workflows, and everyday digital skills."
+  topics: ["Excel & Sheets", "Google Calendar", "Docs & Slides", "PDF & Files"]
+  phases:
+    - label: "Phase 1"
+      title: "Spreadsheets (Formulas, Pivot Tables, Cleaning)"
+    - label: "Phase 2"
+      title: "Calendar, Email & Time-Blocking Systems"
+    - label: "Phase 3"
+      title: "Clean Documents, Reports & Presentations"
+    - label: "Phase 4"
+      title: "Everyday Office Shortcuts & Automation"
+  match_prefixes: ["lich-am-viet-nam"]
+  match_categories: ["Office", "Productivity", "Sheets", "Excel"]
+  tool_label: "Lunar Calendar Studio (.ics)"
+  tool_url: "/tools/"
+  library_label: "Productivity & Workflow Books"
+  library_url: "/library/"
+  freebie_label: "Free Office & Utility Software"
+  freebie_url: "/freebies/"
+  next_label: "Next Track: No-Code & Everyday AI →"
+  next_url: "/learn/no-code-ai/"
+
+- id: no-code-ai
+  step: "08"
+  name: "No-Code & Everyday AI"
+  slug: "/learn/no-code-ai/"
+  intent: "Mass Adoption · Zero Coding Required"
+  summary: "Use AI assistants, no-code builders, and visual automations to save hours every week without writing code."
+  topics: ["ChatGPT / Claude / Gemini", "No-Code Builders", "n8n / Zapier", "AI Workflows"]
+  phases:
+    - label: "Phase 1"
+      title: "Practical AI Prompting for Work & Study"
+    - label: "Phase 2"
+      title: "Research, Summarizing & Writing with AI"
+    - label: "Phase 3"
+      title: "No-Code Websites, Forms & Databases"
+    - label: "Phase 4"
+      title: "Connect Apps Automatically (Zapier / Make / n8n)"
+  match_prefixes: []
+  match_categories: ["No-Code", "Everyday AI", "AI Tools"]
+  tool_label: "Zero-Install Browser Tools"
+  tool_url: "/tools/"
+  library_label: "AI & No-Code Learning Resources"
+  library_url: "/library/"
+  freebie_label: "Free AI & Productivity Perks"
+  freebie_url: "/freebies/"
   next_label: "Back to Frontend Engineering →"
   next_url: "/learn/frontend/"
