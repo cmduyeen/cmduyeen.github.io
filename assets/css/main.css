@@ -386,6 +386,88 @@ main {
   padding-block: 2.75rem 4.5rem;
 }
 
+/* RPG About Character Sheet */
+.about-rpg-grid {
+  display: grid;
+  grid-template-columns: 19rem minmax(0, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2.75rem;
+  align-items: stretch;
+}
+
+.about-char-card,
+.about-lore-card {
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.about-avatar-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin-bottom: 1.2rem;
+}
+
+.about-crest-lg {
+  width: 3.4rem;
+  height: 3.4rem;
+}
+
+.about-char-name {
+  margin: 0 0 0.25rem;
+  font-size: 1.2rem;
+}
+
+.about-gear {
+  margin-top: 0.35rem;
+  margin-bottom: 1rem;
+}
+
+.about-bio {
+  color: var(--text-secondary);
+  font-size: 0.98rem;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.about-bio p {
+  margin: 0.65rem 0;
+}
+
+.about-achievements {
+  margin-top: auto;
+}
+
+.about-badges-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.7rem;
+  margin-top: 0.5rem;
+}
+
+.about-badge-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  background: var(--bg-void);
+}
+
+.about-badge-item strong {
+  display: block;
+  font-size: 0.8rem;
+  line-height: 1.25;
+}
+
+.about-badge-item span {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
 /* Asymmetric RPG Hero + Character Status Card + Bulletin Panels */
 .rpg-hero-grid {
   display: grid;
@@ -3093,6 +3175,8 @@ main {
   .news-layout,
   .home-split-grid,
   .rpg-hero-grid,
+  .about-rpg-grid,
+  .about-badges-grid,
   .tool-spotlight {
     grid-template-columns: 1fr;
   }

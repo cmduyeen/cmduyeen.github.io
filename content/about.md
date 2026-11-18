@@ -1,18 +1,9 @@
 ---
 title: "About"
-description: "About Dyn, minimalist software philosophy, engineering stack, and open-source projects."
+description: "Character sheet, minimalist philosophy, and open-source projects by Dyn."
+type: "about"
 ---
 
-I'm **Dyn**, an independent builder focused on calm, minimalist software (*less is more*): plain-text Markdown, fast static sites, zero-install browser tools, and privacy-respecting automation.
+I'm **Dyn**, an independent builder who treats software and writing like tending a quiet valley: keep tools sharp, remove clutter, and build systems that last for years.
 
-This lab documents practical workflows around **Obsidian**, **Hugo**, **Neovim**, and **AI-assisted engineering**—designed to be simple, durable, and dependency-free.
-
-| | |
-| :--- | :--- |
-| **Focus** | Minimalist Software, Automation, Obsidian PKM, Hugo |
-| **Stack** | Python, PowerShell, Markdown, HTML/CSS, Vanilla JS |
-| **Elsewhere** | [@cmduyeen](https://github.com/cmduyeen) (GitHub) · [@cmduyeen](https://x.com/cmduyeen) (X) · [Tools](/tools/) · [RSS](/index.xml) |
-
-## Open-Source Projects
-
-{{< github-repos >}}
+This site is my workshop for plain-text notes (**Obsidian & Markdown**), fast static websites (**Hugo**), zero-install browser utilities, and honest reviews of tools I actually use.
