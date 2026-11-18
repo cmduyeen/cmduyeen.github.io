@@ -3530,12 +3530,19 @@ main {
   border-left: 1px solid var(--border-subtle);
 }
 
+.header-social-icons {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.header-icon-link,
 .footer-icon-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 1.65rem;
-  height: 1.65rem;
+  width: 1.7rem;
+  height: 1.7rem;
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
   background: var(--bg-surface);
@@ -3543,6 +3550,7 @@ main {
   transition: border-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
 }
 
+.header-icon-link:hover,
 .footer-icon-link:hover {
   border-color: var(--border-strong);
   color: var(--accent-emerald);
