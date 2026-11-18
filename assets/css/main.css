@@ -1111,11 +1111,42 @@ main {
   top: 5rem;
   display: flex;
   flex-direction: column;
-  gap: 0.45rem;
+  gap: 1rem;
   padding: 1rem;
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   background: var(--bg-surface);
+}
+
+.w3-sidebar-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.w3-soon {
+  font-size: 0.64rem;
+  padding: 0.08rem 0.35rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+}
+
+.w3-track-btn.is-planned {
+  opacity: 0.72;
+}
+
+.roadmap-empty {
+  padding: 1.5rem 1.25rem;
+  border: 1px dashed var(--border-subtle);
+  border-radius: var(--radius-md);
+  background: var(--bg-surface);
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+}
+
+.roadmap-empty p {
+  margin: 0.35rem 0;
 }
 
 .w3-sidebar-label {

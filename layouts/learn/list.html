@@ -1,165 +1,138 @@
 {{ define "main" }}
-  {{- $posts := (where site.RegularPages "Section" "posts").ByDate -}}
-  {{- $mdSeries := slice -}}
-  {{- $sereinSeries := slice -}}
+  {{- $allPosts := (where site.RegularPages "Section" "posts").ByDate -}}
+  {{- $curriculum := site.Data.curriculum -}}
+
+  {{/* Gom bài viết theo từng track và tìm các bài standalone */}}
+  {{- $trackPosts := newScratch -}}
+  {{- $assigned := slice -}}
+  {{- range $curriculum -}}
+    {{- range .tracks -}}
+      {{- $t := . -}}
+      {{- if not $t.match_standalone -}}
+        {{- $matched := slice -}}
+        {{- range $allPosts -}}
+          {{- $p := . -}}
+          {{- $hit := false -}}
+          {{- if and $t.match_prefix (in $p.RelPermalink $t.match_prefix) -}}
+            {{- $hit = true -}}
+          {{- else if and $t.match_series (eq (printf "%v" ($p.Params.series | default "")) $t.match_series) -}}
+            {{- $hit = true -}}
+          {{- end -}}
+          {{- if $hit -}}
+            {{- $matched = $matched | append $p -}}
+            {{- $assigned = $assigned | append $p.RelPermalink -}}
+          {{- end -}}
+        {{- end -}}
+        {{- $trackPosts.Set $t.id $matched -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+
   {{- $standalone := slice -}}
-  {{ range $posts }}
-    {{ if in .RelPermalink "markdown-101-" }}
-      {{ $mdSeries = $mdSeries | append . }}
-    {{ else if in .RelPermalink "serein-" }}
-      {{ $sereinSeries = $sereinSeries | append . }}
-    {{ else }}
-      {{ $standalone = $standalone | append . }}
-    {{ end }}
-  {{ end }}
+  {{- range $allPosts -}}
+    {{- if not (in $assigned .RelPermalink) -}}
+      {{- $standalone = $standalone | append . -}}
+    {{- end -}}
+  {{- end -}}
+  {{- $trackPosts.Set "track-standalone" $standalone -}}
 
   <header class="page-header">
     <h1 class="hero-h1"><span class="highlight">//</span> {{ .Title }}</h1>
-    <p class="archive-subtitle">Not sure where to start? Pick your goal below to get a tailored roadmap.</p>
+    <p class="archive-subtitle">Pick your goal or browse the full curriculum map on the left.</p>
   </header>
 
   <!-- Step 1: Goal Picker -->
   <section class="goal-picker" aria-label="Choose your learning goal">
     <button type="button" class="goal-card is-active" data-track-target="track-markdown">
-      <span class="goal-tag">[GOAL 01] WRITE &amp; PUBLISH</span>
-      <strong class="goal-title">Learn Markdown from scratch</strong>
-      <span class="goal-desc">Go from your first .md file to formatting, Obsidian notes, and Hugo blogs.</span>
+      <span class="goal-tag">[GOAL 01] WEB &amp; CODE</span>
+      <strong class="goal-title">Learn Markdown, HTML, CSS &amp; Code</strong>
+      <span class="goal-desc">Start with Markdown 101 today; HTML, CSS, JS &amp; Python tracks coming next.</span>
+    </button>
+    <button type="button" class="goal-card" data-track-target="track-obsidian">
+      <span class="goal-tag">[GOAL 02] PKM &amp; NOTES</span>
+      <strong class="goal-title">Build an Obsidian or Notion system</strong>
+      <span class="goal-desc">Organize plain-text notes, daily logs, and publish directly to the web.</span>
     </button>
     <button type="button" class="goal-card" data-track-target="track-serein">
-      <span class="goal-tag">[GOAL 02] CALM WORKSPACE</span>
-      <strong class="goal-title">Set up a distraction-free environment</strong>
-      <span class="goal-desc">Unify VS Code, Neovim, and Obsidian with the warm Serein theme suite.</span>
-    </button>
-    <button type="button" class="goal-card" data-track-target="track-standalone">
-      <span class="goal-tag">[GOAL 03] QUICK LAUNCH</span>
-      <strong class="goal-title">Ship profiles, blogs &amp; calendars</strong>
-      <span class="goal-desc">Focused standalone tutorials paired with zero-install browser tools.</span>
+      <span class="goal-tag">[GOAL 03] WORKSPACE &amp; SHIP</span>
+      <strong class="goal-title">Tune VS Code, Neovim &amp; Hugo</strong>
+      <span class="goal-desc">Set up a calm coding environment and deploy fast static sites.</span>
     </button>
   </section>
 
-  <!-- Step 2 & 3: W3Schools Track Switcher + Roadmap -->
+  <!-- Step 2 & 3: W3Schools 2-Tier Sidebar + Curriculum Panels -->
   <div class="w3-learn-shell" id="learn-workspace">
-    <aside class="w3-sidebar" aria-label="Learning tracks">
-      <div class="w3-sidebar-label">Recommended Tracks</div>
-      <button type="button" class="w3-track-btn is-active" data-track-target="track-markdown">
-        <span>01. Markdown 101</span>
-        <span class="w3-count" data-track-progress="track-markdown">0/{{ len $mdSeries }}</span>
-      </button>
-      <button type="button" class="w3-track-btn" data-track-target="track-serein">
-        <span>02. Serein Workspace</span>
-        <span class="w3-count" data-track-progress="track-serein">0/{{ len $sereinSeries }}</span>
-      </button>
-      <button type="button" class="w3-track-btn" data-track-target="track-standalone">
-        <span>03. Standalone Guides</span>
-        <span class="w3-count" data-track-progress="track-standalone">0/{{ len $standalone }}</span>
-      </button>
+    <aside class="w3-sidebar" aria-label="Curriculum sidebar">
+      {{- range $curriculum -}}
+      <div class="w3-sidebar-group">
+        <div class="w3-sidebar-label">{{ .group }}</div>
+        {{- range .tracks -}}
+          {{- $items := $trackPosts.Get .id | default slice -}}
+          {{- $count := len $items -}}
+          <button type="button" class="w3-track-btn{{ if eq .id "track-markdown" }} is-active{{ end }}{{ if eq $count 0 }} is-planned{{ end }}" data-track-target="{{ .id }}">
+            <span>{{ .name }}</span>
+            {{ if gt $count 0 }}
+            <span class="w3-count" data-track-progress="{{ .id }}">0/{{ $count }}</span>
+            {{ else }}
+            <span class="w3-soon">SOON</span>
+            {{ end }}
+          </button>
+        {{- end -}}
+      </div>
+      {{- end -}}
     </aside>
 
     <div class="w3-main">
-      <!-- Track 01: Markdown 101 -->
-      <section class="w3-panel" id="track-markdown" data-track-panel>
-        <div class="roadmap-banner">
-          <div class="roadmap-banner-top">
-            <div>
-              <span class="tldr-label">// ROADMAP · TRACK 01</span>
-              <h2 class="roadmap-banner-title">Markdown 101 — Plain-Text Mastery</h2>
+      {{- range $curriculum -}}
+        {{- $groupName := .group -}}
+        {{- range .tracks -}}
+          {{- $t := . -}}
+          {{- $items := $trackPosts.Get $t.id | default slice -}}
+          {{- $count := len $items -}}
+          <section class="w3-panel" id="{{ $t.id }}" data-track-panel{{ if ne $t.id "track-markdown" }} hidden{{ end }}>
+            <div class="roadmap-banner">
+              <div class="roadmap-banner-top">
+                <div>
+                  <span class="tldr-label">// {{ upper $groupName }} · {{ if gt $count 0 }}{{ $count }} LESSONS{{ else }}PLANNED TRACK{{ end }}</span>
+                  <h2 class="roadmap-banner-title">{{ $t.title }}</h2>
+                </div>
+                {{ if gt $count 0 }}
+                  {{ with index $items 0 }}
+                  <a class="btn-primary-cyber" href="{{ .RelPermalink }}" data-track-start="{{ $t.id }}">Start Lesson 01 →</a>
+                  {{ end }}
+                {{ else }}
+                  <span class="status-pill">IN PROGRESS</span>
+                {{ end }}
+              </div>
+              <div class="roadmap-steps">
+                {{- range $t.phases -}}
+                <div class="roadmap-step"><span>{{ .label }}</span><strong>{{ .title }}</strong></div>
+                {{- end -}}
+              </div>
             </div>
-            {{ with index $mdSeries 0 }}
-            <a class="btn-primary-cyber" href="{{ .RelPermalink }}" data-track-start="track-markdown">Start Part 01 →</a>
+
+            {{ if gt $count 0 }}
+            <ol class="w3-lesson-list">
+              {{ range $idx, $p := $items }}
+              <li>
+                <a class="w3-lesson-item" href="{{ $p.RelPermalink }}" data-lesson-url="{{ $p.RelPermalink }}" data-lesson-track="{{ $t.id }}">
+                  <span class="w3-lesson-num">{{ printf "%02d" (add $idx 1) }}</span>
+                  <span class="w3-lesson-title">{{ $p.LinkTitle }}</span>
+                  <span class="w3-lesson-status" aria-hidden="true"></span>
+                  <span class="writing-meta">{{ $p.ReadingTime }}m</span>
+                </a>
+              </li>
+              {{ end }}
+            </ol>
+            {{ else }}
+            <div class="roadmap-empty">
+              <p>Lessons for <strong>{{ $t.name }}</strong> are being written and will drop into this track automatically.</p>
+              <p>Meanwhile, check <a href="{{ "library/" | relLangURL }}">curated books &amp; courses in Library →</a> or practice with <a href="{{ "tools/" | relLangURL }}">Web Tools →</a></p>
+            </div>
             {{ end }}
-          </div>
-          <div class="roadmap-steps">
-            <div class="roadmap-step"><span>Phase 1 (01–04)</span><strong>Core Syntax &amp; Media</strong></div>
-            <div class="roadmap-step"><span>Phase 2 (05–08)</span><strong>YAML, Tables &amp; Hugo</strong></div>
-            <div class="roadmap-step"><span>Phase 3 (09–10)</span><strong>Obsidian &amp; Capstone</strong></div>
-          </div>
-        </div>
-
-        <ol class="w3-lesson-list">
-          {{ range $idx, $p := $mdSeries }}
-          <li>
-            <a class="w3-lesson-item" href="{{ $p.RelPermalink }}" data-lesson-url="{{ $p.RelPermalink }}" data-lesson-track="track-markdown">
-              <span class="w3-lesson-num">{{ printf "%02d" (add $idx 1) }}</span>
-              <span class="w3-lesson-title">{{ $p.LinkTitle }}</span>
-              <span class="w3-lesson-status" aria-hidden="true"></span>
-              <span class="writing-meta">{{ $p.ReadingTime }}m</span>
-            </a>
-          </li>
-          {{ end }}
-        </ol>
-        <aside class="roadmap-deepdive">
-          <span class="tldr-label">// NEXT STEP AFTER THIS TRACK</span>
-          <p>Ready to build deeper engineering habits? Browse the <a href="{{ "library/" | relLangURL }}">curated books &amp; courses shelf →</a></p>
-        </aside>
-      </section>
-
-      <!-- Track 02: Serein Workspace -->
-      <section class="w3-panel" id="track-serein" data-track-panel hidden>
-        <div class="roadmap-banner">
-          <div class="roadmap-banner-top">
-            <div>
-              <span class="tldr-label">// ROADMAP · TRACK 02</span>
-              <h2 class="roadmap-banner-title">Serein Calm Workspace</h2>
-            </div>
-            {{ with index $sereinSeries 0 }}
-            <a class="btn-primary-cyber" href="{{ .RelPermalink }}" data-track-start="track-serein">Start Setup →</a>
-            {{ end }}
-          </div>
-          <div class="roadmap-steps">
-            <div class="roadmap-step"><span>Step 1</span><strong>Theme Philosophy</strong></div>
-            <div class="roadmap-step"><span>Step 2</span><strong>VS Code &amp; Neovim</strong></div>
-            <div class="roadmap-step"><span>Step 3</span><strong>Obsidian Second Brain</strong></div>
-          </div>
-        </div>
-
-        <ol class="w3-lesson-list">
-          {{ range $idx, $p := $sereinSeries }}
-          <li>
-            <a class="w3-lesson-item" href="{{ $p.RelPermalink }}" data-lesson-url="{{ $p.RelPermalink }}" data-lesson-track="track-serein">
-              <span class="w3-lesson-num">{{ printf "%02d" (add $idx 1) }}</span>
-              <span class="w3-lesson-title">{{ $p.LinkTitle }}</span>
-              <span class="w3-lesson-status" aria-hidden="true"></span>
-              <span class="writing-meta">{{ $p.ReadingTime }}m</span>
-            </a>
-          </li>
-          {{ end }}
-        </ol>
-        <aside class="roadmap-deepdive">
-          <span class="tldr-label">// COMPANION KITS</span>
-          <p>Grab the <a href="{{ "tools/" | relLangURL }}">Serein themes &amp; starter kits →</a></p>
-        </aside>
-      </section>
-
-      <!-- Track 03: Standalone Guides -->
-      <section class="w3-panel" id="track-standalone" data-track-panel hidden>
-        <div class="roadmap-banner">
-          <div class="roadmap-banner-top">
-            <div>
-              <span class="tldr-label">// ROADMAP · TRACK 03</span>
-              <h2 class="roadmap-banner-title">Standalone Practical Guides</h2>
-            </div>
-            <a class="btn-hud" href="{{ "tools/" | relLangURL }}">Open Web Tools →</a>
-          </div>
-          <div class="roadmap-steps">
-            <div class="roadmap-step"><span>Pick Any</span><strong>No Prerequisites</strong></div>
-            <div class="roadmap-step"><span>Follow Along</span><strong>Copy-Paste Configs</strong></div>
-            <div class="roadmap-step"><span>Deploy</span><strong>Live in Minutes</strong></div>
-          </div>
-        </div>
-
-        <ol class="w3-lesson-list">
-          {{ range $idx, $p := $standalone }}
-          <li>
-            <a class="w3-lesson-item" href="{{ $p.RelPermalink }}" data-lesson-url="{{ $p.RelPermalink }}" data-lesson-track="track-standalone">
-              <span class="w3-lesson-num">{{ printf "%02d" (add $idx 1) }}</span>
-              <span class="w3-lesson-title">{{ $p.LinkTitle }}</span>
-              <span class="w3-lesson-status" aria-hidden="true"></span>
-              <span class="writing-meta">{{ $p.ReadingTime }}m</span>
-            </a>
-          </li>
-          {{ end }}
-        </ol>
-      </section>
+          </section>
+        {{- end -}}
+      {{- end -}}
     </div>
   </div>
 {{ end }}
