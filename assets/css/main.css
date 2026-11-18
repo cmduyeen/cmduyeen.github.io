@@ -878,8 +878,14 @@ main {
 
 .hero-h1-wide {
   max-width: none;
-  font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+  font-size: clamp(1.3rem, 2.2vw, 1.62rem);
   margin-bottom: 0.35rem;
+}
+
+.hero-desc-compact {
+  margin: 0;
+  max-width: none;
+  font-size: 0.94rem;
 }
 
 .hero-content-row .hero-actions {
