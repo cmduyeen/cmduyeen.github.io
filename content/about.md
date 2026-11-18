@@ -1,19 +1,18 @@
 ---
-title: "Về mình"
-description: "Đôi chút về Dyn, triết lý làm phần mềm tối giản và các dự án đang xây dựng."
-aliases: ["/vi/about/"]
+title: "About"
+description: "A little about Dyn, minimalist software philosophy, and current projects."
 ---
 
-Mình là Dyn, sống và làm việc tại **TP. Hồ Chí Minh**. Mình thích đọc sách, nấu ăn và xây dựng những công cụ phần mềm nhỏ gọn.
+I'm Dyn, based in **Ho Chi Minh City, Vietnam**. I enjoy reading, cooking, and building small, practical software tools.
 
-Blog này lưu giữ ghi chú của mình về tự động hóa, Obsidian và cách dựng hệ thống đơn giản chạy bền bỉ theo năm tháng. Mình tin vào phần mềm tối giản (*less is more*): văn bản thuần (Markdown), tốc độ nhanh, không cài đặt rườm rà và không quảng cáo.
+This blog documents what I learn about automation, Obsidian, and designing simple systems that last. I believe in calm, minimalist software (*less is more*): plain-text Markdown, fast load times, zero-install workflows, and respect for user privacy.
 
 | | |
 | --- | --- |
-| **Tâm điểm** | Phần mềm tối giản, Tự động hóa, Obsidian, Hugo |
-| **Công cụ** | Python, PowerShell, Markdown, HTML/CSS |
-| **Kết nối** | [@cmduyeen](https://github.com/cmduyeen) (GitHub) · [@cmduyeen](https://x.com/cmduyeen) (X) · [Tools](/tools/) · [RSS](/index.xml) |
+| **Focus** | Minimalist Software, Automation, Obsidian, Hugo |
+| **Stack** | Python, PowerShell, Markdown, HTML/CSS |
+| **Elsewhere** | [@cmduyeen](https://github.com/cmduyeen) (GitHub) · [@cmduyeen](https://x.com/cmduyeen) (X) · [Tools](/tools/) · [RSS](/index.xml) |
 
-## Dự án
+## Projects
 
 {{< github-repos >}}

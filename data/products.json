@@ -97,14 +97,14 @@
             "name": "From Obsidian to GitHub Pages",
             "badge": "Ebook Series · Free",
             "description": "A 3-part guide to turning your plain-text Obsidian vault into an automated Hugo blog on GitHub Pages.",
-            "url": "/en/posts/obsidian-to-github-blog-01-publishable-vault/",
+            "url": "/posts/obsidian-to-github-blog-01-publishable-vault/",
             "cta": "Read Now →"
           },
           {
             "name": "Obsidian Kepano Vault VI",
             "badge": "Digital Template · Coming Soon",
             "description": "Vietnamese Obsidian starter vault following Kepano conventions with .base databases and AI CLI workflows.",
-            "url": "/en/about/",
+            "url": "/about/",
             "cta": "Learn More →"
           }
         ]

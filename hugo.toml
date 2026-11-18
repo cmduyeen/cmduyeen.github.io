@@ -1,38 +1,16 @@
 baseURL = "https://cmduyeen.github.io/"
 title = "Dyn"
-defaultContentLanguage = "vi"
-defaultContentLanguageInSubdir = false
+languageCode = "en-us"
+defaultContentLanguage = "en"
 enableRobotsTXT = true
-
-[languages.vi]
-  languageCode = "vi-vn"
-  languageName = "Tiếng Việt"
-  title = "Dyn"
-  weight = 1
 
 [params]
   author = "Dyn"
-  description = "Dyn chia sẻ về phần mềm, tự động hóa, Obsidian, Hugo, GitHub Pages và các công cụ hữu ích."
-
-[languages.vi.params]
-  description = "Dyn chia sẻ về phần mềm, tự động hóa, Obsidian, Hugo, GitHub Pages và các công cụ hữu ích."
-
-[params.homeInfoParams]
-  Title = "Xin chào, mình là Dyn 👋"
-  Content = "Góc nhỏ ghi lại những điều mình học được về phần mềm và tự động hóa."
-
-[languages.en]
-  languageCode = "en-us"
-  languageName = "English"
-  title = "Dyn"
-  weight = 2
-
-[languages.en.params]
   description = "Dyn writes about software, automation, Obsidian, Hugo, GitHub Pages, and useful tools."
 
-[languages.en.params.homeInfoParams]
-  Title = "Hi, I'm Dyn 👋"
-  Content = "A small corner for things I learn about software and automation."
+[params.homeInfoParams]
+  Title = "Hi, I'm Dyn"
+  Content = "Engineering notes, automation workflows, and minimalist developer tools."
 
 [params.contact]
   github = "https://github.com/cmduyeen"
@@ -42,37 +20,19 @@ enableRobotsTXT = true
   bluesky = ""
   other = ""
 
-[[languages.vi.menus.main]]
+[[menus.main]]
   identifier = "about"
   name = "About"
   pageRef = "/about"
   weight = 10
 
-[[languages.vi.menus.main]]
+[[menus.main]]
   identifier = "tools"
   name = "Tools"
   pageRef = "/tools"
   weight = 20
 
-[[languages.vi.menus.main]]
-  identifier = "archives"
-  name = "Archive"
-  pageRef = "/archives"
-  weight = 30
-
-[[languages.en.menus.main]]
-  identifier = "about"
-  name = "About"
-  pageRef = "/about"
-  weight = 10
-
-[[languages.en.menus.main]]
-  identifier = "tools"
-  name = "Tools"
-  pageRef = "/tools"
-  weight = 20
-
-[[languages.en.menus.main]]
+[[menus.main]]
   identifier = "archives"
   name = "Archive"
   pageRef = "/archives"

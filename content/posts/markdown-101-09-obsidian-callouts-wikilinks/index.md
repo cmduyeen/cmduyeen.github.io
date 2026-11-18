@@ -39,14 +39,14 @@ Common built-in callout types include `[!NOTE]`, `[!TIP]`, `[!IMPORTANT]`, `[!WA
 These extensions belong to Obsidian rather than core CommonMark:
 
 - In Dyn's `blog.py` publisher, `!image.png` is automatically copied and converted into a Hugo image link, while `Note` brackets are stripped to plain text.
-- For public internal links between blog posts, always use standard Markdown links like `[Part 1](/en/posts/markdown-101-01-getting-started/)` so web browsers resolve the URL properly.
+- For public internal links between blog posts, always use standard Markdown links like `[Part 1](/posts/markdown-101-01-getting-started/)` so web browsers resolve the URL properly.
 - If your Hugo theme does not style Obsidian callouts or `==highlights==`, stick to standard `>` blockquotes and `**bold**` text for consistent rendering everywhere.
 
 ## Practice Now
 
 Replace the Obsidian wikilink below with a standard Markdown link while keeping the blockquote intact.
 
-{{< markdown-practice task="Replace Part 01 with a standard Markdown link pointing to /en/posts/markdown-101-01-getting-started/." hint="Use [Part 01](/en/posts/markdown-101-01-getting-started/) and keep the leading >." >}}
+{{< markdown-practice task="Replace Part 01 with a standard Markdown link pointing to /en/posts/markdown-101-01-getting-started/." hint="Use [Part 01](/posts/markdown-101-01-getting-started/) and keep the leading >." >}}
 > Note: Review Part 01 before creating a new post.
 {{< /markdown-practice >}}
 
@@ -56,13 +56,13 @@ Source: [Obsidian Help: Callouts & Formatting](https://help.obsidian.md/Editing+
 
 **In the Markdown 101 series:**
 
-- [Part 01: What Is Markdown and How to Create Your First .md File](/en/posts/markdown-101-01-getting-started/)
-- [Part 02: How to Write Headings, Paragraphs, and Emphasis in Markdown](/en/posts/markdown-101-02-headings-and-paragraphs/)
-- [Part 03: How to Write Lists, Blockquotes, and Code Blocks in Markdown](/en/posts/markdown-101-03-lists-quotes-and-code/)
-- [Part 04: How to Add Links and SEO-Friendly Images in Markdown](/en/posts/markdown-101-04-links-and-images/)
-- [Part 05: Minimal Markdown Post Template and YAML Front Matter for Blogs](/en/posts/markdown-101-05-templates-and-yaml/)
-- [Part 06: How to Preview and Publish Markdown Posts to Hugo on GitHub Pages](/en/posts/markdown-101-06-preview-and-publish-hugo/)
-- [Part 07: How to Create Tables and Horizontal Rules in Markdown](/en/posts/markdown-101-07-tables-and-rules/)
-- [Part 08: How to Write Checklists, Footnotes, and Escaped Characters in Markdown](/en/posts/markdown-101-08-checklists-footnotes-escape/)
+- [Part 01: What Is Markdown and How to Create Your First .md File](/posts/markdown-101-01-getting-started/)
+- [Part 02: How to Write Headings, Paragraphs, and Emphasis in Markdown](/posts/markdown-101-02-headings-and-paragraphs/)
+- [Part 03: How to Write Lists, Blockquotes, and Code Blocks in Markdown](/posts/markdown-101-03-lists-quotes-and-code/)
+- [Part 04: How to Add Links and SEO-Friendly Images in Markdown](/posts/markdown-101-04-links-and-images/)
+- [Part 05: Minimal Markdown Post Template and YAML Front Matter for Blogs](/posts/markdown-101-05-templates-and-yaml/)
+- [Part 06: How to Preview and Publish Markdown Posts to Hugo on GitHub Pages](/posts/markdown-101-06-preview-and-publish-hugo/)
+- [Part 07: How to Create Tables and Horizontal Rules in Markdown](/posts/markdown-101-07-tables-and-rules/)
+- [Part 08: How to Write Checklists, Footnotes, and Escaped Characters in Markdown](/posts/markdown-101-08-checklists-footnotes-escape/)
 - **Part 09: How to Use Obsidian Callouts and Wikilinks and Export Cleanly to Hugo** *(reading)*
-- [Part 10: Capstone Practice - Write a Complete Markdown Article from Scratch](/en/posts/markdown-101-10-capstone-practice/)
+- [Part 10: Capstone Practice - Write a Complete Markdown Article from Scratch](/posts/markdown-101-10-capstone-practice/)

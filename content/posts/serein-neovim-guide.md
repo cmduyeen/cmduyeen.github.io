@@ -1,36 +1,36 @@
 ---
-title: "Cấu Hình Serein Colorscheme Cho Neovim Bằng Lazy.nvim, TreeSitter & Lualine"
+title: "Configuring Serein Colorscheme for Neovim with Lazy.nvim, TreeSitter & Lualine"
 date: "2026-11-14"
 author: "Dyn"
 category: "Vim & Neovim"
-tags: ["neovim", "lua", "neovim-colorscheme", "treesitter", "lazy-nvim", "serein-theme", "giao-dien-lap-trinh"]
-description: "Hướng dẫn chi tiết cách cài đặt và cấu hình Serein—bộ colorscheme Neovim viết bằng Lua với tông màu ấm, ít tương phản, hỗ trợ TreeSitter và chẩn đoán LSP."
-slug: "cau-hinh-neovim-lua-serein-colorscheme-treesitter"
+tags: ["neovim", "lua", "neovim-colorscheme", "treesitter", "lazy-nvim", "serein-theme", "minimalist-editor"]
+description: "A comprehensive guide to installing and configuring Serein—a warm, low-contrast Neovim colorscheme written natively in Lua with TreeSitter and LSP highlights."
+slug: "neovim-lua-setup-serein-colorscheme-treesitter"
 translationKey: "serein-neovim-guide"
 draft: false
 ---
 
 
-Với những lập trình viên đam mê modal editing và làm việc hoàn toàn trên terminal, việc tìm kiếm một bộ màu (colorscheme) vừa mắt thường gặp phải hai vấn đề: hoặc là màu sắc quá nhạt nhòa khó đọc, hoặc là quá chói chang với những khối màu tương phản mạnh làm rối cấu trúc cú pháp.
+For modal editing enthusiasts and terminal maximalists, terminal colorschemes often suffer from two extremes: either washed-out low-contrast gray-on-black or harsh fluorescent highlights that overwhelm syntax hierarchy.
 
-**[Serein for Neovim](https://github.com/cmduyeen/serein-neovim)** là plugin colorscheme được viết hoàn toàn bằng Lua thuần, xây dựng trên ngôn ngữ thiết kế tối giản của **[Dyn](https://cmduyeen.github.io/)**, giúp cân bằng hoàn hảo giữa nền ấm êm dịu và chữ in rõ nét.
-
----
-
-## 1. Ưu Điểm Nổi Bật Của Serein Trên Neovim
-
-- **Kiến trúc 100% Lua:** Khởi động gần như tức thì (tốc độ dưới 1ms), không gây độ trễ khi mở file.
-- **Hỗ trợ TreeSitter sâu sắc:** Định nghĩa highlight chi tiết cho từng loại token (`@keyword`, `@function`, `@variable.parameter`, `@markup.heading`).
-- **Tích hợp sẵn các plugin phổ biến:** Định hình màu sắc cho `telescope.nvim`, `lualine.nvim`, `which-key.nvim`, `bufferline.nvim`, `nvim-cmp` và `render-markdown.nvim`.
-- **Chuyển đổi Sáng / Tối linh hoạt:** Cho phép chuyển đổi tức thì giữa **Serein Alabaster** (Sáng) và **Serein Obsidian** (Tối) chỉ bằng một tổ hợp phím mà không cần khởi động lại Neovim.
+**[Serein for Neovim](https://github.com/cmduyeen/serein-neovim)** is a native Lua colorscheme designed specifically to solve this. Built upon the unified Serein design system by **[Dyn](https://cmduyeen.github.io/)**, it balances warm, organic background tones with readable foreground typography.
 
 ---
 
-## 2. Cài Đặt Bằng Trình Quản Lý `lazy.nvim`
+## 1. Why Serein for Neovim?
 
-Nếu bạn đang sử dụng [lazy.nvim](https://github.com/folke/lazy.nvim), hãy tạo một tệp mới trong thư mục cấu hình:
+- **Pure Lua Architecture:** Fast initialization with zero runtime overhead.
+- **TreeSitter Native:** Fine-grained semantic token highlight groups (`@keyword`, `@function`, `@variable.parameter`, `@markup.heading`).
+- **Comprehensive Plugin Support:** Pre-configured highlight groups for `telescope.nvim`, `lualine.nvim`, `which-key.nvim`, `bufferline.nvim`, `nvim-cmp`, and `render-markdown.nvim`.
+- **Seamless Light/Dark Toggle:** Instant switching between **Serein Alabaster** (Light) and **Serein Obsidian** (Dark) without restarting Neovim.
 
-`~/.config/nvim/lua/plugins/colorscheme.lua` (hoặc `serein.lua`):
+---
+
+## 2. Installation with `lazy.nvim`
+
+If you are using the modern [lazy.nvim](https://github.com/folke/lazy.nvim) plugin manager, create a new file in your Lua config directory:
+
+`~/.config/nvim/lua/plugins/colorscheme.lua` (or `serein.lua`):
 
 ```lua
 return {
@@ -38,11 +38,11 @@ return {
     "cmduyeen/serein-neovim",
     name = "serein.nvim",
     lazy = false,
-    priority = 1000, -- Đảm bảo load trước các plugin khác
+    priority = 1000, -- Load before any other plugins
     config = function()
       require("serein").setup({
-        variant = "obsidian", -- Chọn "obsidian" (tối) hoặc "alabaster" (sáng)
-        transparent = false,  -- Đặt true nếu bạn dùng nền terminal trong suốt
+        variant = "obsidian", -- Choose "obsidian" (dark) or "alabaster" (light)
+        transparent = false,  -- Set to true if you prefer terminal transparency
         integrations = {
           treesitter = true,
           telescope = true,
@@ -59,9 +59,9 @@ return {
 
 ---
 
-## 3. Tích Hợp Với Thanh Trạng Thái `lualine.nvim`
+## 3. Pairing Serein with `lualine.nvim`
 
-Serein đã bao gồm giao diện đồng bộ cho `lualine.nvim`. Bạn chỉ cần truyền `"serein"` vào trường `theme`:
+Serein includes dedicated statusline integration for `lualine.nvim`. Simply pass `"serein"` as your theme:
 
 ```lua
 return {
@@ -79,30 +79,36 @@ return {
 }
 ```
 
-Thanh trạng thái sẽ đổi màu tinh tế theo từng chế độ gõ (Normal, Insert, Visual, Command) bằng các gam màu ngữ nghĩa ấm áp, không làm chói mắt vùng nhìn ngoại vi của bạn.
+This pairs your active Vim mode (Normal, Insert, Visual, Command) with subtle semantic accents without high-contrast neon bars distracting your peripheral vision.
 
 ---
 
-## 4. Phím Tắt Chuyển Đổi Sáng / Tối Trong 1 Giây
+## 4. Keybinding: Instant Light/Dark Mode Switcher
 
-Nếu bạn muốn chuyển nhanh từ Dark mode ban đêm sang Light mode khi làm việc ngoài quán cafe ban ngày, hãy thêm phím tắt này vào file `keymaps.lua`:
+Want to switch from dark mode at night to light mode when working in a sunlit room? Serein provides a built-in toggle helper:
 
 ```lua
--- Chuyển đổi giữa Serein Obsidian và Alabaster bằng <leader>ut
+-- Toggle between Serein Obsidian and Alabaster with <leader>ut
 vim.keymap.set("n", "<leader>ut", function()
   require("serein").toggle()
-end, { desc = "Toggle Serein Light/Dark Mode" })
+end, { desc = "Toggle Serein Light/Dark Theme" })
 ```
 
 ---
 
-## 5. Kết Nối Vào Hệ Sinh Thái Serein
+## 5. Integrating with Writing & Markdown Plugins
 
-Hãy kết hợp Neovim với các công cụ đồng bộ trong hệ sinh thái Serein:
+If you use Neovim for note-taking and documentation alongside [render-markdown.nvim](https://github.com/MeanderingProgrammer/render-markdown.nvim) or [obsidian.nvim](https://github.com/epwalsh/obsidian.nvim), Serein automatically styles markdown headers, inline code spans, and callout boxes with gentle, readable background tiers.
 
-- 🖥️ **[Serein for Windows Terminal](https://github.com/cmduyeen/serein-terminal)** — Bảng màu ANSI đồng điệu cho cửa sổ dòng lệnh.
-- 📓 **[Serein for Obsidian](https://github.com/cmduyeen/serein-obsidian)** — Không gian lưu trữ ghi chép Markdown tĩnh lặng.
-- 💻 **[Serein for VS Code](https://github.com/cmduyeen/serein-vscode)** — Trình soạn thảo đồ họa khi cần làm việc nhóm.
-- 🌿 **[Trang chủ Serein Theme](https://github.com/cmduyeen/serein-theme)** — Bản đồ tổng quan toàn bộ hệ thống.
+---
 
-*Tác giả: **[Dyn (cmduyeen)](https://cmduyeen.github.io/)**. Khám phá thêm các chia sẻ về lập trình trên [Blog Dyn](https://cmduyeen.github.io/) hoặc để lại ngôi sao ủng hộ dự án trên [GitHub](https://github.com/cmduyeen/serein-neovim).*
+## Build Your Complete Workspace
+
+Combine Neovim with the matching Serein toolset:
+
+- 🖥️ **[Serein for Windows Terminal](https://github.com/cmduyeen/serein-terminal)** — Matching ANSI terminal colors.
+- 📓 **[Serein for Obsidian](https://github.com/cmduyeen/serein-obsidian)** — Your companion markdown knowledge base.
+- 💻 **[Serein for VS Code](https://github.com/cmduyeen/serein-vscode)** — GUI editor port for multi-window team collaboration.
+- 🌿 **[All Serein Theme Ports](https://github.com/cmduyeen/serein-theme)** — The central design repository.
+
+*Crafted by **[Dyn (cmduyeen)](https://cmduyeen.github.io/)**. Read more terminal tips on [Dyn's Blog](https://cmduyeen.github.io/) or star the repo on [GitHub](https://github.com/cmduyeen/serein-neovim).*

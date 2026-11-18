@@ -2,19 +2,6 @@
 {{- $style := resources.Get "css/main.css" | minify -}}
 {{- $themeInitSrc := `(()=>{try{const t=localStorage.getItem("dyn-theme");if(t==="light"||t==="dark"){document.documentElement.setAttribute("data-theme",t)}else if(window.matchMedia("(prefers-color-scheme: light)").matches){document.documentElement.setAttribute("data-theme","light")}else{document.documentElement.setAttribute("data-theme","dark")}}catch(_){document.documentElement.setAttribute("data-theme","dark")}})();` -}}
 {{- $themeScript := resources.FromString "js/theme-init.js" $themeInitSrc | minify | fingerprint -}}
-{{- $englishHome := "" -}}
-{{- if and .IsHome (eq .Lang "vi") -}}
-  {{- range site.Home.AllTranslations -}}
-    {{- if eq .Lang "en" -}}
-      {{- $englishHome = .RelPermalink -}}
-    {{- end -}}
-  {{- end -}}
-{{- end -}}
-{{- $langScript := false -}}
-{{- with $englishHome -}}
-  {{- $langSrc := printf `(()=>{const s=document.cookie.split(";").map(c=>c.trim()).find(c=>c.startsWith("dyn-language="))?.slice(13);if(s==="vi")return;if(s==="en"){location.replace(%s+location.search+location.hash);return}const l=(navigator.languages?.length?navigator.languages:[navigator.language]).map(v=>v?.toLowerCase().split("-")[0]).find(v=>v==="vi"||v==="en");if(l==="vi")return;const tz=Intl.DateTimeFormat().resolvedOptions().timeZone;if(l==="en"||!["Asia/Ho_Chi_Minh","Asia/Saigon"].includes(tz))location.replace(%s+location.search+location.hash)})();` (. | jsonify) (. | jsonify) -}}
-  {{- $langScript = resources.FromString "js/lang-redirect.js" $langSrc | minify | fingerprint -}}
-{{- end -}}
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="referrer" content="strict-origin-when-cross-origin">
@@ -30,9 +17,6 @@
 <link rel="icon" href="{{ "favicon.svg" | relURL }}" type="image/svg+xml">
 {{ with site.Home.OutputFormats.Get "RSS" }}<link rel="alternate" type="application/rss+xml" title="{{ site.Title }} RSS" href="{{ .Permalink }}">{{ end }}
 <script src="{{ $themeScript.RelPermalink }}" integrity="{{ $themeScript.Data.Integrity }}" crossorigin="anonymous"></script>
-{{- with $langScript }}
-<script src="{{ $langScript.RelPermalink }}" integrity="{{ $langScript.Data.Integrity }}" crossorigin="anonymous"></script>
-{{- end }}
 <style>{{ $style.Content | safeCSS }}</style>
 <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
 <meta property="og:title" content="{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} · {{ site.Title }}{{ end }}">

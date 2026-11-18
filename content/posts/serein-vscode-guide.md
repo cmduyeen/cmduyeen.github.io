@@ -1,40 +1,40 @@
 ---
-title: "Hướng Dẫn Cài Đặt Không Gian Lập Trình Ấm Áp Với VS Code & Windows Terminal"
+title: "How to Build a Warm Minimalist Dev Setup with VS Code & Windows Terminal"
 date: "2026-11-14"
 author: "Dyn"
-category: "Môi Trường Lập Trình"
-tags: ["vscode-theme", "windows-terminal", "serein-theme", "lap-trinh", "powershell", "wsl", "toi-uu-giao-dien"]
-description: "Hướng dẫn từng bước cài đặt và cấu hình bộ theme tối giản ấm áp Serein cho Visual Studio Code và Windows Terminal để có trải nghiệm gõ code êm mắt nhất."
-slug: "huong-dan-cai-dat-serein-vscode-windows-terminal"
+category: "Developer Environment"
+tags: ["vscode-theme", "windows-terminal", "serein-theme", "minimalist-setup", "powershell", "wsl", "developer-productivity"]
+description: "A complete step-by-step tutorial on styling Visual Studio Code and Windows Terminal with the warm, low-distraction Serein color suite."
+slug: "setup-guide-serein-vscode-windows-terminal"
 translationKey: "serein-vscode-guide"
 draft: false
 ---
 
 
-Trong một ngày làm việc điển hình, lập trình viên chuyển đổi (Alt + Tab) hàng trăm lần giữa trình soạn thảo mã nguồn và cửa sổ dòng lệnh (terminal). Nếu editor của bạn đang dùng theme tím đậm hoặc xanh đậm, còn terminal lại mang màu đen kịt cùng chữ xanh dạ quang chói lóa, đôi mắt sẽ phải liên tục co giãn đồng tử để thích nghi, dẫn đến tình trạng mỏi mắt nhanh chóng.
+When transitioning between your code editor and terminal hundreds of times each day, a mismatch in color temperatures can cause noticeable eye strain. If your editor is bathed in a dark purple theme while your terminal defaults to stark pitch-black with neon-cyan text, your eyes are forced to re-adjust with every `Alt + Tab`.
 
-Trong bài viết này, tôi sẽ hướng dẫn bạn thiết lập đồng bộ giao diện cho **Visual Studio Code** và **Windows Terminal** bằng bộ theme **[Serein](https://github.com/cmduyeen/serein-theme)** do **[Dyn](https://cmduyeen.github.io/)** phát triển, với hai bảng màu dịu mắt: **Alabaster** (Sáng ngà) và **Obsidian** (Than ấm).
+In this tutorial, we will configure **Visual Studio Code** and **Windows Terminal** using **[Serein](https://github.com/cmduyeen/serein-theme)**—a minimalist warm color suite created by **[Dyn](https://cmduyeen.github.io/)** featuring **Alabaster** (Light) and **Obsidian** (Dark) palettes.
 
 ---
 
-## Phần 1: Cài Đặt & Tối Ưu Cho Visual Studio Code
+## Part 1: Installing & Configuring Serein for VS Code
 
-[Serein for VS Code](https://github.com/cmduyeen/serein-vscode) loại bỏ hoàn toàn sự rườm rà của các khối màu xung đột, đưa độ tương phản về mức chuẩn WCAG 2.1 AA dễ chịu.
+[Serein for VS Code](https://github.com/cmduyeen/serein-vscode) eliminates competing syntax highlights and balances workbench contrast according to WCAG 2.1 AA standards.
 
-### Bước 1: Cài đặt Theme từ file VSIX
-1. Tải tệp `serein-vscode-*.vsix` mới nhất từ trang **[GitHub Releases](https://github.com/cmduyeen/serein-vscode/releases/latest)**.
-2. Trong VS Code, nhấn tổ hợp phím `Ctrl + Shift + P` (hoặc `Cmd + Shift + P` trên macOS) để mở Command Palette.
-3. Gõ và chọn dòng:
+### Step 1: Install the Theme
+1. Download the latest `serein-vscode-*.vsix` file from the **[GitHub Releases page](https://github.com/cmduyeen/serein-vscode/releases/latest)**.
+2. In VS Code, press `Ctrl + Shift + P` (or `Cmd + Shift + P` on macOS) to bring up the Command Palette.
+3. Type and select:
    ```text
    Extensions: Install from VSIX...
    ```
-4. Chọn tệp `.vsix` vừa tải về.
-5. Nhấn `Ctrl + K, Ctrl + T` để mở danh sách chọn theme và chọn:
-   - **Serein Alabaster** (Nếu bạn làm việc ban ngày hoặc phòng nhiều ánh sáng).
-   - **Serein Obsidian** (Nếu bạn làm việc ban đêm hoặc thích tông tối dịu mắt).
+4. Choose the downloaded `.vsix` file.
+5. Press `Ctrl + K, Ctrl + T` to activate the theme picker and choose either:
+   - **Serein Alabaster** (Gentle daylight ivory)
+   - **Serein Obsidian** (Soothing late-night charcoal)
 
-### Bước 2: Tinh chỉnh cấu hình typography trong `settings.json`
-Để giao diện phát huy tối đa vẻ đẹp tối giản, hãy mở tệp `settings.json` trong VS Code và thêm đoạn cấu hình đề xuất sau:
+### Step 2: Recommended VS Code Settings
+To get the most out of Serein’s typography and quiet layout, open your `settings.json` and add the following configuration:
 
 ```json
 {
@@ -52,27 +52,27 @@ Trong bài viết này, tôi sẽ hướng dẫn bạn thiết lập đồng b�
 }
 ```
 
-> **Tại sao nên tắt bracket pair colorization bảy sắc cầu vồng?**
+> **Why disable bracket pair rainbow colors?**
 >
-> Việc tô mỗi cặp ngoặc một màu neon sặc sỡ làm mắt bị phân tán liên tục. Serein sử dụng đường viền dẫn hướng (bracket guides) tinh tế để bạn nhận biết cấu trúc lồng nhau mà không cần làm lòe loẹt màn hình.
+> Rainbow brackets introduce visual distraction. Serein's subtle active bracket guides indicate code nesting clearly without scattering conflicting neon colors across your screen.
 
 ---
 
-## Phần 2: Cài Đặt Serein Cho Windows Terminal
+## Part 2: Installing Serein on Windows Terminal
 
-[Serein for Windows Terminal](https://github.com/cmduyeen/serein-terminal) mang lại tông màu đồng nhất cho PowerShell, Command Prompt, Git Bash và WSL (Ubuntu).
+[Serein for Windows Terminal](https://github.com/cmduyeen/serein-terminal) coordinates seamlessly with your VS Code setup across PowerShell, Command Prompt, Git Bash, and WSL (Ubuntu/Debian).
 
-### Cách 1: Sử dụng Script tự động hóa PowerShell (Nhanh nhất)
-1. Tải và giải nén tệp `serein-terminal-0.1.0.zip` từ **[trang Releases](https://github.com/cmduyeen/serein-terminal/releases/latest)**.
-2. Mở PowerShell 7 trong thư mục vừa giải nén.
-3. Chạy lệnh sau để áp dụng Serein Obsidian (Tối) làm cấu hình mặc định:
+### Method 1: The Automated PowerShell Installer (Recommended)
+1. Download and extract `serein-terminal-0.1.0.zip` from the **[Releases repository](https://github.com/cmduyeen/serein-terminal/releases/latest)**.
+2. Open PowerShell 7 in the extracted directory.
+3. Run the installer to apply Serein Obsidian (Dark) as your default profile:
    ```powershell
    ./install.ps1 -Mode Dark -SetDefault -Launch
    ```
-   *(Hoặc truyền `-Mode Light` nếu muốn chọn bản Alabaster sáng).*
+   *(Or pass `-Mode Light` to apply Serein Alabaster).*
 
-### Cách 2: Thêm thủ công vào file JSON của Terminal
-Nếu thích cấu hình bằng tay, bạn mở Settings của Windows Terminal (`Ctrl + ,`), bấm vào **Open JSON file** ở góc dưới bên trái, và dán đoạn mã màu sau vào mảng `"schemes"`:
+### Method 2: Manual JSON Configuration
+If you prefer adding the schemes manually, open Windows Terminal Settings (`Ctrl + ,`), click **Open JSON file** at the bottom left, and paste the following schemes into your `"schemes"` array:
 
 ```json
 {
@@ -102,21 +102,21 @@ Nếu thích cấu hình bằng tay, bạn mở Settings của Windows Terminal 
 
 ---
 
-## Trải Nghiệm Không Gian Làm Việc Đồng Bộ
+## Part 3: The Unified Workflow Experience
 
-Sau khi hoàn tất cả hai ứng dụng:
-- Khi gõ `git status`, chạy server hay quan sát logs trên terminal, các màu ngữ nghĩa (xanh lá cho dòng thêm mới, đỏ cho dòng xóa, vàng cho cảnh báo) hoàn toàn trùng khớp với màu sắc trong VS Code.
-- Đôi mắt của bạn sẽ không còn cảm giác bị "giật sáng" khi chuyển cửa sổ, giúp bạn duy trì trạng thái tập trung sâu (deep work) lâu hơn.
+Once both tools are configured with Serein, your workflow feels uninterrupted:
+- Running `git status`, `npm run dev`, or inspecting logs in Windows Terminal reflects the identical semantic colors (green additions, red deletions, warm yellow warnings) as your VS Code editor.
+- The warm canvas eliminates sudden pupil constriction, keeping your visual focus sharp throughout long coding stretches.
 
 ---
 
-## Đồng Bộ Hóa Toàn Diện Hệ Thống
+## Complete Your Workspace
 
-Bạn có thể tiếp tục mở rộng sự đồng bộ này sang các công cụ làm việc khác:
+Explore the rest of the Serein ecosystem to style your notes, desktop, and terminal editors:
 
-- 💻 **[Serein for Neovim](https://github.com/cmduyeen/serein-neovim)** — Plugin Lua với TreeSitter cho người yêu thích Vim.
-- 📓 **[Serein for Obsidian](https://github.com/cmduyeen/serein-obsidian)** — Giao diện ghi chép tri thức tối giản.
-- 🪟 **[Serein for Windows](https://github.com/cmduyeen/serein-windows)** — Giao diện hệ thống và bộ hình nền 4K tông ấm.
-- 🌿 **[Trang chủ Serein Theme](https://github.com/cmduyeen/serein-theme)** — Bản đồ tổng quan toàn bộ hệ sinh thái.
+- 💻 **[Serein for Neovim](https://github.com/cmduyeen/serein-neovim)** — Native Lua terminal colorscheme with TreeSitter.
+- 📓 **[Serein for Obsidian](https://github.com/cmduyeen/serein-obsidian)** — Distraction-free markdown vault styling.
+- 🪟 **[Serein for Windows](https://github.com/cmduyeen/serein-windows)** — System theme and matching 4K wallpapers.
+- 🌿 **[The Serein Hub & Full Palette](https://github.com/cmduyeen/serein-theme)** — The central design specification.
 
-*Xem thêm các bài viết về năng suất tại **[Dyn's Notes](https://cmduyeen.github.io/)** hoặc ghé thăm trang cá nhân **[GitHub (@cmduyeen)](https://github.com/cmduyeen)**.*
+*Read more developer tutorials on **[Dyn's Notes](https://cmduyeen.github.io/)** or connect with me on **[GitHub (@cmduyeen)](https://github.com/cmduyeen)**.*

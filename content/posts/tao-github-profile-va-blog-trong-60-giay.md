@@ -1,36 +1,36 @@
 ---
-title: "Xây dựng GitHub Profile và Blog cá nhân chuẩn SEO trong 60 giây — Miễn phí 100%"
+title: "Build a Pro GitHub Profile and Personal Blog in 60 Seconds — 100% Free"
 date: "2026-11-17"
 author: "Dyn"
-category: "Công Cụ & Tự Động Hóa"
+category: "Tools & Automation"
 tags: ["github-profile", "github-pages", "hugo", "seo", "starter-kit"]
-description: "Giới thiệu bộ đôi Pro GitHub Starter Kit và Pro Blog Starter Kit giúp lập trình viên và người mới tạo Profile + Blog trên GitHub Pages miễn phí, không cần tên miền."
-slug: "xay-dung-github-profile-va-blog-ca-nhan-60-giay"
+description: "Meet Pro GitHub Starter Kit and Pro Blog Starter Kit: two zero-cost, Obsidian-inspired kits to launch your developer profile and blog on GitHub Pages."
+slug: "build-github-profile-and-blog-in-60-seconds"
 translationKey: "pro-starter-kits-guide"
 draft: false
 ---
 
-Một trang GitHub gọn gàng kết hợp với một blog cá nhân tốc độ cao là cách tốt nhất để xây dựng thương hiệu kỹ sư phần mềm — mà không tốn một đồng thuê server hay mua tên miền.
+A clean GitHub Profile paired with a fast personal blog is one of the highest-leverage assets a developer can own—and you can host both on GitHub Pages for **$0** without buying a custom domain.
 
-Để giúp người mới bỏ qua khâu cấu hình rườm rà, mình đã đóng gói hai bộ công cụ mở theo kiến trúc mô-đun (Theme + Plugin):
+To remove the setup friction for beginners and indie builders, I created two modular, Obsidian-inspired starter kits:
 
-## 1. Pro GitHub Starter Kit — Làm đẹp trang Profile trong 60 giây
+## 1. Pro GitHub Starter Kit — Visual Profile Builder
 
-Thay vì phải tự chép từng đoạn HTML/SVG rời rạc, bạn chỉ cần mở **[Web Builder trực tuyến](https://cmduyeen.github.io/pro-github-starter-kit/)**:
+Skip the trial-and-error of hunting for stats widgets. Open the **[Live Web Builder](https://cmduyeen.github.io/pro-github-starter-kit/)**:
 
-- **9 Themes dựng sẵn:** `minimalist`, `indie-maker`, `developer-portfolio`, `terminal-hacker`, `research-student`, `dracula`, `catppuccin`, `serein`, `pinkie`.
-- **12 Plugins lắp ghép:** Đồng bộ Blog RSS, YouTube RSS, Contribution Snake (`Platane/snk`), Skill Icons, Streak Stats, Activity Graph, Profile Views, Spotify...
-- **Chỉnh sửa song song (Split View):** Gõ Markdown bên trái, xem trước giao diện Dark/Light bên phải và tải thẳng file `README.md` + workflow `.yml`.
-- **An toàn chính sách:** Kèm cẩm nang đạt các **GitHub Achievement Badges** hợp lệ 100% (không dùng bot farm spam).
+- **9 Modular Themes:** `minimalist`, `indie-maker`, `developer-portfolio`, `terminal-hacker`, `research-student`, `dracula`, `catppuccin`, `serein`, and `pinkie`.
+- **12 Plug-and-Play Plugins:** Blog RSS, YouTube RSS, Contribution Snake (`Platane/snk`), Skill Icons, Streak Stats, Activity Graph, Profile Views, and more.
+- **Side-by-Side Split Editor:** Edit Markdown and preview Light/Dark rendering in real time, then export `README.md` and `.yml` workflows directly.
+- **Policy-Safe Achievements & SEO:** Includes a legitimate guide to GitHub Achievement Badges and an SEO/GEO checklist.
 
-Xem mã nguồn tại [cmduyeen/pro-github-starter-kit](https://github.com/cmduyeen/pro-github-starter-kit).
+Repository: [cmduyeen/pro-github-starter-kit](https://github.com/cmduyeen/pro-github-starter-kit).
 
-## 2. Pro Blog Starter Kit — Dựng Blog Hugo/Jekyll trên GitHub Pages
+## 2. Pro Blog Starter Kit — GitHub Pages Blog Configurator
 
-Khi đã có Profile đẹp, bước tiếp theo là một ngôi nhà riêng cho bài viết tại `https://<username>.github.io/`:
+Once your profile is ready, launch your writing hub at `https://<username>.github.io/`:
 
-- Mở **[Blog Configurator](https://cmduyeen.github.io/pro-blog-starter-kit/)**.
-- Chọn bộ khung **Hugo** (`hugo-papermod`, `hugo-minimal-notes`) hoặc **Jekyll** (`jekyll-chirpy`, `jekyll-minima`).
-- Bật các plugin thiết yếu: bình luận miễn phí **Giscus** (lưu bằng GitHub Discussions), gói **SEO & GEO** (`robots.txt`, `llms.txt`, `sitemap.xml`), **Obsidian template**, và **RSS-to-Profile** để bài mới tự động xuất hiện trên trang GitHub cá nhân.
+- Open the **[Blog Configurator](https://cmduyeen.github.io/pro-blog-starter-kit/)**.
+- Choose between **Hugo** (`hugo-papermod`, `hugo-minimal-notes`) or **Jekyll** (`jekyll-chirpy`, `jekyll-minima`).
+- Toggle plugins like **Giscus Comments** (backed by GitHub Discussions), **SEO & GEO Pack** (`robots.txt`, `llms.txt`), **Obsidian Frontmatter**, and **RSS-to-Profile Sync**.
 
-Xem mã nguồn tại [cmduyeen/pro-blog-starter-kit](https://github.com/cmduyeen/pro-blog-starter-kit).
+Repository: [cmduyeen/pro-blog-starter-kit](https://github.com/cmduyeen/pro-blog-starter-kit).

@@ -1,8 +1,8 @@
 ---
-title: "Sản phẩm & Công cụ"
-description: "Các công cụ web miễn phí, bộ khởi tạo mã nguồn mở, ebook và sản phẩm số hóa của Dyn."
+title: "Products & Tools"
+description: "Free browser-ready web tools, open-source starter kits, ebooks, and digital products by Dyn."
 ---
 
-Tổng hợp các công cụ chạy trực tiếp trên trình duyệt, bộ starter kit mã nguồn mở, ebook và tài nguyên số mình đã xây dựng:
+A curated showcase of zero-install web tools, open-source starter kits, ebooks, and digital resources I've built:
 
 {{< products >}}

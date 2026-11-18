@@ -1,6 +1,5 @@
 ---
-title: "Lưu trữ"
+title: "Archive"
 layout: "archives"
 summary: false
-aliases: ["/vi/archives/"]
 ---

@@ -60,13 +60,13 @@ Source: [GitHub Flavored Markdown Spec](https://github.github.com/gfm/) and [Com
 
 **In the Markdown 101 series:**
 
-- [Part 01: What Is Markdown and How to Create Your First .md File](/en/posts/markdown-101-01-getting-started/)
-- [Part 02: How to Write Headings, Paragraphs, and Emphasis in Markdown](/en/posts/markdown-101-02-headings-and-paragraphs/)
-- [Part 03: How to Write Lists, Blockquotes, and Code Blocks in Markdown](/en/posts/markdown-101-03-lists-quotes-and-code/)
-- [Part 04: How to Add Links and SEO-Friendly Images in Markdown](/en/posts/markdown-101-04-links-and-images/)
-- [Part 05: Minimal Markdown Post Template and YAML Front Matter for Blogs](/en/posts/markdown-101-05-templates-and-yaml/)
-- [Part 06: How to Preview and Publish Markdown Posts to Hugo on GitHub Pages](/en/posts/markdown-101-06-preview-and-publish-hugo/)
-- [Part 07: How to Create Tables and Horizontal Rules in Markdown](/en/posts/markdown-101-07-tables-and-rules/)
+- [Part 01: What Is Markdown and How to Create Your First .md File](/posts/markdown-101-01-getting-started/)
+- [Part 02: How to Write Headings, Paragraphs, and Emphasis in Markdown](/posts/markdown-101-02-headings-and-paragraphs/)
+- [Part 03: How to Write Lists, Blockquotes, and Code Blocks in Markdown](/posts/markdown-101-03-lists-quotes-and-code/)
+- [Part 04: How to Add Links and SEO-Friendly Images in Markdown](/posts/markdown-101-04-links-and-images/)
+- [Part 05: Minimal Markdown Post Template and YAML Front Matter for Blogs](/posts/markdown-101-05-templates-and-yaml/)
+- [Part 06: How to Preview and Publish Markdown Posts to Hugo on GitHub Pages](/posts/markdown-101-06-preview-and-publish-hugo/)
+- [Part 07: How to Create Tables and Horizontal Rules in Markdown](/posts/markdown-101-07-tables-and-rules/)
 - **Part 08: How to Write Checklists, Footnotes, and Escaped Characters in Markdown** *(reading)*
-- [Part 09: How to Use Obsidian Callouts and Wikilinks and Export Cleanly to Hugo](/en/posts/markdown-101-09-obsidian-callouts-wikilinks/)
-- [Part 10: Capstone Practice - Write a Complete Markdown Article from Scratch](/en/posts/markdown-101-10-capstone-practice/)
+- [Part 09: How to Use Obsidian Callouts and Wikilinks and Export Cleanly to Hugo](/posts/markdown-101-09-obsidian-callouts-wikilinks/)
+- [Part 10: Capstone Practice - Write a Complete Markdown Article from Scratch](/posts/markdown-101-10-capstone-practice/)

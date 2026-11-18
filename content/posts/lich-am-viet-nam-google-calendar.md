@@ -1,49 +1,49 @@
 ---
-title: "Cài Lịch Âm Việt Nam chuẩn GMT+7 lên Google Calendar và Apple Calendar không cần app ngoài"
+title: "Add a Vietnamese Lunar Calendar (GMT+7) to Google & Apple Calendar Without Extra Apps"
 date: "2026-11-17"
 author: "Dyn"
-category: "Công Cụ & Tự Động Hóa"
+category: "Tools & Automation"
 tags: ["lich-am-viet-nam", "google-calendar", "apple-calendar", "ics", "automation"]
-description: "Hướng dẫn gắn link lịch âm Việt Nam (.ics) chuẩn múi giờ GMT+7 vào Google Calendar, iPhone/Mac và Outlook miễn phí, không quảng cáo, tự động cập nhật."
-slug: "cai-lich-am-viet-nam-google-calendar-apple-calendar"
+description: "Subscribe to a free, open-source Vietnamese lunar calendar (.ics) in GMT+7 on Google Calendar, Apple Calendar, and Outlook with zero extra apps."
+slug: "vietnamese-lunar-calendar-google-apple-calendar"
 translationKey: "vietnamese-lunar-calendar-guide"
 draft: false
 ---
 
-Nhiều người muốn xem ngày âm lịch trực tiếp trên Google Calendar hoặc iPhone nhưng lại ngại tải thêm ứng dụng bên thứ ba vì quảng cáo và hao pin. Thực tế, bạn không cần cài bất kỳ phần mềm ngoài nào — chỉ cần gắn **1 đường link `.ics`** vào ứng dụng lịch có sẵn trên máy.
+You don't need bloated third-party calendar apps or ad-filled widgets just to check Vietnamese lunar dates. By subscribing to a single `.ics` URL, your built-in calendar app displays lunar dates and major observances automatically.
 
-## Tại sao cần lịch âm tính theo chuẩn GMT+7?
+## Why GMT+7 Matters for Vietnamese Lunar Dates
 
-Phần lớn lịch âm miễn phí trên mạng lấy dữ liệu từ lịch Trung Quốc (múi giờ **UTC+8**). Khi thời điểm Sóc (New Moon) rơi vào khoảng 23:00–23:59 giờ Việt Nam (**UTC+7**), đồng hồ bên Trung Quốc đã bước sang 00:00–00:59 ngày hôm sau. Kết quả là ngày mùng 1, ngày rằm hoặc thậm chí ngày Tết Nguyên Đán có thể bị lệch 1 ngày.
+Many online lunar feeds mirror Chinese lunar tables calculated in **UTC+8**. Whenever an astronomical new moon falls between 23:00 and 23:59 in Vietnam (**UTC+7**), it is already 00:00–00:59 the next civil day in UTC+8—causing off-by-one-day shifts on the 1st lunar day or Lunar New Year.
 
-Dự án mã nguồn mở [Lịch Âm Việt Nam](https://github.com/cmduyeen/lich-am-viet-nam) tính toán trực tiếp điểm Sóc và Tiết khí theo chuẩn **UTC+7**, phủ cuốn chiếu năm hiện tại và năm kế tiếp, kèm 27 dịp lễ âm – dương phổ biến tại Việt Nam.
+The open-source [Vietnamese Lunar Calendar](https://github.com/cmduyeen/lich-am-viet-nam) computes new moons and solar terms directly in **UTC+7**, maintaining rolling two-year feeds with 27 traditional and public observances.
 
-## Tùy chỉnh lịch âm trực tuyến (Web Studio)
+## Customize Online (Web Studio)
 
-Nếu bạn muốn tự chọn ngày Mùng 1 / Rằm, thêm **ngày giỗ, sinh nhật âm lịch** của gia đình hoặc tra cứu nhanh Dương ↔ Âm, hãy mở ngay **[Lịch Âm Việt Nam Studio](https://cmduyeen.github.io/lich-am-viet-nam/)** (chạy 100% trên trình duyệt, không cần cài Python) để xuất file `.ics` cá nhân hóa.
+Want to pick specific lunar days, add **personal lunar birthdays or family anniversaries**, or convert Solar ↔ Lunar dates? Open **[Vietnamese Lunar Calendar Studio](https://cmduyeen.github.io/lich-am-viet-nam/)** (runs 100% in your browser, no Python needed) to export a personalized `.ics` file.
 
-## Link đăng ký lịch (.ics)
+## Subscription URLs (.ics)
 
-Chỉ cần chọn **một** ngôn ngữ bạn muốn hiển thị:
+Choose **one** language feed to avoid duplicate daily events:
 
-- **Bản Tiếng Việt:**
-  ```text
-  https://raw.githubusercontent.com/cmduyeen/lich-am-viet-nam/main/output/viet_lunar_latest.ics
-  ```
-- **Bản Tiếng Anh:**
+- **English:**
   ```text
   https://raw.githubusercontent.com/cmduyeen/lich-am-viet-nam/main/output/viet_lunar_en_latest.ics
   ```
+- **Vietnamese:**
+  ```text
+  https://raw.githubusercontent.com/cmduyeen/lich-am-viet-nam/main/output/viet_lunar_latest.ics
+  ```
 
-## Cách gắn vào Google Calendar trong 4 bước
+## Subscribe in Google Calendar (4 Steps)
 
-1. Sao chép đường dẫn `.ics` ở trên.
-2. Mở [Google Calendar](https://calendar.google.com/) trên trình duyệt máy tính.
-3. Ở cột bên trái, cạnh mục **Lịch khác (Other calendars)**, nhấn dấu **+ → Từ URL (From URL)**.
-4. Dán link và nhấn **Thêm lịch (Add calendar)**. Lịch sẽ tự đồng bộ xuống điện thoại Android/iPhone khi dùng chung tài khoản.
+1. Copy one `.ics` URL above.
+2. Open [Google Calendar](https://calendar.google.com/) in a desktop browser.
+3. Next to **Other calendars**, click **+ → From URL**.
+4. Paste the URL and click **Add calendar**. It syncs automatically to your mobile app.
 
-## Cách gắn nhanh trên iPhone / iPad (Apple Calendar)
+## Subscribe on iPhone / iPad (Apple Calendar)
 
-Mở ứng dụng **Lịch** → chạm **Lịch (Calendars)** ở dưới cùng → **Thêm lịch** → **Thêm lịch đã đăng ký (Add Subscription Calendar)** → dán URL `.ics` và nhấn **Đăng ký**.
+Open **Calendar** → tap **Calendars** → **Add Calendar** → **Add Subscription Calendar** → paste the `.ics` URL and tap **Subscribe**.
 
-> Dự án hoàn toàn miễn phí, mã nguồn mở (MIT) và tự động cập nhật hằng năm mà không làm đổi đường dẫn đăng ký. Xem mã nguồn tại [cmduyeen/lich-am-viet-nam](https://github.com/cmduyeen/lich-am-viet-nam).
+> Free, ad-free, and MIT-licensed. Explore the source code at [cmduyeen/lich-am-viet-nam](https://github.com/cmduyeen/lich-am-viet-nam).
