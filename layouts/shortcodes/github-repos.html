@@ -12,16 +12,18 @@
   {{- end -}}
 
   {{- with $featured -}}
-  <ul class="mention-grid about-featured">
+  <div class="featured-grid about-featured">
     {{- range . -}}
-    <li>
-      <a class="mention-card" href="{{ .url }}" target="_blank" rel="noopener noreferrer">
-        <span class="mention-title">{{ .name }}</span>
-        <span class="mention-summary">{{ .description | truncate 105 }}</span>
-      </a>
-    </li>
+    <a class="hud-card" href="{{ .url }}" target="_blank" rel="noopener noreferrer">
+      <div class="hud-card-top">
+        <span class="product-badge">OPEN SOURCE</span>
+        <span class="hud-card-arrow" aria-hidden="true">↗</span>
+      </div>
+      <h3 class="hud-card-title">{{ .name }}</h3>
+      <p class="hud-card-desc">{{ .description | truncate 105 }}</p>
+    </a>
     {{- end -}}
-  </ul>
+  </div>
   {{- end -}}
 
   {{- $years := slice -}}

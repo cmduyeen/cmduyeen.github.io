@@ -969,6 +969,41 @@ main {
   line-height: 1.78;
 }
 
+.page-wide-content {
+  max-width: none;
+}
+
+.page-wide-content > p,
+.page-wide-content > ul,
+.page-wide-content > ol {
+  max-width: 65ch;
+}
+
+.term-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+  gap: 0.75rem;
+}
+
+.term-card {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 1rem;
+}
+
+.term-name {
+  font-family: var(--font-mono);
+  font-size: 0.86rem;
+  font-weight: 600;
+}
+
+.term-count {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--accent-emerald);
+}
+
 .article-content > *:first-child {
   margin-top: 0;
 }

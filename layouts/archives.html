@@ -2,7 +2,7 @@
   {{- $posts := where site.RegularPages "Section" "posts" -}}
   {{- $isVi := eq site.Language.Lang "vi" -}}
   <header class="page-header">
-    <h1 class="hero-h1">{{ .Title }}</h1>
+    <h1 class="hero-h1"><span class="highlight">//</span> {{ .Title }}</h1>
     <p class="archive-subtitle">
       {{ if $isVi }}
         Hiển thị <span id="archive-visible-count">{{ len $posts }}</span> / {{ len $posts }} bài viết · Lọc tại chỗ không tải lại trang

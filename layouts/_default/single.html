@@ -1,22 +1,19 @@
 {{ define "main" }}
-  {{ if eq .Section "posts" }}
+  {{- $isArticle := or (eq .Section "posts") (eq .Section "radar") -}}
+  {{ if $isArticle }}
   <div id="reading-progress" class="reading-progress" aria-hidden="true"></div>
-  {{ end }}
-  {{- $hasToc := and (eq .Section "posts") (in .TableOfContents "<li>") -}}
+  {{- $hasToc := in .TableOfContents "<li>" -}}
 
   <div class="article-layout{{ if $hasToc }} has-toc{{ end }}">
     <div class="article-main">
       <article>
         <header class="article-header">
-          {{ if eq .Section "posts" }}
           <nav class="breadcrumb" aria-label="Breadcrumb">
             <a href="{{ site.Home.RelPermalink }}">~/{{ lower site.Title }}</a>
             <span aria-hidden="true">/</span>
-            <a href="{{ "archives/" | relLangURL }}">Archive</a>
+            <a href="{{ if eq .Section "radar" }}{{ "radar/" | relLangURL }}{{ else }}{{ "archives/" | relLangURL }}{{ end }}">{{ if eq .Section "radar" }}Radar{{ else }}Archive{{ end }}</a>
           </nav>
-          {{ end }}
           <h1>{{ .Title }}</h1>
-          {{ if eq .Section "posts" }}
           <p class="article-date">
             <span>By {{ site.Params.author }}</span>
             <span aria-hidden="true">·</span>
@@ -24,7 +21,6 @@
             <span aria-hidden="true">·</span>
             <span>{{ .ReadingTime }} {{ T "minutes_read" }}</span>
           </p>
-          {{ end }}
         </header>
 
         {{ if $hasToc }}
@@ -37,7 +33,7 @@
         {{ end }}
 
         <div class="article-content">
-          {{ if and (eq .Section "posts") .Description }}
+          {{ if .Description }}
           <aside class="tldr-box" aria-label="TL;DR">
             <div class="tldr-label"><span aria-hidden="true">// </span>TL;DR</div>
             <p>{{ .Description }}</p>
@@ -53,27 +49,25 @@
         {{ end }}
       </article>
 
-      {{ if eq .Section "posts" }}
-        {{ if or .PrevInSection .NextInSection }}
-        <nav class="post-nav-grid" aria-label="Post navigation">
-          <div>
-            {{ with .PrevInSection }}
-            <a class="post-nav-card" href="{{ .RelPermalink }}">
-              <span class="post-nav-dir">← Previous</span>
-              <span class="post-nav-title">{{ .LinkTitle }}</span>
-            </a>
-            {{ end }}
-          </div>
-          <div>
-            {{ with .NextInSection }}
-            <a class="post-nav-card is-next" href="{{ .RelPermalink }}">
-              <span class="post-nav-dir">Next →</span>
-              <span class="post-nav-title">{{ .LinkTitle }}</span>
-            </a>
-            {{ end }}
-          </div>
-        </nav>
-        {{ end }}
+      {{ if or .PrevInSection .NextInSection }}
+      <nav class="post-nav-grid" aria-label="Post navigation">
+        <div>
+          {{ with .PrevInSection }}
+          <a class="post-nav-card" href="{{ .RelPermalink }}">
+            <span class="post-nav-dir">← Previous</span>
+            <span class="post-nav-title">{{ .LinkTitle }}</span>
+          </a>
+          {{ end }}
+        </div>
+        <div>
+          {{ with .NextInSection }}
+          <a class="post-nav-card is-next" href="{{ .RelPermalink }}">
+            <span class="post-nav-dir">Next →</span>
+            <span class="post-nav-title">{{ .LinkTitle }}</span>
+          </a>
+          {{ end }}
+        </div>
+      </nav>
       {{ end }}
 
       {{ partial "comments.html" . }}
@@ -89,4 +83,15 @@
     </aside>
     {{ end }}
   </div>
+  {{ else }}
+  <div class="page-wide">
+    <header class="page-header">
+      <h1 class="hero-h1"><span class="highlight">//</span> {{ .Title }}</h1>
+      {{ with .Description }}<p class="archive-subtitle">{{ . }}</p>{{ end }}
+    </header>
+    <div class="article-content page-wide-content">
+      {{ .Content }}
+    </div>
+  </div>
+  {{ end }}
 {{ end }}
