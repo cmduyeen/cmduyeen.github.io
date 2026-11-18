@@ -562,6 +562,67 @@ main {
   font-size: 0.72rem;
   font-weight: 700;
   box-shadow: 2px 2px 0 rgba(62, 39, 35, 0.25);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.stardew-hud-pill:hover {
+  border-color: var(--accent-emerald);
+}
+
+.stardew-hud-pill:active {
+  transform: translate(1px, 1px);
+  box-shadow: none;
+}
+
+.junimo-hit {
+  position: absolute;
+  left: 48%;
+  bottom: 14%;
+  width: 2.4rem;
+  height: 2.2rem;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.junimo-bubble {
+  position: absolute;
+  left: 50%;
+  bottom: 46%;
+  transform: translateX(-50%);
+  padding: 0.28rem 0.65rem;
+  border: 2px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  white-space: nowrap;
+  box-shadow: 2px 2px 0 rgba(62, 39, 35, 0.25);
+  pointer-events: none;
+}
+
+.junimo-bubble.is-pop {
+  animation: bubblePop 0.22s ease-out;
+}
+
+@keyframes bubblePop {
+  from { opacity: 0; transform: translate(-50%, 6px) scale(0.92); }
+  to { opacity: 1; transform: translate(-50%, 0) scale(1); }
+}
+
+.footer-grass {
+  width: 100%;
+  height: 10px;
+  background-image:
+    linear-gradient(90deg, var(--accent-emerald) 4px, transparent 4px),
+    linear-gradient(90deg, #7ec850 3px, transparent 3px);
+  background-size: 14px 10px, 22px 6px;
+  background-position: 0 0, 6px 4px;
+  background-repeat: repeat-x;
+  opacity: 0.55;
 }
 
 .hud-season-dot {

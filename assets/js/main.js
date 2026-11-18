@@ -397,6 +397,34 @@
 
   syncLearnProgress();
 
+  const seasonHud = document.getElementById("valley-season-hud");
+  seasonHud?.addEventListener("click", toggleTheme);
+
+  const junimoPet = document.getElementById("junimo-pet");
+  const junimoBubble = document.getElementById("junimo-bubble");
+  if (junimoPet && junimoBubble) {
+    const quotes = [
+      "Cozy notes, zero bloat!",
+      "Press Ctrl+K (or ⌘K) for magic!",
+      "Plain-text lasts forever.",
+      "Small tools, big leverage.",
+      "Have a calm building day!"
+    ];
+    let bubbleTimer;
+    junimoPet.addEventListener("click", () => {
+      const pick = quotes[Math.floor(Math.random() * quotes.length)];
+      junimoBubble.textContent = pick;
+      junimoBubble.hidden = false;
+      junimoBubble.classList.remove("is-pop");
+      void junimoBubble.offsetWidth;
+      junimoBubble.classList.add("is-pop");
+      clearTimeout(bubbleTimer);
+      bubbleTimer = setTimeout(() => {
+        junimoBubble.hidden = true;
+      }, 2800);
+    });
+  }
+
   const seasonText = document.getElementById("valley-season-text");
   if (seasonText) {
     const m = new Date().getMonth();
