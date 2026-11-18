@@ -309,20 +309,6 @@
       saveDoneSet(done);
       renderMarkBtn();
       syncLearnProgress();
-
-  const advisorBtns = Array.from(document.querySelectorAll("[data-advisor-goal]"));
-  const advisorPanels = Array.from(document.querySelectorAll("[data-advisor-panel]"));
-  if (advisorBtns.length > 0 && advisorPanels.length > 0) {
-    advisorBtns.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const goal = btn.dataset.advisorGoal;
-        advisorBtns.forEach((b) => b.classList.toggle("is-active", b === btn));
-        advisorPanels.forEach((p) => {
-          p.hidden = p.dataset.advisorPanel !== goal;
-        });
-      });
-    });
-  }
     });
     renderMarkBtn();
   }
