@@ -5,7 +5,7 @@
   <!-- Warm Stardew Valley Cozy Hero -->
   <section class="hero-lab stardew-box" aria-label="Introduction">
     <div class="stardew-scene" aria-hidden="true">
-      <svg class="stardew-scene-svg" viewBox="0 0 320 64" preserveAspectRatio="xMidYMid slice" shape-rendering="crispEdges">
+      <svg class="stardew-scene-svg" viewBox="0 4 320 56" preserveAspectRatio="xMidYMid slice" shape-rendering="crispEdges">
         <rect class="scene-sky" width="320" height="64"/>
         <g class="scene-stars">
           <rect x="24" y="8" width="2" height="2" fill="#fef08a"/>
@@ -63,16 +63,19 @@
       </button>
     </div>
 
-    <h1 class="hero-h1 hero-h1-wide">
-      <span class="highlight">~/{{ lower site.Title }}</span> — Notes, Reviews &amp; Personal Projects
-    </h1>
-    {{ with site.Params.homeInfoParams }}
-    <p class="hero-desc hero-desc-compact">{{ .Content }}</p>
-    {{ end }}
-
-    <div class="hero-actions">
-      <a class="btn-primary-cyber" href="{{ "archives/" | relLangURL }}">Read Articles →</a>
-      <a class="btn-hud" href="{{ "tools/" | relLangURL }}">My Projects</a>
+    <div class="hero-content-row">
+      <div class="hero-text-col">
+        <h1 class="hero-h1 hero-h1-wide">
+          <span class="highlight">~/{{ lower site.Title }}</span> — Notes, Reviews &amp; Projects
+        </h1>
+        {{ with site.Params.homeInfoParams }}
+        <p class="hero-desc hero-desc-compact">{{ .Content }}</p>
+        {{ end }}
+      </div>
+      <div class="hero-actions">
+        <a class="btn-primary-cyber" href="{{ "archives/" | relLangURL }}">Read Articles →</a>
+        <a class="btn-hud" href="{{ "tools/" | relLangURL }}">My Projects</a>
+      </div>
     </div>
   </section>
 

@@ -855,12 +855,30 @@ main {
 
 .stardew-scene {
   position: relative;
-  margin: -0.15rem 0 1rem;
+  margin: -0.15rem 0 1.15rem;
   border: 2px solid var(--border-strong);
   border-radius: var(--radius-sm);
   overflow: hidden;
-  height: 5.25rem;
+  height: 6.4rem;
   background: #87ceeb;
+}
+
+.hero-content-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.hero-text-col {
+  flex: 1 1 28rem;
+  min-width: 0;
+}
+
+.hero-desc-compact {
+  margin: 0;
+  font-size: 0.94rem;
 }
 
 .stardew-scene-svg {
