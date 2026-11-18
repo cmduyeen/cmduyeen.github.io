@@ -70,14 +70,19 @@
       </div>
     </footer>
 
-    <dialog id="search-dialog" class="search-dialog" data-index-url="{{ "index.json" | relLangURL }}" data-empty-msg="No matching posts found.">
+    <dialog id="search-dialog" class="search-dialog" data-index-url="{{ "index.json" | relLangURL }}" data-empty-msg="No matching posts or commands.">
       <div class="search-box">
         <div class="search-input-row">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-          <input id="search-input" type="search" placeholder="Search posts, topics..." autocomplete="off" />
+          <input id="search-input" type="search" placeholder="Search posts or type > for commands..." autocomplete="off" />
           <button type="button" id="search-close" class="search-close" aria-label="Close">Esc</button>
         </div>
         <ul id="search-results" class="writing-list search-results"></ul>
+        <div class="cmd-footer-hints">
+          <span><kbd>↑↓</kbd> Navigate</span>
+          <span><kbd>↵</kbd> Open / Run</span>
+          <span><kbd>&gt;</kbd> Commands</span>
+        </div>
       </div>
     </dialog>
 

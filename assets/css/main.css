@@ -318,6 +318,58 @@ summary:focus-visible {
   font-size: 0.9rem;
 }
 
+.cmd-action-item {
+  width: 100%;
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+  background: transparent;
+  text-align: left;
+  font: inherit;
+  cursor: pointer;
+}
+
+.cmd-action-item.is-cmd-active {
+  background: var(--bg-elevated);
+  padding-left: 0.9rem;
+}
+
+.cmd-action-item.is-cmd-active span:not(.cmd-tag) {
+  color: var(--accent-cyan);
+}
+
+.cmd-tag {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 0.12rem 0.45rem;
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  border-radius: var(--radius-sm);
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--accent-emerald);
+  width: fit-content;
+}
+
+.cmd-footer-hints {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 0.75rem;
+  padding-top: 0.65rem;
+  border-top: 1px solid var(--border-subtle);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.cmd-footer-hints kbd {
+  padding: 0.08rem 0.35rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+}
+
 /* ==========================================================================
    Main & Homepage (Engineering Lab Index)
    ========================================================================== */

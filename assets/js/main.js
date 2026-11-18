@@ -88,30 +88,95 @@
   const searchClose = document.getElementById("search-close");
   const searchResults = document.getElementById("search-results");
   let cachedPosts = null;
+  let activeCmdIdx = -1;
+
+  const COMMANDS = [
+    {
+      label: "Toggle Theme (Dark / Light)",
+      tag: "CMD",
+      run: () => document.getElementById("theme-toggle")?.click(),
+    },
+    {
+      label: "Surprise Me (Random Article)",
+      tag: "CMD",
+      run: () => {
+        if (!cachedPosts || cachedPosts.length === 0) return;
+        const pick = cachedPosts[Math.floor(Math.random() * cachedPosts.length)];
+        if (pick?.url) location.href = pick.url;
+      },
+    },
+    {
+      label: "Copy Current Page URL",
+      tag: "CMD",
+      run: async () => {
+        try { await navigator.clipboard.writeText(location.href); } catch (_) {}
+      },
+    },
+    { label: "Go to Learn Hub (8 Tracks)", tag: "NAV", url: "/learn/" },
+    { label: "Go to Tech News", tag: "NAV", url: "/news/" },
+    { label: "Go to Tools & Kits", tag: "NAV", url: "/tools/" },
+    { label: "Go to Freebies & Giveaways", tag: "NAV", url: "/freebies/" },
+  ];
+
+  function updateActiveCmd(items) {
+    items.forEach((el, idx) => el.classList.toggle("is-cmd-active", idx === activeCmdIdx));
+    items[activeCmdIdx]?.scrollIntoView({ block: "nearest" });
+  }
 
   function renderResults(items, query) {
     if (!searchResults) return;
     searchResults.replaceChildren();
-    const q = query.trim().toLowerCase();
-    const matched = q
-      ? items.filter((item) => {
-          const haystack = `${item.title} ${(item.tags || []).join(" ")} ${item.summary}`.toLowerCase();
-          return haystack.includes(q);
-        })
-      : items.slice(0, 6);
+    activeCmdIdx = -1;
 
-    if (matched.length === 0) {
+    const rawQ = query.trim();
+    const q = rawQ.toLowerCase();
+    const isCmdMode = q.startsWith(">");
+    const cmdQuery = isCmdMode ? q.slice(1).trim() : q;
+
+    const matchedCmds = COMMANDS.filter((c) => !cmdQuery || c.label.toLowerCase().includes(cmdQuery));
+    const matchedPosts = isCmdMode
+      ? []
+      : (q
+          ? items.filter((item) => {
+              const haystack = `${item.title} ${(item.tags || []).join(" ")} ${item.summary}`.toLowerCase();
+              return haystack.includes(q);
+            })
+          : items.slice(0, 5));
+
+    const showCmds = isCmdMode ? matchedCmds : (q ? [] : COMMANDS.slice(0, 3));
+
+    if (showCmds.length === 0 && matchedPosts.length === 0) {
       const empty = document.createElement("li");
       empty.className = "search-empty";
-      empty.textContent = searchDialog.dataset.emptyMsg || "No matching posts found.";
+      empty.textContent = searchDialog.dataset.emptyMsg || "No matching posts or commands.";
       searchResults.append(empty);
       return;
     }
 
-    for (const item of matched) {
+    for (const cmd of showCmds) {
+      const li = document.createElement("li");
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "writing-item cmd-action-item";
+      const badge = document.createElement("span");
+      badge.className = "cmd-tag";
+      badge.textContent = cmd.tag;
+      const span = document.createElement("span");
+      span.textContent = cmd.label;
+      btn.append(badge, span);
+      btn.addEventListener("click", () => {
+        searchDialog?.close();
+        if (cmd.url) location.href = cmd.url;
+        else cmd.run?.();
+      });
+      li.append(btn);
+      searchResults.append(li);
+    }
+
+    for (const item of matchedPosts) {
       const li = document.createElement("li");
       const a = document.createElement("a");
-      a.className = "writing-item";
+      a.className = "writing-item cmd-action-item";
       a.href = item.url;
       const time = document.createElement("time");
       time.textContent = item.date;
@@ -120,6 +185,12 @@
       a.append(time, span);
       li.append(a);
       searchResults.append(li);
+    }
+
+    const rendered = Array.from(searchResults.querySelectorAll(".cmd-action-item"));
+    if (rendered.length > 0) {
+      activeCmdIdx = 0;
+      updateActiveCmd(rendered);
     }
   }
 
@@ -373,6 +444,22 @@
   });
   searchInput?.addEventListener("input", () => {
     if (cachedPosts) renderResults(cachedPosts, searchInput.value);
+  });
+  searchInput?.addEventListener("keydown", (e) => {
+    const items = Array.from(searchResults?.querySelectorAll(".cmd-action-item") || []);
+    if (items.length === 0) return;
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      activeCmdIdx = (activeCmdIdx + 1) % items.length;
+      updateActiveCmd(items);
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      activeCmdIdx = (activeCmdIdx - 1 + items.length) % items.length;
+      updateActiveCmd(items);
+    } else if (e.key === "Enter" && activeCmdIdx >= 0) {
+      e.preventDefault();
+      items[activeCmdIdx]?.click();
+    }
   });
   document.addEventListener("keydown", (e) => {
     if ((e.key === "/" || ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k")) &&
