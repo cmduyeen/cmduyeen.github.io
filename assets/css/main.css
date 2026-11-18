@@ -388,12 +388,86 @@ main {
 
 .stardew-box {
   position: relative;
-  padding: 1.75rem;
-  border: 2px solid var(--border-strong);
+  padding: 1.5rem 1.75rem 1.75rem;
+  border: 3px solid var(--border-strong);
   border-radius: var(--radius-md);
   background: var(--bg-surface);
-  box-shadow: inset 0 0 0 3px var(--bg-elevated), 4px 4px 0 rgba(143, 86, 59, 0.25);
+  box-shadow: inset 0 0 0 3px var(--bg-elevated), 5px 5px 0 rgba(143, 86, 59, 0.28);
   margin-bottom: 2.25rem;
+}
+
+.stardew-scene {
+  position: relative;
+  margin: -0.25rem 0 1.35rem;
+  border: 2px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  height: 7.5rem;
+  background: #87ceeb;
+}
+
+.stardew-scene-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.scene-sky { fill: #7dd3fc; }
+.scene-sky-cut { fill: #1e1b4b; }
+.scene-stars { opacity: 0; transition: opacity 0.3s ease; }
+.scene-sun { opacity: 1; transition: opacity 0.3s ease; }
+
+[data-theme="dark"] .scene-sky { fill: #1e1b4b; }
+[data-theme="dark"] .scene-stars { opacity: 1; }
+[data-theme="dark"] .scene-sun { opacity: 0; }
+
+.scene-clouds {
+  animation: cloudDrift 28s linear infinite;
+}
+
+.scene-junimo {
+  animation: junimoBounce 1.8s steps(2, end) infinite;
+}
+
+@keyframes cloudDrift {
+  0% { transform: translateX(-16px); }
+  50% { transform: translateX(18px); }
+  100% { transform: translateX(-16px); }
+}
+
+@keyframes junimoBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+
+.stardew-hud-pill {
+  position: absolute;
+  top: 0.55rem;
+  left: 0.65rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.2rem 0.6rem;
+  border: 2px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  box-shadow: 2px 2px 0 rgba(62, 39, 35, 0.25);
+}
+
+.hud-season-dot {
+  width: 7px;
+  height: 7px;
+  background: var(--accent-emerald);
+}
+
+.pillar-tile:hover .pillar-title::before {
+  content: "▶ ";
+  color: var(--accent-cyan);
+  font-size: 0.8em;
 }
 
 .stardew-crest {

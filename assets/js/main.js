@@ -105,6 +105,11 @@
       { giscus: { setConfig: { theme: giscusTheme() } } },
       "https://giscus.app"
     );
+    const sText = document.getElementById("valley-season-text");
+    if (sText) {
+      const base = sText.textContent?.split("·")[0]?.trim() || "Valley";
+      sText.textContent = `${base} · ${next === "dark" ? "Night" : "Day"}`;
+    }
   };
 
   const COMMANDS = [
@@ -392,6 +397,14 @@
   }
 
   syncLearnProgress();
+
+  const seasonText = document.getElementById("valley-season-text");
+  if (seasonText) {
+    const m = new Date().getMonth();
+    const season = m >= 2 && m <= 4 ? "Spring" : m >= 5 && m <= 7 ? "Summer" : m >= 8 && m <= 10 ? "Fall" : "Winter";
+    const isNight = document.documentElement.getAttribute("data-theme") === "dark";
+    seasonText.textContent = `${season} · ${isNight ? "Night" : "Day"}`;
+  }
 
   const advisorBtns = Array.from(document.querySelectorAll("[data-advisor-goal]"));
   const advisorPanels = Array.from(document.querySelectorAll("[data-advisor-panel]"));
