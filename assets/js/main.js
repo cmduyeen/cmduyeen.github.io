@@ -112,175 +112,40 @@
     }
   }
 
-  const canvas = document.getElementById("junimo-canvas");
-  const scoreEl = document.getElementById("arcade-score");
-  const bestEl = document.getElementById("arcade-best");
-  const startBtn = document.getElementById("arcade-start");
-  if (canvas && scoreEl && bestEl && startBtn) {
-    const ctx = canvas.getContext("2d");
-    const BEST_KEY = "dyn-arcade-best";
-    let best = 0;
-    try { best = parseInt(localStorage.getItem(BEST_KEY) || "0", 10) || 0; } catch (_) {}
-    bestEl.textContent = String(best);
-
-    let running = false;
-    let rafId = 0;
-    let score = 0;
-    let lives = 3;
-    let playerX = canvas.width / 2;
-    let keys = { left: false, right: false };
-    let drops = [];
-    let spawnTimer = 0;
-
-    const drawPixelJunimo = (x, y) => {
-      ctx.fillStyle = "#4f8f3c";
-      ctx.fillRect(x - 12, y - 8, 24, 18);
-      ctx.fillStyle = "#7ec850";
-      ctx.fillRect(x - 9, y - 12, 18, 5);
-      ctx.fillStyle = "#4f8f3c";
-      ctx.fillRect(x - 2, y - 16, 4, 4);
-      ctx.fillStyle = "#1f1916";
-      ctx.fillRect(x - 6, y - 4, 3, 4);
-      ctx.fillRect(x + 3, y - 4, 3, 4);
+  const diorama = document.getElementById("valley-diorama");
+  const dioramaBubble = document.getElementById("diorama-bubble");
+  const dioramaToggle = document.getElementById("diorama-toggle");
+  if (diorama && dioramaBubble) {
+    const notes = [
+      "Woof! Take a slow walk today.",
+      "Two dogs, warm sunset, zero rush.",
+      "Keep your tools light and your notes clear.",
+      "Thanks for visiting the valley!",
+      "Press Ctrl+K anytime to explore."
+    ];
+    let bubbleTimer;
+    const showNote = () => {
+      dioramaBubble.textContent = notes[Math.floor(Math.random() * notes.length)];
+      dioramaBubble.hidden = false;
+      dioramaBubble.classList.remove("is-pop");
+      void dioramaBubble.offsetWidth;
+      dioramaBubble.classList.add("is-pop");
+      clearTimeout(bubbleTimer);
+      bubbleTimer = setTimeout(() => {
+        dioramaBubble.hidden = true;
+      }, 3000);
     };
-
-    const drawDrop = (d) => {
-      if (d.type === "star") {
-        ctx.fillStyle = "#eab308";
-        ctx.fillRect(d.x - 6, d.y - 6, 12, 12);
-        ctx.fillStyle = "#fef08a";
-        ctx.fillRect(d.x - 3, d.y - 9, 6, 18);
-        ctx.fillRect(d.x - 9, d.y - 3, 18, 6);
-      } else if (d.type === "apple") {
-        ctx.fillStyle = "#dc2626";
-        ctx.fillRect(d.x - 7, d.y - 6, 14, 12);
-        ctx.fillStyle = "#4f8f3c";
-        ctx.fillRect(d.x - 1, d.y - 10, 4, 4);
-      } else {
-        ctx.fillStyle = "#78716c";
-        ctx.fillRect(d.x - 7, d.y - 7, 14, 14);
-        ctx.fillStyle = "#44403c";
-        ctx.fillRect(d.x - 4, d.y - 4, 8, 8);
+    diorama.addEventListener("click", showNote);
+    diorama.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        showNote();
       }
-    };
-
-    const drawBackdrop = () => {
-      const dark = document.documentElement.getAttribute("data-theme") === "dark";
-      ctx.fillStyle = dark ? "#1f1916" : "#e8f3d6";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = dark ? "#362c25" : "#7ec850";
-      ctx.fillRect(0, canvas.height - 20, canvas.width, 20);
-      ctx.fillStyle = dark ? "#5c4332" : "#8f563b";
-      ctx.fillRect(0, canvas.height - 22, canvas.width, 3);
-    };
-
-    const drawIdle = (msg) => {
-      drawBackdrop();
-      drawPixelJunimo(playerX, canvas.height - 32);
-      ctx.fillStyle = document.documentElement.getAttribute("data-theme") === "dark" ? "#f5ebd6" : "#3e2723";
-      ctx.font = "bold 14px ui-monospace, monospace";
-      ctx.textAlign = "center";
-      ctx.fillText(msg, canvas.width / 2, canvas.height / 2 - 6);
-    };
-
-    const spawnDrop = () => {
-      const r = Math.random();
-      const type = r < 0.16 ? "star" : r < 0.42 ? "rock" : "apple";
-      drops.push({
-        x: 20 + Math.random() * (canvas.width - 40),
-        y: -12,
-        vy: 1.8 + Math.random() * 1.4 + Math.min(score * 0.03, 1.8),
-        type,
-      });
-    };
-
-    const tick = () => {
-      if (!running) return;
-      if (keys.left) playerX -= 5.2;
-      if (keys.right) playerX += 5.2;
-      playerX = Math.max(18, Math.min(canvas.width - 18, playerX));
-
-      spawnTimer += 1;
-      if (spawnTimer >= 28) {
-        spawnTimer = 0;
-        spawnDrop();
-      }
-
-      drawBackdrop();
-      drawPixelJunimo(playerX, canvas.height - 32);
-
-      // Draw lives top-right
-      for (let i = 0; i < lives; i++) {
-        ctx.fillStyle = "#dc2626";
-        ctx.fillRect(canvas.width - 20 - i * 16, 10, 10, 10);
-      }
-
-      for (let i = drops.length - 1; i >= 0; i--) {
-        const d = drops[i];
-        d.y += d.vy;
-        drawDrop(d);
-
-        if (Math.abs(d.x - playerX) < 18 && Math.abs(d.y - (canvas.height - 32)) < 16) {
-          drops.splice(i, 1);
-          if (d.type === "rock") {
-            lives -= 1;
-            if (lives <= 0) {
-              running = false;
-              startBtn.textContent = "Play Again";
-              drawIdle(`Game Over! Score: ${score}`);
-              return;
-            }
-          } else {
-            score += d.type === "star" ? 5 : 1;
-            scoreEl.textContent = String(score);
-            if (score > best) {
-              best = score;
-              bestEl.textContent = String(best);
-              try { localStorage.setItem(BEST_KEY, String(best)); } catch (_) {}
-            }
-          }
-          continue;
-        }
-        if (d.y > canvas.height + 16) drops.splice(i, 1);
-      }
-
-      rafId = requestAnimationFrame(tick);
-    };
-
-    const startGame = () => {
-      cancelAnimationFrame(rafId);
-      score = 0;
-      lives = 3;
-      drops = [];
-      spawnTimer = 0;
-      scoreEl.textContent = "0";
-      running = true;
-      startBtn.textContent = "Restart";
-      tick();
-    };
-
-    startBtn.addEventListener("click", startGame);
-
-    const movePointer = (clientX) => {
-      if (!running) return;
-      const rect = canvas.getBoundingClientRect();
-      playerX = ((clientX - rect.left) / rect.width) * canvas.width;
-    };
-    canvas.addEventListener("pointermove", (e) => movePointer(e.clientX));
-    canvas.addEventListener("touchmove", (e) => {
-      if (e.touches[0]) movePointer(e.touches[0].clientX);
-    }, { passive: true });
-
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "ArrowLeft" || e.key === "a") keys.left = true;
-      if (e.key === "ArrowRight" || e.key === "d") keys.right = true;
     });
-    document.addEventListener("keyup", (e) => {
-      if (e.key === "ArrowLeft" || e.key === "a") keys.left = false;
-      if (e.key === "ArrowRight" || e.key === "d") keys.right = false;
+    dioramaToggle?.addEventListener("click", () => {
+      const paused = diorama.classList.toggle("is-paused");
+      dioramaToggle.textContent = paused ? "Resume Breeze" : "Pause Breeze";
     });
-
-    drawIdle("Press Play to catch Apples (+1) & Starfruits (+5)!");
   };
 
   const COMMANDS = [
