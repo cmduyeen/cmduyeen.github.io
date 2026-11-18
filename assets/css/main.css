@@ -3639,24 +3639,33 @@ main {
   align-items: center;
 }
 
-.lang-switch-btn {
+.site-header nav a.lang-switch-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 1.85rem;
   height: 1.85rem;
+  padding: 0 !important;
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
   background: var(--bg-surface);
   color: var(--text-secondary);
   text-decoration: none;
+  cursor: pointer;
   transition: border-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
 }
 
-.lang-switch-btn:hover {
+.site-header nav a.lang-switch-btn:hover {
   border-color: var(--border-strong);
   color: var(--accent-emerald);
   transform: translateY(-1px);
+}
+
+.site-header nav a.lang-switch-btn svg {
+  width: 15px;
+  height: 15px;
+  display: block;
+  flex-shrink: 0;
 }
 
 .footer-bottom-row {
