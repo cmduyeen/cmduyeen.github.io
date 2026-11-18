@@ -1,4 +1,4 @@
-{{- $catalog := index site.Data.products "en" -}}
+{{- $catalog := index site.Data.products site.Language.Lang | default (index site.Data.products "en") -}}
 
 {{- with $catalog.spotlight -}}
 <section class="tool-spotlight" aria-label="Featured project">
@@ -13,7 +13,7 @@
     </ul>
     <div class="hero-actions">
       <a class="btn-primary-cyber" href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ .cta }}</a>
-      {{ with .guide_url }}<a class="btn-hud" href="{{ . }}">Read Guide</a>{{ end }}
+      {{ with .guide_url }}<a class="btn-hud" href="{{ . | relLangURL }}">{{ if eq site.Language.Lang "vi" }}Xem hướng dẫn{{ else }}Read Guide{{ end }}</a>{{ end }}
     </div>
   </div>
   <div class="tool-mockup" aria-hidden="true">
@@ -28,7 +28,7 @@
     </div>
     <pre class="tool-mockup-code"><code>baseURL = "https://you.github.io/"
 title = "Your Lab"
-defaultContentLanguage = "en"
+defaultContentLanguage = "{{ site.Language.Lang }}"
 
 [outputs]
   home = ["HTML", "RSS", "LLMS"]
@@ -43,7 +43,7 @@ defaultContentLanguage = "en"
   <section class="home-section">
     <div class="section-head">
       <h2 class="section-label"><span aria-hidden="true">// </span>{{ $freeSec.heading }}</h2>
-      <span class="archive-series-count">Runs 100% in browser</span>
+      <span class="archive-series-count">{{ if eq site.Language.Lang "vi" }}Chạy 100% trên trình duyệt{{ else }}Runs 100% in browser{{ end }}</span>
     </div>
     <div class="featured-grid">
       {{- range $freeSec.items -}}
@@ -70,7 +70,7 @@ defaultContentLanguage = "en"
         <p class="hud-card-desc">{{ .description }}</p>
         <div class="tool-card-actions">
           <a class="product-cta" href="{{ .url }}"{{ if $isExternal }} target="_blank" rel="noopener noreferrer"{{ end }}>{{ .cta }}</a>
-          {{ with .guide_url }}<a class="tool-guide-link" href="{{ . }}">Guide →</a>{{ end }}
+          {{ with .guide_url }}<a class="tool-guide-link" href="{{ . | relLangURL }}">{{ if eq site.Language.Lang "vi" }}Hướng dẫn →{{ else }}Guide →{{ end }}</a>{{ end }}
         </div>
       </article>
       {{- end -}}
@@ -82,7 +82,7 @@ defaultContentLanguage = "en"
     <section class="home-section">
       <div class="section-head">
         <h2 class="section-label"><span aria-hidden="true">// </span>{{ $proSec.heading }}</h2>
-        <span class="archive-series-count">MIT &amp; Free Guides</span>
+        <span class="archive-series-count">{{ if eq site.Language.Lang "vi" }}Mã nguồn MIT &amp; Hướng dẫn miễn phí{{ else }}MIT &amp; Free Guides{{ end }}</span>
       </div>
       <div class="featured-grid">
         {{- range $proSec.items -}}
@@ -111,4 +111,4 @@ defaultContentLanguage = "en"
       </div>
     </section>
   {{ end }}
-{{- end -}}
+{{ end }}

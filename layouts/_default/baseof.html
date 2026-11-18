@@ -9,9 +9,9 @@
     <header class="site-header">
       <div class="site-shell site-header-inner">
         <div class="brand-group">
-          {{- $hdrAvatar := (resources.Get "images/dyn-avatar.png").Resize "96x96 png" -}}
+          {{- $hdrAvatar := (resources.Get "images/dyn-avatar.png").Resize "56x56 png" -}}
           <a class="site-title" href="{{ site.Home.RelPermalink }}">
-            <img class="header-avatar" src="{{ $hdrAvatar.RelPermalink }}" alt="" width="28" height="28" decoding="async" />
+            <img class="header-avatar" src="{{ $hdrAvatar.RelPermalink }}" alt="Dyn" width="28" height="28" decoding="async" />
             <span>~/</span>{{ lower site.Title }}
           </a>
           <span class="header-social-icons" aria-label="Social links">
@@ -38,8 +38,21 @@
             {{ range site.Menus.main }}
             <li class="nav-item"><a href="{{ .URL }}"{{ if $page.IsMenuCurrent "main" . }} aria-current="page"{{ end }}>{{ .Name }}</a></li>
             {{ end }}
+            {{ if hugo.IsMultilingual }}
+            <li class="nav-item lang-switch-item">
+              {{ if eq site.Language.Lang "en" }}
+                {{ $target := "/vi/" }}
+                {{ range .AllTranslations }}{{ if eq .Lang "vi" }}{{ $target = .RelPermalink }}{{ end }}{{ end }}
+                <a class="lang-switch-btn" href="{{ $target }}" title="Chuyển sang Tiếng Việt">VI</a>
+              {{ else }}
+                {{ $target := "/" }}
+                {{ range .AllTranslations }}{{ if eq .Lang "en" }}{{ $target = .RelPermalink }}{{ end }}{{ end }}
+                <a class="lang-switch-btn" href="{{ $target }}" title="Switch to English">EN</a>
+              {{ end }}
+            </li>
+            {{ end }}
             <li>
-              <button type="button" class="kbd-btn" id="search-trigger" aria-label="Search" title="Search (⌘K / /)">
+              <button type="button" class="kbd-btn" id="search-trigger" aria-label="Search (⌘K)" title="Search (⌘K / /)">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
                 <span class="kbd-label">⌘K</span>
               </button>
@@ -61,36 +74,36 @@
         <div class="footer-top-row">
           <div class="footer-brand-wrap">
             <span class="footer-brand"><span>~/</span>{{ lower site.Title }}</span>
-            <span class="footer-tagline">Quiet valley for notes, reviews &amp; personal tools.</span>
+            <span class="footer-tagline">{{ if eq site.Language.Lang "vi" }}Góc nhỏ cho ghi chép, đánh giá &amp; công cụ cá nhân.{{ else }}Quiet valley for notes, reviews &amp; personal tools.{{ end }}</span>
           </div>
           <nav class="footer-nav" aria-label="Footer navigation">
-            <a href="{{ "archives/" | relLangURL }}">Articles</a>
-            <a href="{{ "tools/" | relLangURL }}">Projects</a>
-            <a href="{{ "about/" | relLangURL }}">About</a>
-            <a href="{{ "tags/" | relLangURL }}">Topics</a>
+            <a href="{{ "archives/" | relLangURL }}">{{ if eq site.Language.Lang "vi" }}Bài viết{{ else }}Articles{{ end }}</a>
+            <a href="{{ "tools/" | relLangURL }}">{{ if eq site.Language.Lang "vi" }}Dự án{{ else }}Projects{{ end }}</a>
+            <a href="{{ "about/" | relLangURL }}">{{ if eq site.Language.Lang "vi" }}Giới thiệu{{ else }}About{{ end }}</a>
+            <a href="{{ "tags/" | relLangURL }}">{{ if eq site.Language.Lang "vi" }}Chủ đề{{ else }}Topics{{ end }}</a>
             {{ with site.Home.OutputFormats.Get "LLMS" }}<a href="{{ .RelPermalink }}">llms.txt</a>{{ end }}
-            <button type="button" class="footer-cmd-btn" data-open-search aria-label="Search" title="Command Palette (⌘K)">⌘K</button>
+            <button type="button" class="footer-cmd-btn" data-open-search title="Command Palette (⌘K)">⌘K</button>
           </nav>
         </div>
         <div class="footer-bottom-row">
-          <span>© {{ now.Year }} {{ site.Params.author }} · Built with Hugo · MIT / Open-Core</span>
-          <span>Hosted on GitHub Pages · <a href="#top" class="footer-top-link">↑ Top</a></span>
+          <span>© {{ now.Year }} {{ site.Params.author }} · {{ if eq site.Language.Lang "vi" }}Xây dựng bằng Hugo · MIT / Mã nguồn mở{{ else }}Built with Hugo · MIT / Open-Core{{ end }}</span>
+          <span>{{ if eq site.Language.Lang "vi" }}Lưu trữ trên GitHub Pages · {{ else }}Hosted on GitHub Pages · {{ end }}<a href="#top" class="footer-top-link">↑ Top</a></span>
         </div>
       </div>
     </footer>
 
-    <dialog id="search-dialog" class="search-dialog" data-index-url="{{ "index.json" | relLangURL }}" data-empty-msg="No matching posts or commands.">
+    <dialog id="search-dialog" class="search-dialog" data-index-url="{{ "index.json" | relLangURL }}" data-empty-msg="{{ if eq site.Language.Lang "vi" }}Không tìm thấy bài viết hoặc lệnh phù hợp.{{ else }}No matching posts or commands.{{ end }}">
       <div class="search-box">
         <div class="search-input-row">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-          <input id="search-input" type="search" placeholder="Search posts or type > for commands..." autocomplete="off" />
+          <input id="search-input" type="search" placeholder="{{ if eq site.Language.Lang "vi" }}Tìm bài viết hoặc gõ > để chạy lệnh...{{ else }}Search posts or type > for commands...{{ end }}" autocomplete="off" />
           <button type="button" id="search-close" class="search-close" aria-label="Close">Esc</button>
         </div>
         <ul id="search-results" class="writing-list search-results"></ul>
         <div class="cmd-footer-hints">
-          <span><kbd>↑↓</kbd> Navigate</span>
-          <span><kbd>↵</kbd> Open / Run</span>
-          <span><kbd>&gt;</kbd> Commands</span>
+          <span><kbd>↑↓</kbd> {{ if eq site.Language.Lang "vi" }}Di chuyển{{ else }}Navigate{{ end }}</span>
+          <span><kbd>↵</kbd> {{ if eq site.Language.Lang "vi" }}Mở / Chạy{{ else }}Open / Run{{ end }}</span>
+          <span><kbd>&gt;</kbd> {{ if eq site.Language.Lang "vi" }}Lệnh{{ else }}Commands{{ end }}</span>
         </div>
       </div>
     </dialog>

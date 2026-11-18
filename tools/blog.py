@@ -30,9 +30,9 @@ from blogger_aff import run_blogger_channel_cli
 
 ROOT = Path(__file__).resolve().parent.parent
 VAULT_DIR = Path(os.environ.get('DYN_VAULT_DIR', r'D:\Brain2nd')).expanduser().resolve()
-VAULT_BLOG = VAULT_DIR / 'Bài viết'
-VAULT_NOTES = VAULT_DIR / 'Ghi chú'
-VAULT_ATTACHMENTS = VAULT_DIR / 'Tệp đính kèm'
+VAULT_BLOG = VAULT_DIR / '04-Content' / 'GitHub-Page'
+VAULT_NOTES = VAULT_DIR / '02-Notes'
+VAULT_ATTACHMENTS = VAULT_DIR / '10-Attachments'
 LOCAL = ROOT / '.blog-local'
 BLOG_DIR = Path(os.environ.get('DYN_BLOG_DIR', str(LOCAL))).expanduser().resolve()
 BLOG_POSTS = BLOG_DIR / 'Posts'

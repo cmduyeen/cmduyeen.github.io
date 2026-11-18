@@ -77,5 +77,84 @@
         ]
       }
     ]
+  },
+  "vi": {
+    "spotlight": {
+      "badge": "★ NỔI BẬT · WEB APP MIỄN PHÍ",
+      "name": "Pro Blog Starter Kit",
+      "description": "Khởi tạo blog cá nhân chuẩn SEO với Hugo hoặc Jekyll trên GitHub Pages trong 60 giây với cấu hình trực quan và quy trình tự động triển khai.",
+      "bullets": [
+        "Cấu hình trực tiếp trên trình duyệt không cần cài đặt",
+        "Xuất file cấu hình hugo.toml & GitHub Actions chuẩn chỉ",
+        "Tích hợp sẵn quy trình viết ghi chú Obsidian Markdown"
+      ],
+      "url": "https://cmduyeen.github.io/pro-blog-starter-kit/",
+      "cta": "Mở công cụ cấu hình →",
+      "guide_url": "/posts/tao-github-profile-va-blog-trong-60-giay/"
+    },
+    "sections": [
+      {
+        "heading": "Công cụ web miễn phí & Bộ giao diện mã nguồn mở",
+        "items": [
+          {
+            "icon": "profile",
+            "name": "Pro GitHub Starter Kit",
+            "badge": "WEB APP · MIỄN PHÍ",
+            "description": "Tạo trang GitHub Profile README nổi bật trong 60 giây với 9 chủ đề, 12 plugin và xem trước trực tiếp chế độ Sáng/Tối.",
+            "url": "https://cmduyeen.github.io/pro-github-starter-kit/",
+            "cta": "Mở ứng dụng →",
+            "guide_url": "/posts/tao-github-profile-va-blog-trong-60-giay/"
+          },
+          {
+            "icon": "blog",
+            "name": "Pro Blog Starter Kit",
+            "badge": "WEB APP · MIỄN PHÍ",
+            "description": "Khởi tạo nhanh blog cá nhân Hugo hoặc Jekyll miễn phí trên GitHub Pages với thiết lập tức thì và luồng triển khai CI/CD.",
+            "url": "https://cmduyeen.github.io/pro-blog-starter-kit/",
+            "cta": "Mở ứng dụng →",
+            "guide_url": "/posts/tao-github-profile-va-blog-trong-60-giay/"
+          },
+          {
+            "icon": "calendar",
+            "name": "Vietnamese Lunar Calendar Studio",
+            "badge": "WEB APP · MIỄN PHÍ",
+            "description": "Tùy biến lịch âm Việt Nam GMT+7, thêm ngày giỗ, sinh nhật âm lịch, chuyển đổi ngày âm-dương và xuất file .ics hoặc đăng ký theo dõi URL.",
+            "url": "https://cmduyeen.github.io/lich-am-viet-nam/",
+            "cta": "Mở ứng dụng →",
+            "guide_url": "/posts/lich-am-viet-nam-google-calendar/"
+          },
+          {
+            "icon": "theme",
+            "name": "Serein & Pinkie Themes",
+            "badge": "MIT · MÃ NGUỒN MỞ",
+            "description": "Bộ màu tối giản (Serein ấm áp & Pinkie pastel) dành cho VS Code, Neovim, Obsidian và Windows Terminal.",
+            "url": "https://github.com/cmduyeen/serein-theme",
+            "cta": "Xem trên GitHub →",
+            "guide_url": "/posts/serein-theme-suite/"
+          }
+        ]
+      },
+      {
+        "heading": "Mẫu mã nguồn mở & Cẩm nang hướng dẫn",
+        "items": [
+          {
+            "icon": "source",
+            "name": "Giao diện Stardew Cozy Hugo (Mã nguồn mở)",
+            "badge": "MIT · NGUỒN MỞ",
+            "description": "Toàn bộ mã nguồn phía sau ~/dyn: Giao diện gỗ ấm cúng phong cách Stardew Valley, bảng lệnh Cmd+K, /llms.txt GEO và luồng đồng bộ Obsidian sang Hugo.",
+            "url": "https://github.com/cmduyeen/cmduyeen.github.io",
+            "cta": "Xem mã nguồn trên GitHub →"
+          },
+          {
+            "icon": "handbook",
+            "name": "Cẩm nang tương tác Markdown 101",
+            "badge": "SERIES MIỄN PHÍ · 10 PHẦN",
+            "description": "Hướng dẫn toàn diện về định dạng văn bản thuần với môi trường thực hành ngay trên trình duyệt cho YAML, bảng biểu, callout và xuất bản Hugo.",
+            "url": "/posts/markdown-101-01-getting-started/",
+            "cta": "Bắt đầu đọc →"
+          }
+        ]
+      }
+    ]
   }
 }

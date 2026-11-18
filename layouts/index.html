@@ -1,6 +1,6 @@
 {{ define "main" }}
   {{- $posts := (where site.RegularPages "Section" "posts").ByDate.Reverse -}}
-  {{- $catalog := index site.Data.products "en" -}}
+  {{- $catalog := index site.Data.products site.Language.Lang | default (index site.Data.products "en") -}}
 
   <!-- Warm Stardew Valley Cozy Hero -->
   <section class="hero-lab stardew-box" aria-label="Introduction">
@@ -59,22 +59,22 @@
       </svg>
       <button type="button" class="stardew-hud-pill" id="valley-season-hud" title="Click to toggle Day / Night">
         <span class="hud-season-dot" aria-hidden="true"></span>
-        <span id="valley-season-text">Fall · Day</span>
+        <span id="valley-season-text">{{ if eq site.Language.Lang "vi" }}Mùa thu · Ban ngày{{ else }}Fall · Day{{ end }}</span>
       </button>
     </div>
 
     <div class="hero-content-row">
       <div class="hero-text-col">
         <h1 class="hero-h1 hero-h1-wide">
-          <span class="highlight">Notes, Reviews</span> &amp; Personal Projects
+          <span class="highlight">{{ if eq site.Language.Lang "vi" }}Ghi chép, Đánh giá{{ else }}Notes, Reviews{{ end }}</span> &amp; {{ if eq site.Language.Lang "vi" }}Dự án cá nhân{{ else }}Personal Projects{{ end }}
         </h1>
         {{ with site.Params.homeInfoParams }}
         <p class="hero-desc hero-desc-compact">{{ .Content }}</p>
         {{ end }}
       </div>
       <div class="hero-actions">
-        <a class="btn-primary-cyber" href="{{ "archives/" | relLangURL }}">Read Articles →</a>
-        <a class="btn-hud" href="{{ "tools/" | relLangURL }}">My Projects</a>
+        <a class="btn-primary-cyber" href="{{ "archives/" | relLangURL }}">{{ if eq site.Language.Lang "vi" }}Đọc bài viết →{{ else }}Read Articles →{{ end }}</a>
+        <a class="btn-hud" href="{{ "tools/" | relLangURL }}">{{ if eq site.Language.Lang "vi" }}Dự án của tôi{{ else }}My Projects{{ end }}</a>
       </div>
     </div>
   </section>
@@ -83,8 +83,8 @@
   {{ with $posts }}
   <section class="home-section" aria-labelledby="writing-heading">
     <div class="section-head">
-      <h2 class="section-label" id="writing-heading">Writing ({{ len . }})</h2>
-      <a class="section-more" href="{{ "archives/" | relLangURL }}">All articles →</a>
+      <h2 class="section-label" id="writing-heading">{{ if eq site.Language.Lang "vi" }}Bài viết{{ else }}Writing{{ end }} ({{ len . }})</h2>
+      <a class="section-more" href="{{ "archives/" | relLangURL }}">{{ if eq site.Language.Lang "vi" }}Xem tất cả bài viết →{{ else }}All articles →{{ end }}</a>
     </div>
     <ul class="writing-list">
       {{ range first 8 . }}
@@ -100,8 +100,8 @@
     {{ with $firstSec.items }}
   <section class="home-section" aria-labelledby="projects-heading">
     <div class="section-head">
-      <h2 class="section-label" id="projects-heading">My Projects</h2>
-      <a class="section-more" href="{{ "tools/" | relLangURL }}">View all →</a>
+      <h2 class="section-label" id="projects-heading">{{ if eq site.Language.Lang "vi" }}Dự án của tôi{{ else }}My Projects{{ end }}</h2>
+      <a class="section-more" href="{{ "tools/" | relLangURL }}">{{ if eq site.Language.Lang "vi" }}Xem tất cả →{{ else }}View all →{{ end }}</a>
     </div>
     <div class="featured-grid">
       {{ range first 4 . }}

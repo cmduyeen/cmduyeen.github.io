@@ -1,16 +1,11 @@
 baseURL = "https://cmduyeen.github.io/"
 title = "Dyn"
-languageCode = "en-us"
 defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = false
 enableRobotsTXT = true
 
 [params]
   author = "Dyn"
-  description = "Dyn writes about software, automation, Obsidian, Hugo, GitHub Pages, and useful tools."
-
-[params.homeInfoParams]
-  Title = "Hi, I'm Dyn"
-  Content = "Engineering notes, automation workflows, and minimalist developer tools."
 
 [params.contact]
   github = "https://github.com/cmduyeen"
@@ -20,23 +15,60 @@ enableRobotsTXT = true
   bluesky = ""
   other = ""
 
-[[menus.main]]
-  identifier = "articles"
-  name = "Articles"
-  pageRef = "/archives"
-  weight = 10
+[languages]
+  [languages.en]
+    languageCode = "en-us"
+    languageName = "English"
+    weight = 1
+    title = "Dyn"
+    [languages.en.params]
+      author = "Dyn"
+      description = "Dyn writes about software, automation, Obsidian, Hugo, GitHub Pages, and useful tools."
+    [languages.en.params.homeInfoParams]
+      Title = "Hi, I'm Dyn"
+      Content = "Engineering notes, automation workflows, and minimalist developer tools."
+    [[languages.en.menus.main]]
+      identifier = "articles"
+      name = "Articles"
+      pageRef = "/archives"
+      weight = 10
+    [[languages.en.menus.main]]
+      identifier = "projects"
+      name = "Projects"
+      pageRef = "/tools"
+      weight = 20
+    [[languages.en.menus.main]]
+      identifier = "about"
+      name = "About"
+      pageRef = "/about"
+      weight = 30
 
-[[menus.main]]
-  identifier = "projects"
-  name = "Projects"
-  pageRef = "/tools"
-  weight = 20
-
-[[menus.main]]
-  identifier = "about"
-  name = "About"
-  pageRef = "/about"
-  weight = 30
+  [languages.vi]
+    languageCode = "vi-vn"
+    languageName = "Tiếng Việt"
+    weight = 2
+    title = "Dyn"
+    [languages.vi.params]
+      author = "Dyn"
+      description = "Dyn viết về công nghệ, tự động hóa, Obsidian, Hugo, GitHub Pages và các công cụ hữu ích."
+    [languages.vi.params.homeInfoParams]
+      Title = "Xin chào, mình là Dyn"
+      Content = "Ghi chép kỹ thuật, luồng tự động hóa và các công cụ tối giản cho lập trình viên."
+    [[languages.vi.menus.main]]
+      identifier = "articles"
+      name = "Bài viết"
+      pageRef = "/archives"
+      weight = 10
+    [[languages.vi.menus.main]]
+      identifier = "projects"
+      name = "Dự án"
+      pageRef = "/tools"
+      weight = 20
+    [[languages.vi.menus.main]]
+      identifier = "about"
+      name = "Giới thiệu"
+      pageRef = "/about"
+      weight = 30
 
 [outputs]
   home = ["HTML", "RSS", "JSON", "LLMS"]
