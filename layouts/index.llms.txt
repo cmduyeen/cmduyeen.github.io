@@ -12,23 +12,13 @@
 {{ with site.Home.OutputFormats.Get "RSS" }}- RSS: {{ .Permalink }}{{ end }}
 
 ## Core Pages
-- Learn Hub (6 Industry-Standard Tech Tracks): {{ "learn/" | absLangURL }}
-  - Frontend Engineering (HTML, CSS, JS): {{ "learn/frontend/" | absLangURL }}
-  - Backend & Systems (APIs, SQL, Architecture): {{ "learn/backend/" | absLangURL }}
-  - AI & Automation (Python, Prompts, Agents): {{ "learn/ai-automation/" | absLangURL }}
-  - DevOps & Cloud (Git, Linux, CI/CD, Edge): {{ "learn/devops/" | absLangURL }}
-  - Developer Workspace (VS Code, Neovim, Terminal): {{ "learn/workspace/" | absLangURL }}
-  - PKM & Digital Writing (Markdown, Obsidian, Notion): {{ "learn/pkm/" | absLangURL }}
-  - Office & Productivity (Excel, Sheets, Calendar, Docs): {{ "learn/office/" | absLangURL }}
-  - No-Code & Everyday AI (AI Prompts, Zapier, n8n, Builders): {{ "learn/no-code-ai/" | absLangURL }}
-- Tech News: {{ "news/" | absLangURL }}
-- Tools & Digital Kits: {{ "tools/" | absLangURL }}
-- Freebies & Giveaways: {{ "freebies/" | absLangURL }}
-- Archive: {{ "archives/" | absLangURL }}
+- Articles & Series: {{ "archives/" | absLangURL }}
+- Personal Projects & Tools: {{ "tools/" | absLangURL }}
+- Topics: {{ "tags/" | absLangURL }}
 - About: {{ "about/" | absLangURL }}
 
-## Web Tools & Projects
-{{- $langData := index site.Data.products site.Language.Lang -}}
+## Projects & Tools
+{{- $langData := index site.Data.products "en" -}}
 {{- with $langData.sections -}}
   {{- range . }}
 ### {{ .heading }}

@@ -11,7 +11,7 @@
           <nav class="breadcrumb" aria-label="Breadcrumb">
             <a href="{{ site.Home.RelPermalink }}">~/{{ lower site.Title }}</a>
             <span aria-hidden="true">/</span>
-            <a href="{{ if eq .Section "news" }}{{ "news/" | relLangURL }}{{ else }}{{ "learn/" | relLangURL }}{{ end }}">{{ if eq .Section "news" }}News{{ else }}Learn{{ end }}</a>
+            <a href="{{ "archives/" | relLangURL }}">Articles</a>
           </nav>
           <h1>{{ .Title }}</h1>
           <p class="article-date">

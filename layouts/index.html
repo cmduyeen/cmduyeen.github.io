@@ -1,251 +1,129 @@
 {{ define "main" }}
   {{- $posts := (where site.RegularPages "Section" "posts").ByDate.Reverse -}}
-  {{- $news := (where site.RegularPages "Section" "news").ByDate.Reverse -}}
-  {{- $freebies := site.Data.freebies -}}
   {{- $catalog := index site.Data.products "en" -}}
 
-  <!-- Tier 1: Asymmetric Stardew Hero (Valley Scene + RPG Builder Status Card) -->
-  <section class="rpg-hero-grid" aria-label="Introduction">
-    <div class="stardew-box rpg-hero-main">
-      <div class="stardew-scene" aria-hidden="true">
-        <svg class="stardew-scene-svg" viewBox="0 0 320 64" preserveAspectRatio="xMidYMid slice" shape-rendering="crispEdges">
-          <rect class="scene-sky" width="320" height="64"/>
-          <g class="scene-stars">
-            <rect x="24" y="8" width="2" height="2" fill="#fef08a"/>
-            <rect x="78" y="14" width="2" height="2" fill="#fde047"/>
-            <rect x="135" y="6" width="2" height="2" fill="#fef08a"/>
-            <rect x="198" y="12" width="2" height="2" fill="#fde047"/>
-            <rect x="256" y="7" width="2" height="2" fill="#fef08a"/>
-            <rect x="295" y="16" width="2" height="2" fill="#fde047"/>
-            <rect x="282" y="8" width="6" height="6" fill="#facc15"/>
-            <rect x="284" y="8" width="4" height="4" class="scene-sky-cut"/>
-          </g>
-          <g class="scene-sun">
-            <rect x="276" y="8" width="10" height="10" fill="#facc15"/>
-            <rect x="278" y="10" width="6" height="6" fill="#fef08a"/>
-          </g>
-          <g class="scene-clouds">
-            <rect x="30" y="12" width="24" height="6" fill="#fff8e7" opacity="0.9"/>
-            <rect x="36" y="8" width="12" height="4" fill="#fff8e7" opacity="0.9"/>
-            <rect x="148" y="16" width="28" height="6" fill="#fff8e7" opacity="0.85"/>
-            <rect x="154" y="12" width="14" height="4" fill="#fff8e7" opacity="0.85"/>
-            <rect x="220" y="10" width="20" height="5" fill="#fff8e7" opacity="0.8"/>
-          </g>
-          <rect x="0" y="42" width="320" height="22" fill="#4f8f3c"/>
-          <rect x="20" y="38" width="70" height="6" fill="#4f8f3c"/>
-          <rect x="120" y="36" width="90" height="8" fill="#5ba345"/>
-          <rect x="240" y="39" width="80" height="5" fill="#4f8f3c"/>
-          <rect x="0" y="50" width="320" height="14" fill="#7ec850"/>
-          <rect x="0" y="58" width="320" height="6" fill="#d6a868"/>
-          <rect x="18" y="36" width="4" height="16" fill="#6d4c41"/>
-          <rect x="12" y="24" width="16" height="14" fill="#2e6f28"/>
-          <rect x="14" y="20" width="12" height="6" fill="#4f8f3c"/>
-          <rect x="292" y="38" width="4" height="14" fill="#6d4c41"/>
-          <rect x="286" y="26" width="16" height="13" fill="#2e6f28"/>
-          <rect x="288" y="22" width="12" height="5" fill="#4f8f3c"/>
-          <rect x="48" y="47" width="3" height="7" fill="#8f563b"/>
-          <rect x="60" y="47" width="3" height="7" fill="#8f563b"/>
-          <rect x="72" y="47" width="3" height="7" fill="#8f563b"/>
-          <rect x="46" y="49" width="31" height="2" fill="#a86b47"/>
-          <rect x="226" y="38" width="26" height="14" fill="#c98a5b"/>
-          <rect x="224" y="34" width="30" height="5" fill="#8f3b2e"/>
-          <rect x="228" y="30" width="22" height="4" fill="#a64638"/>
-          <rect x="236" y="44" width="6" height="8" fill="#5c4332"/>
-          <rect x="245" y="42" width="4" height="4" fill="#fef08a"/>
-          <g class="scene-junimo">
-            <rect x="156" y="43" width="8" height="7" fill="#4f8f3c"/>
-            <rect x="157" y="41" width="6" height="2" fill="#7ec850"/>
-            <rect x="159" y="39" width="2" height="2" fill="#4f8f3c"/>
-            <rect x="158" y="45" width="1" height="2" fill="#1f1916"/>
-            <rect x="161" y="45" width="1" height="2" fill="#1f1916"/>
-          </g>
+  <!-- Warm Stardew Valley Cozy Hero -->
+  <section class="hero-lab stardew-box" aria-label="Introduction">
+    <div class="stardew-scene" aria-hidden="true">
+      <svg class="stardew-scene-svg" viewBox="0 0 320 64" preserveAspectRatio="xMidYMid slice" shape-rendering="crispEdges">
+        <rect class="scene-sky" width="320" height="64"/>
+        <g class="scene-stars">
+          <rect x="24" y="8" width="2" height="2" fill="#fef08a"/>
+          <rect x="78" y="14" width="2" height="2" fill="#fde047"/>
+          <rect x="135" y="6" width="2" height="2" fill="#fef08a"/>
+          <rect x="198" y="12" width="2" height="2" fill="#fde047"/>
+          <rect x="256" y="7" width="2" height="2" fill="#fef08a"/>
+          <rect x="295" y="16" width="2" height="2" fill="#fde047"/>
+          <rect x="282" y="8" width="6" height="6" fill="#facc15"/>
+          <rect x="284" y="8" width="4" height="4" class="scene-sky-cut"/>
+        </g>
+        <g class="scene-sun">
+          <rect x="276" y="8" width="10" height="10" fill="#facc15"/>
+          <rect x="278" y="10" width="6" height="6" fill="#fef08a"/>
+        </g>
+        <g class="scene-clouds">
+          <rect x="30" y="12" width="24" height="6" fill="#fff8e7" opacity="0.9"/>
+          <rect x="36" y="8" width="12" height="4" fill="#fff8e7" opacity="0.9"/>
+          <rect x="148" y="16" width="28" height="6" fill="#fff8e7" opacity="0.85"/>
+          <rect x="154" y="12" width="14" height="4" fill="#fff8e7" opacity="0.85"/>
+          <rect x="220" y="10" width="20" height="5" fill="#fff8e7" opacity="0.8"/>
+        </g>
+        <rect x="0" y="42" width="320" height="22" fill="#4f8f3c"/>
+        <rect x="20" y="38" width="70" height="6" fill="#4f8f3c"/>
+        <rect x="120" y="36" width="90" height="8" fill="#5ba345"/>
+        <rect x="240" y="39" width="80" height="5" fill="#4f8f3c"/>
+        <rect x="0" y="50" width="320" height="14" fill="#7ec850"/>
+        <rect x="0" y="58" width="320" height="6" fill="#d6a868"/>
+        <rect x="18" y="36" width="4" height="16" fill="#6d4c41"/>
+        <rect x="12" y="24" width="16" height="14" fill="#2e6f28"/>
+        <rect x="14" y="20" width="12" height="6" fill="#4f8f3c"/>
+        <rect x="292" y="38" width="4" height="14" fill="#6d4c41"/>
+        <rect x="286" y="26" width="16" height="13" fill="#2e6f28"/>
+        <rect x="288" y="22" width="12" height="5" fill="#4f8f3c"/>
+        <rect x="48" y="47" width="3" height="7" fill="#8f563b"/>
+        <rect x="60" y="47" width="3" height="7" fill="#8f563b"/>
+        <rect x="72" y="47" width="3" height="7" fill="#8f563b"/>
+        <rect x="46" y="49" width="31" height="2" fill="#a86b47"/>
+        <rect x="226" y="38" width="26" height="14" fill="#c98a5b"/>
+        <rect x="224" y="34" width="30" height="5" fill="#8f3b2e"/>
+        <rect x="228" y="30" width="22" height="4" fill="#a64638"/>
+        <rect x="236" y="44" width="6" height="8" fill="#5c4332"/>
+        <rect x="245" y="42" width="4" height="4" fill="#fef08a"/>
+        <g class="scene-junimo">
+          <rect x="156" y="43" width="8" height="7" fill="#4f8f3c"/>
+          <rect x="157" y="41" width="6" height="2" fill="#7ec850"/>
+          <rect x="159" y="39" width="2" height="2" fill="#4f8f3c"/>
+          <rect x="158" y="45" width="1" height="2" fill="#1f1916"/>
+          <rect x="161" y="45" width="1" height="2" fill="#1f1916"/>
+        </g>
+      </svg>
+      <div class="stardew-hud-pill" id="valley-season-hud">
+        <span class="hud-season-dot" aria-hidden="true"></span>
+        <span id="valley-season-text">Fall · Day</span>
+      </div>
+    </div>
+
+    <div class="creator-bar">
+      <div class="monogram-avatar stardew-crest" aria-hidden="true">
+        <svg class="pixel-icon" width="22" height="22" viewBox="0 0 16 16" shape-rendering="crispEdges">
+          <rect x="7" y="1" width="2" height="2" fill="#eab308"/>
+          <rect x="5" y="3" width="6" height="2" fill="#facc15"/>
+          <rect x="2" y="5" width="12" height="3" fill="#eab308"/>
+          <rect x="4" y="8" width="8" height="3" fill="#ca8a04"/>
+          <rect x="3" y="11" width="4" height="3" fill="#eab308"/>
+          <rect x="9" y="11" width="4" height="3" fill="#eab308"/>
+          <rect x="6" y="6" width="1" height="2" fill="#3e2723"/>
+          <rect x="9" y="6" width="1" height="2" fill="#3e2723"/>
         </svg>
-        <div class="stardew-hud-pill" id="valley-season-hud">
-          <span class="hud-season-dot" aria-hidden="true"></span>
-          <span id="valley-season-text">Fall · Day</span>
-        </div>
       </div>
-
-      <h1 class="hero-h1">
-        <span class="highlight">~/{{ lower site.Title }}</span> — Learn Tech, Track News &amp; Ship Faster
-      </h1>
-      {{ with site.Params.homeInfoParams }}
-      <p class="hero-desc">{{ .Content }}</p>
-      {{ end }}
-      <div class="hero-actions">
-        <a class="btn-primary-cyber" href="{{ "learn/" | relLangURL }}">Start Learning →</a>
-        <a class="btn-hud" href="{{ "tools/" | relLangURL }}">Workshop Tools</a>
-        <a class="btn-hud" href="{{ "freebies/" | relLangURL }}">Freebies ({{ len $freebies }})</a>
+      <div class="creator-meta">
+        <div class="creator-name"><span>{{ site.Params.author }}</span></div>
+        <div class="social-pills">
+          {{ with site.Params.contact.github }}<a href="{{ . | safeURL }}" target="_blank" rel="noopener noreferrer">GitHub</a>{{ end }}
+          {{ with site.Params.contact.x }}<span aria-hidden="true">·</span><a href="{{ . | safeURL }}" target="_blank" rel="noopener noreferrer">X</a>{{ end }}
+          {{ with site.Home.OutputFormats.Get "RSS" }}<span aria-hidden="true">·</span><a href="{{ .RelPermalink }}">RSS</a>{{ end }}
+        </div>
       </div>
     </div>
 
-    <!-- RPG Character Status Card -->
-    <aside class="stardew-box rpg-status-card" aria-label="Builder profile">
-      <div class="creator-bar" style="margin-bottom: 0.9rem;">
-        <div class="monogram-avatar stardew-crest" aria-hidden="true">
-          <svg class="pixel-icon" width="24" height="24" viewBox="0 0 16 16" shape-rendering="crispEdges">
-            <rect x="7" y="1" width="2" height="2" fill="#eab308"/>
-            <rect x="5" y="3" width="6" height="2" fill="#facc15"/>
-            <rect x="2" y="5" width="12" height="3" fill="#eab308"/>
-            <rect x="4" y="8" width="8" height="3" fill="#ca8a04"/>
-            <rect x="3" y="11" width="4" height="3" fill="#eab308"/>
-            <rect x="9" y="11" width="4" height="3" fill="#eab308"/>
-            <rect x="6" y="6" width="1" height="2" fill="#3e2723"/>
-            <rect x="9" y="6" width="1" height="2" fill="#3e2723"/>
-          </svg>
-        </div>
-        <div class="creator-meta">
-          <div class="creator-name"><span>{{ site.Params.author }}</span></div>
-          <span class="creator-badge">Lv.16 Valley Builder</span>
-        </div>
-      </div>
-
-      <div class="rpg-bars">
-        <div class="rpg-bar-row">
-          <span>Notes &amp; Guides</span>
-          <div class="rpg-bar-track"><div class="rpg-bar-fill is-leaf" style="width: 86%"></div></div>
-        </div>
-        <div class="rpg-bar-row">
-          <span>Automation</span>
-          <div class="rpg-bar-track"><div class="rpg-bar-fill is-gold" style="width: 92%"></div></div>
-        </div>
-        <div class="rpg-bar-row">
-          <span>Cozy Tools</span>
-          <div class="rpg-bar-track"><div class="rpg-bar-fill is-berry" style="width: 80%"></div></div>
-        </div>
-      </div>
-
-      <div class="rpg-stats-row">
-        <span><strong>{{ len $posts }}</strong> Notes</span>
-        <span><strong>{{ len $news }}</strong> News</span>
-        <span><strong>{{ len $freebies }}</strong> Loot</span>
-      </div>
-
-      <div class="social-pills" style="margin-top: auto; padding-top: 0.75rem; border-top: 1px dashed var(--border-subtle);">
-        {{ with site.Params.contact.github }}<a href="{{ . | safeURL }}" target="_blank" rel="noopener noreferrer">GitHub</a>{{ end }}
-        {{ with site.Params.contact.x }}<span aria-hidden="true">·</span><a href="{{ . | safeURL }}" target="_blank" rel="noopener noreferrer">X</a>{{ end }}
-        {{ with site.Home.OutputFormats.Get "RSS" }}<span aria-hidden="true">·</span><a href="{{ .RelPermalink }}">RSS</a>{{ end }}
-        {{ with site.Home.OutputFormats.Get "LLMS" }}<span aria-hidden="true">·</span><a href="{{ .RelPermalink }}">llms.txt</a>{{ end }}
-      </div>
-    </aside>
-  </section>
-
-  <!-- Tier 2: Hotbar Inventory (4 Core Pillars with Slot Keys) -->
-  <section class="pillars-4-grid hotbar-grid" aria-label="Core pillars">
-    <a class="pillar-tile hotbar-slot" href="{{ "learn/" | relLangURL }}">
-      <span class="hotbar-key">1</span>
-      <div class="pillar-tile-top">
-        <span class="pillar-icon-label">
-          <svg class="pixel-icon" width="15" height="15" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect x="2" y="2" width="11" height="12" fill="#8f563b"/><rect x="4" y="3" width="8" height="10" fill="#fff8e7"/><rect x="5" y="5" width="6" height="1" fill="#4f8f3c"/><rect x="5" y="7" width="6" height="1" fill="#b45309"/><rect x="5" y="9" width="4" height="1" fill="#8f563b"/></svg>
-          LEARN
-        </span>
-      </div>
-      <div class="pillar-title">8 Tech &amp; AI Tracks</div>
-      <div class="pillar-sub">{{ len $posts }} lessons · Roadmaps</div>
-    </a>
-    <a class="pillar-tile hotbar-slot" href="{{ "news/" | relLangURL }}">
-      <span class="hotbar-key">2</span>
-      <div class="pillar-tile-top">
-        <span class="pillar-icon-label">
-          <svg class="pixel-icon" width="15" height="15" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect x="3" y="2" width="10" height="12" fill="#e6cfa3"/><rect x="2" y="2" width="12" height="2" fill="#8f563b"/><rect x="2" y="12" width="12" height="2" fill="#8f563b"/><rect x="5" y="6" width="6" height="1" fill="#3e2723"/><rect x="5" y="8" width="6" height="1" fill="#3e2723"/></svg>
-          TOWN NEWS
-        </span>
-      </div>
-      <div class="pillar-title">Signal Over Noise</div>
-      <div class="pillar-sub">{{ len $news }} dispatches · AI &amp; Dev</div>
-    </a>
-    <a class="pillar-tile hotbar-slot" href="{{ "tools/" | relLangURL }}">
-      <span class="hotbar-key">3</span>
-      <div class="pillar-tile-top">
-        <span class="pillar-icon-label">
-          <svg class="pixel-icon" width="15" height="15" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect x="7" y="6" width="2" height="8" fill="#8f563b"/><rect x="3" y="2" width="10" height="4" fill="#94a3b8"/><rect x="11" y="3" width="2" height="2" fill="#64748b"/></svg>
-          WORKSHOP
-        </span>
-      </div>
-      <div class="pillar-title">Zero-Install Apps</div>
-      <div class="pillar-sub">Browser tools &amp; kits</div>
-    </a>
-    <a class="pillar-tile hotbar-slot" href="{{ "freebies/" | relLangURL }}">
-      <span class="hotbar-key">4</span>
-      <div class="pillar-tile-top">
-        <span class="pillar-icon-label">
-          <svg class="pixel-icon" width="15" height="15" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect x="2" y="5" width="12" height="9" fill="#8f563b"/><rect x="2" y="4" width="12" height="3" fill="#b45309"/><rect x="7" y="6" width="2" height="3" fill="#facc15"/><rect x="3" y="8" width="10" height="1" fill="#5c4332"/></svg>
-          FREEBIES
-        </span>
-      </div>
-      <div class="pillar-title">Traveling Cart</div>
-      <div class="pillar-sub">{{ len $freebies }} free apps &amp; games</div>
-    </a>
-  </section>
-
-  <!-- Tier 3: Town Bulletin Board (Notice Board | TV News + Traveling Cart) -->
-  <div class="home-split-grid">
-    {{ with $posts }}
-    <section class="bulletin-panel" aria-labelledby="writing-heading">
-      <div class="bulletin-pin" aria-hidden="true"></div>
-      <div class="section-head">
-        <h2 class="section-label" id="writing-heading">Notice Board · Latest Guides</h2>
-        <a class="section-more" href="{{ "archives/" | relLangURL }}">Archive ({{ len . }}) →</a>
-      </div>
-      <ul class="writing-list">
-        {{ range first 6 . }}
-        {{ partial "post-list-item.html" . }}
-        {{ end }}
-      </ul>
-    </section>
+    <h1 class="hero-h1">
+      <span class="highlight">~/{{ lower site.Title }}</span> — Notes, Reviews &amp; Personal Projects
+    </h1>
+    {{ with site.Params.homeInfoParams }}
+    <p class="hero-desc">{{ .Content }}</p>
     {{ end }}
-
-    <div class="home-pulse-col">
-      {{ with $news }}
-      <section class="bulletin-panel" aria-labelledby="home-news-heading">
-        <div class="section-head">
-          <h2 class="section-label" id="home-news-heading">Valley TV · Tech News</h2>
-          <a class="section-more" href="{{ "news/" | relLangURL }}">All news →</a>
-        </div>
-        <ul class="home-compact-list">
-          {{ range first 3 . }}
-          <li>
-            <a href="{{ .RelPermalink }}">
-              <time datetime="{{ .Date.UTC.Format "2006-01-02" }}">{{ .Date.UTC.Format "2006-01-02" }}</time>
-              <span>{{ .Title }}</span>
-            </a>
-          </li>
-          {{ end }}
-        </ul>
-      </section>
-      {{ end }}
-
-      {{ with $freebies }}
-      <section class="bulletin-panel" aria-labelledby="home-freebies-heading">
-        <div class="section-head">
-          <h2 class="section-label" id="home-freebies-heading">Traveling Cart · Freebies</h2>
-          <a class="section-more" href="{{ "freebies/" | relLangURL }}">All ({{ len . }}) →</a>
-        </div>
-        <ul class="home-compact-list">
-          {{ range first 3 . }}
-          <li>
-            <a href="{{ "freebies/" | relLangURL }}">
-              <span class="status-pill is-active">{{ .status }}</span>
-              <span>{{ .name }}</span>
-            </a>
-          </li>
-          {{ end }}
-        </ul>
-      </section>
-      {{ end }}
+    <div class="hero-actions">
+      <a class="btn-primary-cyber" href="{{ "archives/" | relLangURL }}">Read Articles →</a>
+      <a class="btn-hud" href="{{ "tools/" | relLangURL }}">My Projects</a>
     </div>
-  </div>
+  </section>
 
+  <!-- Writing: Knowledge, Guides & Honest Reviews -->
+  {{ with $posts }}
+  <section class="home-section" aria-labelledby="writing-heading">
+    <div class="section-head">
+      <h2 class="section-label" id="writing-heading">Writing ({{ len . }})</h2>
+      <a class="section-more" href="{{ "archives/" | relLangURL }}">All articles →</a>
+    </div>
+    <ul class="writing-list">
+      {{ range first 8 . }}
+      {{ partial "post-list-item.html" . }}
+      {{ end }}
+    </ul>
+  </section>
+  {{ end }}
+
+  <!-- Personal Projects & Tools -->
   {{ with $catalog.sections }}
     {{- $firstSec := index . 0 -}}
     {{ with $firstSec.items }}
   <section class="home-section" aria-labelledby="projects-heading">
     <div class="section-head">
-      <h2 class="section-label" id="projects-heading">Workbench · Featured Tools</h2>
-      <a class="section-more" href="{{ "tools/" | relLangURL }}">All tools →</a>
+      <h2 class="section-label" id="projects-heading">My Projects</h2>
+      <a class="section-more" href="{{ "tools/" | relLangURL }}">View all →</a>
     </div>
     <div class="featured-grid">
-      {{ range first 2 . }}
+      {{ range first 4 . }}
       <a class="hud-card" href="{{ .url }}"{{ if strings.HasPrefix .url "http" }} target="_blank" rel="noopener noreferrer"{{ end }}>
         <div class="hud-card-top">
           <span class="product-badge">{{ .badge }}</span>

@@ -134,10 +134,9 @@
         try { await navigator.clipboard.writeText(location.href); } catch (_) {}
       },
     },
-    { label: "Go to Learn Hub (8 Tracks)", tag: "NAV", url: "/learn/" },
-    { label: "Go to Tech News", tag: "NAV", url: "/news/" },
-    { label: "Go to Tools & Kits", tag: "NAV", url: "/tools/" },
-    { label: "Go to Freebies & Giveaways", tag: "NAV", url: "/freebies/" },
+    { label: "Go to Articles (Archive)", tag: "NAV", url: "/archives/" },
+    { label: "Go to Projects & Tools", tag: "NAV", url: "/tools/" },
+    { label: "Go to About", tag: "NAV", url: "/about/" },
   ];
 
   function updateActiveCmd(items) {

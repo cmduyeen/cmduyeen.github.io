@@ -21,28 +21,22 @@ enableRobotsTXT = true
   other = ""
 
 [[menus.main]]
-  identifier = "learn"
-  name = "Learn"
-  pageRef = "/learn"
+  identifier = "articles"
+  name = "Articles"
+  pageRef = "/archives"
   weight = 10
 
 [[menus.main]]
-  identifier = "news"
-  name = "News"
-  pageRef = "/news"
+  identifier = "projects"
+  name = "Projects"
+  pageRef = "/tools"
   weight = 20
 
 [[menus.main]]
-  identifier = "tools"
-  name = "Tools"
-  pageRef = "/tools"
+  identifier = "about"
+  name = "About"
+  pageRef = "/about"
   weight = 30
-
-[[menus.main]]
-  identifier = "freebies"
-  name = "Freebies"
-  pageRef = "/freebies"
-  weight = 40
 
 [outputs]
   home = ["HTML", "RSS", "JSON", "LLMS"]
