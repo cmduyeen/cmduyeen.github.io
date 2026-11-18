@@ -56,23 +56,21 @@
         ]
       },
       {
-        "heading": "Pro Kits & Digital Bundles",
+        "heading": "Open-Source Templates & Handbooks",
         "items": [
           {
-            "name": "Cyber-Minimalism Hugo Theme + Automation Pack",
-            "badge": "PRO KIT · $19",
-            "price": "$19",
-            "description": "The exact ~/dyn Hugo theme: Cmd+K Command Palette, /llms.txt GEO, JSON-LD Schema, Newsroom & Obsidian-to-Hugo sync script.",
+            "name": "Cyber-Minimalism Hugo Theme (Open Source)",
+            "badge": "MIT · FREE SOURCE",
+            "description": "The full source code behind ~/dyn: Cmd+K Command Palette, /llms.txt GEO, JSON-LD Schema, and Obsidian-to-Hugo sync script.",
             "url": "https://github.com/cmduyeen/cmduyeen.github.io",
-            "cta": "Get Theme Bundle →"
+            "cta": "View Source on GitHub →"
           },
           {
-            "name": "Obsidian Kepano Vault + AI CLI Prompts",
-            "badge": "DIGITAL VAULT · $12",
-            "price": "$12",
-            "description": "Pre-configured Obsidian vault with .base dashboards, daily/project templates, and AI CLI automation workflows.",
-            "url": "/posts/serein-obsidian-guide/",
-            "cta": "View Vault Details →"
+            "name": "Markdown 101 Interactive Handbook",
+            "badge": "FREE SERIES · 10 PARTS",
+            "description": "Complete plain-text guide with built-in browser sandboxes for YAML, tables, callouts, and Hugo publishing.",
+            "url": "/posts/markdown-101-01-getting-started/",
+            "cta": "Start Reading →"
           }
         ]
       }
