@@ -29,14 +29,10 @@
       s.src = 'https://www.googletagmanager.com/gtag/js?id={{ . }}';
       document.head.appendChild(s);
     }
-    if ('requestIdleCallback' in window) {
-      requestIdleCallback(loadGA, { timeout: 4500 });
-    } else {
-      setTimeout(loadGA, 3500);
-    }
     ['scroll', 'mousemove', 'keydown', 'touchstart', 'click'].forEach(function(evt){
       window.addEventListener(evt, loadGA, { once: true, passive: true });
     });
+    setTimeout(loadGA, 8000);
   })();
 </script>
 {{- end }}
