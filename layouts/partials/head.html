@@ -1,5 +1,7 @@
 {{- $description := .Description | default site.Params.description -}}
 {{- $style := resources.Get "css/main.css" | minify -}}
+{{- $themeInitSrc := `(()=>{try{const t=localStorage.getItem("dyn-theme");if(t==="light"||t==="dark"){document.documentElement.setAttribute("data-theme",t)}else if(window.matchMedia("(prefers-color-scheme: light)").matches){document.documentElement.setAttribute("data-theme","light")}else{document.documentElement.setAttribute("data-theme","dark")}}catch(_){document.documentElement.setAttribute("data-theme","dark")}})();` -}}
+{{- $themeScript := resources.FromString "js/theme-init.js" $themeInitSrc | minify | fingerprint -}}
 {{- $englishHome := "" -}}
 {{- if and .IsHome (eq .Lang "vi") -}}
   {{- range site.Home.AllTranslations -}}
@@ -18,8 +20,8 @@
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://giscus.app; style-src 'self' 'unsafe-inline' https://giscus.app; img-src 'self' data: https:; frame-src https://giscus.app; connect-src 'self' https://giscus.app; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;">
 <meta name="description" content="{{ $description | plainify }}">
-<meta name="theme-color" content="#F6F4F0" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#191817" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#07080a" media="(prefers-color-scheme: dark)">
 {{- if eq .Section "posts" }}
 <link rel="dns-prefetch" href="https://giscus.app">
 <link rel="preconnect" href="https://giscus.app" crossorigin>
@@ -27,8 +29,9 @@
 <link rel="canonical" href="{{ .Permalink }}">
 <link rel="icon" href="{{ "favicon.svg" | relURL }}" type="image/svg+xml">
 {{ with site.Home.OutputFormats.Get "RSS" }}<link rel="alternate" type="application/rss+xml" title="{{ site.Title }} RSS" href="{{ .Permalink }}">{{ end }}
+<script src="{{ $themeScript.RelPermalink }}" integrity="{{ $themeScript.Data.Integrity }}" crossorigin="anonymous"></script>
 {{- with $langScript }}
-<script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous"></script>
+<script src="{{ $langScript.RelPermalink }}" integrity="{{ $langScript.Data.Integrity }}" crossorigin="anonymous"></script>
 {{- end }}
 <style>{{ $style.Content | safeCSS }}</style>
 <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
@@ -43,3 +46,4 @@
 <meta name="twitter:description" content="{{ $description | plainify }}">
 <meta name="twitter:image" content="{{ $ogImage }}">
 <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} · {{ site.Title }}{{ end }}</title>
+{{ partial "schema.html" . }}

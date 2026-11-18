@@ -1,6 +1,11 @@
-<li>
+{{- $tags := slice -}}
+{{- range (.Params.tags | default slice) -}}
+  {{- $tags = $tags | append (lower (printf "%v" .)) -}}
+{{- end -}}
+<li class="archive-post-item" data-tags="{{ delimit $tags "," }}">
   <a class="writing-item" href="{{ .RelPermalink }}">
-    <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006 · 01" }}</time>
+    <time datetime="{{ .Date.UTC.Format "2006-01-02" }}">{{ .Date.UTC.Format "2006-01-02" }}</time>
     <span>{{ .LinkTitle }}</span>
+    <span class="writing-meta">{{ .ReadingTime }}m</span>
   </a>
 </li>

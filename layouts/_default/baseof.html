@@ -1,5 +1,6 @@
+{{- $postsCount := len (where site.RegularPages "Section" "posts") -}}
 <!doctype html>
-<html lang="{{ site.Language.LanguageCode | default site.Language.Lang }}">
+<html lang="{{ site.Language.LanguageCode | default site.Language.Lang }}" data-theme="dark">
   <head>
     {{ partial "head.html" . }}
   </head>
@@ -7,7 +8,13 @@
     <a class="skip-link" href="#main">{{ T "skip_to_content" }}</a>
     <div class="site-shell">
       <header class="site-header">
-        <a class="site-title" href="{{ site.Home.RelPermalink }}">~/{{ lower site.Title }}</a>
+        <div class="brand-group">
+          <a class="site-title" href="{{ site.Home.RelPermalink }}"><span>~/</span>{{ lower site.Title }}</a>
+          <span class="telemetry-badge" title="Static Build Telemetry">
+            <span class="status-dot" aria-hidden="true"></span>
+            Build: Passing · {{ $postsCount }} {{ T "posts_unit" }}
+          </span>
+        </div>
         <nav aria-label="{{ T "main_navigation" }}">
           <ul>
             {{ $page := . }}
@@ -15,8 +22,12 @@
             <li class="nav-item"><a href="{{ .URL }}"{{ if $page.IsMenuCurrent "main" . }} aria-current="page"{{ end }}>{{ .Name }}</a></li>
             {{ end }}
             <li>
-              <button type="button" class="search-btn" id="search-trigger" aria-label="{{ if eq site.Language.Lang "vi" }}Tìm kiếm{{ else }}Search{{ end }}" title="{{ if eq site.Language.Lang "vi" }}Tìm kiếm (/) {{ else }}Search (/){{ end }}">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+              <button type="button" class="kbd-btn" id="search-trigger" aria-label="{{ if eq site.Language.Lang "vi" }}Tìm kiếm{{ else }}Search{{ end }}" title="{{ if eq site.Language.Lang "vi" }}Tìm kiếm (⌘K / /){{ else }}Search (⌘K / /){{ end }}">⌘K</button>
+            </li>
+            <li>
+              <button type="button" class="icon-btn-sm" id="theme-toggle" aria-label="{{ if eq site.Language.Lang "vi" }}Đổi giao diện Sáng/Tối{{ else }}Toggle Light/Dark theme{{ end }}" title="{{ if eq site.Language.Lang "vi" }}Đổi giao diện Sáng/Tối{{ else }}Toggle Light/Dark theme{{ end }}">
+                <svg class="icon-sun" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+                <svg class="icon-moon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
               </button>
             </li>
             {{ range site.Home.AllTranslations }}
@@ -27,8 +38,8 @@
                   {{ if eq .Lang $home.Lang }}{{ $href = .RelPermalink }}{{ end }}
                 {{ end }}
             <li>
-              <a class="lang-btn" href="{{ $href }}" lang="{{ $home.Language.Lang }}" hreflang="{{ $home.Language.Lang }}" data-language-switch="{{ $home.Lang }}" title="{{ $home.Language.LanguageName }}" aria-label="{{ $home.Language.LanguageName }}">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>
+              <a class="icon-btn-sm lang-btn" href="{{ $href }}" lang="{{ $home.Language.Lang }}" hreflang="{{ $home.Language.Lang }}" data-language-switch="{{ $home.Lang }}" title="{{ $home.Language.LanguageName }}" aria-label="{{ $home.Language.LanguageName }}">
+                {{ upper $home.Language.Lang }}
               </a>
             </li>
               {{ end }}
@@ -36,14 +47,39 @@
           </ul>
         </nav>
       </header>
+
       <main id="main">
         {{ block "main" . }}{{ end }}
       </main>
+
       <footer class="site-footer">
-        <span>© {{ now.Year }} {{ site.Params.author }}</span>
-        {{ with site.Home.OutputFormats.Get "RSS" }}<a href="{{ .RelPermalink }}">RSS</a>{{ end }}
+        <div class="footer-col">
+          <div class="footer-brand"><span>~/</span>{{ lower site.Title }} — Engineering Notes &amp; Automation</div>
+          <p class="footer-meta">Built with Hugo · Hosted on GitHub Pages</p>
+          <p class="footer-meta">© {{ now.Year }} {{ site.Params.author }}. MIT / Open-Core.</p>
+        </div>
+        <div class="footer-col">
+          <div class="footer-heading">Explore</div>
+          <ul class="footer-links">
+            <li><a href="{{ "archives/" | relLangURL }}">Archive</a></li>
+            <li><a href="{{ "tools/" | relLangURL }}">Tools</a></li>
+            <li><a href="{{ "tags/" | relLangURL }}">{{ T "topics" }}</a></li>
+            {{ with site.Home.OutputFormats.Get "RSS" }}<li><a href="{{ .RelPermalink }}">RSS (/index.xml)</a></li>{{ end }}
+            {{ with site.Home.OutputFormats.Get "LLMS" }}<li><a href="{{ .RelPermalink }}">llms.txt</a></li>{{ end }}
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-heading">Connect</div>
+          <ul class="footer-links">
+            {{ with site.Params.contact.github }}<li><a href="{{ . | safeURL }}" target="_blank" rel="noopener noreferrer">GitHub</a></li>{{ end }}
+            {{ with site.Params.contact.x }}<li><a href="{{ . | safeURL }}" target="_blank" rel="noopener noreferrer">X (Twitter)</a></li>{{ end }}
+            <li><a href="{{ "about/" | relLangURL }}">About</a></li>
+            <li><button type="button" class="footer-cmd-btn" data-open-search>⌘K Search</button></li>
+          </ul>
+        </div>
       </footer>
     </div>
+
     <dialog id="search-dialog" class="search-dialog" data-index-url="{{ "index.json" | relLangURL }}" data-empty-msg="{{ if eq site.Language.Lang "vi" }}Không tìm thấy bài viết phù hợp.{{ else }}No matching posts found.{{ end }}">
       <div class="search-box">
         <div class="search-input-row">
@@ -54,9 +90,11 @@
         <ul id="search-results" class="writing-list search-results"></ul>
       </div>
     </dialog>
+
     <button type="button" id="back-to-top" class="back-to-top" aria-label="{{ if eq site.Language.Lang "vi" }}Lên đầu trang{{ else }}Back to top{{ end }}" title="{{ if eq site.Language.Lang "vi" }}Lên đầu trang{{ else }}Back to top{{ end }}">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
     </button>
+
     {{- $script := resources.Get "js/main.js" | minify | fingerprint -}}
     <script src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}" crossorigin="anonymous" defer></script>
   </body>

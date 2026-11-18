@@ -1,41 +1,140 @@
 {{ define "main" }}
-  {{ with site.Params.homeInfoParams }}
-  <section class="home-intro" aria-label="Introduction">
-    <h1>{{ .Title }}</h1>
-    <p>{{ .Content }}</p>
+  {{- $isVi := eq site.Language.Lang "vi" -}}
+  {{- $posts := (where site.RegularPages "Section" "posts").ByDate.Reverse -}}
+
+  <section class="hero-lab" aria-label="Introduction">
+    <div class="creator-bar">
+      <div class="monogram-avatar" aria-hidden="true">~/d</div>
+      <div class="creator-meta">
+        <div class="creator-name">
+          <span>{{ site.Params.author }}</span>
+          <span class="creator-badge">Engineering Notes · Automation · PKM</span>
+        </div>
+        <div class="social-pills">
+          {{ with site.Params.contact.github }}<a href="{{ . | safeURL }}" target="_blank" rel="noopener noreferrer">GitHub</a>{{ end }}
+          {{ with site.Params.contact.x }}<span aria-hidden="true">·</span><a href="{{ . | safeURL }}" target="_blank" rel="noopener noreferrer">X</a>{{ end }}
+          {{ with site.Home.OutputFormats.Get "RSS" }}<span aria-hidden="true">·</span><a href="{{ .RelPermalink }}">RSS</a>{{ end }}
+        </div>
+      </div>
+    </div>
+
+    <h1 class="hero-h1">
+      <span class="highlight">~/{{ lower site.Title }}</span> —
+      {{ if $isVi }}Ghi chép Kỹ thuật, Tự động hóa &amp; PKM{{ else }}Engineering Notes, Automation &amp; PKM{{ end }}
+    </h1>
+    {{ with site.Params.homeInfoParams }}
+    <p class="hero-desc">{{ .Content }}</p>
+    {{ end }}
+    <div class="hero-actions">
+      <a class="btn-primary-cyber" href="{{ "archives/" | relLangURL }}">{{ if $isVi }}Khám phá Archive →{{ else }}Explore Guides →{{ end }}</a>
+      <a class="btn-hud" href="{{ "tools/" | relLangURL }}">{{ if $isVi }}Mở Web Tools{{ else }}Open Web Tools{{ end }}</a>
+    </div>
   </section>
+
+  <section class="pillars-4-grid" aria-label="{{ if $isVi }}4 trụ cột chính{{ else }}Core pillars{{ end }}">
+    <a class="pillar-tile" href="{{ "archives/" | relLangURL }}">
+      <div class="pillar-tile-top"><span><span aria-hidden="true">[01] </span>GUIDES &amp; ARCHIVE</span><span aria-hidden="true">↗</span></div>
+      <div class="pillar-title">{{ if $isVi }}Chuỗi bài &amp; Thực hành{{ else }}Step-by-step Series{{ end }}</div>
+      <div class="pillar-sub">{{ len $posts }} {{ T "posts_unit" }} · Markdown, Hugo, PKM</div>
+    </a>
+    <a class="pillar-tile" href="{{ "tools/" | relLangURL }}">
+      <div class="pillar-tile-top"><span><span aria-hidden="true">[02] </span>WEB TOOLS</span><span aria-hidden="true">↗</span></div>
+      <div class="pillar-title">{{ if $isVi }}Tiện ích trình duyệt{{ else }}Client-Side Utilities{{ end }}</div>
+      <div class="pillar-sub">{{ if $isVi }}Lịch Âm .ics, GitHub &amp; Blog Kit{{ else }}Lunar .ics, GitHub &amp; Blog Kits{{ end }}</div>
+    </a>
+    <a class="pillar-tile" href="{{ "about/" | relLangURL }}">
+      <div class="pillar-tile-top"><span><span aria-hidden="true">[03] </span>OPEN SOURCE</span><span aria-hidden="true">↗</span></div>
+      <div class="pillar-title">{{ if $isVi }}Dự án &amp; Kho mã nguồn{{ else }}Projects &amp; Stack{{ end }}</div>
+      <div class="pillar-sub">Serein Suite · Lunar Calendars</div>
+    </a>
+    <a class="pillar-tile" href="{{ "tags/" | relLangURL }}">
+      <div class="pillar-tile-top"><span><span aria-hidden="true">[04] </span>TOPICS INDEX</span><span aria-hidden="true">↗</span></div>
+      <div class="pillar-title">{{ if $isVi }}Chỉ mục Chủ đề{{ else }}All Topics &amp; Tags{{ end }}</div>
+      <div class="pillar-sub">{{ len site.Taxonomies.tags }} {{ if $isVi }}chủ đề đang hoạt động{{ else }}active tags{{ end }}</div>
+    </a>
+  </section>
+
+  {{ $featured := slice }}
+  {{ range $posts }}
+    {{ if and (lt (len $featured) 2) (or (in .RelPermalink "obsidian-to-github-blog-01") (in .RelPermalink "serein-theme-suite") (in .RelPermalink "markdown-101-01") (in .RelPermalink "viet-bang-markdown-01")) }}
+      {{ $featured = $featured | append . }}
+    {{ end }}
+  {{ end }}
+  {{ if lt (len $featured) 2 }}
+    {{ $featured = first 2 $posts }}
   {{ end }}
 
-  {{ $posts := (where site.RegularPages "Section" "posts").ByDate.Reverse }}
-  {{ with index $posts 0 }}
-  <section class="latest-card" aria-labelledby="latest-heading">
-    <p class="eyebrow"><a href="{{ .RelPermalink }}">{{ T "latest" }}</a></p>
-    <a class="latest-link" href="{{ .RelPermalink }}">
-      <h2 id="latest-heading">{{ .LinkTitle }}</h2>
-      <p class="latest-summary">{{ .Summary | plainify | htmlUnescape | truncate 130 }}</p>
-      <p class="metadata">
-        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02/01/2006" }}</time>
-        <span aria-hidden="true">·</span>
-        <span>{{ .ReadingTime }} {{ T "minutes_read" }}</span>
-      </p>
-    </a>
+  {{ with $featured }}
+  <section class="home-section" aria-labelledby="featured-heading">
+    <div class="section-head">
+      <h2 class="section-label" id="featured-heading"><span aria-hidden="true">// </span>{{ if $isVi }}Hướng dẫn Tiêu điểm{{ else }}Featured Guides{{ end }}</h2>
+      <a class="section-more" href="{{ "archives/" | relLangURL }}">{{ if $isVi }}Tất cả →{{ else }}All guides →{{ end }}</a>
+    </div>
+    <div class="featured-grid">
+      {{ range . }}
+      <a class="hud-card" href="{{ .RelPermalink }}">
+        <div class="hud-card-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+        </div>
+        <h3 class="hud-card-title">{{ .LinkTitle }}</h3>
+        <p class="hud-card-desc">{{ .Summary | plainify | htmlUnescape | truncate 110 }}</p>
+        <div class="hud-card-meta">
+          <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+          <span aria-hidden="true">·</span>
+          <span>{{ .ReadingTime }} {{ T "minutes_read" }}</span>
+        </div>
+      </a>
+      {{ end }}
+    </div>
   </section>
   {{ end }}
 
   {{ with $posts }}
   <section class="home-section" aria-labelledby="writing-heading">
-    <h2 class="section-label" id="writing-heading"><a href="{{ "archives/" | relLangURL }}">{{ T "posts" }}</a></h2>
+    <div class="section-head">
+      <h2 class="section-label" id="writing-heading"><span aria-hidden="true">// </span>{{ T "latest" }}</h2>
+      <a class="section-more" href="{{ "archives/" | relLangURL }}">{{ if $isVi }}Xem toàn bộ ({{ len . }}) →{{ else }}View all ({{ len . }}) →{{ end }}</a>
+    </div>
     <ul class="writing-list">
-      {{ range . }}
+      {{ range first 8 . }}
       {{ partial "post-list-item.html" . }}
       {{ end }}
     </ul>
   </section>
   {{ end }}
 
+  {{- $langData := index site.Data.products site.Language.Lang -}}
+  {{ with $langData.sections }}
+    {{- $firstSec := index . 0 -}}
+    {{ with $firstSec.items }}
+  <section class="home-section" aria-labelledby="projects-heading">
+    <div class="section-head">
+      <h2 class="section-label" id="projects-heading"><span aria-hidden="true">// </span>{{ if $isVi }}Dự án &amp; Công cụ{{ else }}Projects &amp; Tools{{ end }}</h2>
+      <a class="section-more" href="{{ "tools/" | relLangURL }}">{{ if $isVi }}Mở tất cả →{{ else }}All tools →{{ end }}</a>
+    </div>
+    <div class="featured-grid">
+      {{ range first 4 . }}
+      <a class="hud-card" href="{{ .url }}"{{ if strings.HasPrefix .url "http" }} target="_blank" rel="noopener noreferrer"{{ end }}>
+        <div class="hud-card-top">
+          <span class="product-badge">{{ .badge }}</span>
+          <span class="hud-card-arrow" aria-hidden="true">↗</span>
+        </div>
+        <h3 class="hud-card-title">{{ .name }}</h3>
+        <p class="hud-card-desc">{{ .description | truncate 105 }}</p>
+        <div class="product-cta">{{ .cta }}</div>
+      </a>
+      {{ end }}
+    </div>
+  </section>
+    {{ end }}
+  {{ end }}
+
   {{ with site.Taxonomies.tags.Alphabetical }}
   <section class="home-section" aria-labelledby="topics-heading">
-    <h2 class="section-label" id="topics-heading"><a href="{{ "tags/" | relLangURL }}">{{ T "topics" }}</a></h2>
+    <div class="section-head">
+      <h2 class="section-label" id="topics-heading"><span aria-hidden="true">// </span>{{ T "topics" }}</h2>
+      <a class="section-more" href="{{ "tags/" | relLangURL }}">{{ if $isVi }}Tất cả thẻ →{{ else }}All tags →{{ end }}</a>
+    </div>
     <div class="topic-pills">
       {{- range . -}}
       <a class="topic-pill" href="{{ .Page.RelPermalink }}">#{{ .Page.LinkTitle }}</a>
@@ -43,8 +142,4 @@
     </div>
   </section>
   {{ end }}
-
-  <hr class="section-divider">
-
-  {{ partial "updates.html" . }}
 {{ end }}

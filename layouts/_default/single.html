@@ -3,27 +3,43 @@
   <div id="reading-progress" class="reading-progress" aria-hidden="true"></div>
   {{ end }}
   {{- $hasToc := and (eq .Section "posts") (in .TableOfContents "<li>") -}}
+  {{- $isVi := eq site.Language.Lang "vi" -}}
   <article>
     <header class="article-header">
       {{ if eq .Section "posts" }}
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="{{ site.Home.RelPermalink }}">~/{{ lower site.Title }}</a>
+        <span aria-hidden="true">/</span>
+        <a href="{{ "archives/" | relLangURL }}">Archive</a>
+      </nav>
+      {{ end }}
+      <h1>{{ .Title }}</h1>
+      {{ if eq .Section "posts" }}
       <p class="article-date">
-        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02/01/2006" }}</time>
+        <span>By {{ site.Params.author }}</span>
+        <span aria-hidden="true">·</span>
+        <time datetime="{{ .Date.UTC.Format "2006-01-02T15:04:05Z" }}">{{ .Date.UTC.Format "2006-01-02" }} UTC</time>
         <span aria-hidden="true">·</span>
         <span>{{ .ReadingTime }} {{ T "minutes_read" }}</span>
       </p>
       {{ end }}
-      <h1>{{ .Title }}</h1>
     </header>
     <div class="article-body-wrap{{ if $hasToc }} has-toc{{ end }}">
       {{ if $hasToc }}
       <aside class="article-toc" aria-label="{{ T "table_of_contents" }}">
-        <details class="toc">
+        <details class="toc" open>
           <summary>{{ T "table_of_contents" }}</summary>
           {{ .TableOfContents }}
         </details>
       </aside>
       {{ end }}
       <div class="article-content">
+        {{ if and (eq .Section "posts") .Description }}
+        <aside class="tldr-box" aria-label="TL;DR">
+          <div class="tldr-label"><span aria-hidden="true">// </span>TL;DR</div>
+          <p>{{ .Description }}</p>
+        </aside>
+        {{ end }}
         {{ .Content }}
       </div>
     </div>
@@ -33,6 +49,30 @@
     </footer>
     {{ end }}
   </article>
+
+  {{ if eq .Section "posts" }}
+    {{ if or .PrevInSection .NextInSection }}
+    <nav class="post-nav-grid" aria-label="{{ if $isVi }}Điều hướng bài viết{{ else }}Post navigation{{ end }}">
+      <div>
+        {{ with .PrevInSection }}
+        <a class="post-nav-card" href="{{ .RelPermalink }}">
+          <span class="post-nav-dir">← {{ if $isVi }}Bài trước{{ else }}Previous{{ end }}</span>
+          <span class="post-nav-title">{{ .LinkTitle }}</span>
+        </a>
+        {{ end }}
+      </div>
+      <div>
+        {{ with .NextInSection }}
+        <a class="post-nav-card is-next" href="{{ .RelPermalink }}">
+          <span class="post-nav-dir">{{ if $isVi }}Bài tiếp theo{{ else }}Next{{ end }} →</span>
+          <span class="post-nav-title">{{ .LinkTitle }}</span>
+        </a>
+        {{ end }}
+      </div>
+    </nav>
+    {{ end }}
+  {{ end }}
+
   {{ partial "comments.html" . }}
   {{ partial "article-footer.html" . }}
 {{ end }}

@@ -1,0 +1,34 @@
+# ~/dyn — {{ site.Params.author }}
+> {{ site.Params.description }}
+
+- Website: {{ site.Home.Permalink }}
+- Author: {{ site.Params.author }}
+{{- with site.Params.contact.github }}
+- GitHub: {{ . }}
+{{- end }}
+{{- with site.Params.contact.x }}
+- X: {{ . }}
+{{- end }}
+{{ with site.Home.OutputFormats.Get "RSS" }}- RSS: {{ .Permalink }}{{ end }}
+
+## Core Pages
+- Archive & Guides: {{ "archives/" | absLangURL }}
+- Web Tools & Kits: {{ "tools/" | absLangURL }}
+- Topics Index: {{ "tags/" | absLangURL }}
+- About: {{ "about/" | absLangURL }}
+
+## Web Tools & Projects
+{{- $langData := index site.Data.products site.Language.Lang -}}
+{{- with $langData.sections -}}
+  {{- range . }}
+### {{ .heading }}
+    {{- range .items }}
+- [{{ .name }}]({{ .url | absURL }}): {{ .description }}
+    {{- end }}
+  {{- end -}}
+{{- end }}
+
+## Articles ({{ len (where site.RegularPages "Section" "posts") }})
+{{ range (where site.RegularPages "Section" "posts").ByDate.Reverse -}}
+- [{{ .Title }}]({{ .Permalink }}) ({{ .Date.UTC.Format "2006-01-02" }}): {{ .Description | default (.Summary | plainify | htmlUnescape | truncate 160) }}
+{{ end -}}

@@ -150,7 +150,51 @@
   }
 
   searchTrigger?.addEventListener("click", openSearch);
+  for (const btn of document.querySelectorAll("[data-open-search]")) {
+    btn.addEventListener("click", openSearch);
+  }
   searchClose?.addEventListener("click", () => searchDialog?.close());
+
+  const themeToggle = document.getElementById("theme-toggle");
+  themeToggle?.addEventListener("click", () => {
+    const current = document.documentElement.getAttribute("data-theme") === "light" ? "light" : "dark";
+    const next = current === "dark" ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", next);
+    try {
+      localStorage.setItem("dyn-theme", next);
+    } catch (_) {}
+  });
+
+  const filterChips = Array.from(document.querySelectorAll("[data-filter-tag]"));
+  const archiveItems = Array.from(document.querySelectorAll("#archive-list .archive-post-item"));
+  const archiveSeries = Array.from(document.querySelectorAll("#archive-list .archive-series"));
+  const archiveVisibleCount = document.getElementById("archive-visible-count");
+
+  if (filterChips.length > 0 && archiveItems.length > 0) {
+    filterChips.forEach((chip) => {
+      chip.addEventListener("click", () => {
+        const tag = chip.dataset.filterTag || "all";
+        filterChips.forEach((c) => c.classList.toggle("is-active", c === chip));
+
+        let visible = 0;
+        archiveItems.forEach((item) => {
+          const itemTags = (item.dataset.tags || "").split(",").filter(Boolean);
+          const match = tag === "all" || itemTags.includes(tag);
+          item.hidden = !match;
+          if (match) visible += 1;
+        });
+
+        archiveSeries.forEach((section) => {
+          const hasVisible = section.querySelector(".archive-post-item:not([hidden])") !== null;
+          section.hidden = !hasVisible;
+        });
+
+        if (archiveVisibleCount) {
+          archiveVisibleCount.textContent = String(visible);
+        }
+      });
+    });
+  }
   searchDialog?.addEventListener("click", (e) => {
     if (e.target === searchDialog) searchDialog.close();
   });

@@ -1,0 +1,16 @@
+{{- $sameAs := slice -}}
+{{- with site.Params.contact.github }}{{ $sameAs = $sameAs | append . }}{{ end -}}
+{{- with site.Params.contact.x }}{{ $sameAs = $sameAs | append . }}{{ end -}}
+{{- $person := dict "@type" "Person" "name" site.Params.author "url" site.Home.Permalink "sameAs" $sameAs -}}
+{{- if .IsHome -}}
+{{- $webSite := dict "@context" "https://schema.org" "@type" "WebSite" "name" site.Title "url" site.Home.Permalink "description" site.Params.description "author" $person -}}
+<script type="application/ld+json">{{ $webSite | jsonify | safeJS }}</script>
+{{- else if eq .Section "posts" -}}
+{{- $desc := .Description | default (.Summary | plainify | htmlUnescape | truncate 160) -}}
+{{- $ogImage := "images/og-default.png" | absURL -}}
+{{- with .Params.image }}{{ $ogImage = . | absURL }}{{ end -}}
+{{- $article := dict "@context" "https://schema.org" "@type" "TechArticle" "headline" .Title "description" $desc "datePublished" (.Date.UTC.Format "2006-01-02T15:04:05Z") "dateModified" (.Lastmod.UTC.Format "2006-01-02T15:04:05Z") "url" .Permalink "image" $ogImage "author" $person "publisher" $person -}}
+{{- $breadcrumb := dict "@context" "https://schema.org" "@type" "BreadcrumbList" "itemListElement" (slice (dict "@type" "ListItem" "position" 1 "name" "Home" "item" site.Home.Permalink) (dict "@type" "ListItem" "position" 2 "name" "Archive" "item" ("archives/" | absLangURL)) (dict "@type" "ListItem" "position" 3 "name" .Title "item" .Permalink)) -}}
+<script type="application/ld+json">{{ $article | jsonify | safeJS }}</script>
+<script type="application/ld+json">{{ $breadcrumb | jsonify | safeJS }}</script>
+{{- end -}}

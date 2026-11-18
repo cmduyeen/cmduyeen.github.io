@@ -657,8 +657,9 @@ def convert_obsidian_to_hugo(note_path: Path, dest_bundle: Path, draft_override:
 
     post_title = title(note_path)
     slug = get_post_slug(note_path)
-    raw_date = extract_yaml_scalar(header, ['Ngày xuất bản', 'Ngày tạo', 'date'])
-    pub_date = raw_date if re.match(r'^\d{4}-\d{2}-\d{2}', raw_date) else dt.date.today().isoformat()
+    raw_date = clean_wikilink(extract_yaml_scalar(header, ['Ngày xuất bản', 'Ngày tạo', 'date']))
+    date_match = re.search(r'(\d{4}-\d{2}-\d{2})', raw_date)
+    pub_date = date_match.group(1) if date_match else dt.date.today().isoformat()
     desc = extract_yaml_scalar(header, ['Mô tả', 'description'])
     category = extract_yaml_scalar(header, ['Chuyên mục', 'category'])
     series_val = extract_yaml_scalar(header, ['Series', 'series'])
