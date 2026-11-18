@@ -29,19 +29,3 @@
   note: In-depth video workshops taught by practicing engineers, zero fluff.
   url: https://frontendmasters.com/
   cta: Browse Courses
-
-- id: cursor-ide
-  category: Dev Stack
-  badge: AI Code Editor
-  name: Cursor AI Editor
-  note: Fast full-codebase context and refactoring for solo builders.
-  url: https://cursor.com/
-  cta: Try Cursor
-
-- id: cloudflare-pages
-  category: Dev Stack
-  badge: Edge Hosting
-  name: Cloudflare Pages + Email Routing
-  note: Unlimited static bandwidth with private email aliasing built in.
-  url: https://pages.cloudflare.com/
-  cta: Explore Edge

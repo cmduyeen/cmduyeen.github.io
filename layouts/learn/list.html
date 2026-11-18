@@ -127,4 +127,32 @@
       {{- end -}}
     </div>
   </section>
+
+  <!-- Block 3: Curated Books & Courses (Discreet Affiliate Shelf inside /learn/) -->
+  <section class="home-section" id="books" aria-labelledby="books-heading">
+    <div class="section-head">
+      <h2 class="section-label" id="books-heading"><span aria-hidden="true">// </span>Recommended Books &amp; Courses</h2>
+      <span class="archive-series-count">Honest shelf · Affiliate-supported</span>
+    </div>
+
+    <div class="archive-filter-bar" role="group" aria-label="Filter books and courses">
+      <button type="button" class="filter-chip is-active" data-deal-filter="all">All</button>
+      <button type="button" class="filter-chip" data-deal-filter="Tech Books">Tech Books</button>
+      <button type="button" class="filter-chip" data-deal-filter="Courses & Platforms">Courses &amp; Platforms</button>
+    </div>
+
+    <div class="featured-grid" id="deals-grid">
+      {{ range site.Data.library }}
+      <a class="hud-card deal-card" data-deal-category="{{ .category }}" href="{{ .url }}" target="_blank" rel="noopener noreferrer">
+        <div class="hud-card-top">
+          <span class="product-badge">{{ .badge }} · {{ .category }}</span>
+          <span class="hud-card-arrow" aria-hidden="true">↗</span>
+        </div>
+        <h3 class="hud-card-title">{{ .name }}</h3>
+        <p class="hud-card-desc">{{ .note }}</p>
+        <div class="product-cta">{{ .cta }} →</div>
+      </a>
+      {{ end }}
+    </div>
+  </section>
 {{ end }}

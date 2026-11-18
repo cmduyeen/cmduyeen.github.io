@@ -23,7 +23,6 @@
   - No-Code & Everyday AI (AI Prompts, Zapier, n8n, Builders): {{ "learn/no-code-ai/" | absLangURL }}
 - Tech News: {{ "news/" | absLangURL }}
 - Tools & Digital Kits: {{ "tools/" | absLangURL }}
-- Library (Books & Courses): {{ "library/" | absLangURL }}
 - Freebies & Giveaways: {{ "freebies/" | absLangURL }}
 - Archive: {{ "archives/" | absLangURL }}
 - About: {{ "about/" | absLangURL }}

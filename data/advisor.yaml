@@ -20,7 +20,7 @@
       url: "/tools/"
     - prefix: "Courses:"
       label: "Frontend Masters & roadmap.sh"
-      url: "/library/"
+      url: "/learn/#books"
 
 - id: backend
   label: "Build Servers & APIs (Backend)"
@@ -41,7 +41,7 @@
   extras:
     - prefix: "Must-Read:"
       label: "Designing Data-Intensive Applications"
-      url: "/library/"
+      url: "/learn/#books"
     - prefix: "Perks:"
       label: "Cloud & Database Free Tiers"
       url: "/freebies/"
@@ -65,7 +65,7 @@
   extras:
     - prefix: "IDE:"
       label: "Cursor AI & Dev Stack"
-      url: "/library/"
+      url: "/learn/#books"
     - prefix: "Tools:"
       label: "Zero-Install Web Utilities"
       url: "/tools/"
@@ -89,7 +89,7 @@
   extras:
     - prefix: "Edge:"
       label: "Cloudflare Pages & Routing"
-      url: "/library/"
+      url: "/learn/#books"
     - prefix: "Freebies:"
       label: "GitHub Builder Perks"
       url: "/freebies/"
@@ -116,7 +116,7 @@
       url: "/freebies/"
     - prefix: "Books:"
       label: "Curated Tech & Systems Shelf"
-      url: "/library/"
+      url: "/learn/#books"
 
 - id: office
   label: "Work Smarter (Office & Sheets)"

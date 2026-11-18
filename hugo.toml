@@ -39,16 +39,10 @@ enableRobotsTXT = true
   weight = 30
 
 [[menus.main]]
-  identifier = "library"
-  name = "Library"
-  pageRef = "/library"
-  weight = 40
-
-[[menus.main]]
   identifier = "freebies"
   name = "Freebies"
   pageRef = "/freebies"
-  weight = 50
+  weight = 40
 
 [outputs]
   home = ["HTML", "RSS", "JSON", "LLMS"]
