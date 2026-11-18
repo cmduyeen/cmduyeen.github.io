@@ -899,6 +899,126 @@ main {
   color: var(--accent-emerald);
 }
 
+/* Tools Showcase & Mini App Store */
+.tool-spotlight {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 1.75rem;
+  align-items: center;
+  margin-bottom: 2.75rem;
+  padding: 1.5rem;
+  border: 1px solid rgba(16, 185, 129, 0.32);
+  border-radius: var(--radius-md);
+  background: var(--bg-surface);
+}
+
+.tool-spotlight-title {
+  margin: 0.6rem 0 0.5rem;
+  font-size: 1.45rem;
+  line-height: 1.25;
+}
+
+.tool-spotlight-desc {
+  margin: 0 0 0.85rem;
+  color: var(--text-secondary);
+  font-size: 0.94rem;
+}
+
+.tool-spotlight-bullets {
+  margin: 0 0 1.25rem;
+  padding-left: 1.15rem;
+  color: var(--text-secondary);
+  font-size: 0.86rem;
+}
+
+.tool-spotlight-bullets li + li {
+  margin-top: 0.25rem;
+}
+
+.tool-mockup {
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  background: var(--bg-void);
+  overflow: hidden;
+}
+
+.tool-mockup-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.55rem 0.8rem;
+  border-bottom: 1px solid var(--border-subtle);
+  background: var(--bg-elevated);
+}
+
+.tool-mockup-bar span:not(.tool-mockup-title) {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--border-strong);
+}
+
+.tool-mockup-title {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.tool-mockup-code {
+  margin: 0;
+  padding: 0.95rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  line-height: 1.55;
+  color: var(--accent-emerald);
+  overflow-x: auto;
+}
+
+.tool-card-head {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.tool-icon-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.9rem;
+  height: 1.9rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  background: var(--bg-void);
+  color: var(--accent-cyan);
+}
+
+.tool-card-actions {
+  margin-top: auto;
+  padding-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.tool-card-actions .product-cta {
+  margin-top: 0;
+  padding-top: 0;
+  text-decoration: none;
+}
+
+.tool-guide-link {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.tool-guide-link:hover {
+  color: var(--accent-emerald);
+}
+
 /* Newsroom 2-Column Layout (Feed + Retention Sidebar) */
 .news-layout {
   display: grid;
@@ -2407,7 +2527,8 @@ main {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .news-layout {
+  .news-layout,
+  .tool-spotlight {
     grid-template-columns: 1fr;
   }
 

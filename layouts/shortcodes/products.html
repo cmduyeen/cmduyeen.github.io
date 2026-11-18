@@ -1,25 +1,97 @@
 {{- $catalog := index site.Data.products "en" -}}
+
+{{- with $catalog.spotlight -}}
+<section class="tool-spotlight" aria-label="Featured tool">
+  <div class="tool-spotlight-info">
+    <span class="status-pill is-active">{{ .badge }}</span>
+    <h2 class="tool-spotlight-title">{{ .name }}</h2>
+    <p class="tool-spotlight-desc">{{ .description }}</p>
+    <ul class="tool-spotlight-bullets">
+      {{- range .bullets -}}
+      <li>{{ . }}</li>
+      {{- end -}}
+    </ul>
+    <div class="hero-actions">
+      <a class="btn-primary-cyber" href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ .cta }}</a>
+      {{ with .guide_url }}<a class="btn-hud" href="{{ . }}">Read Guide</a>{{ end }}
+    </div>
+  </div>
+  <div class="tool-mockup" aria-hidden="true">
+    <div class="tool-mockup-bar">
+      <span></span><span></span><span></span>
+      <span class="tool-mockup-title">hugo.toml · preview</span>
+    </div>
+    <pre class="tool-mockup-code"><code>baseURL = "https://you.github.io/"
+title = "Your Lab"
+defaultContentLanguage = "en"
+
+[outputs]
+  home = ["HTML", "RSS", "LLMS"]
+
+# Ready for GitHub Pages CI/CD ✓</code></pre>
+  </div>
+</section>
+{{- end -}}
+
 {{- with $catalog.sections -}}
-  {{- range $idx, $sec := . -}}
+  {{- $freeSec := index . 0 -}}
   <section class="home-section">
     <div class="section-head">
-      <h2 class="section-label"><span aria-hidden="true">// </span>{{ $sec.heading }}</h2>
-      {{ if eq $idx 1 }}<span class="archive-series-count">Optional Pro &amp; Digital Editions</span>{{ end }}
+      <h2 class="section-label"><span aria-hidden="true">// </span>{{ $freeSec.heading }}</h2>
+      <span class="archive-series-count">Runs 100% in browser</span>
     </div>
     <div class="featured-grid">
-      {{- range $sec.items -}}
+      {{- range $freeSec.items -}}
       {{- $isExternal := hasPrefix .url "http" -}}
-      <a class="hud-card" href="{{ .url }}"{{ if $isExternal }} target="_blank" rel="noopener noreferrer"{{ end }}>
+      <article class="hud-card">
         <div class="hud-card-top">
-          <span class="product-badge">{{ .badge }}</span>
-          <span class="hud-card-arrow" aria-hidden="true">↗</span>
+          <div class="tool-card-head">
+            <span class="tool-icon-box" aria-hidden="true">
+              {{ if eq .icon "profile" }}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+              {{ else if eq .icon "blog" }}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+              {{ else if eq .icon "calendar" }}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg>
+              {{ else }}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 3v18"/><path d="M3 12h18"/></svg>
+              {{ end }}
+            </span>
+            <span class="product-badge">{{ .badge }}</span>
+          </div>
         </div>
         <h3 class="hud-card-title">{{ .name }}</h3>
         <p class="hud-card-desc">{{ .description }}</p>
-        <div class="product-cta">{{ .cta }}</div>
-      </a>
+        <div class="tool-card-actions">
+          <a class="product-cta" href="{{ .url }}"{{ if $isExternal }} target="_blank" rel="noopener noreferrer"{{ end }}>{{ .cta }}</a>
+          {{ with .guide_url }}<a class="tool-guide-link" href="{{ . }}">Guide</a>{{ end }}
+        </div>
+      </article>
       {{- end -}}
     </div>
   </section>
-  {{- end -}}
+
+  {{ if gt (len .) 1 }}
+    {{- $proSec := index . 1 -}}
+    <section class="home-section">
+      <div class="section-head">
+        <h2 class="section-label"><span aria-hidden="true">// </span>{{ $proSec.heading }}</h2>
+        <span class="archive-series-count">Optional shortcuts</span>
+      </div>
+      <div class="featured-grid">
+        {{- range $proSec.items -}}
+        {{- $isExternal := hasPrefix .url "http" -}}
+        <a class="hud-card store-pro" href="{{ .url }}"{{ if $isExternal }} target="_blank" rel="noopener noreferrer"{{ end }}>
+          <div class="hud-card-top">
+            <span class="product-badge">{{ .badge }}</span>
+            <span class="hud-card-arrow" aria-hidden="true">↗</span>
+          </div>
+          <h3 class="hud-card-title">{{ .name }}</h3>
+          <p class="hud-card-desc">{{ .description }}</p>
+          <div class="product-cta">{{ .cta }}</div>
+        </a>
+        {{- end -}}
+      </div>
+    </section>
+  {{ end }}
 {{- end -}}
