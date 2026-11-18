@@ -198,17 +198,28 @@
 
   const dealFilters = Array.from(document.querySelectorAll("[data-deal-filter]"));
   const dealCards = Array.from(document.querySelectorAll("#deals-grid .deal-card"));
-  if (dealFilters.length > 0 && dealCards.length > 0) {
+  const freebieSearch = document.getElementById("freebie-search");
+  if (dealCards.length > 0 && (dealFilters.length > 0 || freebieSearch)) {
+    let activeCat = "all";
+    const applyDealFilter = () => {
+      const q = (freebieSearch?.value || "").trim().toLowerCase();
+      dealCards.forEach((card) => {
+        const cats = (card.dataset.dealCategory || "").split(",").map((s) => s.trim()).filter(Boolean);
+        const catMatch = activeCat === "all" || cats.includes(activeCat);
+        const textMatch = !q || (card.dataset.freebieText || "").includes(q);
+        card.hidden = !(catMatch && textMatch);
+      });
+    };
+
     dealFilters.forEach((chip) => {
       chip.addEventListener("click", () => {
-        const cat = chip.dataset.dealFilter || "all";
+        activeCat = chip.dataset.dealFilter || "all";
         dealFilters.forEach((c) => c.classList.toggle("is-active", c === chip));
-        dealCards.forEach((card) => {
-          const cats = (card.dataset.dealCategory || "").split(",").map((s) => s.trim()).filter(Boolean);
-          card.hidden = !(cat === "all" || cats.includes(cat));
-        });
+        applyDealFilter();
       });
     });
+
+    freebieSearch?.addEventListener("input", applyDealFilter);
   }
 
   for (const btn of document.querySelectorAll("[data-copy-code]")) {

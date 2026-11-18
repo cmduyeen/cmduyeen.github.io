@@ -899,6 +899,62 @@ main {
   color: var(--accent-emerald);
 }
 
+/* Freebies & Giveaways */
+.freebies-controls {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.75rem;
+}
+
+.freebies-controls .archive-filter-bar {
+  margin-bottom: 0;
+}
+
+.freebie-search-input {
+  width: min(18rem, 100%);
+  padding: 0.42rem 0.75rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  outline: none;
+}
+
+.freebie-search-input:focus {
+  border-color: var(--accent-cyan);
+}
+
+.freebie-badges {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.freebie-value {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--accent-cyan);
+  font-weight: 600;
+}
+
+.freebie-claim-note {
+  margin: 0;
+  padding: 0.55rem 0.7rem;
+  border-left: 2px solid var(--border-strong);
+  background: var(--bg-void);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.freebie-card.is-expired {
+  opacity: 0.55;
+}
+
 /* Tools Showcase & Mini App Store */
 .tool-spotlight {
   display: grid;

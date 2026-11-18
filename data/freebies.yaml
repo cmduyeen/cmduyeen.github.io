@@ -1,35 +1,77 @@
-- id: github-student-pack
-  category: Dev Perks
-  status: ACTIVE
-  platform: Cross-Platform
-  name: GitHub Developer & Student Perks
-  summary: Free cloud credits, domains, and pro IDE licenses for verified builders.
-  url: https://education.github.com/pack
-  cta: Claim Pack
-
 - id: epic-weekly-games
   category: PC Games
   status: ACTIVE
+  value: "100% Free (Weekly)"
   platform: Windows / Epic
+  license: Keep Forever
   name: Epic Games Weekly Free Vault
-  summary: Rotate-to-keep full PC games every Thursday — claim once, own forever.
+  summary: Full PC games released free every Thursday — claim once to keep in your library forever.
+  claim_note: "Log in → Click Get → Checkout at $0.00 before Thursday reset."
+  code: ""
   url: https://store.epicgames.com/en-US/free-games
   cta: Claim Free Games
+
+- id: gog-free-classics
+  category: PC Games
+  status: ACTIVE
+  value: "DRM-Free"
+  platform: Win / Mac / Linux
+  license: Forever Free
+  name: GOG Free & Classic Games Collection
+  summary: Curated library of DRM-free PC classics and indie releases you can download offline anytime.
+  claim_note: "Add to cart at $0.00 — zero launcher lock-in."
+  code: ""
+  url: https://www.gog.com/en/games?priceRange=0,0
+  cta: Browse Free Games
+
+- id: sharex-windows
+  category: Software
+  status: ACTIVE
+  value: "Open Source ($0)"
+  platform: Windows
+  license: GPLv3 Free
+  name: ShareX — Screen Capture & Productivity Suite
+  summary: Lightweight screenshot, GIF/video recorder, OCR text extractor, and auto-uploader without ads or watermarks.
+  claim_note: "Download installer or portable ZIP directly from official site."
+  code: ""
+  url: https://getsharex.com/
+  cta: Download Free
 
 - id: obsidian-personal
   category: Software
   status: ACTIVE
+  value: "$0 Forever"
   platform: Win / Mac / Linux
-  name: Obsidian Personal License (100% Free)
-  summary: Local-first Markdown knowledge base with no account or subscription required.
+  license: Free Personal
+  name: Obsidian Personal Knowledge Base
+  summary: Local-first Markdown notes app with graph view, plugins, and zero account requirement for personal use.
+  claim_note: "Install and open any local folder as your vault."
+  code: ""
   url: https://obsidian.md/
   cta: Download Free
 
-- id: serein-theme-free
-  category: Software
+- id: github-student-pack
+  category: Dev Perks
   status: ACTIVE
+  value: "Save $1,000+"
+  platform: Cross-Platform
+  license: Verified Student/Edu
+  name: GitHub Developer & Student Pack
+  summary: Free cloud credits, custom domains, pro IDE licenses, and learning platform trials for students.
+  claim_note: "Verify with school email or student ID on GitHub Education."
+  code: ""
+  url: https://education.github.com/pack
+  cta: Claim Pack
+
+- id: serein-theme-free
+  category: Dev Perks
+  status: ACTIVE
+  value: "MIT ($0)"
   platform: VS Code / Neovim
-  name: Serein Calm Theme Suite (MIT)
-  summary: Open-source low-distraction color suite for VS Code, Neovim, Obsidian, and Terminal.
+  license: Open Source
+  name: Serein Calm Workspace Theme Suite
+  summary: Low-distraction warm color suite for VS Code, Neovim, Obsidian, Windows Terminal, and 10+ tools.
+  claim_note: "Clone repo or install via VS Code Marketplace / Lazy.nvim."
+  code: ""
   url: https://github.com/cmduyeen/serein-theme
   cta: Get Theme

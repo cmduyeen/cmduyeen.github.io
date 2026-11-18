@@ -1,27 +1,49 @@
 {{ define "main" }}
   <header class="page-header">
     <h1 class="hero-h1"><span class="highlight">//</span> {{ .Title }}</h1>
-    <p class="archive-subtitle">{{ .Description }}</p>
+    <p class="archive-subtitle">{{ .Description }} · Verified links, zero adware or clickbait.</p>
   </header>
 
-  <div class="archive-filter-bar" role="group" aria-label="Filter freebies">
-    <button type="button" class="filter-chip is-active" data-deal-filter="all">All</button>
-    <button type="button" class="filter-chip" data-deal-filter="Software">Software</button>
-    <button type="button" class="filter-chip" data-deal-filter="PC Games">PC Games</button>
-    <button type="button" class="filter-chip" data-deal-filter="Dev Perks">Dev Perks</button>
+  <div class="freebies-controls">
+    <div class="archive-filter-bar" role="group" aria-label="Filter freebies">
+      <button type="button" class="filter-chip is-active" data-deal-filter="all">All ({{ len site.Data.freebies }})</button>
+      <button type="button" class="filter-chip" data-deal-filter="Software">Software</button>
+      <button type="button" class="filter-chip" data-deal-filter="PC Games">PC Games</button>
+      <button type="button" class="filter-chip" data-deal-filter="Dev Perks">Dev Perks</button>
+    </div>
+    <input type="search" id="freebie-search" class="freebie-search-input" placeholder="Search app, game, Windows, Mac..." aria-label="Search freebies" />
   </div>
 
   <div class="featured-grid" id="deals-grid">
     {{ range site.Data.freebies }}
-    <a class="hud-card deal-card" data-deal-category="{{ .category }}" href="{{ .url }}" target="_blank" rel="noopener noreferrer">
+    <article class="hud-card deal-card freebie-card{{ if eq .status "EXPIRED" }} is-expired{{ end }}" data-deal-category="{{ .category }}" data-freebie-text="{{ lower (printf "%s %s %s %s" .name .platform .category .summary) }}">
       <div class="hud-card-top">
-        <span class="status-pill {{ if eq .status "ACTIVE" }}is-active{{ end }}">{{ .status }}</span>
+        <div class="freebie-badges">
+          <span class="status-pill{{ if eq .status "ACTIVE" }} is-active{{ end }}">{{ .status }}</span>
+          <span class="freebie-value">{{ .value }}</span>
+        </div>
         <span class="writing-meta">{{ .platform }}</span>
       </div>
+
       <h2 class="hud-card-title">{{ .name }}</h2>
       <p class="hud-card-desc">{{ .summary }}</p>
-      <div class="product-cta">{{ .cta }} →</div>
-    </a>
+
+      {{ with .claim_note }}
+      <p class="freebie-claim-note"><strong>How to claim:</strong> {{ . }}</p>
+      {{ end }}
+
+      <div class="deal-actions">
+        {{ if .code }}
+        <button type="button" class="btn-hud copy-code-btn" data-copy-code="{{ .code }}">Copy: {{ .code }}</button>
+        {{ end }}
+        <a class="btn-primary-cyber" href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ .cta }} →</a>
+      </div>
+    </article>
     {{ end }}
   </div>
+
+  <aside class="roadmap-deepdive" style="margin-top: 2.25rem;">
+    <span class="tldr-label">// WANT TO BUILD YOUR OWN TOOLS?</span>
+    <p>Try our <a href="{{ "tools/" | relLangURL }}">zero-install Web Tools</a> or learn step-by-step in <a href="{{ "learn/" | relLangURL }}">Learn Tracks →</a></p>
+  </aside>
 {{ end }}
