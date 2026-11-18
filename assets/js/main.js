@@ -90,11 +90,28 @@
   let cachedPosts = null;
   let activeCmdIdx = -1;
 
+  const giscusTheme = () =>
+    document.documentElement.getAttribute("data-theme") === "light" ? "noborder_light" : "noborder_dark";
+
+  const toggleTheme = () => {
+    const current = document.documentElement.getAttribute("data-theme") === "light" ? "light" : "dark";
+    const next = current === "dark" ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", next);
+    try {
+      localStorage.setItem("dyn-theme", next);
+    } catch (_) {}
+    const iframe = document.querySelector("iframe.giscus-frame");
+    iframe?.contentWindow?.postMessage(
+      { giscus: { setConfig: { theme: giscusTheme() } } },
+      "https://giscus.app"
+    );
+  };
+
   const COMMANDS = [
     {
       label: "Toggle Theme (Dark / Light)",
       tag: "CMD",
-      run: () => document.getElementById("theme-toggle")?.click(),
+      run: toggleTheme,
     },
     {
       label: "Surprise Me (Random Article)",
@@ -214,24 +231,6 @@
     btn.addEventListener("click", openSearch);
   }
   searchClose?.addEventListener("click", () => searchDialog?.close());
-
-  const themeToggle = document.getElementById("theme-toggle");
-  const giscusTheme = () =>
-    document.documentElement.getAttribute("data-theme") === "light" ? "noborder_light" : "noborder_dark";
-
-  themeToggle?.addEventListener("click", () => {
-    const current = document.documentElement.getAttribute("data-theme") === "light" ? "light" : "dark";
-    const next = current === "dark" ? "light" : "dark";
-    document.documentElement.setAttribute("data-theme", next);
-    try {
-      localStorage.setItem("dyn-theme", next);
-    } catch (_) {}
-    const iframe = document.querySelector("iframe.giscus-frame");
-    iframe?.contentWindow?.postMessage(
-      { giscus: { setConfig: { theme: giscusTheme() } } },
-      "https://giscus.app"
-    );
-  });
 
   const filterChips = Array.from(document.querySelectorAll("[data-filter-tag]"));
   const archiveItems = Array.from(document.querySelectorAll("#archive-list .archive-post-item"));
