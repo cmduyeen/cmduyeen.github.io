@@ -951,8 +951,120 @@ main {
   color: var(--text-secondary);
 }
 
-.freebie-card.is-expired {
+.freebie-card.is-expired,
+.freebie-row.is-expired {
   opacity: 0.55;
+}
+
+/* WinningPC-Style Detailed Freebie Feed */
+.freebie-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.freebie-row {
+  gap: 0.65rem;
+  padding: 1.25rem 1.35rem;
+}
+
+.freebie-row-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.freebie-meta-chip {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  padding: 0.12rem 0.48rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  background: var(--bg-void);
+  color: var(--text-secondary);
+}
+
+.freebie-pricing {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+}
+
+.freebie-old-price {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.freebie-new-price {
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--accent-emerald);
+}
+
+.freebie-title {
+  margin: 0.15rem 0 0;
+  font-size: 1.15rem;
+  line-height: 1.3;
+}
+
+.freebie-summary {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+.freebie-specs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  padding: 0.6rem 0.8rem;
+  border-radius: var(--radius-sm);
+  background: var(--bg-void);
+  border: 1px solid var(--border-subtle);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.freebie-row-footer {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 0.25rem;
+}
+
+.freebie-steps-drawer {
+  flex: 1 1 20rem;
+}
+
+.freebie-steps-drawer summary {
+  width: fit-content;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--accent-cyan);
+  cursor: pointer;
+}
+
+.freebie-steps-list {
+  margin: 0.65rem 0 0;
+  padding-left: 1.25rem;
+  font-size: 0.86rem;
+  color: var(--text-secondary);
+}
+
+.freebie-steps-list li + li {
+  margin-top: 0.3rem;
+}
+
+.freebie-cta-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 /* Tools Showcase & Mini App Store */

@@ -1,42 +1,59 @@
 {{ define "main" }}
   <header class="page-header">
     <h1 class="hero-h1"><span class="highlight">//</span> {{ .Title }}</h1>
-    <p class="archive-subtitle">{{ .Description }} · Verified links, zero adware or clickbait.</p>
+    <p class="archive-subtitle">{{ .Description }} · Clear license terms, prices, and step-by-step activation guides.</p>
   </header>
 
   <div class="freebies-controls">
     <div class="archive-filter-bar" role="group" aria-label="Filter freebies">
       <button type="button" class="filter-chip is-active" data-deal-filter="all">All ({{ len site.Data.freebies }})</button>
-      <button type="button" class="filter-chip" data-deal-filter="Software">Software</button>
+      <button type="button" class="filter-chip" data-deal-filter="Software">PC Software</button>
       <button type="button" class="filter-chip" data-deal-filter="PC Games">PC Games</button>
       <button type="button" class="filter-chip" data-deal-filter="Dev Perks">Dev Perks</button>
     </div>
-    <input type="search" id="freebie-search" class="freebie-search-input" placeholder="Search app, game, Windows, Mac..." aria-label="Search freebies" />
+    <input type="search" id="freebie-search" class="freebie-search-input" placeholder="Search software, game, Windows..." aria-label="Search freebies" />
   </div>
 
-  <div class="featured-grid" id="deals-grid">
+  <div class="freebie-feed" id="deals-grid">
     {{ range site.Data.freebies }}
-    <article class="hud-card deal-card freebie-card{{ if eq .status "EXPIRED" }} is-expired{{ end }}" data-deal-category="{{ .category }}" data-freebie-text="{{ lower (printf "%s %s %s %s" .name .platform .category .summary) }}">
-      <div class="hud-card-top">
+    <article class="hud-card deal-card freebie-row{{ if eq .status "EXPIRED" }} is-expired{{ end }}" data-deal-category="{{ .category }}" data-freebie-text="{{ lower (printf "%s %s %s %s" .name .platform .category .summary) }}">
+      <div class="freebie-row-top">
         <div class="freebie-badges">
           <span class="status-pill{{ if eq .status "ACTIVE" }} is-active{{ end }}">{{ .status }}</span>
-          <span class="freebie-value">{{ .value }}</span>
+          <span class="product-badge">{{ .category }}</span>
+          <span class="freebie-meta-chip">{{ .platform }}</span>
+          <span class="freebie-meta-chip">{{ .license }}</span>
         </div>
-        <span class="writing-meta">{{ .platform }}</span>
+        <div class="freebie-pricing">
+          {{ with .original_price }}<del class="freebie-old-price">{{ . }}</del>{{ end }}
+          <span class="freebie-new-price">{{ .value }}</span>
+        </div>
       </div>
 
-      <h2 class="hud-card-title">{{ .name }}</h2>
-      <p class="hud-card-desc">{{ .summary }}</p>
+      <h2 class="freebie-title">{{ .name }}</h2>
+      <p class="freebie-summary">{{ .summary }}</p>
 
-      {{ with .claim_note }}
-      <p class="freebie-claim-note"><strong>How to claim:</strong> {{ . }}</p>
-      {{ end }}
+      <div class="freebie-specs">
+        <span><strong>Availability:</strong> {{ .expires }}</span>
+        {{ with .terms }}<span><strong>Terms:</strong> {{ . }}</span>{{ end }}
+      </div>
 
-      <div class="deal-actions">
-        {{ if .code }}
-        <button type="button" class="btn-hud copy-code-btn" data-copy-code="{{ .code }}">Copy: {{ .code }}</button>
-        {{ end }}
-        <a class="btn-primary-cyber" href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ .cta }} →</a>
+      <div class="freebie-row-footer">
+        <details class="freebie-steps-drawer">
+          <summary>How to get &amp; activate ({{ len .steps }} steps)</summary>
+          <ol class="freebie-steps-list">
+            {{- range .steps -}}
+            <li>{{ . }}</li>
+            {{- end -}}
+          </ol>
+        </details>
+
+        <div class="freebie-cta-group">
+          {{ if .code }}
+          <button type="button" class="btn-hud copy-code-btn" data-copy-code="{{ .code }}">Copy Key: {{ .code }}</button>
+          {{ end }}
+          <a class="btn-primary-cyber" href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ .cta }} →</a>
+        </div>
       </div>
     </article>
     {{ end }}
@@ -44,6 +61,6 @@
 
   <aside class="roadmap-deepdive" style="margin-top: 2.25rem;">
     <span class="tldr-label">// WANT TO BUILD YOUR OWN TOOLS?</span>
-    <p>Try our <a href="{{ "tools/" | relLangURL }}">zero-install Web Tools</a> or learn step-by-step in <a href="{{ "learn/" | relLangURL }}">Learn Tracks →</a></p>
+    <p>Try our <a href="{{ "tools/" | relLangURL }}">zero-install Web Tools</a> or explore <a href="{{ "learn/" | relLangURL }}">step-by-step Learn Tracks →</a></p>
   </aside>
 {{ end }}
