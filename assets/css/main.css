@@ -510,6 +510,55 @@ main {
   line-height: 1.4;
 }
 
+/* Balanced 2-Column Homepage Pulse */
+.home-split-grid {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  align-items: start;
+}
+
+.home-pulse-col {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.home-compact-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.home-compact-list li + li {
+  border-top: 1px solid var(--border-subtle);
+}
+
+.home-compact-list a {
+  display: flex;
+  align-items: baseline;
+  gap: 0.65rem;
+  padding: 0.6rem 0.35rem;
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: 0.88rem;
+  line-height: 1.4;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.home-compact-list a:hover {
+  background: var(--bg-surface);
+  color: var(--accent-cyan);
+}
+
+.home-compact-list time {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
 /* Sections & HUD Cards */
 .home-section {
   margin-bottom: 3rem;
@@ -2696,6 +2745,7 @@ main {
   }
 
   .news-layout,
+  .home-split-grid,
   .tool-spotlight {
     grid-template-columns: 1fr;
   }

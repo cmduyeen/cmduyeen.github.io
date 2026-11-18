@@ -1,5 +1,8 @@
 {{ define "main" }}
   {{- $posts := (where site.RegularPages "Section" "posts").ByDate.Reverse -}}
+  {{- $news := (where site.RegularPages "Section" "news").ByDate.Reverse -}}
+  {{- $freebies := site.Data.freebies -}}
+  {{- $catalog := index site.Data.products "en" -}}
 
   <section class="hero-lab" aria-label="Introduction">
     <div class="creator-bar">
@@ -7,67 +10,112 @@
       <div class="creator-meta">
         <div class="creator-name">
           <span>{{ site.Params.author }}</span>
-          <span class="creator-badge">Engineering Notes · Automation · PKM</span>
+          <span class="creator-badge">Tech Roadmaps · Automation · Calm Tools</span>
         </div>
         <div class="social-pills">
           {{ with site.Params.contact.github }}<a href="{{ . | safeURL }}" target="_blank" rel="noopener noreferrer">GitHub</a>{{ end }}
           {{ with site.Params.contact.x }}<span aria-hidden="true">·</span><a href="{{ . | safeURL }}" target="_blank" rel="noopener noreferrer">X</a>{{ end }}
           {{ with site.Home.OutputFormats.Get "RSS" }}<span aria-hidden="true">·</span><a href="{{ .RelPermalink }}">RSS</a>{{ end }}
+          {{ with site.Home.OutputFormats.Get "LLMS" }}<span aria-hidden="true">·</span><a href="{{ .RelPermalink }}">llms.txt</a>{{ end }}
         </div>
       </div>
     </div>
 
     <h1 class="hero-h1">
-      <span class="highlight">~/{{ lower site.Title }}</span> — Engineering Notes, Automation &amp; PKM
+      <span class="highlight">~/{{ lower site.Title }}</span> — Learn Tech, Track News &amp; Ship Faster
     </h1>
     {{ with site.Params.homeInfoParams }}
     <p class="hero-desc">{{ .Content }}</p>
     {{ end }}
     <div class="hero-actions">
       <a class="btn-primary-cyber" href="{{ "learn/" | relLangURL }}">Start Learning →</a>
-      <a class="btn-hud" href="{{ "tools/" | relLangURL }}">Tools &amp; Kits</a>
+      <a class="btn-hud" href="{{ "tools/" | relLangURL }}">Free Tools &amp; Kits</a>
+      <a class="btn-hud" href="{{ "freebies/" | relLangURL }}">Active Freebies ({{ len $freebies }})</a>
     </div>
   </section>
 
+  <!-- 4 Core Pillars Matching Main Navigation -->
   <section class="pillars-4-grid" aria-label="Core pillars">
     <a class="pillar-tile" href="{{ "learn/" | relLangURL }}">
       <div class="pillar-tile-top"><span><span aria-hidden="true">[01] </span>LEARN</span><span aria-hidden="true">↗</span></div>
-      <div class="pillar-title">Series &amp; Tutorials</div>
-      <div class="pillar-sub">{{ len $posts }} lessons · W3-style tracks</div>
+      <div class="pillar-title">8 Tech &amp; AI Tracks</div>
+      <div class="pillar-sub">{{ len $posts }} lessons · Roadmaps &amp; Books</div>
     </a>
     <a class="pillar-tile" href="{{ "news/" | relLangURL }}">
       <div class="pillar-tile-top"><span><span aria-hidden="true">[02] </span>TECH NEWS</span><span aria-hidden="true">↗</span></div>
-      <div class="pillar-title">Weekly Digest</div>
-      <div class="pillar-sub">AI tooling &amp; static workflows</div>
+      <div class="pillar-title">Signal Over Noise</div>
+      <div class="pillar-sub">{{ len $news }} dispatches · AI &amp; Dev shifts</div>
     </a>
     <a class="pillar-tile" href="{{ "tools/" | relLangURL }}">
       <div class="pillar-tile-top"><span><span aria-hidden="true">[03] </span>TOOLS &amp; KITS</span><span aria-hidden="true">↗</span></div>
-      <div class="pillar-title">Free Tools &amp; Pro</div>
-      <div class="pillar-sub">Browser utilities &amp; digital kits</div>
+      <div class="pillar-title">Zero-Install Apps</div>
+      <div class="pillar-sub">Browser tools &amp; starter kits</div>
     </a>
     <a class="pillar-tile" href="{{ "freebies/" | relLangURL }}">
       <div class="pillar-tile-top"><span><span aria-hidden="true">[04] </span>FREEBIES</span><span aria-hidden="true">↗</span></div>
       <div class="pillar-title">Software &amp; Games</div>
-      <div class="pillar-sub">Verified free apps &amp; giveaways</div>
+      <div class="pillar-sub">{{ len $freebies }} verified active giveaways</div>
     </a>
   </section>
 
-  {{ with $posts }}
-  <section class="home-section" aria-labelledby="writing-heading">
-    <div class="section-head">
-      <h2 class="section-label" id="writing-heading"><span aria-hidden="true">// </span>{{ T "latest" }}</h2>
-      <a class="section-more" href="{{ "archives/" | relLangURL }}">View archive ({{ len . }}) →</a>
-    </div>
-    <ul class="writing-list">
-      {{ range first 6 . }}
-      {{ partial "post-list-item.html" . }}
-      {{ end }}
-    </ul>
-  </section>
-  {{ end }}
+  <!-- Balanced 2-Column Pulse: Latest Tutorials | News + Freebies -->
+  <div class="home-split-grid">
+    {{ with $posts }}
+    <section aria-labelledby="writing-heading">
+      <div class="section-head">
+        <h2 class="section-label" id="writing-heading"><span aria-hidden="true">// </span>Latest Guides</h2>
+        <a class="section-more" href="{{ "archives/" | relLangURL }}">Archive ({{ len . }}) →</a>
+      </div>
+      <ul class="writing-list">
+        {{ range first 6 . }}
+        {{ partial "post-list-item.html" . }}
+        {{ end }}
+      </ul>
+    </section>
+    {{ end }}
 
-  {{- $langData := index site.Data.products "en" -}}
-  {{ with $langData.sections }}
+    <div class="home-pulse-col">
+      {{ with $news }}
+      <section aria-labelledby="home-news-heading">
+        <div class="section-head">
+          <h2 class="section-label" id="home-news-heading"><span aria-hidden="true">// </span>Tech News</h2>
+          <a class="section-more" href="{{ "news/" | relLangURL }}">All news →</a>
+        </div>
+        <ul class="home-compact-list">
+          {{ range first 3 . }}
+          <li>
+            <a href="{{ .RelPermalink }}">
+              <time datetime="{{ .Date.UTC.Format "2006-01-02" }}">{{ .Date.UTC.Format "2006-01-02" }}</time>
+              <span>{{ .Title }}</span>
+            </a>
+          </li>
+          {{ end }}
+        </ul>
+      </section>
+      {{ end }}
+
+      {{ with $freebies }}
+      <section aria-labelledby="home-freebies-heading">
+        <div class="section-head">
+          <h2 class="section-label" id="home-freebies-heading"><span aria-hidden="true">// </span>Hot Freebies</h2>
+          <a class="section-more" href="{{ "freebies/" | relLangURL }}">All ({{ len . }}) →</a>
+        </div>
+        <ul class="home-compact-list">
+          {{ range first 3 . }}
+          <li>
+            <a href="{{ "freebies/" | relLangURL }}">
+              <span class="status-pill is-active">{{ .status }}</span>
+              <span>{{ .name }}</span>
+            </a>
+          </li>
+          {{ end }}
+        </ul>
+      </section>
+      {{ end }}
+    </div>
+  </div>
+
+  {{ with $catalog.sections }}
     {{- $firstSec := index . 0 -}}
     {{ with $firstSec.items }}
   <section class="home-section" aria-labelledby="projects-heading">
