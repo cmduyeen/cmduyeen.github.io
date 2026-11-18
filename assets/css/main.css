@@ -3386,11 +3386,38 @@ main {
 }
 
 .footer-cmd-btn {
-  padding: 0.12rem 0.45rem;
+  padding: 0.14rem 0.45rem;
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
   background: var(--bg-surface);
   color: var(--accent-cyan);
+}
+
+.footer-social-icons {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding-left: 0.4rem;
+  border-left: 1px solid var(--border-subtle);
+}
+
+.footer-icon-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.65rem;
+  height: 1.65rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface);
+  color: var(--text-secondary);
+  transition: border-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+
+.footer-icon-link:hover {
+  border-color: var(--border-strong);
+  color: var(--accent-emerald);
+  transform: translateY(-1px);
 }
 
 .footer-bottom-row {
