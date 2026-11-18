@@ -140,4 +140,19 @@
   </section>
     {{ end }}
   {{ end }}
+
+  <!-- Interactive Cozy Mini-Game (Inspired by labs.google) -->
+  <section class="stardew-box mini-garden" id="mini-garden" aria-labelledby="garden-heading">
+    <div class="mini-garden-head">
+      <div>
+        <span class="w3-sidebar-label">// VALLEY PLAYGROUND · MINI-GAME</span>
+        <h2 class="mini-garden-title" id="garden-heading">Pocket Farm — Click plots to plant &amp; harvest</h2>
+      </div>
+      <div class="mini-garden-controls">
+        <span class="status-pill is-active">Harvest: <strong id="garden-score">0</strong> ★</span>
+        <button type="button" class="btn-hud" id="garden-water">Water All</button>
+      </div>
+    </div>
+    <div class="mini-garden-plots" id="garden-plots" role="group" aria-label="6 farm plots"></div>
+  </section>
 {{ end }}

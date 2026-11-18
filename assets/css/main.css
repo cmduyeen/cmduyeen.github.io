@@ -3420,6 +3420,88 @@ main {
   transform: translateY(-1px);
 }
 
+/* Valley Playground Mini-Game */
+.mini-garden {
+  margin-top: 2.5rem;
+  margin-bottom: 0;
+}
+
+.mini-garden-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.mini-garden-title {
+  margin: 0.2rem 0 0;
+  font-size: 1.05rem;
+}
+
+.mini-garden-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.mini-garden-plots {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.garden-plot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  padding: 0.9rem 0.5rem;
+  border: 2px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  cursor: pointer;
+  box-shadow: 2px 2px 0 rgba(62, 39, 35, 0.22);
+  transition: transform 0.12s ease, background-color 0.15s ease;
+}
+
+.garden-plot:hover {
+  transform: translateY(-2px);
+}
+
+.garden-plot:active {
+  transform: translate(2px, 2px);
+  box-shadow: none;
+}
+
+.garden-plot-icon {
+  font-size: 1.35rem;
+  line-height: 1;
+}
+
+.garden-plot-hint {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+
+.garden-plot.stage-3 {
+  border-color: var(--accent-emerald);
+  background: rgba(79, 143, 60, 0.14);
+}
+
+.garden-plot.stage-4 {
+  border-color: #eab308;
+  background: rgba(234, 179, 8, 0.2);
+}
+
+.garden-plot.stage-4 .garden-plot-icon {
+  color: #eab308;
+}
+
 .footer-bottom-row {
   display: flex;
   align-items: center;
@@ -3512,6 +3594,10 @@ main {
   .farm-plot-grid {
     grid-template-columns: repeat(6, minmax(0, 1fr));
     gap: 0.65rem 0.45rem;
+  }
+
+  .mini-garden-plots {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .pillars-4-grid,

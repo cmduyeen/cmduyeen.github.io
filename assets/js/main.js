@@ -110,6 +110,73 @@
       const base = sText.textContent?.split("·")[0]?.trim() || "Valley";
       sText.textContent = `${base} · ${next === "dark" ? "Night" : "Day"}`;
     }
+  }
+
+  const gardenPlotsEl = document.getElementById("garden-plots");
+  const gardenScoreEl = document.getElementById("garden-score");
+  const gardenWaterBtn = document.getElementById("garden-water");
+  if (gardenPlotsEl && gardenScoreEl) {
+    const SCORE_KEY = "dyn-garden-score";
+    let score = 0;
+    try {
+      score = parseInt(localStorage.getItem(SCORE_KEY) || "0", 10) || 0;
+    } catch (_) {}
+    gardenScoreEl.textContent = String(score);
+
+    const STAGES = [
+      { label: "Empty soil", icon: "·", cls: "stage-0" },
+      { label: "Seed planted", icon: "🌱", cls: "stage-1" },
+      { label: "Growing sprout", icon: "🌿", cls: "stage-2" },
+      { label: "Ready to harvest!", icon: "🌻", cls: "stage-3" },
+      { label: "Golden Starfruit!", icon: "★", cls: "stage-4" },
+    ];
+
+    const plots = [0, 1, 2, 3, 0, 0];
+
+    const renderGarden = () => {
+      gardenPlotsEl.replaceChildren();
+      plots.forEach((stage, idx) => {
+        const st = STAGES[stage] || STAGES[0];
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = `garden-plot ${st.cls}`;
+        btn.setAttribute("aria-label", `Plot ${idx + 1}: ${st.label}`);
+        btn.title = st.label;
+        const icon = document.createElement("span");
+        icon.className = "garden-plot-icon";
+        icon.textContent = st.icon;
+        const hint = document.createElement("span");
+        hint.className = "garden-plot-hint";
+        hint.textContent = stage === 0 ? "Plant" : stage >= 3 ? "Harvest" : "Grow";
+        btn.append(icon, hint);
+
+        btn.addEventListener("click", () => {
+          if (plots[idx] >= 3) {
+            score += plots[idx] === 4 ? 5 : 1;
+            plots[idx] = 0;
+            gardenScoreEl.textContent = String(score);
+            try { localStorage.setItem(SCORE_KEY, String(score)); } catch (_) {}
+          } else if (plots[idx] === 2) {
+            plots[idx] = Math.random() < 0.22 ? 4 : 3;
+          } else {
+            plots[idx] += 1;
+          }
+          renderGarden();
+        });
+        gardenPlotsEl.append(btn);
+      });
+    };
+
+    gardenWaterBtn?.addEventListener("click", () => {
+      let changed = false;
+      for (let i = 0; i < plots.length; i++) {
+        if (plots[i] === 1) { plots[i] = 2; changed = true; }
+        else if (plots[i] === 2) { plots[i] = Math.random() < 0.25 ? 4 : 3; changed = true; }
+      }
+      if (changed) renderGarden();
+    });
+
+    renderGarden();
   };
 
   const COMMANDS = [
