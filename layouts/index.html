@@ -140,33 +140,4 @@
   </section>
     {{ end }}
   {{ end }}
-
-  <!-- Cozy Animated Diorama (Based on Dyn's Valley Banner) -->
-  <section class="stardew-box valley-diorama-box" aria-labelledby="diorama-heading">
-    <div class="mini-garden-head">
-      <div>
-        <span class="w3-sidebar-label">// EVENING STROLL · COZY CORNER</span>
-        <h2 class="mini-garden-title" id="diorama-heading">Take a breather before you go</h2>
-      </div>
-      <div class="mini-garden-controls">
-        <button type="button" class="btn-hud" id="diorama-toggle">Pause Breeze</button>
-      </div>
-    </div>
-
-    <div class="diorama-stage" id="valley-diorama" role="button" tabindex="0" aria-label="Interactive cozy valley scene — click for a note">
-      <img class="diorama-bg" src="{{ "images/dyn-banner.png" | relURL }}" alt="Dyn walking along a valley path with two cute dogs near a cozy cottage" loading="lazy" decoding="async" />
-      <!-- Animated Chimney Smoke -->
-      <div class="diorama-smoke" aria-hidden="true">
-        <span></span><span></span><span></span>
-      </div>
-      <!-- Warm Lantern Glow -->
-      <div class="diorama-lantern-glow" aria-hidden="true"></div>
-      <!-- Drifting Blossom Petals -->
-      <div class="diorama-petals" aria-hidden="true">
-        <i></i><i></i><i></i><i></i><i></i><i></i>
-      </div>
-      <!-- Interactive Speech Bubble -->
-      <div class="diorama-bubble" id="diorama-bubble" hidden>Woof! Have a calm day!</div>
-    </div>
-  </section>
 {{ end }}

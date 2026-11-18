@@ -110,42 +110,6 @@
       const base = sText.textContent?.split("·")[0]?.trim() || "Valley";
       sText.textContent = `${base} · ${next === "dark" ? "Night" : "Day"}`;
     }
-  }
-
-  const diorama = document.getElementById("valley-diorama");
-  const dioramaBubble = document.getElementById("diorama-bubble");
-  const dioramaToggle = document.getElementById("diorama-toggle");
-  if (diorama && dioramaBubble) {
-    const notes = [
-      "Woof! Take a slow walk today.",
-      "Two dogs, warm sunset, zero rush.",
-      "Keep your tools light and your notes clear.",
-      "Thanks for visiting the valley!",
-      "Press Ctrl+K anytime to explore."
-    ];
-    let bubbleTimer;
-    const showNote = () => {
-      dioramaBubble.textContent = notes[Math.floor(Math.random() * notes.length)];
-      dioramaBubble.hidden = false;
-      dioramaBubble.classList.remove("is-pop");
-      void dioramaBubble.offsetWidth;
-      dioramaBubble.classList.add("is-pop");
-      clearTimeout(bubbleTimer);
-      bubbleTimer = setTimeout(() => {
-        dioramaBubble.hidden = true;
-      }, 3000);
-    };
-    diorama.addEventListener("click", showNote);
-    diorama.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        showNote();
-      }
-    });
-    dioramaToggle?.addEventListener("click", () => {
-      const paused = diorama.classList.toggle("is-paused");
-      dioramaToggle.textContent = paused ? "Resume Breeze" : "Pause Breeze";
-    });
   };
 
   const COMMANDS = [
