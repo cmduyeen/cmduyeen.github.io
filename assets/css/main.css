@@ -900,8 +900,85 @@ main {
 }
 
 /* ==========================================================================
-   Evergreen Hub & Spoke Learn System (Skill Ladder + Topic Clusters)
+   Evergreen Hub & Spoke Learn System (Advisor + Skill Ladder + Clusters)
    ========================================================================== */
+.advisor-box {
+  margin-bottom: 2.25rem;
+  padding: 1.25rem 1.35rem;
+  border: 1px solid rgba(16, 185, 129, 0.32);
+  border-radius: var(--radius-md);
+  background: var(--bg-surface);
+}
+
+.advisor-head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.advisor-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.advisor-summary {
+  margin: 0 0 1rem;
+  font-size: 0.94rem;
+  color: var(--text-secondary);
+}
+
+.advisor-steps {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65rem;
+  margin: 0 0 1rem;
+  padding: 0;
+  list-style: none;
+}
+
+.advisor-steps a {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  height: 100%;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  background: var(--bg-void);
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.advisor-steps a:hover {
+  border-color: var(--accent-cyan);
+  background: var(--bg-elevated);
+}
+
+.advisor-steps span {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--accent-emerald);
+}
+
+.advisor-steps strong {
+  font-size: 0.88rem;
+  line-height: 1.35;
+}
+
+.advisor-extras {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--text-muted);
+}
+
 .skill-ladder {
   display: flex;
   align-items: center;
@@ -2051,6 +2128,7 @@ main {
   .roadmap-steps,
   .cluster-grid,
   .flywheel-grid,
+  .advisor-steps,
   .w3-learn-shell,
   .site-footer-inner {
     grid-template-columns: 1fr;

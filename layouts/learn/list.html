@@ -4,8 +4,65 @@
 
   <header class="page-header">
     <h1 class="hero-h1"><span class="highlight">//</span> {{ .Title }}</h1>
-    <p class="archive-subtitle">Evergreen learning paths — follow steps 01 to 04 in order, or jump straight into the skill you need.</p>
+    <p class="archive-subtitle">Too much to read? Answer one question below to get a curated path combining series, standalone guides, and tools.</p>
   </header>
+
+  <!-- Interactive Path Advisor (Combines Series + Standalone + Tools by Real Goal) -->
+  <section class="advisor-box" aria-label="Learning path advisor">
+    <div class="advisor-head">
+      <span class="tldr-label">// PATH ADVISOR · WHAT DO YOU WANT TO MASTER?</span>
+      <div class="advisor-pills" role="group" aria-label="Select your goal">
+        <button type="button" class="filter-chip is-active" data-advisor-goal="notes">Better Notes &amp; Second Brain</button>
+        <button type="button" class="filter-chip" data-advisor-goal="web">Build &amp; Publish a Blog/Web</button>
+        <button type="button" class="filter-chip" data-advisor-goal="setup">Calm &amp; Fast Dev Setup</button>
+      </div>
+    </div>
+
+    <div class="advisor-result" data-advisor-panel="notes">
+      <p class="advisor-summary"><strong>Recommended for Note-Takers:</strong> Start with plain-text Markdown, set up Obsidian as your Second Brain, then add plugins &amp; publishing.</p>
+      <ol class="advisor-steps">
+        <li><a href="/posts/markdown-101-01-getting-started/"><span>01 · Series</span><strong>Markdown 101: Getting Started → Formatting</strong></a></li>
+        <li><a href="/posts/markdown-101-09-obsidian-callouts-wikilinks/"><span>02 · Series</span><strong>Obsidian Callouts &amp; Wikilinks</strong></a></li>
+        <li><a href="/posts/serein-obsidian-guide/"><span>03 · Guide</span><strong>Obsidian Second Brain &amp; Serein Theme Setup</strong></a></li>
+        <li><a href="/learn/pkm/"><span>04 · Pillar</span><strong>Full PKM Roadmap (Obsidian, Notion &amp; Plugins) →</strong></a></li>
+      </ol>
+      <div class="advisor-extras">
+        <span>Equip: <a href="/freebies/">Obsidian Personal (100% Free)</a></span>
+        <span>·</span>
+        <span>Read deeper: <a href="/library/">Curated PKM &amp; Systems Books</a></span>
+      </div>
+    </div>
+
+    <div class="advisor-result" data-advisor-panel="web" hidden>
+      <p class="advisor-summary"><strong>Recommended for Web &amp; Blog Builders:</strong> Learn Markdown + GitHub Pages first, then expand into HTML, CSS, and Hugo automation.</p>
+      <ol class="advisor-steps">
+        <li><a href="/posts/markdown-101-01-getting-started/"><span>01 · Series</span><strong>Markdown 101 (Parts 01–06)</strong></a></li>
+        <li><a href="/posts/tao-github-profile-va-blog-trong-60-giay/"><span>02 · Guide</span><strong>Launch a GitHub Profile &amp; Blog in 60s</strong></a></li>
+        <li><a href="/learn/web/"><span>03 · Pillar</span><strong>Web Foundations (HTML5, Modern CSS, JS) →</strong></a></li>
+        <li><a href="/learn/automation/"><span>04 · Pillar</span><strong>Automation &amp; Static Publishing →</strong></a></li>
+      </ol>
+      <div class="advisor-extras">
+        <span>Practice: <a href="/tools/">Pro Blog &amp; GitHub Starter Kits (Free)</a></span>
+        <span>·</span>
+        <span>Read deeper: <a href="/library/">Frontend Masters &amp; Pragmatic Programmer</a></span>
+      </div>
+    </div>
+
+    <div class="advisor-result" data-advisor-panel="setup" hidden>
+      <p class="advisor-summary"><strong>Recommended for Focused Coding:</strong> Unify your editor, terminal, and notes under a calm, keyboard-first setup.</p>
+      <ol class="advisor-steps">
+        <li><a href="/posts/serein-theme-suite/"><span>01 · Overview</span><strong>Serein Theme Philosophy &amp; Unified Workspace</strong></a></li>
+        <li><a href="/posts/serein-vscode-guide/"><span>02 · Guide</span><strong>VS Code &amp; Windows Terminal Setup</strong></a></li>
+        <li><a href="/posts/serein-neovim-guide/"><span>03 · Guide</span><strong>Neovim with Lazy.nvim, TreeSitter &amp; Lualine</strong></a></li>
+        <li><a href="/learn/workspace/"><span>04 · Pillar</span><strong>Full Developer Workspace Pillar →</strong></a></li>
+      </ol>
+      <div class="advisor-extras">
+        <span>Download: <a href="/freebies/">Serein Calm Theme Suite (MIT Free)</a></span>
+        <span>·</span>
+        <span>Tools: <a href="/tools/">All Workspace Kits</a></span>
+      </div>
+    </div>
+  </section>
 
   <!-- Connected 4-Step Skill Ladder -->
   <nav class="skill-ladder" aria-label="4-step learning path">
