@@ -853,6 +853,50 @@ main {
   margin-bottom: 2.25rem;
 }
 
+.stardew-scene {
+  position: relative;
+  margin: -0.25rem 0 1.35rem;
+  border: 2px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  height: 7.5rem;
+  background: #87ceeb;
+}
+
+.stardew-scene-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.scene-sky { fill: #7dd3fc; }
+.scene-sky-cut { fill: #1e1b4b; }
+.scene-stars { opacity: 0; transition: opacity 0.3s ease; }
+.scene-sun { opacity: 1; transition: opacity 0.3s ease; }
+
+[data-theme="dark"] .scene-sky { fill: #1e1b4b; }
+[data-theme="dark"] .scene-stars { opacity: 1; }
+[data-theme="dark"] .scene-sun { opacity: 0; }
+
+.scene-clouds {
+  animation: cloudDrift 28s linear infinite;
+}
+
+.scene-junimo {
+  animation: junimoBounce 1.8s steps(2, end) infinite;
+}
+
+@keyframes cloudDrift {
+  0% { transform: translateX(-16px); }
+  50% { transform: translateX(18px); }
+  100% { transform: translateX(-16px); }
+}
+
+@keyframes junimoBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+
 .hero-avatar-img {
   width: 3.5rem;
   height: 3.5rem;
