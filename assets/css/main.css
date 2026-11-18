@@ -866,16 +866,31 @@ main {
 }
 
 .hero-content-row {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
   gap: 1.5rem;
-  flex-wrap: wrap;
 }
 
 .hero-text-col {
-  flex: 1 1 28rem;
   min-width: 0;
+}
+
+.hero-h1-wide {
+  max-width: none;
+  font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+  margin-bottom: 0.35rem;
+}
+
+.hero-content-row .hero-actions {
+  flex-shrink: 0;
+}
+
+@media (max-width: 48rem) {
+  .hero-content-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
 }
 
 .hero-desc-compact {
