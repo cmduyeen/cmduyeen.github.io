@@ -30,6 +30,7 @@
   --link: var(--accent-cyan);
   --selection-background: var(--accent-emerald);
   --selection-text: #fff8e7;
+  --btn-primary-text: #fff8e7;
   --content-width: 64rem;
 }
 
@@ -57,6 +58,7 @@
   --link: var(--accent-cyan);
   --selection-background: var(--accent-emerald);
   --selection-text: #1f1916;
+  --btn-primary-text: #1f1916;
 }
 
 * {
@@ -1163,7 +1165,7 @@ main {
   background: var(--accent-emerald);
   border: 2px solid var(--border-strong);
   border-radius: var(--radius-md);
-  color: #fff8e7;
+  color: var(--btn-primary-text);
   font-family: var(--font-mono);
   font-size: 0.84rem;
   font-weight: 700;
@@ -3623,6 +3625,17 @@ main {
   }
 
   .writing-meta {
+    display: none;
+  }
+}
+
+@media (max-width: 36rem) {
+  .site-header nav a {
+    padding: 0.28rem 0.48rem;
+    font-size: 0.78rem;
+  }
+
+  .kbd-label {
     display: none;
   }
 }

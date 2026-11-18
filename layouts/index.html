@@ -4,8 +4,8 @@
 
   <!-- Warm Stardew Valley Cozy Hero -->
   <section class="hero-lab stardew-box" aria-label="Introduction">
-    <div class="stardew-scene" aria-hidden="true">
-      <svg class="stardew-scene-svg" viewBox="0 4 320 56" preserveAspectRatio="xMidYMid slice" shape-rendering="crispEdges">
+    <div class="stardew-scene">
+      <svg class="stardew-scene-svg" viewBox="0 4 320 56" preserveAspectRatio="xMidYMid slice" shape-rendering="crispEdges" aria-hidden="true">
         <rect class="scene-sky" width="320" height="64"/>
         <g class="scene-stars">
           <rect x="24" y="8" width="2" height="2" fill="#fef08a"/>
@@ -66,7 +66,7 @@
     <div class="hero-content-row">
       <div class="hero-text-col">
         <h1 class="hero-h1 hero-h1-wide">
-          <span class="highlight">~/{{ lower site.Title }}</span> — Notes, Reviews &amp; Projects
+          <span class="highlight">Notes, Reviews</span> &amp; Personal Projects
         </h1>
         {{ with site.Params.homeInfoParams }}
         <p class="hero-desc hero-desc-compact">{{ .Content }}</p>

@@ -9,10 +9,11 @@
   </header>
 
   <section class="about-rpg-grid" aria-label="Character sheet">
-    <!-- Left: RPG Character Card with Real Pixel Avatar -->
+    <!-- Left: RPG Character Card with Resized Pixel Avatar -->
+    {{- $aboutAvatar := (resources.Get "images/dyn-avatar.png").Resize "160x160 png" -}}
     <aside class="stardew-box about-char-card">
       <div class="about-avatar-wrap">
-        <img class="about-avatar-img" src="{{ "images/dyn-avatar.png" | relURL }}" alt="Dyn pixel avatar with two dogs" width="76" height="76" decoding="async" />
+        <img class="about-avatar-img" src="{{ $aboutAvatar.RelPermalink }}" alt="Dyn pixel avatar with two dogs" width="76" height="76" decoding="async" />
         <div>
           <h2 class="about-char-name">{{ site.Params.author }}</h2>
           <span class="status-pill is-active">Lv.{{ $postsCount }} · Valley Builder</span>
@@ -54,9 +55,10 @@
     </aside>
 
     <!-- Right: Cozy Studio Artwork + Builder's Journal + Achievements -->
+    {{- $aboutBanner := (resources.Get "images/dyn-workspace.png").Resize "1000x png" -}}
     <div class="stardew-box about-lore-card">
       <div class="about-banner-frame">
-        <img class="about-banner-img" src="{{ "images/dyn-workspace.png" | relURL }}" alt="Dyn working at a cozy wooden desk with two sleeping dogs" loading="eager" decoding="async" />
+        <img class="about-banner-img" src="{{ $aboutBanner.RelPermalink }}" alt="Dyn working at a cozy wooden desk with two sleeping dogs" loading="eager" decoding="async" />
       </div>
 
       <div class="w3-sidebar-label">// BUILDER'S JOURNAL</div>

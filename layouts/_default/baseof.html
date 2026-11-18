@@ -10,8 +10,9 @@
     <header class="site-header">
       <div class="site-shell site-header-inner">
         <div class="brand-group">
+          {{- $hdrAvatar := (resources.Get "images/dyn-avatar.png").Resize "96x96 png" -}}
           <a class="site-title" href="{{ site.Home.RelPermalink }}">
-            <img class="header-avatar" src="{{ "images/dyn-avatar.png" | relURL }}" alt="" width="28" height="28" decoding="async" />
+            <img class="header-avatar" src="{{ $hdrAvatar.RelPermalink }}" alt="" width="28" height="28" decoding="async" />
             <span>~/</span>{{ lower site.Title }}
           </a>
           <span class="telemetry-badge" title="Valley Log">
@@ -28,7 +29,7 @@
             <li>
               <button type="button" class="kbd-btn" id="search-trigger" aria-label="Search" title="Search (⌘K / /)">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-                <span>⌘K</span>
+                <span class="kbd-label">⌘K</span>
               </button>
             </li>
           </ul>
