@@ -1,6 +1,6 @@
 {{- $postsCount := len (where site.RegularPages "Section" "posts") -}}
 <!doctype html>
-<html lang="{{ site.Language.LanguageCode | default site.Language.Lang }}" data-theme="dark">
+<html lang="{{ site.Language.LanguageCode | default site.Language.Lang }}" data-theme="light">
   <head>
     {{ partial "head.html" . }}
   </head>
@@ -11,9 +11,9 @@
       <div class="site-shell site-header-inner">
         <div class="brand-group">
           <a class="site-title" href="{{ site.Home.RelPermalink }}"><span>~/</span>{{ lower site.Title }}</a>
-          <span class="telemetry-badge" title="Static Build Telemetry">
+          <span class="telemetry-badge" title="Garden Log">
             <span class="status-dot" aria-hidden="true"></span>
-            Build: Passing · {{ $postsCount }} {{ T "posts_unit" }}
+            Valley Log · {{ $postsCount }} {{ T "posts_unit" }}
           </span>
         </div>
         <nav aria-label="{{ T "main_navigation" }}">

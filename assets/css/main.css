@@ -1,21 +1,21 @@
 /* ==========================================================================
-   Autonomous Cyber-Minimalism Design System (~/dyn)
+   Stardew Valley Cozy Engineering Design System (~/dyn)
    ========================================================================== */
 :root {
-  color-scheme: dark;
-  --bg-void: #07080a;
-  --bg-surface: #0d1015;
-  --bg-elevated: #131720;
-  --border-subtle: rgba(56, 189, 248, 0.14);
-  --border-strong: rgba(56, 189, 248, 0.42);
-  --text-primary: #f4f4f5;
-  --text-secondary: #a1a1aa;
-  --text-muted: #8b949e;
-  --accent-emerald: #10b981;
-  --accent-cyan: #38bdf8;
-  --header-bg: rgba(7, 8, 10, 0.85);
-  --grid-dot: rgba(56, 189, 248, 0.11);
-  --shadow-card: 0 8px 24px rgba(0, 0, 0, 0.28);
+  color-scheme: light;
+  --bg-void: #f7eed6;
+  --bg-surface: #fff8e7;
+  --bg-elevated: #efe0bc;
+  --border-subtle: #d6ba8a;
+  --border-strong: #8f563b;
+  --text-primary: #3e2723;
+  --text-secondary: #5d4037;
+  --text-muted: #795548;
+  --accent-emerald: #4f8f3c;
+  --accent-cyan: #b45309;
+  --header-bg: rgba(247, 238, 214, 0.92);
+  --grid-dot: rgba(143, 86, 59, 0.14);
+  --shadow-card: 3px 3px 0 rgba(143, 86, 59, 0.22);
   --radius-sm: 4px;
   --radius-md: 6px;
   --font-sans: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
@@ -29,25 +29,25 @@
   --line: var(--border-subtle);
   --link: var(--accent-cyan);
   --selection-background: var(--accent-emerald);
-  --selection-text: #04130d;
+  --selection-text: #fff8e7;
   --content-width: 64rem;
 }
 
-[data-theme="light"] {
-  color-scheme: light;
-  --bg-void: #fafafa;
-  --bg-surface: #ffffff;
-  --bg-elevated: #f4f4f5;
-  --border-subtle: rgba(15, 23, 42, 0.12);
-  --border-strong: rgba(2, 132, 199, 0.45);
-  --text-primary: #09090b;
-  --text-secondary: #52525b;
-  --text-muted: #52525b;
-  --accent-emerald: #059669;
-  --accent-cyan: #0284c7;
-  --header-bg: rgba(250, 250, 250, 0.88);
-  --grid-dot: rgba(2, 132, 199, 0.12);
-  --shadow-card: 0 8px 24px rgba(15, 23, 42, 0.08);
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg-void: #1f1916;
+  --bg-surface: #2a221d;
+  --bg-elevated: #362c25;
+  --border-subtle: #5c4332;
+  --border-strong: #9c7151;
+  --text-primary: #f5ebd6;
+  --text-secondary: #d7c4a5;
+  --text-muted: #a69076;
+  --accent-emerald: #7ec850;
+  --accent-cyan: #eab308;
+  --header-bg: rgba(31, 25, 22, 0.92);
+  --grid-dot: rgba(156, 113, 81, 0.14);
+  --shadow-card: 3px 3px 0 rgba(0, 0, 0, 0.45);
 
   --background: var(--bg-void);
   --surface: var(--bg-surface);
@@ -56,7 +56,7 @@
   --line: var(--border-subtle);
   --link: var(--accent-cyan);
   --selection-background: var(--accent-emerald);
-  --selection-text: #ffffff;
+  --selection-text: #1f1916;
 }
 
 * {
@@ -176,9 +176,9 @@ summary:focus-visible {
   align-items: center;
   gap: 0.4rem;
   padding: 0.18rem 0.55rem;
-  border: 1px solid rgba(16, 185, 129, 0.28);
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
-  background: rgba(16, 185, 129, 0.08);
+  background: var(--bg-surface);
   color: var(--accent-emerald);
   font-family: var(--font-mono);
   font-size: 0.72rem;
@@ -190,7 +190,6 @@ summary:focus-visible {
   height: 6px;
   border-radius: 50%;
   background: var(--accent-emerald);
-  box-shadow: 0 0 8px var(--accent-emerald);
 }
 
 .site-header ul {
@@ -481,19 +480,20 @@ main {
   align-items: center;
   padding: 0.55rem 1.1rem;
   background: var(--accent-emerald);
-  border: 1px solid var(--accent-emerald);
+  border: 2px solid var(--border-strong);
   border-radius: var(--radius-md);
-  color: #04130d;
+  color: #fff8e7;
   font-family: var(--font-mono);
   font-size: 0.84rem;
   font-weight: 700;
   text-decoration: none;
+  box-shadow: 2px 2px 0 var(--border-strong);
   transition: opacity 0.15s ease, transform 0.15s ease;
 }
 
 .btn-primary-cyber:hover {
-  opacity: 0.92;
-  transform: translateY(-1px);
+  opacity: 0.94;
+  transform: translate(-1px, -1px);
 }
 
 .btn-hud {
@@ -501,12 +501,13 @@ main {
   align-items: center;
   padding: 0.55rem 1.1rem;
   background: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
+  border: 2px solid var(--border-subtle);
   border-radius: var(--radius-md);
   color: var(--text-primary);
   font-family: var(--font-mono);
   font-size: 0.84rem;
   text-decoration: none;
+  box-shadow: 2px 2px 0 rgba(143, 86, 59, 0.15);
   transition: border-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
 }
 
@@ -530,10 +531,11 @@ main {
   gap: 0.3rem;
   padding: 1rem 1.05rem;
   background: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
+  border: 2px solid var(--border-subtle);
   border-radius: var(--radius-md);
   color: var(--text-primary);
   text-decoration: none;
+  box-shadow: var(--shadow-card);
   transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -664,10 +666,11 @@ main {
   gap: 0.5rem;
   padding: 1.15rem 1.2rem;
   background: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
+  border: 2px solid var(--border-subtle);
   border-radius: var(--radius-md);
   color: var(--text-primary);
   text-decoration: none;
+  box-shadow: var(--shadow-card);
   transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
