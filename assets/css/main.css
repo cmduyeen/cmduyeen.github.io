@@ -421,7 +421,7 @@ summary:focus-visible {
    ========================================================================== */
 main {
   min-height: 70vh;
-  padding-block: 2.75rem 4.5rem;
+  padding-block: 2rem 3.75rem;
 }
 
 /* RPG About Character Sheet */
@@ -932,8 +932,8 @@ main {
 }
 
 .hero-desc-compact {
-  margin-bottom: 1rem;
-  font-size: 0.96rem;
+  margin: 0;
+  font-size: 0.94rem;
 }
 
 .hero-bottom-row {
@@ -1424,16 +1424,18 @@ main {
   grid-template-columns: 7rem 1fr auto;
   align-items: baseline;
   gap: 1rem;
-  padding: 0.7rem 0.6rem;
+  padding: 0.72rem 0.75rem;
   border-bottom: 1px solid var(--border-subtle);
+  border-left: 3px solid transparent;
   color: var(--text-primary);
   text-decoration: none;
-  transition: background-color 0.15s ease, padding-left 0.15s ease;
+  transition: background-color 0.15s ease, border-left-color 0.15s ease, padding-left 0.15s ease;
 }
 
 .writing-item:hover {
   background: var(--bg-surface);
-  padding-left: 0.9rem;
+  border-left-color: var(--accent-emerald);
+  padding-left: 1rem;
 }
 
 .writing-item:hover span:not(.writing-meta) {
@@ -1861,9 +1863,10 @@ main {
   align-items: center;
   margin-bottom: 2.75rem;
   padding: 1.5rem;
-  border: 1px solid rgba(16, 185, 129, 0.32);
+  border: 2px solid var(--border-strong);
   border-radius: var(--radius-md);
   background: var(--bg-surface);
+  box-shadow: inset 0 0 0 3px var(--bg-elevated), var(--shadow-card);
 }
 
 .tool-spotlight-title {
