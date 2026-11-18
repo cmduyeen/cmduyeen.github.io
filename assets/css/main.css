@@ -900,6 +900,78 @@ main {
 }
 
 /* ==========================================================================
+   Quick Jump (1-Click Tool / Topic Picker)
+   ========================================================================== */
+.quick-jump {
+  margin-bottom: 1.75rem;
+}
+
+.quick-jump-label {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--accent-cyan);
+  margin-bottom: 0.65rem;
+}
+
+.quick-jump-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.quick-topic-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.48rem 0.85rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background-color 0.15s ease, transform 0.15s ease;
+}
+
+.quick-topic-btn:hover {
+  border-color: var(--accent-cyan);
+  background: var(--bg-elevated);
+  transform: translateY(-1px);
+}
+
+.quick-topic-btn.is-active {
+  border-color: var(--accent-emerald);
+  background: rgba(16, 185, 129, 0.12);
+  color: var(--accent-emerald);
+  font-weight: 700;
+}
+
+.quick-topic-icon {
+  display: inline-flex;
+  color: var(--accent-cyan);
+}
+
+.quick-topic-btn.is-active .quick-topic-icon {
+  color: var(--accent-emerald);
+}
+
+.quick-topic-count {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.quick-topic-panel {
+  margin-top: 0.9rem;
+  padding: 1.1rem 1.2rem;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  background: var(--bg-surface);
+}
+
+/* ==========================================================================
    Evergreen Hub & Spoke Learn System (Advisor + Skill Ladder + Clusters)
    ========================================================================== */
 .advisor-box {

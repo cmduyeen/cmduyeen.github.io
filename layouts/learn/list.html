@@ -4,8 +4,68 @@
 
   <header class="page-header">
     <h1 class="hero-h1"><span class="highlight">//</span> {{ .Title }}</h1>
-    <p class="archive-subtitle">Too much to read? Answer one question below to get a curated path combining series, standalone guides, and tools.</p>
+    <p class="archive-subtitle">Too much to read? Pick a tool/topic for instant articles, or use the Path Advisor below.</p>
   </header>
+
+  <!-- Quick Jump for Impatient Learners (1-Click by Tool / Language) -->
+  {{- $quickTopics := slice
+    (dict "id" "obsidian" "name" "Obsidian" "match" "obsidian" "fallback" "/learn/pkm/" "icon" `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><polygon points="12 2 19 8 16 21 8 21 5 8 12 2"/></svg>`)
+    (dict "id" "markdown" "name" "Markdown" "match" "markdown" "fallback" "/learn/frontend/" "icon" `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 15V9l3 3 3-3v6"/><path d="M17 9v6l-2-2"/></svg>`)
+    (dict "id" "vscode" "name" "VS Code" "match" "vscode" "fallback" "/learn/workspace/" "icon" `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>`)
+    (dict "id" "neovim" "name" "Neovim" "match" "neovim" "fallback" "/learn/workspace/" "icon" `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 20V4l16 16V4"/></svg>`)
+    (dict "id" "hugo" "name" "Hugo & GitHub" "match" "hugo|github" "fallback" "/learn/devops/" "icon" `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>`)
+    (dict "id" "office" "name" "Office & Sheets" "match" "calendar|office|excel" "fallback" "/learn/office/" "icon" `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg>`)
+    (dict "id" "html-css" "name" "HTML & CSS" "match" "html|css" "fallback" "/learn/frontend/" "icon" `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3.6 9h16.8"/><path d="M3.6 15h16.8"/></svg>`)
+    (dict "id" "notion" "name" "Notion" "match" "notion" "fallback" "/learn/pkm/" "icon" `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="M9 16V8l6 8V8"/></svg>`)
+    (dict "id" "ai" "name" "AI & No-Code" "match" "ai-tools|automation|no-code" "fallback" "/learn/no-code-ai/" "icon" `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3v3"/><path d="M12 18v3"/><path d="M3 12h3"/><path d="M18 12h3"/><circle cx="12" cy="12" r="4"/></svg>`)
+  -}}
+
+  <section class="quick-jump" aria-label="Quick topic jump">
+    <div class="quick-jump-label">// QUICK JUMP · PICK ONE TOPIC</div>
+    <div class="quick-jump-grid">
+      {{- range $quickTopics -}}
+        {{- $qt := . -}}
+        {{- $qPosts := slice -}}
+        {{- range $allPosts -}}
+          {{- $haystack := lower (printf "%s %s %s" .RelPermalink .Title (delimit (.Params.tags | default slice) " ")) -}}
+          {{- if findRE $qt.match $haystack -}}
+            {{- $qPosts = $qPosts | append . -}}
+          {{- end -}}
+        {{- end -}}
+        <button type="button" class="quick-topic-btn" data-quick-topic="{{ $qt.id }}">
+          <span class="quick-topic-icon">{{ $qt.icon | safeHTML }}</span>
+          <span>{{ $qt.name }}</span>
+          <span class="quick-topic-count">{{ len $qPosts }}</span>
+        </button>
+      {{- end -}}
+    </div>
+
+    {{- range $quickTopics -}}
+      {{- $qt := . -}}
+      {{- $qPosts := slice -}}
+      {{- range $allPosts -}}
+        {{- $haystack := lower (printf "%s %s %s" .RelPermalink .Title (delimit (.Params.tags | default slice) " ")) -}}
+        {{- if findRE $qt.match $haystack -}}
+          {{- $qPosts = $qPosts | append . -}}
+        {{- end -}}
+      {{- end -}}
+      <div class="quick-topic-panel" data-quick-panel="{{ $qt.id }}" hidden>
+        <div class="section-head">
+          <h2 class="section-label"><span aria-hidden="true">// </span>{{ $qt.name }} ({{ len $qPosts }})</h2>
+          <a class="section-more" href="{{ $qt.fallback }}">Full {{ $qt.name }} roadmap →</a>
+        </div>
+        {{ if gt (len $qPosts) 0 }}
+        <ul class="writing-list">
+          {{ range $qPosts }}
+            {{ partial "post-list-item.html" . }}
+          {{ end }}
+        </ul>
+        {{ else }}
+        <p class="roadmap-desc" style="margin:0;">Articles for <strong>{{ $qt.name }}</strong> are coming soon. <a href="{{ $qt.fallback }}">View the planned roadmap →</a></p>
+        {{ end }}
+      </div>
+    {{- end -}}
+  </section>
 
   <!-- Interactive Path Advisor (Data-Driven via data/advisor.yaml) -->
   <section class="advisor-box" aria-label="Learning path advisor">

@@ -328,6 +328,21 @@
       });
     });
   }
+
+  const quickBtns = Array.from(document.querySelectorAll("[data-quick-topic]"));
+  const quickPanels = Array.from(document.querySelectorAll("[data-quick-panel]"));
+  if (quickBtns.length > 0 && quickPanels.length > 0) {
+    quickBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const id = btn.dataset.quickTopic;
+        const alreadyActive = btn.classList.contains("is-active");
+        quickBtns.forEach((b) => b.classList.toggle("is-active", !alreadyActive && b === btn));
+        quickPanels.forEach((p) => {
+          p.hidden = alreadyActive || p.dataset.quickPanel !== id;
+        });
+      });
+    });
+  }
   searchDialog?.addEventListener("click", (e) => {
     if (e.target === searchDialog) searchDialog.close();
   });
