@@ -1,8 +1,32 @@
+- id: coursera-plus
+  category: Courses & Platforms
+  badge: High-Impact Courses
+  name: Coursera Plus (Tech, AI & Data)
+  note: Unlimited certificates from Google, Meta, and DeepLearning.AI—best ROI if you take 2+ courses a year.
+  url: https://www.coursera.org/coursera-plus
+  cta: Explore Coursera
+
+- id: frontend-masters
+  category: Courses & Platforms
+  badge: Engineering Workshops
+  name: Frontend Masters
+  note: Deep-dive workshops on JavaScript, TypeScript, CSS Grid, and Node.js taught by practicing senior engineers.
+  url: https://frontendmasters.com/
+  cta: Browse Workshops
+
+- id: digitalocean-cloud
+  category: Hosting & Cloud
+  badge: Cloud Infrastructure
+  name: DigitalOcean & Cloudflare Stack
+  note: Simple VPS droplets and zero-cost edge Pages hosting for scaling beyond static sites.
+  url: https://www.digitalocean.com/
+  cta: View Cloud Stack
+
 - id: pragprog
   category: Tech Books
   badge: Classic Book
   name: The Pragmatic Programmer (20th Anniversary)
-  note: Timeless principles on automation, orthogonal design, and tracer bullets.
+  note: Timeless principles on automation, orthogonal design, and shipping fast without breaking systems.
   url: https://pragprog.com/titles/tpp20/
   cta: Read Details
 
@@ -10,22 +34,6 @@
   category: Tech Books
   badge: Systems Design
   name: Designing Data-Intensive Applications
-  note: The best deep-dive on distributed systems, storage engines, and reliability.
+  note: The essential reference on distributed systems, databases, caching, and reliability.
   url: https://dataintensive.net/
   cta: Read Details
-
-- id: roadmap-sh
-  category: Courses & Platforms
-  badge: Interactive Track
-  name: roadmap.sh Developer Roadmaps
-  note: Free, structured visual learning paths for backend, DevOps, and AI engineering.
-  url: https://roadmap.sh/
-  cta: Explore Tracks
-
-- id: frontend-masters
-  category: Courses & Platforms
-  badge: Deep-Dive Courses
-  name: Frontend Masters & Systems Workshops
-  note: In-depth video workshops taught by practicing engineers, zero fluff.
-  url: https://frontendmasters.com/
-  cta: Browse Courses

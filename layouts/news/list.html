@@ -100,6 +100,16 @@
           <li><a href="{{ "learn/no-code-ai/" | relLangURL }}">08. No-Code &amp; Everyday AI →</a></li>
         </ul>
       </div>
+
+      {{- with site.Data.sponsor -}}
+        {{- if .enabled -}}
+        <div class="news-side-box store-pro">
+          <div class="w3-sidebar-label">{{ .label }}</div>
+          <p class="news-side-desc"><strong>{{ .title }}</strong> — {{ .description }}</p>
+          <a class="product-cta" href="{{ .url }}"{{ if strings.HasPrefix .url "http" }} target="_blank" rel="noopener noreferrer"{{ end }}>{{ .cta }}</a>
+        </div>
+        {{- end -}}
+      {{- end -}}
     </aside>
   </div>
 {{ end }}
