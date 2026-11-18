@@ -2,18 +2,10 @@
   {{- $posts := (where site.RegularPages "Section" "posts").ByDate.Reverse -}}
   {{- $catalog := index site.Data.products "en" -}}
 
-  <!-- Warm Stardew Valley Cozy Hero -->
+  <!-- Warm Stardew Valley Cozy Hero (Compact 7.5rem Animated Pixel Scene) -->
   <section class="hero-lab stardew-box" aria-label="Introduction">
     <div class="stardew-scene">
-      <img class="stardew-banner-img" src="{{ "images/dyn-banner.png" | relURL }}" alt="Dyn walking along a valley path with two cute dogs near a cozy cottage" loading="eager" decoding="async" />
-      <div class="diorama-night-tint" aria-hidden="true"></div>
-      <div class="diorama-smoke" aria-hidden="true">
-        <span></span><span></span><span></span>
-      </div>
-      <div class="diorama-lantern-glow" aria-hidden="true"></div>
-      <div class="diorama-petals" aria-hidden="true">
-        <i></i><i></i><i></i><i></i><i></i><i></i>
-      </div>
+      <canvas id="valley-hero-canvas" width="320" height="64" aria-label="Pixel art animation of Dyn walking with two dogs in a cozy valley"></canvas>
       <button type="button" class="stardew-hud-pill" id="valley-season-hud" title="Click to toggle Day / Night">
         <span class="hud-season-dot" aria-hidden="true"></span>
         <span id="valley-season-text">Fall · Day</span>
