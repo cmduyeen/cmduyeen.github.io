@@ -96,7 +96,7 @@
       <a class="section-more" href="{{ "archives/" | relLangURL }}">{{ if $isVi }}Xem toàn bộ ({{ len . }}) →{{ else }}View all ({{ len . }}) →{{ end }}</a>
     </div>
     <ul class="writing-list">
-      {{ range first 8 . }}
+      {{ range first 6 . }}
       {{ partial "post-list-item.html" . }}
       {{ end }}
     </ul>

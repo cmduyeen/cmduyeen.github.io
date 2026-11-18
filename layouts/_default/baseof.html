@@ -6,8 +6,9 @@
   </head>
   <body>
     <a class="skip-link" href="#main">{{ T "skip_to_content" }}</a>
-    <div class="site-shell">
-      <header class="site-header">
+
+    <header class="site-header">
+      <div class="site-shell site-header-inner">
         <div class="brand-group">
           <a class="site-title" href="{{ site.Home.RelPermalink }}"><span>~/</span>{{ lower site.Title }}</a>
           <span class="telemetry-badge" title="Static Build Telemetry">
@@ -22,7 +23,7 @@
             <li class="nav-item"><a href="{{ .URL }}"{{ if $page.IsMenuCurrent "main" . }} aria-current="page"{{ end }}>{{ .Name }}</a></li>
             {{ end }}
             <li>
-              <button type="button" class="kbd-btn" id="search-trigger" aria-label="{{ if eq site.Language.Lang "vi" }}Tìm kiếm{{ else }}Search{{ end }}" title="{{ if eq site.Language.Lang "vi" }}Tìm kiếm (⌘K / /){{ else }}Search (⌘K / /){{ end }}">⌘K</button>
+              <button type="button" class="kbd-btn" id="search-trigger" aria-label="Search" title="Search (⌘K / /)">⌘K</button>
             </li>
             <li>
               <button type="button" class="icon-btn-sm" id="theme-toggle" aria-label="Toggle Light/Dark theme" title="Toggle Light/Dark theme">
@@ -32,13 +33,17 @@
             </li>
           </ul>
         </nav>
-      </header>
+      </div>
+    </header>
 
+    <div class="site-shell">
       <main id="main">
         {{ block "main" . }}{{ end }}
       </main>
+    </div>
 
-      <footer class="site-footer">
+    <footer class="site-footer">
+      <div class="site-shell site-footer-inner">
         <div class="footer-col">
           <div class="footer-brand"><span>~/</span>{{ lower site.Title }} — Engineering Notes &amp; Automation</div>
           <p class="footer-meta">Built with Hugo · Hosted on GitHub Pages</p>
@@ -63,21 +68,21 @@
             <li><button type="button" class="footer-cmd-btn" data-open-search>⌘K Search</button></li>
           </ul>
         </div>
-      </footer>
-    </div>
+      </div>
+    </footer>
 
-    <dialog id="search-dialog" class="search-dialog" data-index-url="{{ "index.json" | relLangURL }}" data-empty-msg="{{ if eq site.Language.Lang "vi" }}Không tìm thấy bài viết phù hợp.{{ else }}No matching posts found.{{ end }}">
+    <dialog id="search-dialog" class="search-dialog" data-index-url="{{ "index.json" | relLangURL }}" data-empty-msg="No matching posts found.">
       <div class="search-box">
         <div class="search-input-row">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-          <input id="search-input" type="search" placeholder="{{ if eq site.Language.Lang "vi" }}Tìm bài viết, chủ đề...{{ else }}Search posts, topics...{{ end }}" autocomplete="off" />
+          <input id="search-input" type="search" placeholder="Search posts, topics..." autocomplete="off" />
           <button type="button" id="search-close" class="search-close" aria-label="Close">Esc</button>
         </div>
         <ul id="search-results" class="writing-list search-results"></ul>
       </div>
     </dialog>
 
-    <button type="button" id="back-to-top" class="back-to-top" aria-label="{{ if eq site.Language.Lang "vi" }}Lên đầu trang{{ else }}Back to top{{ end }}" title="{{ if eq site.Language.Lang "vi" }}Lên đầu trang{{ else }}Back to top{{ end }}">
+    <button type="button" id="back-to-top" class="back-to-top" aria-label="Back to top" title="Back to top">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
     </button>
 
