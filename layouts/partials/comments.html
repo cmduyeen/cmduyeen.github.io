@@ -1,5 +1,5 @@
 {{ if eq .Section "posts" }}
-<section class="article-comments" aria-label="{{ if eq site.Language.Lang "vi" }}Bình luận{{ else }}Comments{{ end }}">
+<section class="article-comments" aria-label="Comments">
   <div
     id="giscus-mount"
     data-giscus-repo="cmduyeen/cmduyeen.github.io"
@@ -11,9 +11,9 @@
     data-giscus-reactions-enabled="1"
     data-giscus-emit-metadata="0"
     data-giscus-input-position="top"
-    data-giscus-theme="https://cmduyeen.github.io/css/giscus.css"
-    data-giscus-lang="{{ site.Language.Lang }}"
-    data-giscus-loading="lazy">
+    data-giscus-theme="noborder_dark"
+    data-giscus-lang="en">
+    <p class="comments-status">Loading comments...</p>
   </div>
 </section>
 {{ end }}

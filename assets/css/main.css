@@ -2503,6 +2503,17 @@ main {
   margin-top: 2.25rem;
 }
 
+.article-comments {
+  margin-top: 2.5rem;
+  min-height: 8rem;
+}
+
+.comments-status {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
 .post-cta {
   margin-top: 2.25rem;
   padding: 1rem 1.1rem;

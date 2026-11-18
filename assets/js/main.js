@@ -145,6 +145,9 @@
   searchClose?.addEventListener("click", () => searchDialog?.close());
 
   const themeToggle = document.getElementById("theme-toggle");
+  const giscusTheme = () =>
+    document.documentElement.getAttribute("data-theme") === "light" ? "noborder_light" : "noborder_dark";
+
   themeToggle?.addEventListener("click", () => {
     const current = document.documentElement.getAttribute("data-theme") === "light" ? "light" : "dark";
     const next = current === "dark" ? "light" : "dark";
@@ -152,6 +155,11 @@
     try {
       localStorage.setItem("dyn-theme", next);
     } catch (_) {}
+    const iframe = document.querySelector("iframe.giscus-frame");
+    iframe?.contentWindow?.postMessage(
+      { giscus: { setConfig: { theme: giscusTheme() } } },
+      "https://giscus.app"
+    );
   });
 
   const filterChips = Array.from(document.querySelectorAll("[data-filter-tag]"));
@@ -454,6 +462,7 @@
     const loadGiscus = () => {
       if (giscusMount.dataset.loaded) return;
       giscusMount.dataset.loaded = "true";
+      giscusMount.dataset.giscusTheme = giscusTheme();
       const s = document.createElement("script");
       s.src = "https://giscus.app/client.js";
       s.crossOrigin = "anonymous";
@@ -463,6 +472,9 @@
           s.setAttribute("data-" + attr.name.slice(12), attr.value);
         }
       }
+      s.addEventListener("load", () => {
+        giscusMount.querySelector(".comments-status")?.remove();
+      });
       giscusMount.append(s);
     };
     if ("IntersectionObserver" in window) {
@@ -471,10 +483,13 @@
           io.disconnect();
           loadGiscus();
         }
-      }, { rootMargin: "400px 0px" });
+      }, { rootMargin: "1200px 0px" });
       io.observe(giscusMount);
+    }
+    if ("requestIdleCallback" in window) {
+      requestIdleCallback(loadGiscus, { timeout: 2500 });
     } else {
-      loadGiscus();
+      setTimeout(loadGiscus, 1500);
     }
   }
 })();
