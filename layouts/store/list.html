@@ -40,25 +40,26 @@
 
   {{- $langData := index site.Data.products "en" -}}
   {{ with $langData.sections }}
-    {{ range . }}
-    <section class="home-section">
-      <div class="section-head">
-        <h2 class="section-label"><span aria-hidden="true">// </span>{{ .heading }}</h2>
-      </div>
-      <div class="featured-grid">
-        {{ range .items }}
-        <a class="hud-card" href="{{ .url }}"{{ if strings.HasPrefix .url "http" }} target="_blank" rel="noopener noreferrer"{{ end }}>
-          <div class="hud-card-top">
-            <span class="product-badge">{{ .badge }}</span>
-            <span class="hud-card-arrow" aria-hidden="true">↗</span>
-          </div>
-          <h3 class="hud-card-title">{{ .name }}</h3>
-          <p class="hud-card-desc">{{ .description }}</p>
-          <div class="product-cta">{{ .cta }}</div>
-        </a>
-        {{ end }}
-      </div>
-    </section>
+    {{ if gt (len .) 1 }}
+      {{- $ebooks := index . 1 -}}
+      <section class="home-section">
+        <div class="section-head">
+          <h2 class="section-label"><span aria-hidden="true">// </span>{{ $ebooks.heading }}</h2>
+        </div>
+        <div class="featured-grid">
+          {{ range $ebooks.items }}
+          <a class="hud-card" href="{{ .url }}"{{ if strings.HasPrefix .url "http" }} target="_blank" rel="noopener noreferrer"{{ end }}>
+            <div class="hud-card-top">
+              <span class="product-badge">{{ .badge }}</span>
+              <span class="hud-card-arrow" aria-hidden="true">↗</span>
+            </div>
+            <h3 class="hud-card-title">{{ .name }}</h3>
+            <p class="hud-card-desc">{{ .description }}</p>
+            <div class="product-cta">{{ .cta }}</div>
+          </a>
+          {{ end }}
+        </div>
+      </section>
     {{ end }}
   {{ end }}
 {{ end }}

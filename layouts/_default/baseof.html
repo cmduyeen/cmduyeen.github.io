@@ -52,14 +52,10 @@
         <div class="footer-col">
           <div class="footer-heading">Explore</div>
           <ul class="footer-links">
-            <li><a href="{{ "guides/" | relLangURL }}">Guides</a></li>
-            <li><a href="{{ "radar/" | relLangURL }}">Radar</a></li>
-            <li><a href="{{ "tools/" | relLangURL }}">Tools</a></li>
-            <li><a href="{{ "store/" | relLangURL }}">Store</a></li>
-            <li><a href="{{ "deals/" | relLangURL }}">Deals</a></li>
-            <li><a href="{{ "archives/" | relLangURL }}">Archive</a></li>
-            {{ with site.Home.OutputFormats.Get "RSS" }}<li><a href="{{ .RelPermalink }}">RSS (/index.xml)</a></li>{{ end }}
-            {{ with site.Home.OutputFormats.Get "LLMS" }}<li><a href="{{ .RelPermalink }}">llms.txt</a></li>{{ end }}
+            <li><a href="{{ "guides/" | relLangURL }}">Guides</a> · <a href="{{ "radar/" | relLangURL }}">Radar</a></li>
+            <li><a href="{{ "tools/" | relLangURL }}">Tools</a> · <a href="{{ "store/" | relLangURL }}">Store</a></li>
+            <li><a href="{{ "deals/" | relLangURL }}">Deals</a> · <a href="{{ "archives/" | relLangURL }}">Archive</a></li>
+            <li>{{ with site.Home.OutputFormats.Get "RSS" }}<a href="{{ .RelPermalink }}">RSS</a>{{ end }} · {{ with site.Home.OutputFormats.Get "LLMS" }}<a href="{{ .RelPermalink }}">llms.txt</a>{{ end }}</li>
           </ul>
         </div>
         <div class="footer-col">

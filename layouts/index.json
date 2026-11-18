@@ -1,11 +1,11 @@
 {{- $items := slice -}}
-{{- range (where site.RegularPages "Section" "posts").ByDate.Reverse -}}
+{{- range (where site.RegularPages "Section" "in" (slice "posts" "radar")).ByDate.Reverse -}}
   {{- $items = $items | append (dict
     "title" .LinkTitle
     "url" .RelPermalink
-    "date" (.Date.Format "2006 · 01")
+    "date" (.Date.UTC.Format "2006-01-02")
     "tags" (.Params.tags | default (slice))
-    "summary" (.Summary | plainify | htmlUnescape | truncate 140)
+    "summary" (.Description | default (.Summary | plainify | htmlUnescape | truncate 140))
   ) -}}
 {{- end -}}
 {{- $items | jsonify -}}

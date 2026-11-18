@@ -1,18 +1,18 @@
 ---
 title: "About"
-description: "A little about Dyn, minimalist software philosophy, and current projects."
+description: "About Dyn, minimalist software philosophy, engineering stack, and open-source projects."
 ---
 
-I'm Dyn, based in **Ho Chi Minh City, Vietnam**. I enjoy reading, cooking, and building small, practical software tools.
+I'm **Dyn**, an independent builder focused on calm, minimalist software (*less is more*): plain-text Markdown, fast static sites, zero-install browser tools, and privacy-respecting automation.
 
-This blog documents what I learn about automation, Obsidian, and designing simple systems that last. I believe in calm, minimalist software (*less is more*): plain-text Markdown, fast load times, zero-install workflows, and respect for user privacy.
+This lab documents practical workflows around **Obsidian**, **Hugo**, **Neovim**, and **AI-assisted engineering**—designed to be simple, durable, and dependency-free.
 
 | | |
-| --- | --- |
-| **Focus** | Minimalist Software, Automation, Obsidian, Hugo |
-| **Stack** | Python, PowerShell, Markdown, HTML/CSS |
+| :--- | :--- |
+| **Focus** | Minimalist Software, Automation, Obsidian PKM, Hugo |
+| **Stack** | Python, PowerShell, Markdown, HTML/CSS, Vanilla JS |
 | **Elsewhere** | [@cmduyeen](https://github.com/cmduyeen) (GitHub) · [@cmduyeen](https://x.com/cmduyeen) (X) · [Tools](/tools/) · [RSS](/index.xml) |
 
-## Projects
+## Open-Source Projects
 
 {{< github-repos >}}
