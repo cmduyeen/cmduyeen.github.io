@@ -611,7 +611,8 @@
     const syncScrollUI = () => {
       ticking = false;
       if (backToTopBtn) {
-        backToTopBtn.classList.toggle("is-visible", window.scrollY > 320);
+        const nearBottom = window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 120;
+        backToTopBtn.classList.toggle("is-visible", window.scrollY > 320 && !nearBottom);
       }
       if (progressBar && articleEl) {
         const start = articleEl.offsetTop;
