@@ -240,31 +240,69 @@
   const archiveItems = Array.from(document.querySelectorAll("#archive-list .archive-post-item"));
   const archiveSeries = Array.from(document.querySelectorAll("#archive-list .archive-series"));
   const archiveVisibleCount = document.getElementById("archive-visible-count");
+  const archiveSearch = document.getElementById("archive-search");
+  const archiveEmpty = document.getElementById("archive-empty");
+  const archiveReset = document.getElementById("archive-reset");
 
-  if (filterChips.length > 0 && archiveItems.length > 0) {
-    filterChips.forEach((chip) => {
-      chip.addEventListener("click", () => {
-        const tag = chip.dataset.filterTag || "all";
-        filterChips.forEach((c) => c.classList.toggle("is-active", c === chip));
+  if (archiveItems.length > 0 && (filterChips.length > 0 || archiveSearch)) {
+    let activeTag = "all";
 
-        let visible = 0;
-        archiveItems.forEach((item) => {
-          const itemTags = (item.dataset.tags || "").split(",").filter(Boolean);
-          const match = tag === "all" || itemTags.includes(tag);
-          item.hidden = !match;
-          if (match) visible += 1;
-        });
+    const applyArchiveFilter = () => {
+      const q = (archiveSearch?.value || "").trim().toLowerCase();
+      let visible = 0;
 
-        archiveSeries.forEach((section) => {
-          const hasVisible = section.querySelector(".archive-post-item:not([hidden])") !== null;
-          section.hidden = !hasVisible;
-        });
+      archiveItems.forEach((item) => {
+        const itemTags = (item.dataset.tags || "").split(",").filter(Boolean);
+        const searchBlob = item.dataset.search || "";
+        const matchTag = activeTag === "all" || itemTags.includes(activeTag);
+        const matchQuery = !q || searchBlob.includes(q);
+        const match = matchTag && matchQuery;
+        item.hidden = !match;
+        if (match) visible += 1;
+      });
 
-        if (archiveVisibleCount) {
-          archiveVisibleCount.textContent = String(visible);
+      archiveSeries.forEach((section) => {
+        const visibleInSec = section.querySelectorAll(".archive-post-item:not([hidden])").length;
+        section.hidden = visibleInSec === 0;
+        const countEl = section.querySelector(".archive-series-count");
+        if (countEl && !countEl.dataset.unit) {
+          countEl.dataset.unit = countEl.textContent.replace(/^\d+\s*/, "");
+        }
+        if (countEl && countEl.dataset.unit) {
+          countEl.textContent = `${visibleInSec} ${countEl.dataset.unit}`;
         }
       });
+
+      if (archiveVisibleCount) {
+        archiveVisibleCount.textContent = String(visible);
+      }
+      if (archiveEmpty) {
+        archiveEmpty.hidden = visible > 0;
+      }
+    };
+
+    filterChips.forEach((chip) => {
+      chip.addEventListener("click", () => {
+        activeTag = chip.dataset.filterTag || "all";
+        filterChips.forEach((c) => c.classList.toggle("is-active", c === chip));
+        applyArchiveFilter();
+      });
     });
+
+    archiveSearch?.addEventListener("input", applyArchiveFilter);
+
+    archiveReset?.addEventListener("click", () => {
+      activeTag = "all";
+      if (archiveSearch) archiveSearch.value = "";
+      filterChips.forEach((c) => c.classList.toggle("is-active", c.dataset.filterTag === "all"));
+      applyArchiveFilter();
+    });
+
+    const urlTag = new URLSearchParams(window.location.search).get("tag")?.toLowerCase();
+    if (urlTag) {
+      const targetChip = filterChips.find((c) => c.dataset.filterTag === urlTag);
+      if (targetChip) targetChip.click();
+    }
   }
 
   const dealFilters = Array.from(document.querySelectorAll("[data-deal-filter]"));

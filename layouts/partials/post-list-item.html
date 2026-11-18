@@ -2,7 +2,7 @@
 {{- range (.Params.tags | default slice) -}}
   {{- $tags = $tags | append (lower (printf "%v" .)) -}}
 {{- end -}}
-<li class="archive-post-item" data-tags="{{ delimit $tags "," }}">
+<li class="archive-post-item" data-tags="{{ delimit $tags "," }}" data-search="{{ lower .LinkTitle }} {{ delimit $tags " " }}">
   <a class="writing-item" href="{{ .RelPermalink }}">
     <time datetime="{{ .Date.UTC.Format "2006-01-02" }}">{{ .Date.UTC.Format "2006-01-02" }}</time>
     <span>{{ .LinkTitle }}</span>

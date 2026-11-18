@@ -12,14 +12,20 @@
     </p>
   </header>
 
-  {{ with site.Taxonomies.tags.ByCount }}
-  <div class="archive-filter-bar" role="group" aria-label="{{ if $isVi }}Lọc theo chủ đề{{ else }}Filter by topic{{ end }}">
-    <button type="button" class="filter-chip is-active" data-filter-tag="all">{{ if $isVi }}Tất cả{{ else }}All{{ end }}</button>
-    {{ range first 10 . }}
-    <button type="button" class="filter-chip" data-filter-tag="{{ .Page.LinkTitle | lower }}">#{{ .Page.LinkTitle }} <span class="chip-count">{{ .Count }}</span></button>
+  <div class="archive-controls-box">
+    <div class="archive-search-row">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      <input type="search" id="archive-search" class="archive-search-input" placeholder="{{ if $isVi }}Tìm nhanh bài viết hoặc chủ đề...{{ else }}Filter articles by keyword or topic...{{ end }}" aria-label="{{ if $isVi }}Tìm bài viết{{ else }}Filter articles{{ end }}" autocomplete="off" />
+    </div>
+    {{ with site.Taxonomies.tags.ByCount }}
+    <div class="archive-filter-bar" role="group" aria-label="{{ if $isVi }}Lọc theo chủ đề{{ else }}Filter by topic{{ end }}">
+      <button type="button" class="filter-chip is-active" data-filter-tag="all">{{ if $isVi }}Tất cả{{ else }}All{{ end }} <span class="chip-count">{{ len $posts }}</span></button>
+      {{ range . }}
+      <button type="button" class="filter-chip" data-filter-tag="{{ .Page.LinkTitle | lower }}">#{{ .Page.LinkTitle }} <span class="chip-count">{{ .Count }}</span></button>
+      {{ end }}
+    </div>
     {{ end }}
   </div>
-  {{ end }}
 
   {{ $groups := newScratch }}
   {{ $seriesOrder := slice }}
@@ -94,7 +100,10 @@
       {{ $items := $groups.Get $name }}
       <section class="archive-series">
         <div class="archive-series-head">
-          <h2>{{ $name }}</h2>
+          <h2>
+            <svg class="pixel-icon" width="16" height="16" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect x="3" y="2" width="10" height="12" fill="#8f563b"/><rect x="4" y="3" width="8" height="10" fill="#fff8e7"/><rect x="5" y="5" width="6" height="1" fill="#4f8f3c"/><rect x="5" y="7" width="6" height="1" fill="#b45309"/></svg>
+            {{ $name }}
+          </h2>
           <span class="archive-series-count">{{ len $items }} {{ i18n "posts_unit" }}</span>
         </div>
         <ul class="writing-list">
@@ -108,7 +117,10 @@
     {{ if gt (len $standalone) 0 }}
       <section class="archive-series">
         <div class="archive-series-head">
-          <h2>{{ i18n "standalone_posts" }}</h2>
+          <h2>
+            <svg class="pixel-icon" width="16" height="16" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect x="7" y="9" width="2" height="5" fill="#4f8f3c"/><rect x="5" y="4" width="6" height="5" fill="#7ec850"/><rect x="6" y="2" width="4" height="2" fill="#f59e0b"/></svg>
+            {{ i18n "standalone_posts" }}
+          </h2>
           <span class="archive-series-count">{{ len $standalone }} {{ i18n "posts_unit" }}</span>
         </div>
         <ul class="writing-list">
@@ -118,5 +130,10 @@
         </ul>
       </section>
     {{ end }}
+
+    <div id="archive-empty" class="archive-empty" hidden>
+      <p>{{ if $isVi }}Không có bài viết nào khớp với bộ lọc hiện tại.{{ else }}No articles match the current topic or keyword.{{ end }}</p>
+      <button type="button" id="archive-reset" class="btn-hud">{{ if $isVi }}Đặt lại bộ lọc{{ else }}Reset filters{{ end }}</button>
+    </div>
   </div>
 {{ end }}
