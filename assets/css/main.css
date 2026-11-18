@@ -882,8 +882,205 @@ main {
 }
 
 /* ==========================================================================
-   W3Schools-Style Learn Layout (2-Column Track Switcher)
+   W3Schools-Style Learn Layout (Goal Picker -> Roadmap -> Track Switcher)
    ========================================================================== */
+.goal-picker {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.85rem;
+  margin-bottom: 2rem;
+}
+
+.goal-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+}
+
+.goal-card:hover {
+  border-color: var(--accent-cyan);
+  transform: translateY(-2px);
+}
+
+.goal-card.is-active {
+  border-color: var(--accent-emerald);
+  background: rgba(16, 185, 129, 0.08);
+}
+
+.goal-tag {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--accent-cyan);
+}
+
+.goal-card.is-active .goal-tag {
+  color: var(--accent-emerald);
+}
+
+.goal-title {
+  font-size: 0.96rem;
+  line-height: 1.35;
+}
+
+.goal-desc {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+}
+
+.roadmap-banner {
+  margin-bottom: 1.25rem;
+  padding: 1.1rem 1.2rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  background: var(--bg-surface);
+}
+
+.roadmap-banner-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.roadmap-banner-title {
+  margin: 0.2rem 0 0;
+  font-size: 1.15rem;
+}
+
+.roadmap-steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.65rem;
+}
+
+.roadmap-step {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  background: var(--bg-void);
+}
+
+.roadmap-step span {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--accent-cyan);
+}
+
+.roadmap-step strong {
+  font-size: 0.84rem;
+}
+
+.w3-lesson-item.is-done .w3-lesson-status::after {
+  content: "✓";
+  color: var(--accent-emerald);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.82rem;
+}
+
+.mark-done-btn {
+  margin-left: auto;
+  padding: 0.2rem 0.6rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface);
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.mark-done-btn:hover {
+  border-color: var(--accent-emerald);
+  color: var(--accent-emerald);
+}
+
+.mark-done-btn.is-done {
+  background: rgba(16, 185, 129, 0.14);
+  border-color: var(--accent-emerald);
+  color: var(--accent-emerald);
+  font-weight: 700;
+}
+
+.series-drawer {
+  margin-bottom: 1.5rem;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  background: var(--bg-surface);
+}
+
+.series-drawer summary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  list-style: none;
+}
+
+.series-drawer summary::-webkit-details-marker {
+  display: none;
+}
+
+.series-drawer summary .tldr-label {
+  margin-bottom: 0;
+}
+
+.series-drawer-list {
+  margin: 0.75rem 0 0;
+  padding: 0.5rem 0 0;
+  border-top: 1px solid var(--border-subtle);
+  list-style: none;
+}
+
+.series-drawer-link {
+  display: flex;
+  align-items: baseline;
+  gap: 0.65rem;
+  padding: 0.35rem 0.45rem;
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.88rem;
+}
+
+.series-drawer-link:hover {
+  background: var(--bg-elevated);
+  color: var(--accent-cyan);
+}
+
+.series-drawer-link.is-current {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--accent-emerald);
+  font-weight: 600;
+}
+
+.series-drawer-link.is-done::after {
+  content: "✓";
+  margin-left: auto;
+  color: var(--accent-emerald);
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+}
+
 .w3-learn-shell {
   display: grid;
   grid-template-columns: 16rem minmax(0, 1fr);
@@ -955,7 +1152,7 @@ main {
 
 .w3-lesson-item {
   display: grid;
-  grid-template-columns: 2.5rem 1fr auto;
+  grid-template-columns: 2.5rem 1fr auto auto;
   align-items: baseline;
   gap: 0.75rem;
   padding: 0.75rem 0.65rem;
@@ -1679,6 +1876,8 @@ main {
   .mention-grid,
   .post-nav-grid,
   .store-compare,
+  .goal-picker,
+  .roadmap-steps,
   .w3-learn-shell,
   .site-footer-inner {
     grid-template-columns: 1fr;

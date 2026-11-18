@@ -20,8 +20,45 @@
             <time datetime="{{ .Date.UTC.Format "2006-01-02T15:04:05Z" }}">{{ .Date.UTC.Format "2006-01-02" }} UTC</time>
             <span aria-hidden="true">·</span>
             <span>{{ .ReadingTime }} {{ T "minutes_read" }}</span>
+            {{ if eq .Section "posts" }}
+            <button type="button" class="mark-done-btn" id="mark-lesson-done" data-lesson-url="{{ .RelPermalink }}">Mark as completed</button>
+            {{ end }}
           </p>
         </header>
+
+        {{- $seriesKey := "" -}}
+        {{- $seriesLabel := "" -}}
+        {{- if in .RelPermalink "markdown-101-" -}}
+          {{- $seriesKey = "markdown-101-" -}}
+          {{- $seriesLabel = "Markdown 101" -}}
+        {{- else if in .RelPermalink "serein-" -}}
+          {{- $seriesKey = "serein-" -}}
+          {{- $seriesLabel = "Serein Workspace" -}}
+        {{- end -}}
+        {{- if $seriesKey -}}
+          {{- $seriesPosts := slice -}}
+          {{- range (where site.RegularPages "Section" "posts").ByDate -}}
+            {{- if in .RelPermalink $seriesKey -}}
+              {{- $seriesPosts = $seriesPosts | append . -}}
+            {{- end -}}
+          {{- end -}}
+          {{- if gt (len $seriesPosts) 1 -}}
+          <details class="series-drawer">
+            <summary><span class="tldr-label">// SERIES: {{ $seriesLabel }}</span> <span>({{ len $seriesPosts }} lessons · Jump to any part)</span></summary>
+            <ol class="series-drawer-list">
+              {{- $currentPermalink := .RelPermalink -}}
+              {{- range $i, $sp := $seriesPosts -}}
+              <li>
+                <a class="series-drawer-link{{ if eq $sp.RelPermalink $currentPermalink }} is-current{{ end }}" href="{{ $sp.RelPermalink }}" data-lesson-url="{{ $sp.RelPermalink }}">
+                  <span class="w3-lesson-num">{{ printf "%02d" (add $i 1) }}</span>
+                  <span>{{ $sp.LinkTitle }}</span>
+                </a>
+              </li>
+              {{- end -}}
+            </ol>
+          </details>
+          {{- end -}}
+        {{- end -}}
 
         {{ if $hasToc }}
         <aside class="article-toc-mobile" aria-label="{{ T "table_of_contents" }}">

@@ -228,16 +228,91 @@
   const trackBtns = Array.from(document.querySelectorAll("[data-track-target]"));
   const trackPanels = Array.from(document.querySelectorAll("[data-track-panel]"));
   if (trackBtns.length > 0 && trackPanels.length > 0) {
+    const activateTrack = (targetId) => {
+      trackBtns.forEach((b) => b.classList.toggle("is-active", b.dataset.trackTarget === targetId));
+      trackPanels.forEach((p) => {
+        p.hidden = p.id !== targetId;
+      });
+    };
+
     trackBtns.forEach((btn) => {
       btn.addEventListener("click", () => {
         const targetId = btn.dataset.trackTarget;
-        trackBtns.forEach((b) => b.classList.toggle("is-active", b === btn));
-        trackPanels.forEach((p) => {
-          p.hidden = p.id !== targetId;
-        });
+        if (!targetId) return;
+        activateTrack(targetId);
+        if (btn.classList.contains("goal-card")) {
+          document.getElementById("learn-workspace")?.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
       });
     });
   }
+
+  const STORAGE_KEY = "dyn-learn-done";
+  const getDoneSet = () => {
+    try {
+      const raw = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+      return new Set(Array.isArray(raw) ? raw : []);
+    } catch (_) {
+      return new Set();
+    }
+  };
+  const saveDoneSet = (set) => {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(Array.from(set)));
+    } catch (_) {}
+  };
+
+  const syncLearnProgress = () => {
+    const done = getDoneSet();
+    for (const el of document.querySelectorAll("[data-lesson-url]")) {
+      const url = el.dataset.lessonUrl;
+      if (url && done.has(url)) {
+        el.classList.add("is-done");
+      } else {
+        el.classList.remove("is-done");
+      }
+    }
+
+    for (const counter of document.querySelectorAll("[data-track-progress]")) {
+      const trackId = counter.dataset.trackProgress;
+      const items = Array.from(document.querySelectorAll(`[data-lesson-track="${trackId}"]`));
+      const completed = items.filter((i) => done.has(i.dataset.lessonUrl)).length;
+      counter.textContent = `${completed}/${items.length}`;
+
+      const startBtn = document.querySelector(`[data-track-start="${trackId}"]`);
+      if (startBtn && items.length > 0) {
+        const nextLesson = items.find((i) => !done.has(i.dataset.lessonUrl));
+        if (nextLesson && completed > 0) {
+          startBtn.href = nextLesson.getAttribute("href") || startBtn.href;
+          startBtn.textContent = "Continue Learning →";
+        } else if (completed === items.length && items.length > 0) {
+          startBtn.textContent = "Review Track ✓";
+        }
+      }
+    }
+  };
+
+  const markBtn = document.getElementById("mark-lesson-done");
+  if (markBtn) {
+    const url = markBtn.dataset.lessonUrl;
+    const renderMarkBtn = () => {
+      const isDone = url && getDoneSet().has(url);
+      markBtn.classList.toggle("is-done", Boolean(isDone));
+      markBtn.textContent = isDone ? "✓ Completed" : "Mark as completed";
+    };
+    markBtn.addEventListener("click", () => {
+      if (!url) return;
+      const done = getDoneSet();
+      if (done.has(url)) done.delete(url);
+      else done.add(url);
+      saveDoneSet(done);
+      renderMarkBtn();
+      syncLearnProgress();
+    });
+    renderMarkBtn();
+  }
+
+  syncLearnProgress();
   searchDialog?.addEventListener("click", (e) => {
     if (e.target === searchDialog) searchDialog.close();
   });
