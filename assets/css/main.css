@@ -3643,22 +3643,20 @@ main {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-mono);
-  font-size: 0.74rem;
-  font-weight: 700;
-  padding: 0.22rem 0.52rem;
-  min-height: 1.85rem;
+  width: 1.85rem;
+  height: 1.85rem;
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
   background: var(--bg-surface);
   color: var(--text-secondary);
   text-decoration: none;
-  transition: border-color 0.15s ease, color 0.15s ease;
+  transition: border-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
 }
 
 .lang-switch-btn:hover {
   border-color: var(--border-strong);
   color: var(--accent-emerald);
+  transform: translateY(-1px);
 }
 
 .footer-bottom-row {
