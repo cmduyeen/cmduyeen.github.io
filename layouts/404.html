@@ -1,0 +1,30 @@
+{{ define "main" }}
+  <section class="error-404">
+    <span class="status-pill">404 // ROUTE NOT FOUND</span>
+    <h1 class="hero-h1" style="margin-top: 0.9rem;">Page moved or does not exist.</h1>
+    <p class="hero-desc">This URL may be from an older version of the site. Use the search palette below or jump directly to one of our four main hubs.</p>
+    <div class="hero-actions" style="margin-bottom: 2rem;">
+      <button type="button" class="btn-primary-cyber" data-open-search>Search Site (⌘K)</button>
+      <a class="btn-hud" href="{{ site.Home.RelPermalink }}">← Back Home</a>
+    </div>
+
+    <div class="pillars-4-grid">
+      <a class="pillar-tile" href="{{ "learn/" | relLangURL }}">
+        <div class="pillar-tile-top"><span>[01] LEARN</span><span aria-hidden="true">↗</span></div>
+        <div class="pillar-title">8 Tech &amp; AI Tracks</div>
+      </a>
+      <a class="pillar-tile" href="{{ "news/" | relLangURL }}">
+        <div class="pillar-tile-top"><span>[02] NEWS</span><span aria-hidden="true">↗</span></div>
+        <div class="pillar-title">Tech Dispatches</div>
+      </a>
+      <a class="pillar-tile" href="{{ "tools/" | relLangURL }}">
+        <div class="pillar-tile-top"><span>[03] TOOLS</span><span aria-hidden="true">↗</span></div>
+        <div class="pillar-title">Free Web Apps</div>
+      </a>
+      <a class="pillar-tile" href="{{ "freebies/" | relLangURL }}">
+        <div class="pillar-tile-top"><span>[04] FREEBIES</span><span aria-hidden="true">↗</span></div>
+        <div class="pillar-title">Software &amp; Games</div>
+      </a>
+    </div>
+  </section>
+{{ end }}

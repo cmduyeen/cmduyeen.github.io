@@ -7,6 +7,33 @@
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://giscus.app; style-src 'self' 'unsafe-inline' https://giscus.app; img-src 'self' data: https:; frame-src https://giscus.app; connect-src 'self' https://giscus.app; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;">
 <meta name="description" content="{{ $description | plainify }}">
+{{- $noIndex := false -}}
+{{- if and (eq .Section "learn") .Params.pillar -}}
+  {{- $pillarId := .Params.pillar -}}
+  {{- $current := false -}}
+  {{- range site.Data.curriculum -}}
+    {{- if eq .id $pillarId -}}{{- $current = . -}}{{- end -}}
+  {{- end -}}
+  {{- $trackCount := 0 -}}
+  {{- if $current -}}
+    {{- range (where site.RegularPages "Section" "posts") -}}
+      {{- $post := . -}}
+      {{- $hit := false -}}
+      {{- range $current.match_prefixes -}}
+        {{- if in $post.RelPermalink . -}}{{- $hit = true -}}{{- end -}}
+      {{- end -}}
+      {{- if not $hit -}}
+        {{- $cat := printf "%v" ($post.Params.category | default "") -}}
+        {{- if in $current.match_categories $cat -}}{{- $hit = true -}}{{- end -}}
+      {{- end -}}
+      {{- if $hit -}}{{- $trackCount = add $trackCount 1 -}}{{- end -}}
+    {{- end -}}
+  {{- end -}}
+  {{- if eq $trackCount 0 -}}{{- $noIndex = true -}}{{- end -}}
+{{- end -}}
+{{- if $noIndex -}}
+<meta name="robots" content="noindex, follow">
+{{- end -}}
 <meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#07080a" media="(prefers-color-scheme: dark)">
 {{- if eq .Section "posts" }}
