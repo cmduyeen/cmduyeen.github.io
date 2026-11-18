@@ -899,6 +899,122 @@ main {
   color: var(--accent-emerald);
 }
 
+/* Newsroom 2-Column Layout (Feed + Retention Sidebar) */
+.news-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 17.5rem;
+  gap: 2.25rem;
+  align-items: start;
+}
+
+.news-main {
+  min-width: 0;
+}
+
+.news-feed-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.news-feed-item {
+  padding: 1.05rem 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.news-feed-item:first-child {
+  padding-top: 0.25rem;
+}
+
+.news-feed-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--text-muted);
+  margin-bottom: 0.35rem;
+}
+
+.news-tag-label {
+  color: var(--accent-emerald);
+}
+
+.news-feed-title {
+  margin: 0 0 0.35rem;
+  font-size: 1.12rem;
+  line-height: 1.35;
+}
+
+.news-feed-title a {
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.news-feed-title a:hover {
+  color: var(--accent-cyan);
+}
+
+.news-feed-desc {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+.news-sidebar {
+  position: sticky;
+  top: 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.news-side-box {
+  padding: 1rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  background: var(--bg-surface);
+}
+
+.news-side-desc {
+  margin: 0 0 0.75rem;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+}
+
+.news-side-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.news-side-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.news-side-list li + li {
+  margin-top: 0.55rem;
+  padding-top: 0.55rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.news-side-list a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: 0.84rem;
+  line-height: 1.35;
+}
+
+.news-side-list a:hover {
+  color: var(--accent-cyan);
+}
+
 /* Newsroom Featured Dispatch */
 .news-featured-card {
   display: flex;
@@ -2289,6 +2405,14 @@ main {
 @media (max-width: 56rem) {
   .pillars-4-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .news-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .news-sidebar {
+    position: static;
   }
 }
 

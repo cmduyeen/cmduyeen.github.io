@@ -2,62 +2,104 @@
   {{- $news := .Pages.ByDate.Reverse -}}
   <header class="page-header">
     <h1 class="hero-h1"><span class="highlight">//</span> {{ .Title }}</h1>
-    <p class="archive-subtitle">{{ .Description }} · Follow via {{ with site.Home.OutputFormats.Get "RSS" }}<a href="{{ .RelPermalink }}">RSS</a>{{ end }} or <a href="/llms.txt">llms.txt</a>.</p>
+    <p class="archive-subtitle">{{ .Description }}</p>
   </header>
 
-  {{ with index $news 0 }}
-  <section class="news-featured-card" aria-labelledby="latest-news-heading">
-    <div class="hud-card-top">
-      <span class="status-pill is-active">LATEST DISPATCH · {{ .Date.UTC.Format "2006-01-02" }} UTC</span>
-      <span class="writing-meta">{{ .ReadingTime }} min read</span>
-    </div>
-    <h2 class="news-featured-title" id="latest-news-heading">
-      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-    </h2>
-    {{ with .Description }}
-    <p class="news-featured-desc">{{ . }}</p>
-    {{ end }}
-    <div class="news-featured-preview">
-      {{ .Summary }}
-    </div>
-    <div class="hero-actions">
-      <a class="btn-primary-cyber" href="{{ .RelPermalink }}">Read full digest →</a>
-      {{ with site.Home.OutputFormats.Get "RSS" }}<a class="btn-hud" href="{{ .RelPermalink }}">Subscribe RSS</a>{{ end }}
-    </div>
-  </section>
-  {{ end }}
-
-  <section class="home-section" aria-labelledby="all-news-heading">
-    <div class="section-head">
-      <h2 class="section-label" id="all-news-heading"><span aria-hidden="true">// </span>All Dispatches ({{ len $news }})</h2>
-    </div>
-
-    <div class="archive-filter-bar" role="group" aria-label="Filter news by topic">
-      <button type="button" class="filter-chip is-active" data-deal-filter="all">All</button>
-      <button type="button" class="filter-chip" data-deal-filter="ai-tools">AI Tools</button>
-      <button type="button" class="filter-chip" data-deal-filter="automation">Automation</button>
-      <button type="button" class="filter-chip" data-deal-filter="dev-web">Dev &amp; Web</button>
-      <button type="button" class="filter-chip" data-deal-filter="open-source">Open Source</button>
-    </div>
-
-    <div class="featured-grid" id="deals-grid">
-      {{ range $news }}
-      {{- $tags := slice -}}
-      {{- range (.Params.tags | default slice) -}}
-        {{- $tags = $tags | append (lower (printf "%v" .)) -}}
-      {{- end -}}
-      <a class="hud-card deal-card" data-deal-category="{{ delimit $tags "," }}" href="{{ .RelPermalink }}">
+  <div class="news-layout">
+    <div class="news-main">
+      {{ with index $news 0 }}
+      <article class="news-featured-card" aria-labelledby="latest-news-heading">
         <div class="hud-card-top">
-          <span class="product-badge">ISSUE · {{ .Date.UTC.Format "2006-01-02" }}</span>
-          <span class="hud-card-arrow" aria-hidden="true">↗</span>
+          <span class="status-pill is-active">LEAD STORY · {{ .Date.UTC.Format "2006-01-02" }} UTC</span>
+          <span class="writing-meta">{{ .ReadingTime }} min read</span>
         </div>
-        <h3 class="hud-card-title">{{ .Title }}</h3>
-        <p class="hud-card-desc">{{ .Description | default (.Summary | plainify | htmlUnescape | truncate 130) }}</p>
-        <div class="hud-card-meta">
-          <span>{{ .ReadingTime }} min read</span>
+        <h2 class="news-featured-title" id="latest-news-heading">
+          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        </h2>
+        {{ with .Description }}
+        <p class="news-featured-desc">{{ . }}</p>
+        {{ end }}
+        <div class="news-featured-preview">
+          {{ .Summary }}
         </div>
-      </a>
+        <div class="hero-actions">
+          <a class="btn-primary-cyber" href="{{ .RelPermalink }}">Read full story →</a>
+        </div>
+      </article>
       {{ end }}
+
+      <section aria-labelledby="all-news-heading">
+        <div class="section-head">
+          <h2 class="section-label" id="all-news-heading"><span aria-hidden="true">// </span>Latest Feed ({{ len $news }})</h2>
+        </div>
+
+        <div class="archive-filter-bar" role="group" aria-label="Filter news by topic">
+          <button type="button" class="filter-chip is-active" data-deal-filter="all">All</button>
+          <button type="button" class="filter-chip" data-deal-filter="ai-tools">AI Tools</button>
+          <button type="button" class="filter-chip" data-deal-filter="automation">Automation</button>
+          <button type="button" class="filter-chip" data-deal-filter="dev-web">Dev &amp; Web</button>
+          <button type="button" class="filter-chip" data-deal-filter="open-source">Open Source</button>
+        </div>
+
+        <div class="news-feed-list" id="deals-grid">
+          {{ range $news }}
+          {{- $tags := slice -}}
+          {{- range (.Params.tags | default slice) -}}
+            {{- $tags = $tags | append (lower (printf "%v" .)) -}}
+          {{- end -}}
+          <article class="news-feed-item deal-card" data-deal-category="{{ delimit $tags "," }}">
+            <div class="news-feed-meta">
+              <time datetime="{{ .Date.UTC.Format "2006-01-02" }}">{{ .Date.UTC.Format "2006-01-02" }} UTC</time>
+              <span aria-hidden="true">·</span>
+              <span>{{ .ReadingTime }}m</span>
+              {{ with index (.Params.tags | default slice) 0 }}
+              <span aria-hidden="true">·</span>
+              <span class="news-tag-label">#{{ . }}</span>
+              {{ end }}
+            </div>
+            <h3 class="news-feed-title">
+              <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+            </h3>
+            <p class="news-feed-desc">{{ .Description | default (.Summary | plainify | htmlUnescape | truncate 140) }}</p>
+          </article>
+          {{ end }}
+        </div>
+      </section>
     </div>
-  </section>
+
+    <!-- Retention Sidebar: Convert News Traffic into Tools, Freebies & Evergreen Learners -->
+    <aside class="news-sidebar" aria-label="News resources">
+      <div class="news-side-box">
+        <div class="w3-sidebar-label">Feeds &amp; AI Index</div>
+        <p class="news-side-desc">Get updates without algorithms or email tracking.</p>
+        <div class="news-side-links">
+          {{ with site.Home.OutputFormats.Get "RSS" }}<a class="btn-hud" href="{{ .RelPermalink }}">RSS Feed</a>{{ end }}
+          {{ with site.Home.OutputFormats.Get "LLMS" }}<a class="btn-hud" href="{{ .RelPermalink }}">llms.txt</a>{{ end }}
+        </div>
+      </div>
+
+      <div class="news-side-box">
+        <div class="w3-sidebar-label">Active Freebies</div>
+        <ul class="news-side-list">
+          {{ range first 3 site.Data.freebies }}
+          <li>
+            <a href="{{ "freebies/" | relLangURL }}">
+              <span class="status-pill is-active">{{ .status }}</span>
+              <span>{{ .name }}</span>
+            </a>
+          </li>
+          {{ end }}
+        </ul>
+      </div>
+
+      <div class="news-side-box">
+        <div class="w3-sidebar-label">Evergreen Tracks</div>
+        <ul class="news-side-list">
+          <li><a href="{{ "learn/ai-automation/" | relLangURL }}">03. AI &amp; Automation →</a></li>
+          <li><a href="{{ "learn/frontend/" | relLangURL }}">01. Frontend Engineering →</a></li>
+          <li><a href="{{ "learn/no-code-ai/" | relLangURL }}">08. No-Code &amp; Everyday AI →</a></li>
+        </ul>
+      </div>
+    </aside>
+  </div>
 {{ end }}
