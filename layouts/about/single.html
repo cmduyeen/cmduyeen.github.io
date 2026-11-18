@@ -120,11 +120,12 @@
         {{- range . -}}
         <a class="hud-card" href="{{ .url }}" target="_blank" rel="noopener noreferrer">
           <div class="hud-card-top">
-            <span class="product-badge">OPEN SOURCE</span>
-            <span class="hud-card-arrow" aria-hidden="true">↗</span>
+            <span class="status-pill is-active">FEATURED REPO</span>
+            <span class="writing-meta">{{ .created_at }}</span>
           </div>
           <h3 class="hud-card-title">{{ .name }}</h3>
-          <p class="hud-card-desc">{{ .description | truncate 105 }}</p>
+          <p class="hud-card-desc">{{ .description | truncate 115 }}</p>
+          <div class="product-cta">View on GitHub ↗</div>
         </a>
         {{- end -}}
       </div>
@@ -135,20 +136,27 @@
         {{- if not (in $years .year) -}}{{- $years = $years | append .year -}}{{- end -}}
       {{- end -}}
       <div class="about-archive">
-      {{- range $y := $years -}}
+      {{- range $yIdx, $y := $years -}}
         {{- $group := where $repos "year" $y -}}
-        <details class="toc">
-          <summary>{{ $y }} — {{ len $group }} repositories</summary>
-          <ul class="writing-list">
+        <details class="repo-year-drawer"{{ if eq $yIdx 0 }} open{{ end }}>
+          <summary class="repo-year-head">
+            <span class="repo-year-title">
+              <svg class="pixel-icon" width="14" height="14" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect x="2" y="3" width="12" height="10" fill="#8f563b"/><rect x="3" y="2" width="5" height="2" fill="#b45309"/><rect x="4" y="5" width="8" height="6" fill="#fff8e7"/></svg>
+              {{ $y }} Archive
+            </span>
+            <span class="archive-series-count">{{ len $group }} repositories</span>
+          </summary>
+          <div class="repo-mini-grid">
             {{- range $group -}}
-            <li>
-              <a class="writing-item" href="{{ .url }}" target="_blank" rel="noopener noreferrer">
+            <a class="repo-mini-card" href="{{ .url }}" target="_blank" rel="noopener noreferrer">
+              <div class="repo-mini-top">
+                <strong class="repo-mini-name">{{ .name }}</strong>
                 <time datetime="{{ .created_at }}">{{ .created_at }}</time>
-                <span>{{ .name }}</span>
-              </a>
-            </li>
+              </div>
+              {{ with .description }}<p class="repo-mini-desc">{{ . | truncate 100 }}</p>{{ end }}
+            </a>
             {{- end -}}
-          </ul>
+          </div>
         </details>
       {{- end -}}
       </div>
