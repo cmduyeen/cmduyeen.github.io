@@ -977,6 +977,39 @@ main {
 .page-wide-content > ul,
 .page-wide-content > ol {
   max-width: 65ch;
+  color: var(--text-secondary);
+  margin-block: 1rem;
+}
+
+.page-wide-content > h2 {
+  margin: 2.5rem 0 1rem;
+  padding-bottom: 0.45rem;
+  border-bottom: 1px solid var(--border-subtle);
+  font-family: var(--font-mono);
+  font-size: 0.86rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.page-wide-content > table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-block: 1.5rem;
+  font-size: 0.92rem;
+}
+
+.page-wide-content > table th {
+  background: var(--bg-surface);
+  font-weight: 600;
+}
+
+.page-wide-content > table th,
+.page-wide-content > table td {
+  padding: 0.6rem 0.85rem;
+  border: 1px solid var(--border-subtle);
+  text-align: left;
 }
 
 .term-grid {
