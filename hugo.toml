@@ -6,6 +6,11 @@ enableRobotsTXT = true
 
 [params]
   author = "Dyn"
+  googleAnalytics = "G-BE2PYJJBH4"
+
+[services]
+  [services.googleAnalytics]
+    ID = "G-BE2PYJJBH4"
 
 [params.contact]
   github = "https://github.com/cmduyeen"
