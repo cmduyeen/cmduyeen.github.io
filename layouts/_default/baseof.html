@@ -45,28 +45,26 @@
     <div class="footer-grass" aria-hidden="true"></div>
     <footer class="site-footer">
       <div class="site-shell site-footer-inner">
-        <div class="footer-col">
-          <div class="footer-brand"><span>~/</span>{{ lower site.Title }} — Engineering Notes &amp; Automation</div>
-          <p class="footer-meta">Built with Hugo · Hosted on GitHub Pages</p>
-          <p class="footer-meta">© {{ now.Year }} {{ site.Params.author }}. MIT / Open-Core.</p>
+        <div class="footer-top-row">
+          <div class="footer-brand-wrap">
+            <span class="footer-brand"><span>~/</span>{{ lower site.Title }}</span>
+            <span class="footer-tagline">Quiet valley for notes, reviews &amp; personal tools.</span>
+          </div>
+          <nav class="footer-nav" aria-label="Footer navigation">
+            <a href="{{ "archives/" | relLangURL }}">Articles</a>
+            <a href="{{ "tools/" | relLangURL }}">Projects</a>
+            <a href="{{ "about/" | relLangURL }}">About</a>
+            <a href="{{ "tags/" | relLangURL }}">Topics</a>
+            {{ with site.Home.OutputFormats.Get "RSS" }}<a href="{{ .RelPermalink }}">RSS</a>{{ end }}
+            {{ with site.Home.OutputFormats.Get "LLMS" }}<a href="{{ .RelPermalink }}">llms.txt</a>{{ end }}
+            {{ with site.Params.contact.github }}<a href="{{ . | safeURL }}" target="_blank" rel="noopener noreferrer">GitHub</a>{{ end }}
+            {{ with site.Params.contact.x }}<a href="{{ . | safeURL }}" target="_blank" rel="noopener noreferrer">X</a>{{ end }}
+            <button type="button" class="footer-cmd-btn" data-open-search>⌘K</button>
+          </nav>
         </div>
-        <div class="footer-col">
-          <div class="footer-heading">Explore</div>
-          <ul class="footer-links">
-            <li><a href="{{ "archives/" | relLangURL }}">Articles</a></li>
-            <li><a href="{{ "tools/" | relLangURL }}">Projects</a></li>
-            <li><a href="{{ "tags/" | relLangURL }}">Topics</a></li>
-            <li>{{ with site.Home.OutputFormats.Get "RSS" }}<a href="{{ .RelPermalink }}">RSS</a>{{ end }} · {{ with site.Home.OutputFormats.Get "LLMS" }}<a href="{{ .RelPermalink }}">llms.txt</a>{{ end }}</li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <div class="footer-heading">Connect</div>
-          <ul class="footer-links">
-            {{ with site.Params.contact.github }}<li><a href="{{ . | safeURL }}" target="_blank" rel="noopener noreferrer">GitHub</a></li>{{ end }}
-            {{ with site.Params.contact.x }}<li><a href="{{ . | safeURL }}" target="_blank" rel="noopener noreferrer">X (Twitter)</a></li>{{ end }}
-            <li><a href="{{ "about/" | relLangURL }}">About</a></li>
-            <li><button type="button" class="footer-cmd-btn" data-open-search>⌘K Search</button></li>
-          </ul>
+        <div class="footer-bottom-row">
+          <span>© {{ now.Year }} {{ site.Params.author }} · Built with Hugo · MIT / Open-Core</span>
+          <span>Hosted on GitHub Pages</span>
         </div>
       </div>
     </footer>

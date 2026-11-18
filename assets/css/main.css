@@ -3311,71 +3311,99 @@ main {
 }
 
 /* ==========================================================================
-   Full-Bleed 3-Column Footer
+   Compact Stardew Wood-Plank Footer
    ========================================================================== */
 .site-footer {
   width: 100%;
-  border-top: 1px solid var(--border-subtle);
-  background: var(--bg-surface);
+  border-top: 3px solid var(--border-strong);
+  background: var(--bg-elevated);
   color: var(--text-muted);
-  font-size: 0.84rem;
+  font-size: 0.8rem;
 }
 
 .site-footer-inner {
-  display: grid;
-  grid-template-columns: 1.6fr 1fr 1fr;
-  gap: 2rem;
-  padding-block: 2.5rem 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding-block: 1.35rem 1.5rem;
+}
+
+.footer-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer-brand-wrap {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.6rem;
 }
 
 .footer-brand {
   font-family: var(--font-mono);
   font-weight: 700;
+  font-size: 0.92rem;
   color: var(--text-primary);
-  margin-bottom: 0.5rem;
 }
 
 .footer-brand span {
   color: var(--accent-emerald);
 }
 
-.footer-meta {
-  margin: 0.25rem 0;
-}
-
-.footer-heading {
-  font-family: var(--font-mono);
-  font-size: 0.74rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
+.footer-tagline {
+  font-size: 0.82rem;
   color: var(--text-secondary);
-  margin-bottom: 0.6rem;
 }
 
-.footer-links {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+.footer-nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.85rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
 }
 
-.footer-links li + li {
-  margin-top: 0.35rem;
-}
-
-.footer-links a,
+.footer-nav a,
 .footer-cmd-btn {
-  color: var(--text-muted);
+  color: var(--text-secondary);
   text-decoration: none;
   background: none;
   border: 0;
   padding: 0;
   font: inherit;
   cursor: pointer;
+  transition: color 0.15s ease;
 }
 
-.footer-links a:hover,
+.footer-nav a:hover,
 .footer-cmd-btn:hover {
   color: var(--accent-cyan);
+}
+
+.footer-cmd-btn {
+  padding: 0.12rem 0.45rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface);
+  color: var(--accent-cyan);
+}
+
+.footer-bottom-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  padding-top: 0.75rem;
+  border-top: 1px dashed var(--border-subtle);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
 }
 
 /* Reading progress & Back to top */
