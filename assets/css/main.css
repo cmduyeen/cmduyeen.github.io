@@ -770,7 +770,7 @@ main {
   font-family: var(--font-mono);
   font-size: 0.78rem;
   cursor: pointer;
-  transition: all 0.15s ease;
+  transition: border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease;
 }
 
 .filter-chip:hover {
@@ -1445,7 +1445,7 @@ main {
   font-family: var(--font-mono);
   font-size: 0.78rem;
   cursor: pointer;
-  transition: all 0.15s ease;
+  transition: border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease;
 }
 
 .mode-tab:hover {
@@ -1850,7 +1850,7 @@ main {
   font-family: var(--font-mono);
   font-size: 0.74rem;
   cursor: pointer;
-  transition: all 0.15s ease;
+  transition: border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease;
 }
 
 .mark-done-btn:hover {
@@ -2003,7 +2003,7 @@ main {
   font-size: 0.8rem;
   text-align: left;
   cursor: pointer;
-  transition: all 0.15s ease;
+  transition: border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease;
 }
 
 .w3-track-btn:hover {
@@ -2799,7 +2799,6 @@ main {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
 }

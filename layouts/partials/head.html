@@ -1,5 +1,5 @@
 {{- $description := .Description | default site.Params.description -}}
-{{- $style := resources.Get "css/main.css" | minify -}}
+{{- $style := resources.Get "css/main.css" | minify | fingerprint -}}
 {{- $themeInitSrc := `(()=>{try{const t=localStorage.getItem("dyn-theme");if(t==="light"||t==="dark"){document.documentElement.setAttribute("data-theme",t)}else if(window.matchMedia("(prefers-color-scheme: light)").matches){document.documentElement.setAttribute("data-theme","light")}else{document.documentElement.setAttribute("data-theme","dark")}}catch(_){document.documentElement.setAttribute("data-theme","dark")}})();` -}}
 {{- $themeScript := resources.FromString "js/theme-init.js" $themeInitSrc | minify | fingerprint -}}
 <meta charset="utf-8">
@@ -17,7 +17,7 @@
 <link rel="icon" href="{{ "favicon.svg" | relURL }}" type="image/svg+xml">
 {{ with site.Home.OutputFormats.Get "RSS" }}<link rel="alternate" type="application/rss+xml" title="{{ site.Title }} RSS" href="{{ .Permalink }}">{{ end }}
 <script src="{{ $themeScript.RelPermalink }}" integrity="{{ $themeScript.Data.Integrity }}" crossorigin="anonymous"></script>
-<style>{{ $style.Content | safeCSS }}</style>
+<link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}" crossorigin="anonymous">
 <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
 <meta property="og:title" content="{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} · {{ site.Title }}{{ end }}">
 <meta property="og:description" content="{{ $description | plainify }}">
