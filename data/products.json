@@ -54,6 +54,15 @@
             "guide_url": "/posts/vn-580-plus-online-calculator/"
           },
           {
+            "icon": "blog",
+            "name": "Type & Tell — Cozy Typing & Lyrics Chase",
+            "badge": "WEB APP · FREE",
+            "description": "Playful typing workshop with meme & funny quote decks, 1-click synced lyrics chase (LRCLIB + YouTube/audio), Wait-for-me mode, and a 2D runner game.",
+            "url": "https://cmduyeen.github.io/type-and-learn/",
+            "cta": "Open App →",
+            "guide_url": "https://github.com/cmduyeen/type-and-learn"
+          },
+          {
             "icon": "theme",
             "name": "Serein & Pinkie Themes",
             "badge": "MIT · OPEN SOURCE",
@@ -185,6 +194,15 @@
             "url": "https://cmduyeen.github.io/may-tinh-khoa-hoc-online/",
             "cta": "Mở máy tính →",
             "guide_url": "/posts/vn-580-plus-online-calculator/"
+          },
+          {
+            "icon": "blog",
+            "name": "Type & Tell — Luyện gõ Meme & Nhạc",
+            "badge": "WEB APP · MIỄN PHÍ",
+            "description": "Web app luyện gõ vui nhộn với bộ meme/quote hài hước, gõ dí theo lời bài hát (tìm lời LRCLIB, YouTube, Wait-for-me) và game đua né deadline.",
+            "url": "https://cmduyeen.github.io/type-and-learn/",
+            "cta": "Mở ứng dụng →",
+            "guide_url": "https://github.com/cmduyeen/type-and-learn"
           },
           {
             "icon": "theme",
