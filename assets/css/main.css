@@ -707,6 +707,7 @@ main {
   gap: 0.3rem;
   padding: 0.8rem 0.9rem;
   border: 1px solid var(--border-subtle);
+  border-top: 2px solid var(--accent-emerald, #2e6f28);
   border-radius: var(--radius-sm);
   background: var(--bg-void);
   color: var(--text-primary);
@@ -715,8 +716,14 @@ main {
 }
 
 .repo-mini-card:hover {
-  border-color: var(--accent-cyan);
-  transform: translateY(-1px);
+  border-color: var(--accent-emerald, #2e6f28);
+  transform: translateY(-2px);
+}
+
+.repo-mini-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
 }
 
 .repo-mini-top {
