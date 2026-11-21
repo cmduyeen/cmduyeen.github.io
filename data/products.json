@@ -90,10 +90,10 @@
           {
             "icon": "source",
             "name": "python-tieng-viet (vpy & vide)",
-            "badge": "MIT · PYTHON",
-            "description": "Learn Python in Vietnamese (.vpy) with Vietnamese Traceback error translations, standard .py transpiler, and built-in vide editor.",
-            "url": "https://github.com/cmduyeen/python-tieng-viet",
-            "cta": "Explore Repo →"
+            "badge": "WEB APP · PYTHON",
+            "description": "Learn Python in Vietnamese (.vpy) online in your browser with real-time .py transpilation, Traceback translations, and built-in vide editor.",
+            "url": "https://cmduyeen.github.io/python-tieng-viet/",
+            "cta": "Try Online →"
           },
           {
             "icon": "source",
@@ -214,10 +214,10 @@
           {
             "icon": "source",
             "name": "python-tieng-viet (vpy & vide)",
-            "badge": "MIT · PYTHON",
-            "description": "Học Python bằng từ khóa tiếng Việt (.vpy), dịch lỗi Traceback sang tiếng Việt, chuyển sang .py chuẩn và đi kèm trình soạn thảo vide.",
-            "url": "https://github.com/cmduyeen/python-tieng-viet",
-            "cta": "Xem trên GitHub →"
+            "badge": "WEB APP · PYTHON",
+            "description": "Viết thử Python tiếng Việt (.vpy) trực tuyến ngay trên trình duyệt, chuyển sang .py chuẩn 100%, dịch lỗi Traceback và đi kèm IDE vide.",
+            "url": "https://cmduyeen.github.io/python-tieng-viet/",
+            "cta": "Dùng thử ngay →"
           },
           {
             "icon": "source",
