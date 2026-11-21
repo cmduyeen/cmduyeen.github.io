@@ -66,7 +66,7 @@
     <div class="hero-content-row">
       <div class="hero-text-col">
         <h1 class="hero-h1 hero-h1-wide">
-          <span class="highlight">{{ if eq site.Language.Lang "vi" }}Ghi chép, Đánh giá{{ else }}Notes, Reviews{{ end }}</span> &amp; {{ if eq site.Language.Lang "vi" }}Dự án cá nhân{{ else }}Personal Projects{{ end }}
+          <span class="highlight">{{ if eq site.Language.Lang "vi" }}Ghi chép, Đọc sách{{ else }}Notes, Gardening{{ end }}</span> &amp; {{ if eq site.Language.Lang "vi" }}Tool nhỏ hữu ích{{ else }}Small Useful Tools{{ end }}
         </h1>
         {{ with site.Params.homeInfoParams }}
         <p class="hero-desc hero-desc-compact">{{ .Content }}</p>
@@ -74,7 +74,7 @@
       </div>
       <div class="hero-actions">
         <a class="btn-primary-cyber" href="{{ "archives/" | relLangURL }}">{{ if eq site.Language.Lang "vi" }}Đọc bài viết →{{ else }}Read Articles →{{ end }}</a>
-        <a class="btn-hud" href="{{ "tools/" | relLangURL }}">{{ if eq site.Language.Lang "vi" }}Dự án của tôi{{ else }}My Projects{{ end }}</a>
+        <a class="btn-hud" href="{{ "tools/" | relLangURL }}">{{ if eq site.Language.Lang "vi" }}Vườn công cụ{{ else }}Tool Garden{{ end }}</a>
       </div>
     </div>
   </section>
@@ -83,7 +83,10 @@
   {{ with $posts }}
   <section class="home-section" aria-labelledby="writing-heading">
     <div class="section-head">
-      <h2 class="section-label" id="writing-heading">{{ if eq site.Language.Lang "vi" }}Bài viết{{ else }}Writing{{ end }} ({{ len . }})</h2>
+      <h2 class="section-label" id="writing-heading">
+        <svg class="pixel-icon" width="16" height="16" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true" style="vertical-align:-2px;margin-right:4px;"><rect x="3" y="2" width="10" height="12" fill="#4f8f3c"/><rect x="4" y="3" width="8" height="10" fill="#fff8e7"/><rect x="6" y="5" width="5" height="1" fill="#8f563b"/><rect x="6" y="8" width="5" height="1" fill="#8f563b"/></svg>
+        {{ if eq site.Language.Lang "vi" }}Bài viết mới{{ else }}Latest Articles{{ end }} ({{ len . }})
+      </h2>
       <a class="section-more" href="{{ "archives/" | relLangURL }}">{{ if eq site.Language.Lang "vi" }}Xem tất cả bài viết →{{ else }}All articles →{{ end }}</a>
     </div>
     <ul class="writing-list">
@@ -94,29 +97,47 @@
   </section>
   {{ end }}
 
-  <!-- Personal Projects & Tools -->
-  {{ with $catalog.sections }}
-    {{- $firstSec := index . 0 -}}
-    {{ with $firstSec.items }}
+  <!-- Live Web Apps Garden (Auto-Synced from GitHub Pages repos) -->
+  {{- $webApps := where site.Data.repos "is_webapp" true -}}
+  {{ if $webApps }}
   <section class="home-section" aria-labelledby="projects-heading">
     <div class="section-head">
-      <h2 class="section-label" id="projects-heading">{{ if eq site.Language.Lang "vi" }}Dự án của tôi{{ else }}My Projects{{ end }}</h2>
-      <a class="section-more" href="{{ "tools/" | relLangURL }}">{{ if eq site.Language.Lang "vi" }}Xem tất cả →{{ else }}View all →{{ end }}</a>
+      <h2 class="section-label" id="projects-heading">
+        <svg class="pixel-icon" width="16" height="16" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true" style="vertical-align:-2px;margin-right:4px;"><rect x="7" y="8" width="2" height="5" fill="#2e6f28"/><rect x="3" y="5" width="4" height="3" fill="#7ec850"/><rect x="9" y="4" width="4" height="3" fill="#7ec850"/><rect x="4" y="13" width="8" height="2" fill="#8f563b"/></svg>
+        {{ if eq site.Language.Lang "vi" }}Vườn Web App Trực Tuyến{{ else }}Live Web Apps Garden{{ end }}
+      </h2>
+      <a class="section-more" href="{{ "tools/" | relLangURL }}">{{ if eq site.Language.Lang "vi" }}Xem tất cả công cụ →{{ else }}View all tools →{{ end }}</a>
     </div>
     <div class="featured-grid">
-      {{ range first 4 . }}
-      <a class="hud-card" href="{{ .url }}"{{ if strings.HasPrefix .url "http" }} target="_blank" rel="noopener noreferrer"{{ end }}>
+      {{ range $idx, $app := first 4 $webApps }}
+      {{- $plant := mod $idx 4 -}}
+      <article class="hud-card tool-card">
         <div class="hud-card-top">
-          <span class="product-badge">{{ .badge }}</span>
+          <div class="tool-card-head">
+            <span class="tool-icon-box" aria-hidden="true">
+              {{- if eq $plant 0 -}}
+              <svg class="pixel-icon" width="18" height="18" viewBox="0 0 16 16" shape-rendering="crispEdges"><rect x="7" y="8" width="2" height="5" fill="#2e6f28"/><rect x="3" y="5" width="4" height="3" fill="#7ec850"/><rect x="9" y="4" width="4" height="3" fill="#7ec850"/><rect x="4" y="13" width="8" height="2" fill="#8f563b"/></svg>
+              {{- else if eq $plant 1 -}}
+              <svg class="pixel-icon" width="18" height="18" viewBox="0 0 16 16" shape-rendering="crispEdges"><rect x="7" y="9" width="2" height="4" fill="#2e6f28"/><rect x="6" y="4" width="4" height="4" fill="#eab308"/><rect x="4" y="5" width="2" height="2" fill="#f472b6"/><rect x="10" y="5" width="2" height="2" fill="#f472b6"/><rect x="7" y="2" width="2" height="2" fill="#f472b6"/><rect x="4" y="13" width="8" height="2" fill="#8f563b"/></svg>
+              {{- else if eq $plant 2 -}}
+              <svg class="pixel-icon" width="18" height="18" viewBox="0 0 16 16" shape-rendering="crispEdges"><rect x="6" y="10" width="4" height="4" fill="#8f563b"/><rect x="3" y="4" width="10" height="6" fill="#2e6f28"/><rect x="4" y="2" width="8" height="3" fill="#7ec850"/><rect x="5" y="5" width="2" height="2" fill="#ef4444"/><rect x="9" y="7" width="2" height="2" fill="#ef4444"/></svg>
+              {{- else -}}
+              <svg class="pixel-icon" width="18" height="18" viewBox="0 0 16 16" shape-rendering="crispEdges"><rect x="7" y="9" width="2" height="4" fill="#2e6f28"/><rect x="4" y="3" width="3" height="3" fill="#7ec850"/><rect x="9" y="3" width="3" height="3" fill="#2e6f28"/><rect x="5" y="6" width="6" height="3" fill="#7ec850"/><rect x="4" y="13" width="8" height="2" fill="#8f563b"/></svg>
+              {{- end -}}
+            </span>
+            <span class="product-badge">LIVE WEB APP</span>
+          </div>
           <span class="hud-card-arrow" aria-hidden="true">↗</span>
         </div>
-        <h3 class="hud-card-title">{{ .name }}</h3>
-        <p class="hud-card-desc">{{ .description }}</p>
-        <div class="product-cta">{{ .cta }}</div>
-      </a>
+        <h3 class="hud-card-title">{{ $app.name }}</h3>
+        <p class="hud-card-desc">{{ $app.description }}</p>
+        <div class="tool-card-actions">
+          <a class="product-cta" href="{{ $app.homepage }}" target="_blank" rel="noopener noreferrer">{{ if eq site.Language.Lang "vi" }}Mở Web App ↗{{ else }}Open App ↗{{ end }}</a>
+          <a class="tool-guide-link" href="{{ $app.url }}" target="_blank" rel="noopener noreferrer">{{ if eq site.Language.Lang "vi" }}Mã nguồn →{{ else }}Source →{{ end }}</a>
+        </div>
+      </article>
       {{ end }}
     </div>
   </section>
-    {{ end }}
   {{ end }}
 {{ end }}
