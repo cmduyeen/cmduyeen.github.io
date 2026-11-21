@@ -178,7 +178,11 @@
         <div class="farm-plot-col" title="{{ .name }} {{ $currentYear }} ({{ .season }}): {{ $val }} items shipped">
           <div class="farm-stalk-wrap">
             <div class="farm-stalk {{ $tier }}" style="height: {{ $pct }}%">
-              {{ if ge $val 6 }}<span class="farm-crop-icon" aria-hidden="true">★</span>{{ end }}
+              {{- if eq $tier "is-harvest" -}}
+              <span class="farm-crop-icon" aria-hidden="true"><svg class="pixel-icon" width="14" height="14" viewBox="0 0 16 16" shape-rendering="crispEdges"><rect x="6" y="4" width="4" height="4" fill="#fef08a"/><rect x="4" y="5" width="2" height="2" fill="#f472b6"/><rect x="10" y="5" width="2" height="2" fill="#f472b6"/><rect x="7" y="2" width="2" height="2" fill="#f472b6"/><rect x="7" y="8" width="2" height="4" fill="#2e6f28"/></svg></span>
+              {{- else if eq $tier "is-grown" -}}
+              <span class="farm-crop-icon" aria-hidden="true"><svg class="pixel-icon" width="12" height="12" viewBox="0 0 16 16" shape-rendering="crispEdges"><rect x="4" y="4" width="3" height="3" fill="#7ec850"/><rect x="9" y="4" width="3" height="3" fill="#7ec850"/><rect x="7" y="7" width="2" height="5" fill="#2e6f28"/></svg></span>
+              {{- end -}}
             </div>
           </div>
           <div class="farm-soil-tile {{ $tier }}">

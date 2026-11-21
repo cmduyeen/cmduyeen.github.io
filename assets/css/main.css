@@ -492,6 +492,7 @@ main {
 /* Farm Harvest Yield Productivity Chart */
 .farm-yield-card {
   margin-bottom: 2.75rem;
+  border-top: 3px solid var(--accent-emerald, #2e6f28);
 }
 
 .farm-yield-head {
@@ -570,21 +571,22 @@ main {
 }
 
 .farm-crop-icon {
-  font-size: 0.65rem;
-  line-height: 1;
-  color: #3e2723;
-  margin-top: 2px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -10px;
+  filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.25));
 }
 
 .farm-soil-tile {
   width: 100%;
-  padding: 0.35rem 0;
-  border: 2px solid var(--border-strong);
+  padding: 0.38rem 0;
+  border: 1.5px solid var(--border-subtle);
   border-radius: var(--radius-sm);
   text-align: center;
   font-family: var(--font-mono);
-  font-size: 0.72rem;
-  box-shadow: 2px 2px 0 rgba(143, 86, 59, 0.2);
+  font-size: 0.74rem;
+  box-shadow: 2px 2px 0 rgba(143, 86, 59, 0.16);
 }
 
 .farm-month-label {
@@ -593,10 +595,10 @@ main {
   color: var(--text-muted);
 }
 
-.is-soil { background: var(--bg-elevated); color: var(--text-muted); }
-.is-sprout { background: #a3e635; color: #1a2e05; }
-.is-grown { background: #4f8f3c; color: #fff8e7; }
-.is-harvest { background: #eab308; color: #3e2723; }
+.is-soil { background: var(--bg-void); color: var(--text-muted); opacity: 0.75; }
+.is-sprout { background: linear-gradient(180deg, #7ec850, #5da832); color: #162610; border-color: #2e6f28; }
+.is-grown { background: linear-gradient(180deg, #3b8734, #2e6f28); color: #f5ebd6; border-color: #1e4d1a; }
+.is-harvest { background: linear-gradient(180deg, #eab308, #b45309); color: #fff8e7; border-color: #92400e; }
 
 .about-char-name {
   margin: 0 0 0.25rem;
