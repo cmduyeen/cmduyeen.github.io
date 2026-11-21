@@ -1,5 +1,12 @@
 [
   {
+    "name": "lap-trinh-tieng-viet",
+    "url": "https://github.com/cmduyeen/lap-trinh-tieng-viet",
+    "description": "🚀 Bộ công cụ học lập trình 100% tiếng Việt cho người mới & trẻ em: Terminal (vwt), Python (vpy & vide), Git (vgit), GitHub (vgh) — cài 1 dòng trên Windows",
+    "created_at": "2026-11-21",
+    "year": "2026"
+  },
+  {
     "name": "terminal-tieng-viet",
     "url": "https://github.com/cmduyeen/terminal-tieng-viet",
     "description": "Terminal & PowerShell tiếng Việt (vwt) cho Windows — lệnh ngắn, an toàn cho người mới",

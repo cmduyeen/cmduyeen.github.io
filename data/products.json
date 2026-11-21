@@ -81,6 +81,14 @@
         "items": [
           {
             "icon": "source",
+            "name": "lap-trinh-tieng-viet (All-in-One Hub)",
+            "badge": "MIT · 1-LINE INSTALL",
+            "description": "4-step Vietnamese coding roadmap and 1-line Windows installer for vwt, vpy/vide, vgit, and vgh.",
+            "url": "https://github.com/cmduyeen/lap-trinh-tieng-viet",
+            "cta": "Open Hub →"
+          },
+          {
+            "icon": "source",
             "name": "python-tieng-viet (vpy & vide)",
             "badge": "MIT · PYTHON",
             "description": "Learn Python in Vietnamese (.vpy) with Vietnamese Traceback error translations, standard .py transpiler, and built-in vide editor.",
@@ -195,6 +203,14 @@
       {
         "heading": "Bộ công cụ lập trình tiếng Việt cho người mới",
         "items": [
+          {
+            "icon": "source",
+            "name": "lap-trinh-tieng-viet (Trọn bộ 1 dòng)",
+            "badge": "MIT · CÀI 1 DÒNG",
+            "description": "Lộ trình 4 bước và bộ cài 1 dòng trên Windows cho cả 4 công cụ tiếng Việt: vwt, vpy/vide, vgit và vgh.",
+            "url": "https://github.com/cmduyeen/lap-trinh-tieng-viet",
+            "cta": "Mở Hub →"
+          },
           {
             "icon": "source",
             "name": "python-tieng-viet (vpy & vide)",
