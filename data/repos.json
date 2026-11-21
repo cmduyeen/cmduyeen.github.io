@@ -1,5 +1,33 @@
 [
   {
+    "name": "terminal-tieng-viet",
+    "url": "https://github.com/cmduyeen/terminal-tieng-viet",
+    "description": "Terminal & PowerShell tiếng Việt (vwt) cho Windows — lệnh ngắn, an toàn cho người mới",
+    "created_at": "2026-11-21",
+    "year": "2026"
+  },
+  {
+    "name": "github-tieng-viet",
+    "url": "https://github.com/cmduyeen/github-tieng-viet",
+    "description": "GitHub CLI tiếng Việt (vgh) cho người mới học — tạo repo, PR, Issue bằng tiếng Việt",
+    "created_at": "2026-11-21",
+    "year": "2026"
+  },
+  {
+    "name": "git-tieng-viet",
+    "url": "https://github.com/cmduyeen/git-tieng-viet",
+    "description": "Git tiếng Việt (vgit) cho người mới học — lệnh ngắn tiếng Việt, dịch lỗi & học lệnh Git gốc",
+    "created_at": "2026-11-21",
+    "year": "2026"
+  },
+  {
+    "name": "python-tieng-viet",
+    "url": "https://github.com/cmduyeen/python-tieng-viet",
+    "description": "Python tiếng Việt (vpy & vide) cho người mới học & trẻ em — chạy code, dịch lỗi Traceback sang tiếng Việt",
+    "created_at": "2026-11-21",
+    "year": "2026"
+  },
+  {
     "name": "pro-blog-starter-kit",
     "url": "https://github.com/cmduyeen/pro-blog-starter-kit",
     "description": "✍️ Pro Blog Starter Kit: launch a free, SEO-ready personal blog on GitHub Pages in 60s with Hugo/Jekyll themes, plugins, Obsidian workflow & live Web Configurator.",
@@ -219,7 +247,7 @@
   {
     "name": "lich-am-viet-nam",
     "url": "https://github.com/cmduyeen/lich-am-viet-nam",
-    "description": "🌙 Lịch âm Việt Nam (GMT+7) cho Google Calendar, Apple Calendar, Outlook. Không cần cài app ngoài, chỉ cần gắn link .ics dùng luôn, tự cập nhật & miễn phí.",
+    "description": "🌙 Vietnamese Lunar Calendar (Lịch Âm Việt Nam GMT+7) .ics feeds for Google Calendar, Apple Calendar & Outlook — daily & minimal holidays (Tet, 1st & 15th), auto-updating & free.",
     "created_at": "2026-04-23",
     "year": "2026"
   },

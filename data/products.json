@@ -75,6 +75,43 @@
             "cta": "Start Reading →"
           }
         ]
+      },
+      {
+        "heading": "Vietnamese CLI Tools for Beginners & Kids",
+        "items": [
+          {
+            "icon": "source",
+            "name": "python-tieng-viet (vpy & vide)",
+            "badge": "MIT · PYTHON",
+            "description": "Learn Python in Vietnamese (.vpy) with Vietnamese Traceback error translations, standard .py transpiler, and built-in vide editor.",
+            "url": "https://github.com/cmduyeen/python-tieng-viet",
+            "cta": "Explore Repo →"
+          },
+          {
+            "icon": "source",
+            "name": "git-tieng-viet (vgit)",
+            "badge": "MIT · GIT CLI",
+            "description": "Vietnamese Git CLI for beginners with short Vietnamese commands, error explanations, and Bridge Mode showing original git commands.",
+            "url": "https://github.com/cmduyeen/git-tieng-viet",
+            "cta": "Explore Repo →"
+          },
+          {
+            "icon": "source",
+            "name": "github-tieng-viet (vgh)",
+            "badge": "MIT · GITHUB CLI",
+            "description": "Vietnamese wrapper for GitHub CLI (gh) to create repos, Pull Requests, and Issues from the terminal with Bridge Mode.",
+            "url": "https://github.com/cmduyeen/github-tieng-viet",
+            "cta": "Explore Repo →"
+          },
+          {
+            "icon": "source",
+            "name": "terminal-tieng-viet (vwt)",
+            "badge": "MIT · POWERSHELL",
+            "description": "Safety-first Vietnamese PowerShell commands for Windows beginners with accent-insensitive file/text search and Recycle Bin protection.",
+            "url": "https://github.com/cmduyeen/terminal-tieng-viet",
+            "cta": "Explore Repo →"
+          }
+        ]
       }
     ]
   },
@@ -152,6 +189,43 @@
             "description": "Hướng dẫn toàn diện về định dạng văn bản thuần với môi trường thực hành ngay trên trình duyệt cho YAML, bảng biểu, callout và xuất bản Hugo.",
             "url": "/posts/markdown-101-01-getting-started/",
             "cta": "Bắt đầu đọc →"
+          }
+        ]
+      },
+      {
+        "heading": "Bộ công cụ lập trình tiếng Việt cho người mới",
+        "items": [
+          {
+            "icon": "source",
+            "name": "python-tieng-viet (vpy & vide)",
+            "badge": "MIT · PYTHON",
+            "description": "Học Python bằng từ khóa tiếng Việt (.vpy), dịch lỗi Traceback sang tiếng Việt, chuyển sang .py chuẩn và đi kèm trình soạn thảo vide.",
+            "url": "https://github.com/cmduyeen/python-tieng-viet",
+            "cta": "Xem trên GitHub →"
+          },
+          {
+            "icon": "source",
+            "name": "git-tieng-viet (vgit)",
+            "badge": "MIT · GIT CLI",
+            "description": "Dùng Git bằng lệnh tiếng Việt ngắn gọn, tự động dịch lỗi và bật Chế độ Cầu nối để học dần lệnh git gốc.",
+            "url": "https://github.com/cmduyeen/git-tieng-viet",
+            "cta": "Xem trên GitHub →"
+          },
+          {
+            "icon": "source",
+            "name": "github-tieng-viet (vgh)",
+            "badge": "MIT · GITHUB CLI",
+            "description": "Việt hóa GitHub CLI (gh) giúp tạo repo, xem/tạo Pull Request và Issue ngay trên terminal kèm Chế độ Cầu nối.",
+            "url": "https://github.com/cmduyeen/github-tieng-viet",
+            "cta": "Xem trên GitHub →"
+          },
+          {
+            "icon": "source",
+            "name": "terminal-tieng-viet (vwt)",
+            "badge": "MIT · POWERSHELL",
+            "description": "Lệnh PowerShell tiếng Việt an toàn cho Windows: tìm file/chữ không dấu, chống ghi đè và xóa chỉ đưa vào Thùng rác.",
+            "url": "https://github.com/cmduyeen/terminal-tieng-viet",
+            "cta": "Xem trên GitHub →"
           }
         ]
       }
