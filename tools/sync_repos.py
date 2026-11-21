@@ -32,13 +32,21 @@ def fetch_repos() -> list[dict[str, str]]:
             continue
         created = str(item.get("created_at", ""))[:10]
         year = created[:4] if len(created) >= 4 else "Other"
+        name = str(item.get("name", ""))
+        has_pages = bool(item.get("has_pages")) and name != f"{USERNAME}.github.io"
+        homepage = str(item.get("homepage") or "").strip()
+        if has_pages and not homepage:
+            homepage = f"https://{USERNAME}.github.io/{name}/"
         repos.append(
             {
-                "name": str(item.get("name", "")),
+                "name": name,
                 "url": str(item.get("html_url", "")),
                 "description": str(item.get("description") or ""),
                 "created_at": created,
                 "year": year,
+                "homepage": homepage,
+                "is_webapp": has_pages,
+                "stars": int(item.get("stargazers_count") or 0),
             }
         )
 

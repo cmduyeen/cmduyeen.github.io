@@ -1,4 +1,6 @@
+{{- $isVi := eq site.Language.Lang "vi" -}}
 {{- $catalog := index site.Data.products site.Language.Lang | default (index site.Data.products "en") -}}
+{{- $webApps := where site.Data.repos "is_webapp" true -}}
 
 {{- with $catalog.spotlight -}}
 <section class="tool-spotlight" aria-label="Featured project">
@@ -13,21 +15,21 @@
     </ul>
     <div class="hero-actions">
       <a class="btn-primary-cyber" href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ .cta }}</a>
-      {{ with .guide_url }}<a class="btn-hud" href="{{ . | relLangURL }}">{{ if eq site.Language.Lang "vi" }}Xem hướng dẫn{{ else }}Read Guide{{ end }}</a>{{ end }}
+      {{ with .guide_url }}<a class="btn-hud" href="{{ . | relLangURL }}">{{ if $isVi }}Xem hướng dẫn{{ else }}Read Guide{{ end }}</a>{{ end }}
     </div>
   </div>
   <div class="tool-mockup" aria-hidden="true">
     <div class="tool-mockup-bar">
-      <svg class="pixel-icon" width="14" height="14" viewBox="0 0 16 16" shape-rendering="crispEdges">
-        <rect x="7" y="9" width="2" height="5" fill="#7ec850"/>
-        <rect x="5" y="4" width="6" height="5" fill="#7ec850"/>
-        <rect x="6" y="2" width="4" height="2" fill="#4f8f3c"/>
+      <svg class="pixel-icon" width="16" height="16" viewBox="0 0 16 16" shape-rendering="crispEdges">
+        <rect x="7" y="9" width="2" height="5" fill="#2e6f28"/>
+        <rect x="4" y="4" width="8" height="5" fill="#7ec850"/>
+        <rect x="6" y="2" width="4" height="2" fill="#eab308"/>
       </svg>
       <span class="tool-mockup-title">hugo.toml · live config</span>
       <span class="tool-mockup-status">Ready ✓</span>
     </div>
     <pre class="tool-mockup-code"><code>baseURL = "https://you.github.io/"
-title = "Your Lab"
+title = "Your Garden"
 defaultContentLanguage = "{{ site.Language.Lang }}"
 
 [outputs]
@@ -38,38 +40,107 @@ defaultContentLanguage = "{{ site.Language.Lang }}"
 </section>
 {{- end -}}
 
+<div class="garden-filter-bar" role="toolbar" aria-label="{{ if $isVi }}Lọc khu vườn công cụ{{ else }}Filter tool garden{{ end }}">
+  <button class="garden-filter-btn is-active" type="button" data-garden-filter="all">🌿 {{ if $isVi }}Tất cả{{ else }}All Plots{{ end }}</button>
+  {{ if $webApps }}
+  <button class="garden-filter-btn" type="button" data-garden-filter="webapps">🌱 {{ if $isVi }}Web App Tự Động ({{ len $webApps }}){{ else }}Live Web Apps ({{ len $webApps }}){{ end }}</button>
+  {{ end }}
+  <button class="garden-filter-btn" type="button" data-garden-filter="suites">🧰 {{ if $isVi }}Bộ công cụ &amp; CLI{{ else }}Tools &amp; CLI{{ end }}</button>
+  <button class="garden-filter-btn" type="button" data-garden-filter="guides">📖 {{ if $isVi }}Mẫu &amp; Cẩm nang{{ else }}Templates &amp; Guides{{ end }}</button>
+</div>
+
+{{- if $webApps -}}
+<section class="stardew-box garden-bed" data-garden-group="webapps">
+  <div class="garden-bed-head">
+    <div class="garden-bed-title-wrap">
+      <svg class="pixel-icon" width="22" height="22" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect x="6" y="10" width="4" height="4" fill="#8f563b"/><rect x="3" y="4" width="10" height="6" fill="#2e6f28"/><rect x="4" y="2" width="8" height="3" fill="#7ec850"/><rect x="5" y="5" width="2" height="2" fill="#eab308"/><rect x="9" y="7" width="2" height="2" fill="#f472b6"/></svg>
+      <div>
+        <h2 class="garden-bed-title">{{ if $isVi }}Vườn Web App Trực Tuyến (Tự động cập nhật){{ else }}Live Web Apps Garden (Auto-Synced){{ end }}</h2>
+        <p class="garden-bed-sub">{{ if $isVi }}Tự động phát hiện từ các repo có GitHub Pages — mở dùng ngay trên trình duyệt.{{ else }}Automatically discovered from GitHub Pages repositories — ready to use in your browser.{{ end }}</p>
+      </div>
+    </div>
+    <span class="archive-series-count">{{ len $webApps }} {{ if $isVi }}ứng dụng{{ else }}live apps{{ end }}</span>
+  </div>
+  <div class="featured-grid garden-bed-grid">
+    {{- range $idx, $app := $webApps -}}
+    {{- $plant := mod $idx 4 -}}
+    <article class="hud-card tool-card garden-plot-card">
+      <div class="hud-card-top">
+        <div class="tool-card-head">
+          <span class="tool-icon-box" aria-hidden="true">
+            {{- if eq $plant 0 -}}
+            <svg class="pixel-icon" width="20" height="20" viewBox="0 0 16 16" shape-rendering="crispEdges"><rect x="7" y="8" width="2" height="5" fill="#2e6f28"/><rect x="3" y="5" width="4" height="3" fill="#7ec850"/><rect x="9" y="4" width="4" height="3" fill="#7ec850"/><rect x="4" y="13" width="8" height="2" fill="#8f563b"/></svg>
+            {{- else if eq $plant 1 -}}
+            <svg class="pixel-icon" width="20" height="20" viewBox="0 0 16 16" shape-rendering="crispEdges"><rect x="7" y="9" width="2" height="4" fill="#2e6f28"/><rect x="6" y="4" width="4" height="4" fill="#eab308"/><rect x="4" y="5" width="2" height="2" fill="#f472b6"/><rect x="10" y="5" width="2" height="2" fill="#f472b6"/><rect x="7" y="2" width="2" height="2" fill="#f472b6"/><rect x="4" y="13" width="8" height="2" fill="#8f563b"/></svg>
+            {{- else if eq $plant 2 -}}
+            <svg class="pixel-icon" width="20" height="20" viewBox="0 0 16 16" shape-rendering="crispEdges"><rect x="6" y="10" width="4" height="4" fill="#8f563b"/><rect x="3" y="4" width="10" height="6" fill="#2e6f28"/><rect x="4" y="2" width="8" height="3" fill="#7ec850"/><rect x="5" y="5" width="2" height="2" fill="#ef4444"/><rect x="9" y="7" width="2" height="2" fill="#ef4444"/></svg>
+            {{- else -}}
+            <svg class="pixel-icon" width="20" height="20" viewBox="0 0 16 16" shape-rendering="crispEdges"><rect x="7" y="9" width="2" height="4" fill="#2e6f28"/><rect x="4" y="3" width="3" height="3" fill="#7ec850"/><rect x="9" y="3" width="3" height="3" fill="#2e6f28"/><rect x="5" y="6" width="6" height="3" fill="#7ec850"/><rect x="4" y="13" width="8" height="2" fill="#8f563b"/></svg>
+            {{- end -}}
+          </span>
+          <span class="product-badge">LIVE WEB APP</span>
+        </div>
+        <span class="writing-meta">{{ $app.created_at }}</span>
+      </div>
+      <h3 class="hud-card-title">{{ $app.name }}</h3>
+      <p class="hud-card-desc">{{ $app.description }}</p>
+      <div class="tool-card-actions">
+        <a class="product-cta" href="{{ $app.homepage }}" target="_blank" rel="noopener noreferrer">{{ if $isVi }}Mở Web App ↗{{ else }}Open App ↗{{ end }}</a>
+        <a class="tool-guide-link" href="{{ $app.url }}" target="_blank" rel="noopener noreferrer">{{ if $isVi }}Mã nguồn →{{ else }}Source →{{ end }}</a>
+      </div>
+    </article>
+    {{- end -}}
+  </div>
+</section>
+{{- end -}}
+
 {{- with $catalog.sections -}}
   {{- range $sIdx, $sec := . -}}
-  <section class="home-section">
-    <div class="section-head">
-      <h2 class="section-label"><span aria-hidden="true">// </span>{{ $sec.heading }}</h2>
-      {{- if eq $sIdx 0 -}}
-      <span class="archive-series-count">{{ if eq site.Language.Lang "vi" }}Chạy 100% trên trình duyệt{{ else }}Runs 100% in browser{{ end }}</span>
-      {{- else if eq $sIdx 1 -}}
-      <span class="archive-series-count">{{ if eq site.Language.Lang "vi" }}Mã nguồn MIT &amp; Hướng dẫn miễn phí{{ else }}MIT &amp; Free Guides{{ end }}</span>
-      {{- else -}}
-      <span class="archive-series-count">{{ if eq site.Language.Lang "vi" }}Bộ công cụ tiếng Việt · MIT{{ else }}Vietnamese CLI Suite · MIT{{ end }}</span>
-      {{- end -}}
+  {{- $groupKey := cond (eq $sIdx 1) "guides" "suites" -}}
+  <section class="stardew-box garden-bed" data-garden-group="{{ $groupKey }}">
+    <div class="garden-bed-head">
+      <div class="garden-bed-title-wrap">
+        <svg class="pixel-icon" width="22" height="22" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true">
+          {{- if eq $sIdx 0 -}}
+          <rect x="7" y="8" width="2" height="5" fill="#2e6f28"/><rect x="3" y="4" width="4" height="4" fill="#7ec850"/><rect x="9" y="4" width="4" height="4" fill="#7ec850"/><rect x="4" y="13" width="8" height="2" fill="#8f563b"/>
+          {{- else if eq $sIdx 1 -}}
+          <rect x="3" y="2" width="10" height="12" fill="#4f8f3c"/><rect x="4" y="3" width="8" height="10" fill="#fff8e7"/><rect x="6" y="5" width="5" height="1" fill="#8f563b"/><rect x="6" y="8" width="5" height="1" fill="#8f563b"/>
+          {{- else -}}
+          <rect x="7" y="9" width="2" height="4" fill="#2e6f28"/><rect x="6" y="4" width="4" height="4" fill="#eab308"/><rect x="4" y="5" width="2" height="2" fill="#f472b6"/><rect x="10" y="5" width="2" height="2" fill="#f472b6"/><rect x="7" y="2" width="2" height="2" fill="#f472b6"/><rect x="4" y="13" width="8" height="2" fill="#8f563b"/>
+          {{- end -}}
+        </svg>
+        <div>
+          <h2 class="garden-bed-title">{{ $sec.heading }}</h2>
+          {{- if eq $sIdx 0 -}}
+          <p class="garden-bed-sub">{{ if $isVi }}Các ứng dụng web và bộ giao diện được tuyển chọn.{{ else }}Curated browser tools and color suites.{{ end }}</p>
+          {{- else if eq $sIdx 1 -}}
+          <p class="garden-bed-sub">{{ if $isVi }}Mã nguồn mở MIT và cẩm nang thực hành miễn phí.{{ else }}MIT open-source templates and interactive handbooks.{{ end }}</p>
+          {{- else -}}
+          <p class="garden-bed-sub">{{ if $isVi }}Bộ công cụ dòng lệnh tiếng Việt cho người mới học &amp; trẻ em.{{ else }}Vietnamese CLI tools designed for beginners &amp; kids.{{ end }}</p>
+          {{- end -}}
+        </div>
+      </div>
+      <span class="archive-series-count">{{ len $sec.items }} {{ if $isVi }}mục{{ else }}items{{ end }}</span>
     </div>
-    <div class="featured-grid">
+    <div class="featured-grid garden-bed-grid">
       {{- range $sec.items -}}
       {{- $isExternal := hasPrefix .url "http" -}}
-      <article class="hud-card tool-card">
+      <article class="hud-card tool-card garden-plot-card">
         <div class="hud-card-top">
           <div class="tool-card-head">
             <span class="tool-icon-box" aria-hidden="true">
               {{ if eq .icon "profile" }}
-              <svg class="pixel-icon" width="18" height="18" viewBox="0 0 16 16" shape-rendering="crispEdges"><rect x="6" y="2" width="4" height="4" fill="#d97706"/><rect x="5" y="4" width="6" height="4" fill="#fde68a"/><rect x="6" y="5" width="1" height="1" fill="#2d241c"/><rect x="9" y="5" width="1" height="1" fill="#2d241c"/><rect x="4" y="9" width="8" height="5" fill="#4f8f3c"/><rect x="5" y="10" width="6" height="4" fill="#7ec850"/></svg>
+              <svg class="pixel-icon" width="20" height="20" viewBox="0 0 16 16" shape-rendering="crispEdges"><rect x="6" y="2" width="4" height="4" fill="#d97706"/><rect x="5" y="4" width="6" height="4" fill="#fde68a"/><rect x="6" y="5" width="1" height="1" fill="#2d241c"/><rect x="9" y="5" width="1" height="1" fill="#2d241c"/><rect x="4" y="9" width="8" height="5" fill="#4f8f3c"/><rect x="5" y="10" width="6" height="4" fill="#7ec850"/></svg>
               {{ else if eq .icon "blog" }}
-              <svg class="pixel-icon" width="18" height="18" viewBox="0 0 16 16" shape-rendering="crispEdges"><rect x="3" y="2" width="9" height="12" fill="#8f563b"/><rect x="4" y="3" width="7" height="10" fill="#fff8e7"/><rect x="5" y="5" width="5" height="1" fill="#4f8f3c"/><rect x="5" y="7" width="5" height="1" fill="#b45309"/><rect x="5" y="9" width="4" height="1" fill="#b45309"/><rect x="10" y="9" width="3" height="3" fill="#f59e0b"/></svg>
+              <svg class="pixel-icon" width="20" height="20" viewBox="0 0 16 16" shape-rendering="crispEdges"><rect x="3" y="2" width="9" height="12" fill="#8f563b"/><rect x="4" y="3" width="7" height="10" fill="#fff8e7"/><rect x="5" y="5" width="5" height="1" fill="#4f8f3c"/><rect x="5" y="7" width="5" height="1" fill="#b45309"/><rect x="5" y="9" width="4" height="1" fill="#b45309"/><rect x="10" y="9" width="3" height="3" fill="#f59e0b"/></svg>
               {{ else if eq .icon "calendar" }}
-              <svg class="pixel-icon" width="18" height="18" viewBox="0 0 16 16" shape-rendering="crispEdges"><rect x="2" y="3" width="12" height="11" fill="#8f563b"/><rect x="4" y="2" width="2" height="2" fill="#5b3a29"/><rect x="10" y="2" width="2" height="2" fill="#5b3a29"/><rect x="3" y="4" width="10" height="2" fill="#b45309"/><rect x="3" y="6" width="10" height="7" fill="#fff8e7"/><rect x="5" y="8" width="2" height="2" fill="#7ec850"/><rect x="9" y="8" width="2" height="2" fill="#f59e0b"/></svg>
+              <svg class="pixel-icon" width="20" height="20" viewBox="0 0 16 16" shape-rendering="crispEdges"><rect x="2" y="3" width="12" height="11" fill="#8f563b"/><rect x="4" y="2" width="2" height="2" fill="#5b3a29"/><rect x="10" y="2" width="2" height="2" fill="#5b3a29"/><rect x="3" y="4" width="10" height="2" fill="#b45309"/><rect x="3" y="6" width="10" height="7" fill="#fff8e7"/><rect x="5" y="8" width="2" height="2" fill="#7ec850"/><rect x="9" y="8" width="2" height="2" fill="#f59e0b"/></svg>
               {{ else if eq .icon "source" }}
-              <svg class="pixel-icon" width="18" height="18" viewBox="0 0 16 16" shape-rendering="crispEdges"><rect x="2" y="4" width="12" height="9" fill="#5b3a29"/><rect x="3" y="5" width="10" height="7" fill="#8f563b"/><rect x="2" y="7" width="12" height="1" fill="#2d241c"/><rect x="7" y="6" width="2" height="3" fill="#f59e0b"/></svg>
+              <svg class="pixel-icon" width="20" height="20" viewBox="0 0 16 16" shape-rendering="crispEdges"><rect x="7" y="8" width="2" height="5" fill="#2e6f28"/><rect x="3" y="5" width="4" height="3" fill="#7ec850"/><rect x="9" y="4" width="4" height="3" fill="#7ec850"/><rect x="4" y="13" width="8" height="2" fill="#8f563b"/></svg>
               {{ else if eq .icon "handbook" }}
-              <svg class="pixel-icon" width="18" height="18" viewBox="0 0 16 16" shape-rendering="crispEdges"><rect x="3" y="2" width="10" height="12" fill="#4f8f3c"/><rect x="4" y="3" width="8" height="10" fill="#fff8e7"/><rect x="6" y="5" width="5" height="1" fill="#5b3a29"/><rect x="6" y="7" width="5" height="1" fill="#8f563b"/><rect x="6" y="9" width="4" height="1" fill="#8f563b"/></svg>
+              <svg class="pixel-icon" width="20" height="20" viewBox="0 0 16 16" shape-rendering="crispEdges"><rect x="3" y="2" width="10" height="12" fill="#4f8f3c"/><rect x="4" y="3" width="8" height="10" fill="#fff8e7"/><rect x="6" y="5" width="5" height="1" fill="#5b3a29"/><rect x="6" y="7" width="5" height="1" fill="#8f563b"/><rect x="6" y="9" width="4" height="1" fill="#8f563b"/></svg>
               {{ else }}
-              <svg class="pixel-icon" width="18" height="18" viewBox="0 0 16 16" shape-rendering="crispEdges"><rect x="3" y="3" width="10" height="10" fill="#8f563b"/><rect x="4" y="4" width="8" height="8" fill="#fff8e7"/><rect x="5" y="5" width="2" height="2" fill="#7ec850"/><rect x="9" y="5" width="2" height="2" fill="#f59e0b"/><rect x="5" y="9" width="2" height="2" fill="#d97706"/><rect x="9" y="9" width="2" height="2" fill="#4f8f3c"/></svg>
+              <svg class="pixel-icon" width="20" height="20" viewBox="0 0 16 16" shape-rendering="crispEdges"><rect x="3" y="3" width="10" height="10" fill="#8f563b"/><rect x="4" y="4" width="8" height="8" fill="#fff8e7"/><rect x="5" y="5" width="2" height="2" fill="#7ec850"/><rect x="9" y="5" width="2" height="2" fill="#f59e0b"/><rect x="5" y="9" width="2" height="2" fill="#d97706"/><rect x="9" y="9" width="2" height="2" fill="#4f8f3c"/></svg>
               {{ end }}
             </span>
             <span class="product-badge">{{ .badge }}</span>
@@ -80,7 +151,7 @@ defaultContentLanguage = "{{ site.Language.Lang }}"
         <p class="hud-card-desc">{{ .description }}</p>
         <div class="tool-card-actions">
           <a class="product-cta" href="{{ .url }}"{{ if $isExternal }} target="_blank" rel="noopener noreferrer"{{ end }}>{{ .cta }}</a>
-          {{ with .guide_url }}<a class="tool-guide-link" href="{{ . | relLangURL }}">{{ if eq site.Language.Lang "vi" }}Hướng dẫn →{{ else }}Guide →{{ end }}</a>{{ end }}
+          {{ with .guide_url }}<a class="tool-guide-link" href="{{ . | relLangURL }}">{{ if $isVi }}Hướng dẫn →{{ else }}Guide →{{ end }}</a>{{ end }}
         </div>
       </article>
       {{- end -}}
@@ -88,3 +159,20 @@ defaultContentLanguage = "{{ site.Language.Lang }}"
   </section>
   {{- end -}}
 {{ end }}
+
+<script>
+  (() => {
+    const btns = document.querySelectorAll("[data-garden-filter]");
+    const beds = document.querySelectorAll("[data-garden-group]");
+    if (!btns.length || !beds.length) return;
+    btns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const target = btn.dataset.gardenFilter;
+        btns.forEach(b => b.classList.toggle("is-active", b === btn));
+        beds.forEach(bed => {
+          bed.hidden = target !== "all" && bed.dataset.gardenGroup !== target;
+        });
+      });
+    });
+  })();
+</script>
