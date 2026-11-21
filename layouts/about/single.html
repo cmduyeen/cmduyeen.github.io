@@ -25,17 +25,17 @@
       </div>
 
       <div class="about-gear" style="margin-top: 0.75rem;">
-        <div class="w3-sidebar-label">What I Enjoy</div>
+        <div class="w3-sidebar-label">🌿 {{ if eq site.Language.Lang "vi" }}Sở thích{{ else }}What I Enjoy{{ end }}</div>
         <div class="topic-pills">
-          <span class="topic-pill">Gardening</span>
-          <span class="topic-pill">Reading</span>
-          <span class="topic-pill">Small Tools</span>
-          <span class="topic-pill">Nature</span>
+          <span class="topic-pill is-garden">🌱 {{ if eq site.Language.Lang "vi" }}Làm vườn{{ else }}Gardening{{ end }}</span>
+          <span class="topic-pill is-book">📖 {{ if eq site.Language.Lang "vi" }}Đọc sách{{ else }}Reading{{ end }}</span>
+          <span class="topic-pill is-tool">🛠️ {{ if eq site.Language.Lang "vi" }}Tool nhỏ{{ else }}Small Tools{{ end }}</span>
+          <span class="topic-pill is-garden">🍃 {{ if eq site.Language.Lang "vi" }}Thiên nhiên{{ else }}Nature{{ end }}</span>
         </div>
       </div>
 
       <div class="about-gear">
-        <div class="w3-sidebar-label">Daily Tools</div>
+        <div class="w3-sidebar-label">🧰 {{ if eq site.Language.Lang "vi" }}Công cụ hằng ngày{{ else }}Daily Tools{{ end }}</div>
         <div class="topic-pills">
           <span class="topic-pill">Obsidian</span>
           <span class="topic-pill">Hugo</span>
@@ -45,12 +45,17 @@
       </div>
 
       <div class="about-gear">
-        <div class="w3-sidebar-label">{{ if eq site.Language.Lang "vi" }}Thông tin cá nhân{{ else }}Identity{{ end }}</div>
+        <div class="w3-sidebar-label">✨ {{ if eq site.Language.Lang "vi" }}Thông tin cá nhân{{ else }}Identity{{ end }}</div>
         <div class="topic-pills">
-          <span class="topic-pill">ISFJ</span>
-          <span class="topic-pill">{{ if eq site.Language.Lang "vi" }}Nhân Mã{{ else }}Sagittarius{{ end }}</span>
-          <span class="topic-pill">{{ if eq site.Language.Lang "vi" }}🇻🇳 Tự hào người Việt{{ else }}🇻🇳 Made in Vietnam{{ end }}</span>
+          <span class="topic-pill is-warm">💛 ISFJ</span>
+          <span class="topic-pill is-star">♐ {{ if eq site.Language.Lang "vi" }}Nhân Mã{{ else }}Sagittarius{{ end }}</span>
+          <span class="topic-pill is-vn">🇻🇳 {{ if eq site.Language.Lang "vi" }}Tự hào người Việt{{ else }}Made in Vietnam{{ end }}</span>
         </div>
+      </div>
+
+      <div class="about-garden-note" aria-hidden="true">
+        <svg class="pixel-icon" width="22" height="22" viewBox="0 0 16 16" shape-rendering="crispEdges"><rect x="6" y="10" width="4" height="4" fill="#8f563b"/><rect x="3" y="4" width="10" height="6" fill="#2e6f28"/><rect x="4" y="2" width="8" height="3" fill="#7ec850"/><rect x="5" y="5" width="2" height="2" fill="#eab308"/><rect x="9" y="7" width="2" height="2" fill="#f472b6"/></svg>
+        <span>{{ if eq site.Language.Lang "vi" }}Chậm rãi chăm từng dự án nhỏ{{ else }}Growing small, useful things slowly{{ end }}</span>
       </div>
 
       <div class="social-pills" style="margin-top: auto; padding-top: 0.85rem; border-top: 1px dashed var(--border-subtle);">

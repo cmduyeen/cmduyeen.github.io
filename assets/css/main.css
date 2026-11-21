@@ -693,6 +693,53 @@ main {
   color: var(--text-primary);
 }
 
+.about-char-card {
+  border-top: 3px solid var(--accent-emerald, #2e6f28);
+}
+
+.topic-pill.is-garden {
+  border-color: rgba(126, 200, 80, 0.45);
+  background: rgba(46, 111, 40, 0.14);
+}
+
+.topic-pill.is-book {
+  border-color: rgba(234, 179, 8, 0.42);
+  background: rgba(146, 64, 14, 0.14);
+}
+
+.topic-pill.is-tool {
+  border-color: rgba(156, 113, 81, 0.55);
+  background: rgba(143, 86, 59, 0.16);
+}
+
+.topic-pill.is-warm {
+  border-color: rgba(234, 179, 8, 0.5);
+  background: rgba(234, 179, 8, 0.12);
+}
+
+.topic-pill.is-star {
+  border-color: rgba(244, 114, 182, 0.42);
+  background: rgba(244, 114, 182, 0.1);
+}
+
+.topic-pill.is-vn {
+  border-color: rgba(239, 68, 68, 0.5);
+  background: rgba(218, 37, 29, 0.14);
+}
+
+.about-garden-note {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-top: 1.15rem;
+  padding: 0.7rem 0.85rem;
+  border-radius: var(--radius-sm);
+  border: 1px dashed rgba(126, 200, 80, 0.45);
+  background: rgba(46, 111, 40, 0.08);
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+}
+
 .garden-timeline {
   position: relative;
   display: flex;
