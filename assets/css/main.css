@@ -492,7 +492,6 @@ main {
 /* Farm Harvest Yield Productivity Chart */
 .farm-yield-card {
   margin-bottom: 2.75rem;
-  border-top: 3px solid var(--accent-emerald, #2e6f28);
 }
 
 .farm-yield-head {
@@ -580,13 +579,13 @@ main {
 
 .farm-soil-tile {
   width: 100%;
-  padding: 0.38rem 0;
-  border: 1.5px solid var(--border-subtle);
+  padding: 0.35rem 0;
+  border: 1.5px solid var(--border-strong);
   border-radius: var(--radius-sm);
   text-align: center;
   font-family: var(--font-mono);
-  font-size: 0.74rem;
-  box-shadow: 2px 2px 0 rgba(143, 86, 59, 0.16);
+  font-size: 0.72rem;
+  box-shadow: var(--shadow-card);
 }
 
 .farm-month-label {
@@ -595,10 +594,10 @@ main {
   color: var(--text-muted);
 }
 
-.is-soil { background: var(--bg-void); color: var(--text-muted); opacity: 0.75; }
-.is-sprout { background: linear-gradient(180deg, #7ec850, #5da832); color: #162610; border-color: #2e6f28; }
-.is-grown { background: linear-gradient(180deg, #3b8734, #2e6f28); color: #f5ebd6; border-color: #1e4d1a; }
-.is-harvest { background: linear-gradient(180deg, #eab308, #b45309); color: #fff8e7; border-color: #92400e; }
+.is-soil { background: var(--bg-elevated); color: var(--text-muted); border-color: var(--border-subtle); }
+.is-sprout { background: var(--accent-emerald); color: var(--btn-primary-text); border-color: var(--border-strong); opacity: 0.82; }
+.is-grown { background: var(--accent-emerald); color: var(--btn-primary-text); border-color: var(--border-strong); }
+.is-harvest { background: var(--accent-cyan); color: var(--btn-primary-text); border-color: var(--border-strong); }
 
 .about-char-name {
   margin: 0 0 0.25rem;
@@ -695,38 +694,34 @@ main {
   color: var(--text-primary);
 }
 
-.about-char-card {
-  border-top: 3px solid var(--accent-emerald, #2e6f28);
-}
-
 .topic-pill.is-garden {
-  border-color: rgba(126, 200, 80, 0.45);
-  background: rgba(46, 111, 40, 0.14);
+  border-color: var(--accent-emerald);
+  color: var(--accent-emerald);
 }
 
 .topic-pill.is-book {
-  border-color: rgba(234, 179, 8, 0.42);
-  background: rgba(146, 64, 14, 0.14);
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
 }
 
 .topic-pill.is-tool {
-  border-color: rgba(156, 113, 81, 0.55);
-  background: rgba(143, 86, 59, 0.16);
+  border-color: var(--border-strong);
+  color: var(--text-primary);
 }
 
 .topic-pill.is-warm {
-  border-color: rgba(234, 179, 8, 0.5);
-  background: rgba(234, 179, 8, 0.12);
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
 }
 
 .topic-pill.is-star {
-  border-color: rgba(244, 114, 182, 0.42);
-  background: rgba(244, 114, 182, 0.1);
+  border-color: var(--border-strong);
+  color: var(--text-primary);
 }
 
 .topic-pill.is-vn {
-  border-color: rgba(239, 68, 68, 0.5);
-  background: rgba(218, 37, 29, 0.14);
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
 }
 
 .about-garden-note {
@@ -736,8 +731,8 @@ main {
   margin-top: 1.15rem;
   padding: 0.7rem 0.85rem;
   border-radius: var(--radius-sm);
-  border: 1px dashed rgba(126, 200, 80, 0.45);
-  background: rgba(46, 111, 40, 0.08);
+  border: 1px dashed var(--border-strong);
+  background: var(--bg-void);
   font-size: 0.82rem;
   color: var(--text-secondary);
 }
@@ -757,10 +752,10 @@ main {
   top: 1.5rem;
   bottom: 1.5rem;
   left: 50%;
-  width: 4px;
+  width: 3px;
   transform: translateX(-50%);
-  background: linear-gradient(180deg, #7ec850 0%, #2e6f28 70%, #8f563b 100%);
-  border-radius: 4px;
+  background: linear-gradient(180deg, var(--accent-emerald) 0%, var(--border-strong) 100%);
+  border-radius: 3px;
 }
 
 .garden-node {
@@ -790,7 +785,7 @@ main {
   justify-content: center;
   border-radius: 50%;
   background: var(--bg-surface);
-  border: 2.5px solid #2e6f28;
+  border: 2px solid var(--accent-emerald);
   box-shadow: 0 0 0 4px var(--bg-surface);
   z-index: 2;
 }
@@ -808,18 +803,16 @@ main {
   display: flex;
   flex-direction: column;
   gap: 0.45rem;
-  padding: 1.05rem 1.2rem;
+  padding: 1rem 1.15rem;
   border: 1.5px solid var(--border-subtle);
-  border-top: 3px solid var(--accent-emerald, #2e6f28);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sm);
   background: var(--bg-void);
-  box-shadow: 2px 2px 0 rgba(143, 86, 59, 0.18);
-  transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: var(--shadow-card);
+  transition: border-color 0.15s ease, transform 0.15s ease;
 }
 
 .garden-node:hover .garden-card {
-  border-color: var(--accent-emerald, #2e6f28);
-  box-shadow: 3px 3px 0 rgba(46, 111, 40, 0.3);
+  border-color: var(--accent-cyan);
   transform: translateY(-2px);
 }
 
