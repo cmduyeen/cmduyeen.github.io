@@ -4,6 +4,8 @@ description: "Character sheet, minimalist philosophy, and open-source projects b
 type: "about"
 ---
 
-I'm **Dyn**, an independent builder who treats software and writing like tending a quiet valley: keep tools sharp, remove clutter, and build systems that last for years.
+I'm **Dyn**. I read, cook, and build small tools for myself and the people around me.
 
-This site is my workshop for plain-text notes (**Obsidian & Markdown**), fast static websites (**Hugo**), zero-install browser utilities, and honest reviews of tools I actually use.
+To me, coding and writing feel a lot like tending a small farm: plant things that are actually useful, clear out the weeds, and keep the space simple enough to care for over the years.
+
+This is where I keep my plain-text notes (**Obsidian & Markdown**), lightweight static pages (**Hugo**), and zero-install browser tools — feel free to pick up anything that's useful to you.
