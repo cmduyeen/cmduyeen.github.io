@@ -45,6 +45,15 @@
             "guide_url": "/posts/lich-am-viet-nam-google-calendar/"
           },
           {
+            "icon": "blog",
+            "name": "VN-580 Plus Scientific Calculator",
+            "badge": "WEB APP · FREE",
+            "description": "Online 580VN-compatible scientific calculator for students: equations, inequalities, calculus, complex numbers, matrices, vectors, and 5 skins.",
+            "url": "https://cmduyeen.github.io/online-calculator/",
+            "cta": "Open Calculator →",
+            "guide_url": "/posts/vn-580-plus-online-calculator/"
+          },
+          {
             "icon": "theme",
             "name": "Serein & Pinkie Themes",
             "badge": "MIT · OPEN SOURCE",
@@ -167,6 +176,15 @@
             "url": "https://cmduyeen.github.io/lich-am-viet-nam/",
             "cta": "Mở ứng dụng →",
             "guide_url": "/posts/lich-am-viet-nam-google-calendar/"
+          },
+          {
+            "icon": "blog",
+            "name": "VN-580 Plus — Máy tính khoa học Online",
+            "badge": "WEB APP · MIỄN PHÍ",
+            "description": "Máy tính khoa học tương thích thao tác 580VN cho học sinh: giải PT/HPT/BPT, tích phân, đạo hàm, số phức, ma trận, vector và 5 giao diện skin.",
+            "url": "https://cmduyeen.github.io/online-calculator/",
+            "cta": "Mở máy tính →",
+            "guide_url": "/posts/vn-580-plus-online-calculator/"
           },
           {
             "icon": "theme",
