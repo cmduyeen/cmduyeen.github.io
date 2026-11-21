@@ -10,7 +10,7 @@ translationKey: "vn-580-plus-online-calculator"
 draft: false
 ---
 
-Nếu lỡ quên mang máy tính cầm tay khi đi học hoặc làm bài tập trên máy tính, bạn có thể mở ngay **[VN-580 Plus Online](https://cmduyeen.github.io/online-calculator/)** — chạy trực tiếp trên trình duyệt điện thoại và máy tính, không quảng cáo, thao tác quen thuộc như máy tính 580VN.
+Nếu lỡ quên mang máy tính cầm tay khi đi học hoặc làm bài tập trên máy tính, bạn có thể mở ngay **[VN-580 Plus Online](https://cmduyeen.github.io/may-tinh-khoa-hoc-online/)** — chạy trực tiếp trên trình duyệt điện thoại và máy tính, không quảng cáo, thao tác quen thuộc như máy tính 580VN.
 
 ## Tính năng nổi bật
 
@@ -26,4 +26,4 @@ Nếu lỡ quên mang máy tính cầm tay khi đi học hoặc làm bài tập 
   - `9:EQUATION` & `A:INEQ` — Giải hệ PT 2–4 ẩn, PT bậc 2–4 (cả nghiệm phức) và bất PT bậc 2–3
 - **5 Giao diện (Skin) thú vị**: Classic 580, Hacker, Mèo Hồng, Anime Neon và Cozy Study.
 
-> Dùng ngay tại **[cmduyeen.github.io/online-calculator](https://cmduyeen.github.io/online-calculator/)** hoặc xem mã nguồn mở (MIT) trên [GitHub](https://github.com/cmduyeen/online-calculator).
+> Dùng ngay tại **[cmduyeen.github.io/online-calculator](https://cmduyeen.github.io/may-tinh-khoa-hoc-online/)** hoặc xem mã nguồn mở (MIT) trên [GitHub](https://github.com/cmduyeen/may-tinh-khoa-hoc-online).

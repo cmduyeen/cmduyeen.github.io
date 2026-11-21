@@ -10,7 +10,7 @@ translationKey: "vn-580-plus-online-calculator"
 draft: false
 ---
 
-Forgot your handheld scientific calculator at home? **[VN-580 Plus Online](https://cmduyeen.github.io/online-calculator/)** runs 100% in your browser (desktop or mobile, even offline) with a familiar 580VN-style layout tailored for Vietnamese students.
+Forgot your handheld scientific calculator at home? **[VN-580 Plus Online](https://cmduyeen.github.io/may-tinh-khoa-hoc-online/)** runs 100% in your browser (desktop or mobile, even offline) with a familiar 580VN-style layout tailored for Vietnamese students.
 
 ## Key Features
 
@@ -26,4 +26,4 @@ Forgot your handheld scientific calculator at home? **[VN-580 Plus Online](https
   - `9:EQUATION` & `A:INEQ` — Systems of 2–4 linear equations, degree 2–4 polynomials, and degree 2–3 inequalities
 - **5 Switchable Skins**: Classic 580, Hacker Matrix, Kawaii Pink, Anime Neon, and Cozy Study.
 
-> Open the app at **[cmduyeen.github.io/online-calculator](https://cmduyeen.github.io/online-calculator/)** or explore the MIT-licensed source code on [GitHub](https://github.com/cmduyeen/online-calculator).
+> Open the app at **[cmduyeen.github.io/online-calculator](https://cmduyeen.github.io/may-tinh-khoa-hoc-online/)** or explore the MIT-licensed source code on [GitHub](https://github.com/cmduyeen/may-tinh-khoa-hoc-online).
