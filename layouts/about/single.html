@@ -44,6 +44,15 @@
         </div>
       </div>
 
+      <div class="about-gear">
+        <div class="w3-sidebar-label">{{ if eq site.Language.Lang "vi" }}Thông tin cá nhân{{ else }}Identity{{ end }}</div>
+        <div class="topic-pills">
+          <span class="topic-pill">ISFJ</span>
+          <span class="topic-pill">{{ if eq site.Language.Lang "vi" }}Nhân Mã{{ else }}Sagittarius{{ end }}</span>
+          <span class="topic-pill">{{ if eq site.Language.Lang "vi" }}🇻🇳 Tự hào người Việt{{ else }}🇻🇳 Made in Vietnam{{ end }}</span>
+        </div>
+      </div>
+
       <div class="social-pills" style="margin-top: auto; padding-top: 0.85rem; border-top: 1px dashed var(--border-subtle);">
         {{ with site.Params.contact.github }}<a href="{{ . | safeURL }}" target="_blank" rel="noopener noreferrer">GitHub</a>{{ end }}
         {{ with site.Params.contact.x }}<span aria-hidden="true">·</span><a href="{{ . | safeURL }}" target="_blank" rel="noopener noreferrer">X</a>{{ end }}
