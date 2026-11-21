@@ -20,27 +20,22 @@
         </picture>
         <div>
           <h2 class="about-char-name">{{ site.Params.author }}</h2>
-          <span class="status-pill is-active">Lv.{{ $postsCount }} · Valley Builder</span>
+          <span class="status-pill is-active">Gardener &amp; Toolmaker</span>
         </div>
       </div>
 
-      <div class="rpg-bars">
-        <div class="rpg-bar-row">
-          <span>Writing &amp; Notes</span>
-          <div class="rpg-bar-track"><div class="rpg-bar-fill is-leaf" style="width: 88%"></div></div>
-        </div>
-        <div class="rpg-bar-row">
-          <span>Automation</span>
-          <div class="rpg-bar-track"><div class="rpg-bar-fill is-gold" style="width: 92%"></div></div>
-        </div>
-        <div class="rpg-bar-row">
-          <span>Cozy UI Design</span>
-          <div class="rpg-bar-track"><div class="rpg-bar-fill is-berry" style="width: 84%"></div></div>
+      <div class="about-gear" style="margin-top: 0.75rem;">
+        <div class="w3-sidebar-label">What I Enjoy</div>
+        <div class="topic-pills">
+          <span class="topic-pill">Gardening</span>
+          <span class="topic-pill">Reading</span>
+          <span class="topic-pill">Small Tools</span>
+          <span class="topic-pill">Nature</span>
         </div>
       </div>
 
       <div class="about-gear">
-        <div class="w3-sidebar-label">Equipped Gear</div>
+        <div class="w3-sidebar-label">Daily Tools</div>
         <div class="topic-pills">
           <span class="topic-pill">Obsidian</span>
           <span class="topic-pill">Hugo</span>
@@ -55,6 +50,8 @@
         {{ with site.Home.OutputFormats.Get "RSS" }}<span aria-hidden="true">·</span><a href="{{ .RelPermalink }}">RSS</a>{{ end }}
         <span>·</span>
         <a href="{{ "tools/" | relLangURL }}">Projects</a>
+        <span>·</span>
+        <a href="https://ko-fi.com/cmduyeen" target="_blank" rel="noopener noreferrer">Ko-fi</a>
       </div>
     </aside>
 
@@ -74,32 +71,32 @@
         </picture>
       </div>
 
-      <div class="w3-sidebar-label">// BUILDER'S JOURNAL</div>
+      <div class="w3-sidebar-label">// A LITTLE ABOUT ME</div>
       <div class="about-bio">
         {{ .Content }}
       </div>
 
       <div class="about-achievements">
-        <div class="w3-sidebar-label">// UNLOCKED ACHIEVEMENTS</div>
+        <div class="w3-sidebar-label">// AT A GLANCE</div>
         <div class="about-badges-grid">
           <div class="about-badge-item">
             <svg class="pixel-icon" width="18" height="18" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect x="2" y="2" width="11" height="12" fill="#8f563b"/><rect x="4" y="3" width="8" height="10" fill="#fff8e7"/><rect x="5" y="5" width="6" height="1" fill="#4f8f3c"/><rect x="5" y="7" width="6" height="1" fill="#b45309"/></svg>
             <div>
-              <strong>Plain-Text Scribe</strong>
+              <strong>Plain-Text Notes</strong>
               <span>{{ $postsCount }} published guides</span>
             </div>
           </div>
           <div class="about-badge-item">
             <svg class="pixel-icon" width="18" height="18" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect x="7" y="6" width="2" height="8" fill="#8f563b"/><rect x="3" y="2" width="10" height="4" fill="#94a3b8"/></svg>
             <div>
-              <strong>Open-Source Smith</strong>
+              <strong>Small Open-Source Tools</strong>
               <span>{{ $reposCount }} public repositories</span>
             </div>
           </div>
           <div class="about-badge-item">
             <svg class="pixel-icon" width="18" height="18" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect x="7" y="10" width="2" height="5" fill="#4f8f3c"/><rect x="5" y="4" width="6" height="6" fill="#7ec850"/><rect x="6" y="2" width="4" height="2" fill="#7ec850"/></svg>
             <div>
-              <strong>Zero-Bloat Gardener</strong>
+              <strong>Simple &amp; Free</strong>
               <span>No ads, no trackers</span>
             </div>
           </div>
@@ -182,7 +179,7 @@
   <!-- Open-Source Projects Archive -->
   <section class="home-section" aria-labelledby="repos-heading">
     <div class="section-head">
-      <h2 class="section-label" id="repos-heading">Open-Source Guild ({{ $reposCount }} Repos)</h2>
+      <h2 class="section-label" id="repos-heading">Project Garden ({{ $reposCount }} Repos)</h2>
       <a class="section-more" href="{{ "tools/" | relLangURL }}">Featured Tools →</a>
     </div>
     {{- $repos := site.Data.repos -}}
