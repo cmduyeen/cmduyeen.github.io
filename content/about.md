@@ -4,8 +4,8 @@ description: "Character sheet, minimalist philosophy, and open-source projects b
 type: "about"
 ---
 
-I'm **Dyn**. I read, cook, and build small tools for myself and the people around me.
+I'm **Dyn**. I enjoy gardening, reading, and living close to nature.
 
-To me, coding and writing feel a lot like tending a small farm: plant things that are actually useful, clear out the weeds, and keep the space simple enough to care for over the years.
+On the technical side, I like building small, useful tools for myself, my family, and anyone who finds them helpful — from a rolling Vietnamese lunar calendar to beginner-friendly Vietnamese CLI utilities.
 
-This is where I keep my plain-text notes (**Obsidian & Markdown**), lightweight static pages (**Hugo**), and zero-install browser tools — feel free to pick up anything that's useful to you.
+This site is where I keep my **Obsidian & Markdown** notes, lightweight **Hugo** pages, and zero-install browser tools. Feel free to use anything you find helpful.

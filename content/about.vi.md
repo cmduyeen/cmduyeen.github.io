@@ -4,8 +4,8 @@ description: "Hồ sơ cá nhân, triết lý tối giản và các dự án mã
 type: "about"
 ---
 
-Mình là **Dyn**. Mình thích đọc sách, nấu ăn, và làm những công cụ nhỏ cho chính mình và người thân dùng hằng ngày.
+Mình là **Dyn**. Mình thích làm vườn, đọc sách và tận hưởng nhịp sống gần gũi với thiên nhiên.
 
-Với mình, viết code hay viết blog cũng giống như chăm một mảnh vườn nhỏ: trồng vài thứ thiết thực, dọn bớt những gì rườm rà, và giữ mọi thứ đủ gọn để dùng lâu dài.
+Bên cạnh đó, mình thích tự tay làm những tool nhỏ gọn, hữu ích cho bản thân, người thân và những ai cần dùng — từ lịch âm hằng ngày cho đến vài công cụ dòng lệnh tiếng Việt dễ tiếp cận.
 
-Nơi này lưu lại ghi chú bằng **Obsidian & Markdown**, vài trang tĩnh với **Hugo**, và những tiện ích nhỏ chạy thẳng trên trình duyệt — ai ghé ngang thấy hợp thì cứ lấy dùng tự nhiên.
+Nơi này lưu lại ghi chú bằng **Obsidian & Markdown**, vài trang tĩnh với **Hugo**, và những tiện ích nhỏ chạy thẳng trên trình duyệt. Nếu thấy thứ gì có ích, bạn cứ lấy dùng tự nhiên nhé.
