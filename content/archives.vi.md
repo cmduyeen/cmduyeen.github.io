@@ -1,5 +1,5 @@
 ---
-title: "Lưu trữ bài viết"
+title: "Bài viết"
 layout: "archives"
 summary: false
 ---
