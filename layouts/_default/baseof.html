@@ -14,7 +14,7 @@
           <a class="site-title" href="{{ site.Home.RelPermalink }}">
             <picture>
               {{ with $hdrAvatarWebp }}<source srcset="{{ .RelPermalink }}" type="image/webp">{{ end }}
-              <img class="header-avatar" src="{{ if $hdrAvatarPng }}{{ $hdrAvatarPng.RelPermalink }}{{ else if $hdrAvatarWebp }}{{ $hdrAvatarWebp.RelPermalink }}{{ else }}/images/dyn-avatar.png{{ end }}" alt="Dyn" width="28" height="28" decoding="async" fetchpriority="high" />
+              <img class="header-avatar" src="{{ if $hdrAvatarPng }}{{ $hdrAvatarPng.RelPermalink }}{{ else if $hdrAvatarWebp }}{{ $hdrAvatarWebp.RelPermalink }}{{ end }}" alt="Dyn" width="28" height="28" decoding="async" fetchpriority="high" />
             </picture>
             <span>~/</span>{{ lower site.Title }}
           </a>
@@ -47,13 +47,13 @@
               {{ if eq site.Language.Lang "en" }}
                 {{ $target := "/vi/" }}
                 {{ range .AllTranslations }}{{ if eq .Lang "vi" }}{{ $target = .RelPermalink }}{{ end }}{{ end }}
-                <a class="lang-switch-btn" href="{{ $target }}" aria-label="Tiếng Việt" title="Chuyển sang Tiếng Việt">
+                <a class="lang-switch-btn" href="{{ $target }}" data-lang="vi" onclick="try{localStorage.setItem('dyn-lang','vi')}catch(_){}" aria-label="Tiếng Việt" title="Chuyển sang Tiếng Việt">
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>
                 </a>
               {{ else }}
                 {{ $target := "/" }}
                 {{ range .AllTranslations }}{{ if eq .Lang "en" }}{{ $target = .RelPermalink }}{{ end }}{{ end }}
-                <a class="lang-switch-btn" href="{{ $target }}" aria-label="English" title="Switch to English">
+                <a class="lang-switch-btn" href="{{ $target }}" data-lang="en" onclick="try{localStorage.setItem('dyn-lang','en')}catch(_){}" aria-label="English" title="Switch to English">
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>
                 </a>
               {{ end }}

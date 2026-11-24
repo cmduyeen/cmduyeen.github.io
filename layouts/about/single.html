@@ -16,7 +16,7 @@
       <div class="about-avatar-wrap">
         <picture>
           {{ with $aboutAvatarWebp }}<source srcset="{{ .RelPermalink }}" type="image/webp">{{ end }}
-          <img class="about-avatar-img" src="{{ if $aboutAvatarPng }}{{ $aboutAvatarPng.RelPermalink }}{{ else if $aboutAvatarWebp }}{{ $aboutAvatarWebp.RelPermalink }}{{ else }}/images/dyn-avatar.png{{ end }}" alt="Dyn pixel avatar with two dogs" width="76" height="76" decoding="async" />
+          <img class="about-avatar-img" src="{{ if $aboutAvatarPng }}{{ $aboutAvatarPng.RelPermalink }}{{ else if $aboutAvatarWebp }}{{ $aboutAvatarWebp.RelPermalink }}{{ end }}" alt="Dyn pixel avatar with two dogs" width="76" height="76" decoding="async" />
         </picture>
         <div>
           <h2 class="about-char-name">{{ site.Params.author }}</h2>
@@ -81,7 +81,7 @@
           {{ else if $bannerWebp1000 }}
           <source srcset="{{ $bannerWebp1000.RelPermalink }}" type="image/webp">
           {{ end }}
-          <img class="about-banner-img" src="{{ if $bannerPng }}{{ $bannerPng.RelPermalink }}{{ else if $bannerWebp1000 }}{{ $bannerWebp1000.RelPermalink }}{{ else }}/images/dyn-workspace.png{{ end }}" alt="Dyn working at a cozy wooden desk with two sleeping dogs" width="1000" height="563" loading="lazy" decoding="async" />
+          <img class="about-banner-img" src="{{ if $bannerPng }}{{ $bannerPng.RelPermalink }}{{ else if $bannerWebp1000 }}{{ $bannerWebp1000.RelPermalink }}{{ end }}" alt="Dyn working at a cozy wooden desk with two sleeping dogs" width="1000" height="563" loading="lazy" decoding="async" />
         </picture>
       </div>
 

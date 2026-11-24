@@ -1,58 +1,45 @@
 {{- $description := .Description | default site.Params.description -}}
 {{- $style := resources.Get "css/main.css" | minify | fingerprint -}}
-{{- $themeInitSrc := `(()=>{try{const t=localStorage.getItem("dyn-theme");if(t==="light"||t==="dark"){document.documentElement.setAttribute("data-theme",t)}else{document.documentElement.setAttribute("data-theme","light")}}catch(_){document.documentElement.setAttribute("data-theme","light")}})();` -}}
+{{- $themeInitSrc := `(()=>{try{const t=localStorage.getItem("dyn-theme");if(t==="light"||t==="dark"){document.documentElement.setAttribute("data-theme",t)}else{const m=window.matchMedia("(prefers-color-scheme: dark)");document.documentElement.setAttribute("data-theme",m.matches?"dark":"light");m.addEventListener("change",e=>{if(!localStorage.getItem("dyn-theme"))document.documentElement.setAttribute("data-theme",e.matches?"dark":"light")})}}catch(_){}})();` -}}
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://giscus.app https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://giscus.app; img-src 'self' data: https: https://www.google-analytics.com https://*.google-analytics.com; frame-src https://giscus.app; connect-src 'self' https://giscus.app https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://giscus.app; style-src 'self' 'unsafe-inline' https://giscus.app; img-src 'self' data: https:; frame-src https://giscus.app; connect-src 'self' https://giscus.app; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;">
 <meta name="description" content="{{ $description | plainify }}">
 {{- if eq .Section "archives" -}}
 <meta name="robots" content="noindex, follow">
 {{- end -}}
 <meta name="theme-color" content="#f7eed6" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#1f1916" media="(prefers-color-scheme: dark)">
-{{- $gaID := site.Config.Services.GoogleAnalytics.ID | default site.Params.googleAnalytics -}}
-{{- with $gaID }}
-<link rel="dns-prefetch" href="https://www.googletagmanager.com">
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', '{{ . }}', { 'anonymize_ip': true });
-  (function(){
-    var loaded = false;
-    function loadGA(){
-      if (loaded) return;
-      loaded = true;
-      var s = document.createElement('script');
-      s.async = true;
-      s.src = 'https://www.googletagmanager.com/gtag/js?id={{ . }}';
-      document.head.appendChild(s);
-    }
-    ['scroll', 'mousemove', 'keydown', 'touchstart', 'click'].forEach(function(evt){
-      window.addEventListener(evt, loadGA, { once: true, passive: true });
-    });
-    setTimeout(loadGA, 8000);
-  })();
-</script>
-{{- end }}
 {{- if eq .Section "posts" }}
 <link rel="dns-prefetch" href="https://giscus.app">
 <link rel="preconnect" href="https://giscus.app" crossorigin>
 {{- end }}
 <link rel="canonical" href="{{ .Permalink }}">
+{{- if .IsTranslated }}
+  {{- range .AllTranslations }}
+<link rel="alternate" hreflang="{{ .Lang }}" href="{{ .Permalink }}">
+  {{- end }}
+  {{- range .AllTranslations }}{{ if eq .Lang "en" }}
+<link rel="alternate" hreflang="x-default" href="{{ .Permalink }}">
+  {{- end }}{{ end }}
+{{- end }}
 <link rel="icon" href="{{ "favicon.svg?v=2" | relURL }}" type="image/svg+xml">
 <link rel="icon" href="{{ "favicon-32x32.png?v=2" | relURL }}" sizes="32x32" type="image/png">
 <link rel="icon" href="{{ "favicon-16x16.png?v=2" | relURL }}" sizes="16x16" type="image/png">
 <link rel="apple-touch-icon" href="{{ "apple-touch-icon.png?v=2" | relURL }}" sizes="180x180">
 {{ with site.Home.OutputFormats.Get "RSS" }}<link rel="alternate" type="application/rss+xml" title="{{ site.Title }} RSS" href="{{ .Permalink }}">{{ end }}
 <script>{{ $themeInitSrc | safeJS }}</script>
+{{- if and .IsHome (eq site.Language.Lang "en") }}
+<script>(()=>{try{if(localStorage.getItem("dyn-lang"))return;if(/bot|crawl|spider|slurp|bing|google/i.test(navigator.userAgent))return;if((navigator.language||"").toLowerCase().startsWith("vi")){location.replace("{{ "/vi/" | relURL }}")}}catch(_){}})();</script>
+{{- end }}
 {{- $hdrAvatarWebp := resources.Get "images/dyn-avatar-56.webp" -}}
 {{- with $hdrAvatarWebp }}
 <link rel="preload" href="{{ .RelPermalink }}" as="image" type="image/webp" fetchpriority="high">
 {{- end }}
 <style>{{ $style.Content | safeCSS }}</style>
 <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+<meta property="og:locale" content="{{ if eq site.Language.Lang "vi" }}vi_VN{{ else }}en_US{{ end }}">
 <meta property="og:title" content="{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} · {{ site.Title }}{{ end }}">
 <meta property="og:description" content="{{ $description | plainify }}">
 <meta property="og:url" content="{{ .Permalink }}">
