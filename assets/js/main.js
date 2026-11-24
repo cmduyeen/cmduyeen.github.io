@@ -84,6 +84,28 @@
     }
   });
 
+  // Copy button on code blocks
+  document.querySelectorAll(".article-content pre").forEach((pre) => {
+    const code = pre.querySelector("code");
+    if (!code) return;
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "copy-code-btn";
+    btn.textContent = "Copy";
+    btn.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(code.innerText);
+        btn.textContent = "Copied";
+        btn.classList.add("is-copied");
+        setTimeout(() => {
+          btn.textContent = "Copy";
+          btn.classList.remove("is-copied");
+        }, 1500);
+      } catch {}
+    });
+    pre.appendChild(btn);
+  });
+
   // Reading progress & back-to-top
   const progress = document.getElementById("reading-progress");
   const topBtn = document.getElementById("back-to-top");
