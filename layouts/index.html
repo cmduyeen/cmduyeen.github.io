@@ -2,11 +2,6 @@
   {{- $posts := (where site.RegularPages "Section" "posts").ByDate.Reverse -}}
   {{- $webApps := where site.Data.repos "is_webapp" true -}}
 
-  <section class="home-intro" aria-label="Introduction">
-    <h1 class="hero-h1">Notes &amp; Tools</h1>
-    <p class="hero-desc">Plain-text engineering notes and minimal tools.</p>
-  </section>
-
   {{ with $posts }}
   <section class="home-section" aria-labelledby="writing-heading">
     <div class="section-head">
