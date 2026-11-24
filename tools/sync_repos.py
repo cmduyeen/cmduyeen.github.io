@@ -28,7 +28,7 @@ def fetch_repos() -> list[dict[str, str]]:
 
     repos: list[dict[str, str]] = []
     for item in raw:
-        if item.get("fork") or item.get("private"):
+        if item.get("fork") or item.get("private") or item.get("archived"):
             continue
         created = str(item.get("created_at", ""))[:10]
         year = created[:4] if len(created) >= 4 else "Other"
