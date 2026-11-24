@@ -4,148 +4,60 @@
   <div id="reading-progress" class="reading-progress" aria-hidden="true"></div>
   {{- $hasToc := in .TableOfContents "<li>" -}}
 
-  <div class="article-layout{{ if $hasToc }} has-toc{{ end }}">
-    <div class="article-main">
-      <article>
-        <header class="article-header">
-          <nav class="breadcrumb" aria-label="Breadcrumb">
-            <a href="{{ site.Home.RelPermalink }}">~/{{ lower site.Title }}</a>
-            <span aria-hidden="true">/</span>
-            <a href="{{ "archives/" | relLangURL }}">Articles</a>
-          </nav>
-          <h1>{{ .Title }}</h1>
-          <p class="article-date">
-            <span>By {{ site.Params.author }}</span>
-            <span aria-hidden="true">·</span>
-            <time datetime="{{ .Date.UTC.Format "2006-01-02T15:04:05Z" }}">{{ .Date.UTC.Format "2006-01-02" }} UTC</time>
-            <span aria-hidden="true">·</span>
-            <span>{{ .ReadingTime }} {{ T "minutes_read" }}</span>
-            {{ if eq .Section "posts" }}
-            <button type="button" class="mark-done-btn" id="mark-lesson-done" data-lesson-url="{{ .RelPermalink }}">Mark as completed</button>
-            {{ end }}
-          </p>
-        </header>
-
-        {{- $seriesName := "" -}}
-        {{- with .Params.series -}}
-          {{- if reflect.IsSlice . -}}
-            {{- if gt (len .) 0 -}}{{- $seriesName = printf "%v" (index . 0) -}}{{- end -}}
-          {{- else -}}
-            {{- $seriesName = printf "%v" . -}}
-          {{- end -}}
-        {{- end -}}
-
-        {{- $seriesKey := "" -}}
-        {{- $seriesLabel := $seriesName -}}
-        {{- if not $seriesName -}}
-          {{- if in .RelPermalink "markdown-101-" -}}
-            {{- $seriesKey = "markdown-101-" -}}
-            {{- $seriesLabel = "Markdown 101" -}}
-          {{- else if in .RelPermalink "serein-" -}}
-            {{- $seriesKey = "serein-" -}}
-            {{- $seriesLabel = "Serein Workspace" -}}
-          {{- end -}}
-        {{- end -}}
-
-        {{- if or $seriesName $seriesKey -}}
-          {{- $seriesPosts := slice -}}
-          {{- range (where site.RegularPages "Section" "posts").ByDate -}}
-            {{- if $seriesName -}}
-              {{- $pSeries := "" -}}
-              {{- with .Params.series -}}
-                {{- if reflect.IsSlice . -}}
-                  {{- if gt (len .) 0 -}}{{- $pSeries = printf "%v" (index . 0) -}}{{- end -}}
-                {{- else -}}
-                  {{- $pSeries = printf "%v" . -}}
-                {{- end -}}
-              {{- end -}}
-              {{- if eq $pSeries $seriesName -}}{{- $seriesPosts = $seriesPosts | append . -}}{{- end -}}
-            {{- else if in .RelPermalink $seriesKey -}}
-              {{- $seriesPosts = $seriesPosts | append . -}}
-            {{- end -}}
-          {{- end -}}
-          {{- if gt (len $seriesPosts) 1 -}}
-          <details class="series-drawer">
-            <summary><span class="tldr-label">// SERIES: {{ $seriesLabel }}</span> <span>({{ len $seriesPosts }} lessons · Jump to any part)</span></summary>
-            <ol class="series-drawer-list">
-              {{- $currentPermalink := .RelPermalink -}}
-              {{- range $i, $sp := $seriesPosts -}}
-              <li>
-                <a class="series-drawer-link{{ if eq $sp.RelPermalink $currentPermalink }} is-current{{ end }}" href="{{ $sp.RelPermalink }}" data-lesson-url="{{ $sp.RelPermalink }}">
-                  <span class="w3-lesson-num">{{ printf "%02d" (add $i 1) }}</span>
-                  <span>{{ $sp.LinkTitle }}</span>
-                </a>
-              </li>
-              {{- end -}}
-            </ol>
-          </details>
-          {{- end -}}
-        {{- end -}}
-
-        {{ if $hasToc }}
-        <aside class="article-toc-mobile" aria-label="{{ T "table_of_contents" }}">
-          <details class="toc">
-            <summary>{{ T "table_of_contents" }}</summary>
-            {{ .TableOfContents }}
-          </details>
-        </aside>
-        {{ end }}
-
-        <div class="article-content">
-          {{ if .Description }}
-          <aside class="tldr-box" aria-label="TL;DR">
-            <div class="tldr-label"><span aria-hidden="true">// </span>TL;DR</div>
-            <p>{{ .Description }}</p>
-          </aside>
-          {{ end }}
-          {{ .Content }}
-        </div>
-
-        {{ with .GetTerms "tags" }}
-        <footer class="article-tags topic-pills" aria-label="{{ T "post_tags" }}">
-          {{ range . }}<a class="topic-pill" href="{{ .RelPermalink }}">#{{ .LinkTitle }}</a>{{ end }}
-        </footer>
-        {{ end }}
-      </article>
-
-      {{ if or .PrevInSection .NextInSection }}
-      <nav class="post-nav-grid" aria-label="Post navigation">
-        <div>
-          {{ with .PrevInSection }}
-          <a class="post-nav-card" href="{{ .RelPermalink }}">
-            <span class="post-nav-dir">← Previous</span>
-            <span class="post-nav-title">{{ .LinkTitle }}</span>
-          </a>
-          {{ end }}
-        </div>
-        <div>
-          {{ with .NextInSection }}
-          <a class="post-nav-card is-next" href="{{ .RelPermalink }}">
-            <span class="post-nav-dir">Next →</span>
-            <span class="post-nav-title">{{ .LinkTitle }}</span>
-          </a>
-          {{ end }}
-        </div>
-      </nav>
-      {{ end }}
-
-      {{ partial "comments.html" . }}
-      {{ partial "article-footer.html" . }}
-    </div>
+  <article class="article-main">
+    <header class="article-header">
+      <h1>{{ .Title }}</h1>
+      <p class="article-date">
+        <time datetime="{{ .Date.UTC.Format "2006-01-02T15:04:05Z" }}">{{ .Date.UTC.Format "2006-01-02" }}</time>
+        <span aria-hidden="true">·</span>
+        <span>{{ .ReadingTime }} {{ T "minutes_read" }}</span>
+      </p>
+    </header>
 
     {{ if $hasToc }}
-    <aside class="article-toc-desktop" aria-label="{{ T "table_of_contents" }}">
-      <div class="toc">
-        <div class="toc-heading">{{ T "table_of_contents" }}</div>
-        {{ .TableOfContents }}
-      </div>
-    </aside>
+    <details class="toc">
+      <summary>{{ T "table_of_contents" }}</summary>
+      {{ .TableOfContents }}
+    </details>
     {{ end }}
-  </div>
+
+    <div class="article-content">
+      {{ .Content }}
+    </div>
+
+    {{ with .GetTerms "tags" }}
+    <footer class="article-tags topic-pills" aria-label="{{ T "post_tags" }}">
+      {{ range . }}<a class="topic-pill" href="{{ .RelPermalink }}">#{{ .LinkTitle }}</a>{{ end }}
+    </footer>
+    {{ end }}
+  </article>
+
+  {{ if or .PrevInSection .NextInSection }}
+  <nav class="post-nav-grid" aria-label="Post navigation">
+    <div>
+      {{ with .PrevInSection }}
+      <a class="post-nav-card" href="{{ .RelPermalink }}">
+        <span class="post-nav-dir">← Previous</span>
+        <span class="post-nav-title">{{ .LinkTitle }}</span>
+      </a>
+      {{ end }}
+    </div>
+    <div>
+      {{ with .NextInSection }}
+      <a class="post-nav-card is-next" href="{{ .RelPermalink }}">
+        <span class="post-nav-dir">Next →</span>
+        <span class="post-nav-title">{{ .LinkTitle }}</span>
+      </a>
+      {{ end }}
+    </div>
+  </nav>
+  {{ end }}
+
+  {{ partial "comments.html" . }}
   {{ else }}
   <div class="page-wide">
     <header class="page-header">
-      <h1 class="hero-h1"><span class="highlight">//</span> {{ .Title }}</h1>
+      <h1 class="hero-h1"><span class="term-prompt" aria-hidden="true">&gt; </span>{{ .Title }}</h1>
       {{ with .Description }}<p class="archive-subtitle">{{ . }}</p>{{ end }}
     </header>
     <div class="page-wide-content">

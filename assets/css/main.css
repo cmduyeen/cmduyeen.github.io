@@ -154,10 +154,12 @@ img, picture { max-width: 100%; height: auto; }
 .series-drawer-link.is-current { font-weight: 600; color: var(--text-primary); }
 .article-toc-desktop { display: none; }
 
-.article-content { max-width: 65ch; }
-.article-content h2 { margin: 2rem 0 0.75rem; font-size: 1.25rem; border-bottom: 1px solid var(--border-subtle); padding-bottom: 0.3rem; }
-.article-content h3 { margin: 1.5rem 0 0.5rem; font-size: 1.08rem; }
-.article-content p, .article-content ul, .article-content ol { margin: 0 0 1.1rem; }
+.article-content { max-width: 65ch; font-size: 1.03rem; line-height: 1.72; }
+.article-content h2 { margin: 2.25rem 0 0.75rem; font-size: 1.25rem; border-bottom: 1px solid var(--border-subtle); padding-bottom: 0.3rem; }
+.article-content h3 { margin: 1.65rem 0 0.5rem; font-size: 1.08rem; }
+.article-content p, .article-content ul, .article-content ol { margin: 0 0 1.15rem; }
+.article-content li + li { margin-top: 0.35rem; }
+.article-content hr { border: 0; border-top: 1px solid var(--border-subtle); margin: 2rem 0; }
 .article-content blockquote { margin: 1.25rem 0; padding: 0.25rem 1rem; border-left: 3px solid var(--border-strong); color: var(--text-secondary); }
 .article-content code { font-family: var(--font-mono); font-size: 0.88em; background: var(--bg-surface); padding: 0.12rem 0.35rem; border-radius: 3px; }
 .article-content pre { overflow-x: auto; padding: 0.9rem 1rem; background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: 4px; }
