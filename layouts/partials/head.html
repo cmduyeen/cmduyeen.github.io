@@ -16,10 +16,7 @@
 <link rel="preconnect" href="https://giscus.app" crossorigin>
 {{- end }}
 <link rel="canonical" href="{{ .Permalink }}">
-<link rel="icon" href="{{ "favicon.svg?v=2" | relURL }}" type="image/svg+xml">
-<link rel="icon" href="{{ "favicon-32x32.png?v=2" | relURL }}" sizes="32x32" type="image/png">
-<link rel="icon" href="{{ "favicon-16x16.png?v=2" | relURL }}" sizes="16x16" type="image/png">
-<link rel="apple-touch-icon" href="{{ "apple-touch-icon.png?v=2" | relURL }}" sizes="180x180">
+<link rel="icon" href="{{ "favicon.svg?v=3" | relURL }}" type="image/svg+xml">
 {{ with site.Home.OutputFormats.Get "RSS" }}<link rel="alternate" type="application/rss+xml" title="{{ site.Title }} RSS" href="{{ .Permalink }}">{{ end }}
 <script>{{ $themeInitSrc | safeJS }}</script>
 <style>{{ $style.Content | safeCSS }}</style>
