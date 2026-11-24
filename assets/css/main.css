@@ -148,7 +148,7 @@ summary:focus-visible {
   width: 100%;
   background: var(--bg-elevated);
   border-bottom: 3px solid var(--border-strong);
-  box-shadow: 0 3px 0 rgba(143, 86, 59, 0.16);
+  box-shadow: none;
 }
 
 .site-header-inner {
@@ -182,7 +182,7 @@ summary:focus-visible {
   letter-spacing: -0.02em;
   text-decoration: none;
   white-space: nowrap;
-  box-shadow: 2px 2px 0 rgba(143, 86, 59, 0.18);
+  box-shadow: none;
   transition: border-color 0.15s ease, transform 0.15s ease;
 }
 
@@ -270,7 +270,7 @@ summary:focus-visible {
   background: var(--bg-surface);
   border-color: var(--border-strong);
   color: var(--accent-emerald);
-  box-shadow: 2px 2px 0 rgba(143, 86, 59, 0.2);
+  box-shadow: none;
 }
 
 .icon-btn-sm,
@@ -464,7 +464,7 @@ main {
   height: 4.75rem;
   border-radius: 50%;
   border: 3px solid var(--border-strong);
-  box-shadow: 2px 2px 0 rgba(143, 86, 59, 0.28);
+  box-shadow: none;
   object-fit: cover;
   flex-shrink: 0;
 }
@@ -474,7 +474,7 @@ main {
   border: 2px solid var(--border-strong);
   border-radius: var(--radius-sm);
   overflow: hidden;
-  box-shadow: 3px 3px 0 rgba(143, 86, 59, 0.22);
+  box-shadow: none;
 }
 
 .about-banner-img {
@@ -914,7 +914,7 @@ main {
 }
 
 .rpg-bar-fill.is-leaf { background: var(--accent-emerald); }
-.rpg-bar-fill.is-gold { background: #eab308; }
+.rpg-bar-fill.is-gold { background: var(--accent-cyan); }
 .rpg-bar-fill.is-berry { background: var(--accent-cyan); }
 
 .rpg-stats-row {
@@ -966,7 +966,7 @@ main {
   height: 12px;
   border: 2px solid var(--border-strong);
   border-radius: 50%;
-  background: #eab308;
+  background: var(--accent-cyan);
 }
 
 .stardew-box {
@@ -975,7 +975,7 @@ main {
   border: 3px solid var(--border-strong);
   border-radius: var(--radius-md);
   background: var(--bg-surface);
-  box-shadow: inset 0 0 0 3px var(--bg-elevated), 4px 4px 0 rgba(143, 86, 59, 0.25);
+  box-shadow: none;
   margin-bottom: 2rem;
 }
 
@@ -1067,7 +1067,7 @@ main {
   height: 2.75rem;
   border-radius: 50%;
   border: 2px solid var(--border-strong);
-  box-shadow: 2px 2px 0 rgba(143, 86, 59, 0.25);
+  box-shadow: none;
   object-fit: cover;
   flex-shrink: 0;
 }
@@ -1167,7 +1167,7 @@ main {
   height: 10px;
   background-image:
     linear-gradient(90deg, var(--accent-emerald) 4px, transparent 4px),
-    linear-gradient(90deg, #7ec850 3px, transparent 3px);
+    linear-gradient(90deg, var(--accent-emerald) 3px, transparent 3px);
   background-size: 14px 10px, 22px 6px;
   background-position: 0 0, 6px 4px;
   background-repeat: repeat-x;
@@ -1191,7 +1191,7 @@ main {
   height: 3rem;
   border: 2px solid var(--border-strong);
   background: var(--bg-elevated);
-  box-shadow: 2px 2px 0 rgba(143, 86, 59, 0.2);
+  box-shadow: none;
 }
 
 .pillar-icon-label {
@@ -1335,7 +1335,7 @@ main {
   font-family: var(--font-mono);
   font-size: 0.84rem;
   text-decoration: none;
-  box-shadow: 2px 2px 0 rgba(143, 86, 59, 0.15);
+  box-shadow: none;
   transition: border-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
 }
 
@@ -1709,7 +1709,7 @@ main {
 .filter-chip.is-active {
   background: var(--accent-emerald);
   border-color: var(--accent-emerald);
-  color: #fff8e7;
+  color: var(--btn-primary-text);
   font-weight: 700;
 }
 
