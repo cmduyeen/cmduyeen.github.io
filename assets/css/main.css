@@ -1610,6 +1610,39 @@ main {
   font-size: 0.92rem;
 }
 
+/* Serein Terminal Aesthetic */
+.term-brand,
+.site-header nav a,
+.site-footer,
+.term-h1,
+.tool-row-name {
+  font-family: var(--font-mono);
+}
+
+.term-prompt {
+  color: var(--accent-emerald);
+  font-weight: 700;
+}
+
+.term-intro {
+  margin: 1.5rem 0 2.5rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px dashed var(--border-strong);
+}
+
+.term-h1 {
+  margin: 0 0 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.term-intro .hero-desc {
+  margin: 0;
+  max-width: 65ch;
+  color: var(--text-secondary);
+}
+
 @media (max-width: 600px) {
   .tool-row {
     grid-template-columns: 1fr auto;
