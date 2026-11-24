@@ -16,37 +16,15 @@
 <link rel="preconnect" href="https://giscus.app" crossorigin>
 {{- end }}
 <link rel="canonical" href="{{ .Permalink }}">
-{{- if .IsTranslated }}
-  {{- range .AllTranslations }}
-<link rel="alternate" hreflang="{{ .Lang }}" href="{{ .Permalink }}">
-  {{- end }}
-  {{- range .AllTranslations }}{{ if eq .Lang "en" }}
-<link rel="alternate" hreflang="x-default" href="{{ .Permalink }}">
-  {{- end }}{{ end }}
-{{- else if and .IsHome hugo.IsMultilingual }}
-  {{- range site.Sites }}
-<link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Home.Permalink }}">
-  {{- end }}
-  {{- range where site.Sites "Language.Lang" "en" }}
-<link rel="alternate" hreflang="x-default" href="{{ .Home.Permalink }}">
-  {{- end }}
-{{- end }}
 <link rel="icon" href="{{ "favicon.svg?v=2" | relURL }}" type="image/svg+xml">
 <link rel="icon" href="{{ "favicon-32x32.png?v=2" | relURL }}" sizes="32x32" type="image/png">
 <link rel="icon" href="{{ "favicon-16x16.png?v=2" | relURL }}" sizes="16x16" type="image/png">
 <link rel="apple-touch-icon" href="{{ "apple-touch-icon.png?v=2" | relURL }}" sizes="180x180">
 {{ with site.Home.OutputFormats.Get "RSS" }}<link rel="alternate" type="application/rss+xml" title="{{ site.Title }} RSS" href="{{ .Permalink }}">{{ end }}
 <script>{{ $themeInitSrc | safeJS }}</script>
-{{- if and .IsHome (eq site.Language.Lang "en") }}
-<script>(()=>{try{if(localStorage.getItem("dyn-lang"))return;if(/bot|crawl|spider|slurp|bing|google/i.test(navigator.userAgent))return;if((navigator.language||"").toLowerCase().startsWith("vi")){location.replace("{{ "/vi/" | relURL }}")}}catch(_){}})();</script>
-{{- end }}
-{{- $hdrAvatarWebp := resources.Get "images/dyn-avatar-56.webp" -}}
-{{- with $hdrAvatarWebp }}
-<link rel="preload" href="{{ .RelPermalink }}" as="image" type="image/webp" fetchpriority="high">
-{{- end }}
 <style>{{ $style.Content | safeCSS }}</style>
 <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
-<meta property="og:locale" content="{{ if eq site.Language.Lang "vi" }}vi_VN{{ else }}en_US{{ end }}">
+<meta property="og:locale" content="en_US">
 <meta property="og:title" content="{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} · {{ site.Title }}{{ end }}">
 <meta property="og:description" content="{{ $description | plainify }}">
 <meta property="og:url" content="{{ .Permalink }}">

@@ -1,22 +1,17 @@
 {{ define "main" }}
   {{- $posts := (where site.RegularPages "Section" "posts").ByDate.Reverse -}}
   {{- $webApps := where site.Data.repos "is_webapp" true -}}
-  {{- $isVi := eq site.Language.Lang "vi" -}}
 
   <section class="home-intro term-intro" aria-label="Introduction">
-    <h1 class="hero-h1 term-h1">
-      <span class="term-prompt" aria-hidden="true">&gt; </span>{{- if $isVi -}}ghi chép &amp; công cụ{{- else -}}notes &amp; tools{{- end -}}
-    </h1>
-    <p class="hero-desc">{{ if $isVi }}Ghi chép kỹ thuật và công cụ tối giản.{{ else }}Plain-text engineering notes and minimal tools.{{ end }}</p>
+    <h1 class="hero-h1 term-h1"><span class="term-prompt" aria-hidden="true">&gt; </span>notes &amp; tools</h1>
+    <p class="hero-desc">Plain-text engineering notes and minimal tools.</p>
   </section>
 
   {{ with $posts }}
   <section class="home-section" aria-labelledby="writing-heading">
     <div class="section-head">
-      <h2 class="section-label" id="writing-heading">
-        <span class="term-prompt" aria-hidden="true">&gt;</span> {{ if $isVi }}bài viết{{ else }}writing{{ end }}
-      </h2>
-      <a class="section-more" href="{{ "archives/" | relLangURL }}">{{ len . }} →</a>
+      <h2 class="section-label" id="writing-heading"><span class="term-prompt" aria-hidden="true">&gt;</span> writing</h2>
+      <a class="section-more" href="{{ "archives/" | relURL }}">{{ len . }} →</a>
     </div>
     <ul class="writing-list">
       {{ range first 5 . }}
@@ -29,17 +24,15 @@
   {{ if $webApps }}
   <section class="home-section" aria-labelledby="projects-heading">
     <div class="section-head">
-      <h2 class="section-label" id="projects-heading">
-        <span class="term-prompt" aria-hidden="true">&gt;</span> {{ if $isVi }}công cụ{{ else }}tools{{ end }}
-      </h2>
-      <a class="section-more" href="{{ "tools/" | relLangURL }}">{{ if $isVi }}tất cả →{{ else }}all →{{ end }}</a>
+      <h2 class="section-label" id="projects-heading"><span class="term-prompt" aria-hidden="true">&gt;</span> tools</h2>
+      <a class="section-more" href="{{ "tools/" | relURL }}">all →</a>
     </div>
     <ul class="writing-list">
       {{ range first 3 $webApps }}
       <li class="tool-row">
         <a class="tool-row-name" href="{{ .homepage }}" target="_blank" rel="noopener noreferrer">{{ .name }}</a>
         <span class="tool-row-desc">{{ .description }}</span>
-        <a class="writing-meta" href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ if $isVi }}code{{ else }}code{{ end }}</a>
+        <a class="writing-meta" href="{{ .url }}" target="_blank" rel="noopener noreferrer">code</a>
       </li>
       {{ end }}
     </ul>
