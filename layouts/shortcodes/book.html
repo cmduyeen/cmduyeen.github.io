@@ -1,0 +1,19 @@
+{{- $title := .Get "title" -}}
+{{- $author := .Get "author" -}}
+{{- $url := .Get "url" -}}
+{{- $note := .Get "note" -}}
+<aside class="tldr-box" aria-label="Recommended book">
+  <div class="tldr-label">Recommended Reading</div>
+  <p>
+    {{- if $url -}}
+    <a href="{{ $url | safeURL }}" target="_blank" rel="sponsored noopener"><strong>{{ $title }}</strong></a>
+    {{- else -}}
+    <strong>{{ $title }}</strong>
+    {{- end -}}
+    {{- with $author }} — {{ . }}{{ end -}}
+    {{- with $note }}: {{ . }}{{ end -}}
+  </p>
+  {{- if $url -}}
+  <p style="margin-top:0.35rem;font-size:0.82rem;color:var(--text-muted);">Disclosure: Affiliate link — may earn a small commission at no extra cost to you.</p>
+  {{- end -}}
+</aside>
