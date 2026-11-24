@@ -2,7 +2,7 @@
   {{- $posts := where site.RegularPages "Section" "posts" -}}
   {{- $isVi := eq site.Language.Lang "vi" -}}
   <header class="page-header">
-    <h1 class="hero-h1"><span class="term-prompt" aria-hidden="true">&gt; </span>{{ .Title }}</h1>
+    <h1 class="hero-h1">{{ .Title }}</h1>
     <p class="archive-subtitle">
       <span id="archive-visible-count">{{ len $posts }}</span> / {{ len $posts }} {{ if $isVi }}bài{{ else }}posts{{ end }}
     </p>
@@ -95,7 +95,7 @@
       {{ $items := $groups.Get $name }}
       <section class="archive-series">
         <div class="archive-series-head">
-          <h2><span class="term-prompt" aria-hidden="true">&gt;</span> {{ $name }}</h2>
+          <h2>{{ $name }}</h2>
           <span class="archive-series-count">{{ len $items }} {{ if and (not $isVi) (eq (len $items) 1) }}post{{ else }}{{ i18n "posts_unit" }}{{ end }}</span>
         </div>
         <ul class="writing-list">
@@ -109,7 +109,7 @@
     {{ if gt (len $standalone) 0 }}
       <section class="archive-series">
         <div class="archive-series-head">
-          <h2><span class="term-prompt" aria-hidden="true">&gt;</span> {{ i18n "standalone_posts" }}</h2>
+          <h2>{{ i18n "standalone_posts" }}</h2>
           <span class="archive-series-count">{{ len $standalone }} {{ if and (not $isVi) (eq (len $standalone) 1) }}post{{ else }}{{ i18n "posts_unit" }}{{ end }}</span>
         </div>
         <ul class="writing-list">

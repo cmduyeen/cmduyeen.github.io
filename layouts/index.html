@@ -2,15 +2,15 @@
   {{- $posts := (where site.RegularPages "Section" "posts").ByDate.Reverse -}}
   {{- $webApps := where site.Data.repos "is_webapp" true -}}
 
-  <section class="home-intro term-intro" aria-label="Introduction">
-    <h1 class="hero-h1 term-h1"><span class="term-prompt" aria-hidden="true">&gt; </span>notes &amp; tools</h1>
+  <section class="home-intro" aria-label="Introduction">
+    <h1 class="hero-h1">Notes &amp; Tools</h1>
     <p class="hero-desc">Plain-text engineering notes and minimal tools.</p>
   </section>
 
   {{ with $posts }}
   <section class="home-section" aria-labelledby="writing-heading">
     <div class="section-head">
-      <h2 class="section-label" id="writing-heading"><span class="term-prompt" aria-hidden="true">&gt;</span> writing</h2>
+      <h2 class="section-label" id="writing-heading">Writing</h2>
       <a class="section-more" href="{{ "archives/" | relURL }}">{{ len . }} →</a>
     </div>
     <ul class="writing-list">
@@ -24,7 +24,7 @@
   {{ if $webApps }}
   <section class="home-section" aria-labelledby="projects-heading">
     <div class="section-head">
-      <h2 class="section-label" id="projects-heading"><span class="term-prompt" aria-hidden="true">&gt;</span> tools</h2>
+      <h2 class="section-label" id="projects-heading">Tools</h2>
       <a class="section-more" href="{{ "tools/" | relURL }}">all →</a>
     </div>
     <ul class="writing-list">

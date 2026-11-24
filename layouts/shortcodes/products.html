@@ -4,7 +4,7 @@
 {{- if $webApps -}}
 <section class="home-section">
   <div class="section-head">
-    <h2 class="section-label"><span class="term-prompt" aria-hidden="true">&gt;</span> live web apps</h2>
+    <h2 class="section-label">Live Web Apps</h2>
     <span class="archive-series-count">{{ len $webApps }}</span>
   </div>
   <ul class="writing-list">
@@ -25,7 +25,7 @@
   {{- range . -}}
   <section class="home-section">
     <div class="section-head">
-      <h2 class="section-label"><span class="term-prompt" aria-hidden="true">&gt;</span> {{ lower .heading }}</h2>
+      <h2 class="section-label">{{ .heading }}</h2>
       <span class="archive-series-count">{{ len .items }}</span>
     </div>
     <ul class="writing-list">
