@@ -14,9 +14,21 @@ Cory Doctorow gives this decay a precise name in *Enshittification: Why Everythi
 
 ## 3 Takeaways Applied to Daily Tools
 
-1. **File over App:** Store notes and writing in plain `.md` files, never inside a proprietary database. Any text editor can open them 20 years from now.
-2. **Delete Before Optimizing:** Every plugin, tracker, or Electron wrapper is a future maintenance tax. Replacing heavy GUI apps with `yazi`, `micro`, `ripgrep`, and `fzf` cut startup friction down to milliseconds.
-3. **Keep Your Publishing Stack Static:** A static [Hugo](https://gohugo.io/) site with ~13KB of CSS, zero analytics scripts, and plain RSS cannot be throttled by an algorithm or locked behind a paywall.
+First, choose files over apps. Store notes and writing in plain `.md` files instead of a proprietary database. Any text editor will still open them 20 years from now.
+
+Second, delete before optimizing. Every plugin, tracker, or Electron wrapper adds maintenance tax. Replacing heavy GUI apps with `yazi`, `micro`, `ripgrep`, and `fzf` keeps navigation and editing instant:
+
+```powershell
+# Search notes by content, pick a match, and open it in micro
+$file = rg --files-with-matches "plain text" D:\Brain2nd | fzf
+if ($file) { micro $file }
+```
+
+Third, keep your publishing stack static. A static [Hugo](https://gohugo.io/) site with ~13KB of `main.css`, zero analytics scripts, and plain RSS cannot be throttled by an algorithm or locked behind a paywall.
+
+## Trade-offs
+
+Plain-text workflows are not effortless for everyone. You give up built-in real-time collaboration, rich mobile apps, and automatic cloud sync unless you wire up Git or Syncthing yourself. Terminal tools like `yazi` and `micro` also take a few days of muscle memory if you are used to mouse-driven editors.
 
 ## The Practical Rule
 
