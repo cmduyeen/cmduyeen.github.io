@@ -1,11 +1,12 @@
 ---
 title: "About"
-description: "Character sheet, minimalist philosophy, and open-source projects by Dyn."
+description: "Minimalist engineering notes, terminal workflows, and open-source tools."
 type: "about"
 ---
 
-I'm **Dyn**. I enjoy gardening, reading, and living close to nature.
+This site publishes plain-text engineering notes and small, zero-bloat open-source tools.
 
-On the technical side, I like building small, useful tools for myself, my family, and anyone who finds them helpful — from a rolling Vietnamese lunar calendar to beginner-friendly Vietnamese CLI utilities.
-
-This site is where I keep my **Obsidian & Markdown** notes, lightweight **Hugo** pages, and zero-install browser tools. Feel free to use anything you find helpful.
+**Principles:**
+- **Minimalism:** Plain Markdown, static HTML/CSS, no ads, no trackers.
+- **Directness:** Practical guides and tools built to solve real problems fast.
+- **Open:** Everything here is free to read, inspect, and reuse.

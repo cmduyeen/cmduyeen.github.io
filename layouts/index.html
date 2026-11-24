@@ -20,7 +20,7 @@
       <a class="section-more" href="{{ "archives/" | relLangURL }}">{{ if eq site.Language.Lang "vi" }}Tất cả ({{ len . }}) →{{ else }}All ({{ len . }}) →{{ end }}</a>
     </div>
     <ul class="writing-list">
-      {{ range first 8 . }}
+      {{ range first 5 . }}
       {{ partial "post-list-item.html" . }}
       {{ end }}
     </ul>
@@ -36,7 +36,7 @@
       <a class="section-more" href="{{ "tools/" | relLangURL }}">{{ if eq site.Language.Lang "vi" }}Tất cả →{{ else }}All →{{ end }}</a>
     </div>
     <ul class="writing-list">
-      {{ range first 5 $webApps }}
+      {{ range first 3 $webApps }}
       <li class="archive-post-item">
         <div class="writing-item" style="display:flex; justify-content:space-between; align-items:baseline; gap:1rem;">
           <a href="{{ .homepage }}" target="_blank" rel="noopener noreferrer" style="font-weight:500;">{{ .name }}</a>

@@ -9,14 +9,8 @@
     <header class="site-header">
       <div class="site-shell site-header-inner">
         <div class="brand-group">
-          {{- $hdrAvatarWebp := resources.Get "images/dyn-avatar-56.webp" -}}
-          {{- $hdrAvatarPng := resources.Get "images/dyn-avatar-56.png" -}}
           <a class="site-title" href="{{ site.Home.RelPermalink }}">
-            <picture>
-              {{ with $hdrAvatarWebp }}<source srcset="{{ .RelPermalink }}" type="image/webp">{{ end }}
-              <img class="header-avatar" src="{{ if $hdrAvatarPng }}{{ $hdrAvatarPng.RelPermalink }}{{ else if $hdrAvatarWebp }}{{ $hdrAvatarWebp.RelPermalink }}{{ end }}" alt="Dyn" width="28" height="28" decoding="async" fetchpriority="high" />
-            </picture>
-            <span>~/</span>{{ lower site.Title }}
+            {{ lower site.Title }}
           </a>
           <span class="header-social-icons" aria-label="Social links">
             {{ with site.Home.OutputFormats.Get "RSS" }}

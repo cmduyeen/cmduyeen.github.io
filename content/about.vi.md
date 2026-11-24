@@ -1,11 +1,12 @@
 ---
 title: "Giới thiệu"
-description: "Hồ sơ cá nhân, triết lý tối giản và các dự án mã nguồn mở của Dyn."
+description: "Ghi chép kỹ thuật tối giản, luồng làm việc terminal và công cụ mã nguồn mở."
 type: "about"
 ---
 
-Mình là **Dyn**. Mình thích làm vườn, đọc sách và tận hưởng nhịp sống gần gũi với thiên nhiên.
+Trang này chia sẻ ghi chú kỹ thuật dạng văn bản thuần và các công cụ mã nguồn mở gọn nhẹ.
 
-Bên cạnh đó, mình thích tự tay làm những tool nhỏ gọn, hữu ích cho bản thân, người thân và những ai cần dùng — từ lịch âm hằng ngày cho đến vài công cụ dòng lệnh tiếng Việt dễ tiếp cận.
-
-Nơi này lưu lại ghi chú bằng **Obsidian & Markdown**, vài trang tĩnh với **Hugo**, và những tiện ích nhỏ chạy thẳng trên trình duyệt. Nếu thấy thứ gì có ích, bạn cứ lấy dùng tự nhiên nhé.
+**Nguyên tắc:**
+- **Tối giản:** Markdown thuần, web tĩnh nhanh, không quảng cáo, không tracking.
+- **Trực diện:** Đi thẳng vào vấn đề, tập trung vào hướng dẫn và công cụ dùng được ngay.
+- **Mở:** Mọi ghi chép và mã nguồn đều miễn phí để tham khảo và tái sử dụng.
