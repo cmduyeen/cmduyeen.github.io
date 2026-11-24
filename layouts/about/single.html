@@ -1,23 +1,54 @@
 {{ define "main" }}
   {{- $postsCount := len (where site.RegularPages "Section" "posts") -}}
   {{- $reposCount := len site.Data.repos -}}
-  {{- $isVi := eq site.Language.Lang "vi" -}}
+  {{- $webApps := where site.Data.repos "is_webapp" true -}}
+  {{- $catalog := index site.Data.products "en" -}}
 
-  <article class="about-minimal" style="max-width: 65ch; margin: 1.5rem 0 2.5rem;">
-    <header class="page-header" style="margin-bottom: 1.5rem;">
+  <article class="about-minimal">
+    <header class="page-header">
       <h1 class="hero-h1">{{ .Title }}</h1>
     </header>
 
-    <div class="article-body" style="margin-bottom: 2rem;">
+    <div class="article-content" style="margin-bottom: 2.5rem;">
       {{ .Content }}
     </div>
 
-    <footer style="padding-top: 1rem; border-top: 1px solid var(--border-subtle); color: var(--text-secondary); font-size: 0.92rem; display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center;">
-      <span>{{ $postsCount }} {{ if $isVi }}bài viết{{ else }}articles{{ end }} · {{ $reposCount }} {{ if $isVi }}dự án mã nguồn mở{{ else }}open-source repos{{ end }}</span>
+    {{ if $webApps }}
+    <section class="home-section" aria-label="Projects">
+      <div class="section-head">
+        <h2 class="section-label">Projects</h2>
+        <a class="section-more" href="{{ "tools/" | relURL }}">details →</a>
+      </div>
+      <ul class="compact-list">
+        {{ range $webApps }}
+        <li>
+          <a class="tool-row-name" href="{{ .homepage }}" target="_blank" rel="noopener">{{ .name }}</a>
+          <span class="tool-row-sep">—</span>
+          <span class="tool-row-desc">{{ .description }}</span>
+          <a class="writing-meta" href="{{ .url }}" target="_blank" rel="noopener">[code]</a>
+        </li>
+        {{ end }}
+        {{ with $catalog.sections }}
+          {{ range first 1 . }}
+            {{ range first 3 .items }}
+            {{- $isExternal := hasPrefix .url "http" -}}
+            <li>
+              <a class="tool-row-name" href="{{ .url }}"{{ if $isExternal }} target="_blank" rel="noopener"{{ end }}>{{ .name }}</a>
+              <span class="tool-row-sep">—</span>
+              <span class="tool-row-desc">{{ .description }}</span>
+            </li>
+            {{ end }}
+          {{ end }}
+        {{ end }}
+      </ul>
+    </section>
+    {{ end }}
+
+    <footer style="color: var(--text-muted); font-size: 0.9rem; display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center;">
+      <span>{{ $postsCount }} articles · {{ $reposCount }} open-source repos</span>
       <span aria-hidden="true">·</span>
-      {{ with site.Params.contact.github }}<a href="{{ . | safeURL }}" target="_blank" rel="noopener noreferrer">GitHub</a>{{ end }}
+      {{ with site.Params.contact.github }}<a href="{{ . | safeURL }}" target="_blank" rel="noopener">GitHub</a>{{ end }}
       {{ with site.Home.OutputFormats.Get "RSS" }}<a href="{{ .RelPermalink }}">RSS</a>{{ end }}
-      <a href="{{ "tools/" | relLangURL }}">{{ if $isVi }}Công cụ{{ else }}Tools{{ end }}</a>
     </footer>
   </article>
 {{ end }}

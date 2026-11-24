@@ -22,16 +22,10 @@ enableRobotsTXT = true
   weight = 10
 
 [[menus.main]]
-  identifier = "projects"
-  name = "Projects"
-  pageRef = "/tools"
-  weight = 20
-
-[[menus.main]]
   identifier = "about"
   name = "About"
   pageRef = "/about"
-  weight = 30
+  weight = 20
 
 [outputs]
   home = ["HTML", "RSS", "JSON", "LLMS"]
