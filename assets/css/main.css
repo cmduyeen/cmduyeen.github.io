@@ -107,7 +107,7 @@ img, picture { max-width: 100%; height: auto; }
 .archive-series-head h2 {
   margin: 0;
   font-size: 1.2rem; font-weight: 700;
-  color: var(--text-primary); letter-spacing: -0.015em;
+  color: var(--accent-cyan); letter-spacing: -0.015em;
 }
 .section-more { font-size: 0.86rem; color: var(--text-muted); }
 
