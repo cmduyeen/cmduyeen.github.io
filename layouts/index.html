@@ -6,13 +6,33 @@
   <section class="home-section" aria-labelledby="writing-heading">
     <div class="section-head">
       <h2 class="section-label" id="writing-heading">Writing</h2>
-      <a class="section-more" href="{{ "archives/" | relURL }}">{{ len . }} →</a>
+      <span class="archive-series-count"><span id="archive-visible-count">{{ len . }}</span> / {{ len . }}</span>
     </div>
+
+    <div class="archive-controls-box">
+      <div class="archive-search-row">
+        <input type="search" id="archive-search" class="archive-search-input" placeholder="Filter by keyword..." aria-label="Filter articles" autocomplete="off" />
+      </div>
+      {{ with site.Taxonomies.tags.ByCount }}
+      <div class="archive-filter-bar" role="group" aria-label="Filter by topic">
+        <button type="button" class="filter-chip is-active" data-filter-tag="all">All</button>
+        {{ range first 7 . }}
+        <button type="button" class="filter-chip" data-filter-tag="{{ .Page.LinkTitle | lower }}">#{{ .Page.LinkTitle }}</button>
+        {{ end }}
+      </div>
+      {{ end }}
+    </div>
+
     <ul class="writing-list">
-      {{ range first 5 . }}
+      {{ range . }}
       {{ partial "post-list-item.html" . }}
       {{ end }}
     </ul>
+
+    <div id="archive-empty" class="archive-empty" hidden>
+      <p>No articles match the current filter.</p>
+      <button type="button" id="archive-reset" class="kbd-btn">Reset</button>
+    </div>
   </section>
   {{ end }}
 
@@ -23,7 +43,7 @@
       <a class="section-more" href="{{ "tools/" | relURL }}">all →</a>
     </div>
     <ul class="compact-list">
-      {{ range first 3 $webApps }}
+      {{ range first 5 $webApps }}
       <li>
         <a class="tool-row-name" href="{{ .homepage }}" target="_blank" rel="noopener">{{ .name }}</a>
         <span class="tool-row-sep">—</span>

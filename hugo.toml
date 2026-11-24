@@ -16,9 +16,9 @@ enableRobotsTXT = true
   x = "https://x.com/cmduyeen"
 
 [[menus.main]]
-  identifier = "articles"
-  name = "Articles"
-  pageRef = "/archives"
+  identifier = "tools"
+  name = "Tools"
+  pageRef = "/tools"
   weight = 10
 
 [[menus.main]]
