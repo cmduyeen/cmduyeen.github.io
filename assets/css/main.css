@@ -1608,6 +1608,9 @@ main {
 .tool-row-desc {
   color: var(--text-secondary);
   font-size: 0.92rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 /* Serein Terminal Aesthetic */
@@ -1617,6 +1620,28 @@ main {
 .term-h1,
 .tool-row-name {
   font-family: var(--font-mono);
+}
+
+.site-title.term-brand {
+  background: transparent;
+  border: none;
+  padding: 0;
+  box-shadow: none;
+}
+
+.archive-controls-box,
+.archive-series {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding-inline: 0;
+  box-shadow: none;
+}
+
+.archive-controls-box {
+  padding-top: 0;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 .term-prompt {

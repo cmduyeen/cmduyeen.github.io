@@ -1,12 +1,11 @@
 ---
 title: "About"
-description: "Minimalist engineering notes, terminal workflows, and open-source tools."
+description: "Plain-text notes and zero-bloat tools."
 type: "about"
 ---
 
-This site publishes plain-text engineering notes and small, zero-bloat open-source tools.
+Plain-text notes and zero-bloat tools.
 
-**Principles:**
-- **Minimalism:** Plain Markdown, static HTML/CSS, no ads, no trackers.
-- **Directness:** Practical guides and tools built to solve real problems fast.
-- **Open:** Everything here is free to read, inspect, and reuse.
+- **Minimal:** Markdown, static web, no tracking.
+- **Direct:** Build fast, solve real problems.
+- **Open:** Free to read and reuse.

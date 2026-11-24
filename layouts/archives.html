@@ -2,20 +2,16 @@
   {{- $posts := where site.RegularPages "Section" "posts" -}}
   {{- $isVi := eq site.Language.Lang "vi" -}}
   <header class="page-header">
-    <h1 class="hero-h1">{{ .Title }}</h1>
+    <h1 class="hero-h1"><span class="term-prompt" aria-hidden="true">&gt; </span>{{ .Title }}</h1>
     <p class="archive-subtitle">
-      {{ if $isVi }}
-        Hiển thị <span id="archive-visible-count">{{ len $posts }}</span> / {{ len $posts }} bài viết · Lọc tại chỗ không tải lại trang
-      {{ else }}
-        Showing <span id="archive-visible-count">{{ len $posts }}</span> / {{ len $posts }} posts · Instant client-side filter
-      {{ end }}
+      <span id="archive-visible-count">{{ len $posts }}</span> / {{ len $posts }} {{ if $isVi }}bài{{ else }}posts{{ end }}
     </p>
   </header>
 
   <div class="archive-controls-box">
     <div class="archive-search-row">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-      <input type="search" id="archive-search" class="archive-search-input" placeholder="{{ if $isVi }}Tìm nhanh bài viết hoặc chủ đề...{{ else }}Filter articles by keyword or topic...{{ end }}" aria-label="{{ if $isVi }}Tìm bài viết{{ else }}Filter articles{{ end }}" autocomplete="off" />
+      <input type="search" id="archive-search" class="archive-search-input" placeholder="{{ if $isVi }}Tìm...{{ else }}Search...{{ end }}" aria-label="{{ if $isVi }}Tìm bài viết{{ else }}Filter articles{{ end }}" autocomplete="off" />
     </div>
     {{ with site.Taxonomies.tags.ByCount }}
     <div class="archive-filter-bar" role="group" aria-label="{{ if $isVi }}Lọc theo chủ đề{{ else }}Filter by topic{{ end }}">
