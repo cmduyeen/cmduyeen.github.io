@@ -32,6 +32,20 @@
     {{ end }}
   </article>
 
+  {{- $related := site.RegularPages.Related . | first 3 -}}
+  {{ with $related }}
+  <section class="home-section" aria-label="Related articles">
+    <div class="section-head">
+      <h2 class="section-label">Related</h2>
+    </div>
+    <ul class="writing-list">
+      {{ range . }}
+      {{ partial "post-list-item.html" . }}
+      {{ end }}
+    </ul>
+  </section>
+  {{ end }}
+
   {{ if or .PrevInSection .NextInSection }}
   <nav class="post-nav-grid" aria-label="Post navigation">
     <div>

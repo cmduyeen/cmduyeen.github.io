@@ -6,9 +6,7 @@
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://giscus.app; style-src 'self' 'unsafe-inline' https://giscus.app; img-src 'self' data: https:; frame-src https://giscus.app; connect-src 'self' https://giscus.app; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;">
 <meta name="description" content="{{ $description | plainify }}">
-{{- if eq .Section "archives" -}}
-<meta name="robots" content="noindex, follow">
-{{- end -}}
+<meta name="robots" content="index, follow">
 <meta name="theme-color" content="#F6F4F0" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#191817" media="(prefers-color-scheme: dark)">
 {{- if eq .Section "posts" }}

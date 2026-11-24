@@ -22,14 +22,13 @@
       <h2 class="section-label" id="projects-heading">Tools</h2>
       <a class="section-more" href="{{ "tools/" | relURL }}">all →</a>
     </div>
-    <ul class="writing-list">
+    <ul class="compact-list">
       {{ range first 3 $webApps }}
-      <li class="tool-row">
-        <div class="tool-row-top">
-          <a class="tool-row-name" href="{{ .homepage }}" target="_blank" rel="noopener noreferrer">{{ .name }}</a>
-          <a class="writing-meta" href="{{ .url }}" target="_blank" rel="noopener noreferrer">code</a>
-        </div>
+      <li>
+        <a class="tool-row-name" href="{{ .homepage }}" target="_blank" rel="noopener">{{ .name }}</a>
+        <span class="tool-row-sep">—</span>
         <span class="tool-row-desc">{{ .description }}</span>
+        <a class="writing-meta" href="{{ .url }}" target="_blank" rel="noopener">[code]</a>
       </li>
       {{ end }}
     </ul>

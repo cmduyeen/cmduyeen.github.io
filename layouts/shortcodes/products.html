@@ -7,14 +7,13 @@
     <h2 class="section-label">Live Web Apps</h2>
     <span class="archive-series-count">{{ len $webApps }}</span>
   </div>
-  <ul class="writing-list">
+  <ul class="compact-list">
     {{- range $webApps -}}
-    <li class="tool-row">
-      <div class="tool-row-top">
-        <a class="tool-row-name" href="{{ .homepage }}" target="_blank" rel="noopener noreferrer">{{ .name }}</a>
-        <a class="writing-meta" href="{{ .url }}" target="_blank" rel="noopener noreferrer">code</a>
-      </div>
+    <li>
+      <a class="tool-row-name" href="{{ .homepage }}" target="_blank" rel="noopener">{{ .name }}</a>
+      <span class="tool-row-sep">—</span>
       <span class="tool-row-desc">{{ .description }}</span>
+      <a class="writing-meta" href="{{ .url }}" target="_blank" rel="noopener">[code]</a>
     </li>
     {{- end -}}
   </ul>
@@ -28,15 +27,14 @@
       <h2 class="section-label">{{ .heading }}</h2>
       <span class="archive-series-count">{{ len .items }}</span>
     </div>
-    <ul class="writing-list">
+    <ul class="compact-list">
       {{- range .items -}}
       {{- $isExternal := hasPrefix .url "http" -}}
-      <li class="tool-row">
-        <div class="tool-row-top">
-          <a class="tool-row-name" href="{{ .url }}"{{ if $isExternal }} target="_blank" rel="noopener noreferrer"{{ end }}>{{ .name }}</a>
-          {{ with .guide_url }}<a class="writing-meta" href="{{ . | relURL }}">guide</a>{{ else }}<span class="writing-meta">{{ .badge }}</span>{{ end }}
-        </div>
+      <li>
+        <a class="tool-row-name" href="{{ .url }}"{{ if $isExternal }} target="_blank" rel="noopener"{{ end }}>{{ .name }}</a>
+        <span class="tool-row-sep">—</span>
         <span class="tool-row-desc">{{ .description }}</span>
+        {{ with .guide_url }}<a class="writing-meta" href="{{ . | relURL }}">[guide]</a>{{ end }}
       </li>
       {{- end -}}
     </ul>
