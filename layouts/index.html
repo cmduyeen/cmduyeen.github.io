@@ -30,9 +30,11 @@
     <ul class="writing-list">
       {{ range first 3 $webApps }}
       <li class="tool-row">
-        <a class="tool-row-name" href="{{ .homepage }}" target="_blank" rel="noopener noreferrer">{{ .name }}</a>
+        <div class="tool-row-top">
+          <a class="tool-row-name" href="{{ .homepage }}" target="_blank" rel="noopener noreferrer">{{ .name }}</a>
+          <a class="writing-meta" href="{{ .url }}" target="_blank" rel="noopener noreferrer">code</a>
+        </div>
         <span class="tool-row-desc">{{ .description }}</span>
-        <a class="writing-meta" href="{{ .url }}" target="_blank" rel="noopener noreferrer">code</a>
       </li>
       {{ end }}
     </ul>

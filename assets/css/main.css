@@ -112,12 +112,13 @@ img, picture { max-width: 100%; height: auto; }
 .writing-item time, .writing-meta { font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
 
 .tool-row {
-  display: grid; grid-template-columns: 14rem 1fr auto; align-items: baseline; gap: 1rem;
-  padding: 0.6rem 0; border-bottom: 1px solid var(--border-subtle);
+  display: flex; flex-direction: column; gap: 0.2rem;
+  padding: 0.7rem 0; border-bottom: 1px solid var(--border-subtle);
 }
-.tool-row-name { font-family: var(--font-mono); font-weight: 500; color: var(--text-primary); }
+.tool-row-top { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
+.tool-row-name { font-family: var(--font-mono); font-weight: 600; color: var(--text-primary); }
 .tool-row-name:hover { color: var(--accent-cyan); text-decoration: none; }
-.tool-row-desc { color: var(--text-secondary); font-size: 0.92rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tool-row-desc { color: var(--text-secondary); font-size: 0.94rem; line-height: 1.5; }
 
 /* Archives */
 .page-header { margin: 0.75rem 0 1.5rem; }
@@ -148,20 +149,18 @@ img, picture { max-width: 100%; height: auto; }
 .tldr-box { padding: 0.9rem 1rem; margin: 1.25rem 0; background: var(--bg-surface); border-left: 3px solid var(--accent-emerald); }
 .tldr-label { font-family: var(--font-mono); font-size: 0.78rem; font-weight: 600; color: var(--accent-emerald); margin-bottom: 0.25rem; }
 .tldr-box p { margin: 0; font-size: 0.94rem; color: var(--text-secondary); }
-.series-drawer, .toc { margin: 1rem 0 1.5rem; padding: 0.75rem 1rem; background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: 4px; font-size: 0.9rem; }
-.series-drawer summary, .toc summary { cursor: pointer; font-family: var(--font-mono); font-size: 0.82rem; font-weight: 600; }
-.series-drawer-list { margin: 0.6rem 0 0; padding-left: 1.25rem; }
-.series-drawer-link.is-current { font-weight: 600; color: var(--text-primary); }
+.toc { margin: 0.75rem 0 1.5rem; padding: 0.25rem 0; border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); font-size: 0.9rem; }
+.toc summary { cursor: pointer; font-family: var(--font-mono); font-size: 0.82rem; color: var(--text-muted); padding: 0.35rem 0; }
 .article-toc-desktop { display: none; }
 
-.article-content { max-width: 65ch; font-size: 1.03rem; line-height: 1.72; }
-.article-content h2 { margin: 2.25rem 0 0.75rem; font-size: 1.25rem; border-bottom: 1px solid var(--border-subtle); padding-bottom: 0.3rem; }
-.article-content h3 { margin: 1.65rem 0 0.5rem; font-size: 1.08rem; }
-.article-content p, .article-content ul, .article-content ol { margin: 0 0 1.15rem; }
-.article-content li + li { margin-top: 0.35rem; }
+.article-content { max-width: 65ch; font-size: 1.08rem; line-height: 1.75; color: var(--text-primary); }
+.article-content h2 { margin: 2.25rem 0 0.75rem; font-size: 1.28rem; border-bottom: 1px solid var(--border-subtle); padding-bottom: 0.3rem; }
+.article-content h3 { margin: 1.65rem 0 0.5rem; font-size: 1.1rem; }
+.article-content p, .article-content ul, .article-content ol { margin: 0 0 1.2rem; }
+.article-content li + li { margin-top: 0.4rem; }
 .article-content hr { border: 0; border-top: 1px solid var(--border-subtle); margin: 2rem 0; }
 .article-content blockquote { margin: 1.25rem 0; padding: 0.25rem 1rem; border-left: 3px solid var(--border-strong); color: var(--text-secondary); }
-.article-content code { font-family: var(--font-mono); font-size: 0.88em; background: var(--bg-surface); padding: 0.12rem 0.35rem; border-radius: 3px; }
+.article-content code { font-family: var(--font-mono); font-size: 0.86em; background: var(--bg-surface); padding: 0.1rem 0.32rem; border-radius: 3px; }
 .article-content pre { overflow-x: auto; padding: 0.9rem 1rem; background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: 4px; }
 .article-content pre code { background: transparent; padding: 0; }
 .article-content table { width: 100%; border-collapse: collapse; margin: 1.25rem 0; font-size: 0.92rem; }

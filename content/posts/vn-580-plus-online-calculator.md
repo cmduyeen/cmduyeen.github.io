@@ -14,7 +14,7 @@ Forgot your handheld scientific calculator at home? **[VN-580 Plus Online](https
 
 ## Key Features
 
-- **Exact & Decimal (`S⇔D`)**: Automatically recognizes fractions, common surds ($\sqrt{2}/2$, $\sqrt{3}/2$), and $\pi$ multiples, plus mixed fractions (`a b/c`) and DMS (`° ' "`).
+- **Exact & Decimal (`S⇔D`)**: Automatically recognizes fractions, common surds (`√2/2`, `√3/2`), and `π` multiples, plus mixed fractions (`a b/c`) and DMS (`° ' "`).
 - **Calculus & Root Finding**: Numerical definite integrals (`∫dx`), derivatives (`d/dx`), summations (`Σ`), products (`Π`), `CALC`, and `SOLVE` (`SHIFT` + `CALC`).
 - **Number Theory**: Combinations (`nCr`), permutations (`nPr`), `GCD`, `LCM`, and prime factorization (`FACT`).
 - **Full Mode Suite (`MENU`)**:
