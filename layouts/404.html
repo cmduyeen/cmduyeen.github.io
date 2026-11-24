@@ -1,13 +1,9 @@
 {{ define "main" }}
-  <section class="error-404 stardew-box">
-    <span class="status-pill">404 // PAGE NOT FOUND</span>
-    <h1 class="hero-h1" style="margin-top: 0.9rem;">This path isn't on the map.</h1>
-    <p class="hero-desc">The page may have moved. Use search (⌘K) or jump straight to articles and projects below.</p>
-    <div class="hero-actions">
-      <button type="button" class="btn-primary-cyber" data-open-search>Search (⌘K)</button>
-      <a class="btn-hud" href="{{ site.Home.RelPermalink }}">← Home</a>
-      <a class="btn-hud" href="{{ "archives/" | relLangURL }}">Articles</a>
-      <a class="btn-hud" href="{{ "tools/" | relLangURL }}">Projects</a>
-    </div>
+  <section class="home-section">
+    <header class="page-header">
+      <h1 class="hero-h1">404 — Page not found</h1>
+      <p class="archive-subtitle">This page does not exist or has been moved.</p>
+    </header>
+    <p><a href="{{ site.Home.RelPermalink }}">← Back to home</a></p>
   </section>
 {{ end }}

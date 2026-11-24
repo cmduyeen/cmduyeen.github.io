@@ -1,14 +1,13 @@
 {{ define "main" }}
   <header class="page-header">
-    <h1 class="hero-h1"><span class="highlight">//</span> {{ .Title }}</h1>
-    <p class="archive-subtitle">{{ len .Data.Terms }} active topics</p>
+    <h1 class="hero-h1">{{ .Title }}</h1>
   </header>
-  <div class="term-grid">
+  <ul class="compact-list">
     {{ range .Data.Terms.ByCount }}
-    <a class="hud-card term-card" href="{{ .Page.RelPermalink }}">
-      <span class="term-name">#{{ .Page.LinkTitle }}</span>
-      <span class="term-count">{{ .Count }}</span>
-    </a>
+    <li>
+      <a class="tool-row-name" href="{{ .Page.RelPermalink }}">#{{ .Page.LinkTitle }}</a>
+      <span class="writing-meta">({{ .Count }})</span>
+    </li>
     {{ end }}
-  </div>
+  </ul>
 {{ end }}
