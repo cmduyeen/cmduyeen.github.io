@@ -99,8 +99,12 @@
           <span class="archive-series-count">{{ len $items }} {{ if and (not $isVi) (eq (len $items) 1) }}post{{ else }}{{ i18n "posts_unit" }}{{ end }}</span>
         </div>
         <ul class="writing-list">
+          {{ $sortedItems := slice }}
           {{ range $items }}
-            {{ partial "post-list-item.html" . }}
+            {{ $sortedItems = $sortedItems | append (dict "k" (printf "%s|%s" (.Date.UTC.Format "2006-01-02") .RelPermalink) "p" .) }}
+          {{ end }}
+          {{ range sort $sortedItems "k" "asc" }}
+            {{ partial "post-list-item.html" .p }}
           {{ end }}
         </ul>
       </section>
