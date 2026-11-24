@@ -1,13 +1,14 @@
 {{ define "main" }}
   {{- $posts := (where site.RegularPages "Section" "posts").ByDate.Reverse -}}
   {{- $webApps := where site.Data.repos "is_webapp" true -}}
+  {{- $isVi := eq site.Language.Lang "vi" -}}
 
-  <section class="home-intro" aria-label="Introduction" style="margin: 1.5rem 0 2.5rem;">
-    <h1 class="hero-h1" style="margin: 0 0 0.5rem;">
-      {{- if eq site.Language.Lang "vi" -}}Xin chào, mình là Dyn.{{- else -}}Hi, I'm Dyn.{{- end -}}
+  <section class="home-intro" aria-label="Introduction">
+    <h1 class="hero-h1">
+      {{- if $isVi -}}Ghi chép kỹ thuật &amp; công cụ tối giản.{{- else -}}Plain-text engineering notes &amp; minimal tools.{{- end -}}
     </h1>
     {{ with site.Params.homeInfoParams }}
-    <p class="hero-desc" style="margin: 0; max-width: 65ch; color: var(--text-secondary);">{{ .Content }}</p>
+    <p class="hero-desc">{{ .Content }}</p>
     {{ end }}
   </section>
 
@@ -15,9 +16,9 @@
   <section class="home-section" aria-labelledby="writing-heading">
     <div class="section-head">
       <h2 class="section-label" id="writing-heading">
-        {{ if eq site.Language.Lang "vi" }}Bài viết mới{{ else }}Writing{{ end }}
+        {{ if $isVi }}Bài viết mới{{ else }}Writing{{ end }}
       </h2>
-      <a class="section-more" href="{{ "archives/" | relLangURL }}">{{ if eq site.Language.Lang "vi" }}Tất cả ({{ len . }}) →{{ else }}All ({{ len . }}) →{{ end }}</a>
+      <a class="section-more" href="{{ "archives/" | relLangURL }}">{{ if $isVi }}Tất cả ({{ len . }}) →{{ else }}All ({{ len . }}) →{{ end }}</a>
     </div>
     <ul class="writing-list">
       {{ range first 5 . }}
@@ -31,18 +32,16 @@
   <section class="home-section" aria-labelledby="projects-heading">
     <div class="section-head">
       <h2 class="section-label" id="projects-heading">
-        {{ if eq site.Language.Lang "vi" }}Công cụ{{ else }}Tools{{ end }}
+        {{ if $isVi }}Công cụ{{ else }}Tools{{ end }}
       </h2>
-      <a class="section-more" href="{{ "tools/" | relLangURL }}">{{ if eq site.Language.Lang "vi" }}Tất cả →{{ else }}All →{{ end }}</a>
+      <a class="section-more" href="{{ "tools/" | relLangURL }}">{{ if $isVi }}Tất cả →{{ else }}All →{{ end }}</a>
     </div>
     <ul class="writing-list">
       {{ range first 3 $webApps }}
-      <li class="archive-post-item">
-        <div class="writing-item" style="display:flex; justify-content:space-between; align-items:baseline; gap:1rem;">
-          <a href="{{ .homepage }}" target="_blank" rel="noopener noreferrer" style="font-weight:500;">{{ .name }}</a>
-          <span style="flex:1; color:var(--text-secondary); font-size:0.92rem; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">{{ .description }}</span>
-          <a class="writing-meta" href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ if eq site.Language.Lang "vi" }}Mã nguồn{{ else }}Code{{ end }}</a>
-        </div>
+      <li class="tool-row">
+        <a class="tool-row-name" href="{{ .homepage }}" target="_blank" rel="noopener noreferrer">{{ .name }}</a>
+        <span class="tool-row-desc">{{ .description }}</span>
+        <a class="writing-meta" href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ if $isVi }}Mã nguồn{{ else }}Code{{ end }}</a>
       </li>
       {{ end }}
     </ul>
