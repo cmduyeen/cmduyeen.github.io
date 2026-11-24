@@ -6,11 +6,6 @@ enableRobotsTXT = true
 
 [params]
   author = "Dyn"
-  googleAnalytics = "G-BE2PYJJBH4"
-
-[services]
-  [services.googleAnalytics]
-    ID = "G-BE2PYJJBH4"
 
 [params.contact]
   github = "https://github.com/cmduyeen"
@@ -28,7 +23,7 @@ enableRobotsTXT = true
     title = "Dyn"
     [languages.en.params]
       author = "Dyn"
-      description = "Dyn writes about software, automation, Obsidian, Hugo, GitHub Pages, and useful tools."
+      description = "Dyn writes about software, automation, Markdown workflows, Hugo, GitHub Pages, and useful tools."
     [languages.en.params.homeInfoParams]
       Title = "Hi, I'm Dyn"
       Content = "Engineering notes, automation workflows, and minimalist developer tools."
@@ -55,7 +50,7 @@ enableRobotsTXT = true
     title = "Dyn"
     [languages.vi.params]
       author = "Dyn"
-      description = "Dyn viết về công nghệ, tự động hóa, Obsidian, Hugo, GitHub Pages và các công cụ hữu ích."
+      description = "Dyn viết về công nghệ, tự động hóa, Markdown, Hugo, GitHub Pages và các công cụ hữu ích."
     [languages.vi.params.homeInfoParams]
       Title = "Xin chào, mình là Dyn"
       Content = "Ghi chép kỹ thuật, luồng tự động hóa và các công cụ tối giản cho lập trình viên."
