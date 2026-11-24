@@ -20,7 +20,7 @@
     {{ with site.Taxonomies.tags.ByCount }}
     <div class="archive-filter-bar" role="group" aria-label="{{ if $isVi }}Lọc theo chủ đề{{ else }}Filter by topic{{ end }}">
       <button type="button" class="filter-chip is-active" data-filter-tag="all">{{ if $isVi }}Tất cả{{ else }}All{{ end }} <span class="chip-count">{{ len $posts }}</span></button>
-      {{ range . }}
+      {{ range first 7 . }}
       <button type="button" class="filter-chip" data-filter-tag="{{ .Page.LinkTitle | lower }}">#{{ .Page.LinkTitle }} <span class="chip-count">{{ .Count }}</span></button>
       {{ end }}
     </div>
@@ -97,22 +97,10 @@
   <div class="archive-series-list" id="archive-list">
     {{ range $sIdx, $name := $seriesOrder }}
       {{ $items := $groups.Get $name }}
-      {{ $plant := mod $sIdx 4 }}
       <section class="archive-series">
         <div class="archive-series-head">
-          <h2>
-            {{- if eq $plant 0 -}}
-            <svg class="pixel-icon" width="20" height="20" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect x="7" y="8" width="2" height="5" fill="#2e6f28"/><rect x="3" y="5" width="4" height="3" fill="#7ec850"/><rect x="9" y="4" width="4" height="3" fill="#7ec850"/><rect x="4" y="13" width="8" height="2" fill="#8f563b"/></svg>
-            {{- else if eq $plant 1 -}}
-            <svg class="pixel-icon" width="20" height="20" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect x="7" y="9" width="2" height="4" fill="#2e6f28"/><rect x="6" y="4" width="4" height="4" fill="#eab308"/><rect x="4" y="5" width="2" height="2" fill="#f472b6"/><rect x="10" y="5" width="2" height="2" fill="#f472b6"/><rect x="7" y="2" width="2" height="2" fill="#f472b6"/><rect x="4" y="13" width="8" height="2" fill="#8f563b"/></svg>
-            {{- else if eq $plant 2 -}}
-            <svg class="pixel-icon" width="20" height="20" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect x="6" y="10" width="4" height="4" fill="#8f563b"/><rect x="3" y="4" width="10" height="6" fill="#2e6f28"/><rect x="4" y="2" width="8" height="3" fill="#7ec850"/><rect x="5" y="5" width="2" height="2" fill="#ef4444"/><rect x="9" y="7" width="2" height="2" fill="#ef4444"/></svg>
-            {{- else -}}
-            <svg class="pixel-icon" width="20" height="20" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect x="7" y="9" width="2" height="4" fill="#2e6f28"/><rect x="4" y="3" width="3" height="3" fill="#7ec850"/><rect x="9" y="3" width="3" height="3" fill="#2e6f28"/><rect x="5" y="6" width="6" height="3" fill="#7ec850"/><rect x="4" y="13" width="8" height="2" fill="#8f563b"/></svg>
-            {{- end -}}
-            {{ $name }}
-          </h2>
-          <span class="archive-series-count">{{ len $items }} {{ i18n "posts_unit" }}</span>
+          <h2><span class="term-prompt" aria-hidden="true">&gt;</span> {{ $name }}</h2>
+          <span class="archive-series-count">{{ len $items }} {{ if and (not $isVi) (eq (len $items) 1) }}post{{ else }}{{ i18n "posts_unit" }}{{ end }}</span>
         </div>
         <ul class="writing-list">
           {{ range $items }}
@@ -125,11 +113,8 @@
     {{ if gt (len $standalone) 0 }}
       <section class="archive-series">
         <div class="archive-series-head">
-          <h2>
-            <svg class="pixel-icon" width="20" height="20" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect x="7" y="8" width="2" height="5" fill="#2e6f28"/><rect x="4" y="4" width="8" height="5" fill="#7ec850"/><rect x="6" y="2" width="4" height="2" fill="#eab308"/><rect x="4" y="13" width="8" height="2" fill="#8f563b"/></svg>
-            {{ i18n "standalone_posts" }}
-          </h2>
-          <span class="archive-series-count">{{ len $standalone }} {{ i18n "posts_unit" }}</span>
+          <h2><span class="term-prompt" aria-hidden="true">&gt;</span> {{ i18n "standalone_posts" }}</h2>
+          <span class="archive-series-count">{{ len $standalone }} {{ if and (not $isVi) (eq (len $standalone) 1) }}post{{ else }}{{ i18n "posts_unit" }}{{ end }}</span>
         </div>
         <ul class="writing-list">
           {{ range $standalone }}

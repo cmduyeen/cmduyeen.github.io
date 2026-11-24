@@ -5,8 +5,7 @@
 
   <section class="home-intro term-intro" aria-label="Introduction">
     <h1 class="hero-h1 term-h1">
-      <span class="term-prompt" aria-hidden="true">&gt;</span>
-      {{- if $isVi -}} ghi chép kỹ thuật &amp; công cụ tối giản.{{- else -}} plain-text engineering notes &amp; minimal tools.{{- end -}}
+      <span class="term-prompt" aria-hidden="true">&gt; </span>{{- if $isVi -}}ghi chép kỹ thuật &amp; công cụ tối giản.{{- else -}}plain-text engineering notes &amp; minimal tools.{{- end -}}
     </h1>
     {{ with site.Params.homeInfoParams }}
     <p class="hero-desc">{{ .Content }}</p>

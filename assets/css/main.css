@@ -1588,7 +1588,7 @@ main {
 
 .tool-row {
   display: grid;
-  grid-template-columns: 11rem 1fr auto;
+  grid-template-columns: 14rem 1fr auto;
   align-items: baseline;
   gap: 1rem;
   padding: 0.65rem 0;
