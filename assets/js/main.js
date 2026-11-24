@@ -94,7 +94,7 @@
     btn.textContent = "Copy";
     btn.addEventListener("click", async () => {
       try {
-        await navigator.clipboard.writeText(code.innerText);
+        await navigator.clipboard.writeText(code.textContent || "");
         btn.textContent = "Copied";
         btn.classList.add("is-copied");
         setTimeout(() => {

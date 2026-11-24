@@ -24,7 +24,7 @@
     </div>
 
     <ul class="writing-list">
-      {{ range . }}
+      {{ range first 20 . }}
       {{ partial "post-list-item.html" . }}
       {{ end }}
     </ul>
