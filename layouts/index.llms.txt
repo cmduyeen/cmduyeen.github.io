@@ -1,4 +1,4 @@
-# ~/dyn — {{ site.Params.author }}
+# {{ site.Title }}
 > {{ site.Params.description }}
 
 - Website: {{ site.Home.Permalink }}
